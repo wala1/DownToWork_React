@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import "./SignIn.scss";
+import SignForm from "./SignForm";
 
 function SignIn() {
   return (
@@ -16,10 +17,12 @@ function SignIn() {
               </div>
             </div>
           </Col>
-          <Col md={8} className="fromulaire ">
+          <Col md={8} className="fromulaire  ">
             {/* Content for second column */}
-            <div className="form">
-            <h1>Sign In</h1>
+            <div className="form d-flex flex-column">
+            <h1 className="wlcm my-4">Sign-In</h1>
+            <SignForm />
+            <a href="">Forgot your password ?</a>
 
             </div>
           </Col>
