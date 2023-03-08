@@ -21,7 +21,7 @@
     width: 100vw;
     color:#3F6DB1;
     display: flex;
-    align-items: center;
+     align-items: center;
     justify-content: center;
     border-radius: 20px;
     
@@ -39,7 +39,7 @@
 }
 
 .wlcm{
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bolder;
     text-align: center;
     margin: 0;
@@ -62,6 +62,17 @@
     padding: 0;
 }
 .formInputs{
-  width: 600px;
+  width: 400px;
     
+}
+.boutons{
+    width: 400px;
+}
+.bouton{
+    width: 100%;
+}
+.logo{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
 }
