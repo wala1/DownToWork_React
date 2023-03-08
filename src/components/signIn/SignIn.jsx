@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row ,Button} from "react-bootstrap";
 import "./SignIn.scss";
 import SignForm from "./SignForm";
 
@@ -17,13 +17,34 @@ function SignIn() {
               </div>
             </div>
           </Col>
-          <Col md={8} className="fromulaire  ">
+          <Col md={8} className="fromulaire ">
             {/* Content for second column */}
             <div className="form d-flex flex-column">
-            <h1 className="wlcm my-4">Sign-In</h1>
+            <h1 className="wlcm my-2">Sign-In</h1>
             <SignForm />
+            <div className="d-flex flex-column boutons"> 
             <a href="">Forgot your password ?</a>
+            <Button variant="secondary"  className="bouton my-2" style={{ backgroundColor: "lightGray" ,
+             outline:"none" , border:"none",
+              color: "#3F6DB1" ,
+               fontWeight:"bold" }}>
+                <img src="facebook.svg" className="logo"/>
+                Sign-in with Facebook</Button>
 
+            <Button variant="secondary" className="bouton" style={{ backgroundColor: "lightGray" ,
+             outline:"none" ,
+              border:"none" , 
+              color: "#3F6DB1" , 
+              fontWeight:"bold" }}>
+                <img src="google.svg" className="logo" alt="" />
+                  Sign-in with google
+                  </Button>
+                  <h6 className="my-2">Don't have an account ?</h6>
+                  <Button variant="primary" className="bouton" style={{                   fontWeight:"bold" }}>
+                Sign-up
+                  </Button>
+
+                  </div>
             </div>
           </Col>
         </Row>
