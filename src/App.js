@@ -10,6 +10,7 @@ function App() {
         <div className="page_wrap">
           <Home />
           {/* <NavBar></NavBar> */}
+      {/*     <NavBar/> */}
         </div>
       </div>
 
