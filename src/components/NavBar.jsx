@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 function NavBar() {
-    function triggerReflow() {
-      }    return ( <Fragment>
+       return ( <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
 				{/* <!-- User menu --> */}
                 <div className="menu_user_wrap">
