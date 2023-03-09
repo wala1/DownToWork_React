@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 function NavBar() {
-    function triggerReflow() {
-      }    return ( <Fragment>
+      return ( <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
 				{/* <!-- User menu --> */}
                 <div className="menu_user_wrap">
@@ -30,7 +29,7 @@ function NavBar() {
 								</li>
                             </ul>
                         </div>
-                        <div className="menu_user_area menu_user_left menu_user_contact_area">Contact us on 0 800 123-4567 or <a href="#">support@themerex.net</a></div>
+                        <div className="menu_user_area menu_user_left menu_user_contact_area">Contact us on +216 28 597 602 or <a href="#">downtowork@gmail.com</a></div>
                     </div>
                 </div>
 				{/* <!-- /User menu -->
@@ -40,8 +39,9 @@ function NavBar() {
 						{/* <!-- Logo --> */}
                         <div className="logo">
                             <a href="index.html">
-								<img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
-								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/>
+								{/* <img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
+								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/> */}
+								<h3> Down To Work </h3>
 							</a>
                         </div>
 						{/* <!-- Logo -->
