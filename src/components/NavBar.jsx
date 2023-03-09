@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 function NavBar() {
-    return ( <Fragment>
+    function triggerReflow() {
+      }    return ( <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
 				{/* <!-- User menu --> */}
                 <div className="menu_user_wrap">
@@ -66,7 +67,7 @@ function NavBar() {
 							<ul id="menu_main" className="menu_main_nav">
 								<li className="menu-item menu-item-has-children current-menu-ancestor current-menu-parent"><a href="index.html">Homepage</a>
 									<ul className="sub-menu">
-										<li className="menu-item current-menu-item page_item current_page_item"><a href="index.html">Homepage Wide</a></li>
+										<li className="menu-item current-menu-item page_item current_page_item "><a href="index.html">Homepage Wide</a></li>
 										<li className="menu-item"><a href="homepage-2.html">Homepage Boxed</a></li>
 										<li className="menu-item"><a href="homepage-3.html">Homepage Photos</a></li>
 									</ul>

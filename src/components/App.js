@@ -8,8 +8,8 @@ function App() {
     <Fragment>
       <div className="body_wrap">
         <div className="page_wrap">
-          {/* <Home /> */}
-          <NavBar></NavBar>
+          <Home />
+          {/* <NavBar></NavBar> */}
         </div>
       </div>
 
