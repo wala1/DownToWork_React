@@ -997,7 +997,7 @@ label.required:after {
 /* User and main menu */
 .menu_main_wrap .menu_main_nav_area,
 .menu_main_wrap .search_wrap {
-	display:none;
+	display:block; /*hedhy kent none*/
 }
 .menu_show .menu_main_nav_area,
 .menu_show .search_wrap {

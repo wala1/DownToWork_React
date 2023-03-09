@@ -40,8 +40,8 @@ function NavBar() {
 						{/* <!-- Logo --> */}
                         <div className="logo">
                             <a href="index.html">
-								<img src={require("../assets/images/educCenter.png")} className="logo_main" alt=""/>
-								<img src={require("../assets/images/educCenter.png")} className="logo_fixed" alt=""/>
+								<img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
+								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/>
 							</a>
                         </div>
 						{/* <!-- Logo -->
