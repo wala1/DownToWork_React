@@ -1,5 +1,23 @@
 import React, { Fragment } from 'react';
+import LoginButton from "../user/login";
+import LogoutButton from "../user/logout";
+import {useEffect} from 'react';
+import {gapi} from 'gapi-script';
+
+const clientId = "1075754340245-9uddfgn78s5sult6mmcfuvugr4s4v7fh.apps.googleusercontent.com";
+
 function NavBar() {
+	
+	useEffect(() => {
+		function start(){
+		  gapi.client.init({
+			clientId: clientId,
+			scope: ""
+		  })
+		};
+		gapi.load('client:auth2', start);
+	  })
+
       return ( <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
 				{/* <!-- User menu --> */}
@@ -26,6 +44,12 @@ function NavBar() {
                                 </li>
                                 <li className="menu_user_logout">
 									<a href="#" className="icon icon-logout">Logout</a>
+								</li>
+                                <li className="menu_user_logout">
+									<LoginButton/>
+								</li>
+                                <li className="menu_user_logout">
+									<LogoutButton/>
 								</li>
                             </ul>
                         </div>
