@@ -1024,6 +1024,7 @@ label.required:after {
 	position:relative;
 	display:block;
 	padding:0.5em 1.2em 0.5em 2em;
+	
 }
 .menu_user_wrap .menu_user_nav li li > a:before,
 .menu_main_wrap .menu_main_nav li li > a:before {
@@ -1032,7 +1033,9 @@ label.required:after {
 	position:absolute;
 	left:1em;
 	top:6px;
-}
+}	
+
+
 .menu_user_wrap .menu_user_nav li li.current-menu-item > a:before,
 .menu_main_wrap .menu_main_nav li li.current-menu-item > a:before {
 	content: '\e8ab';
@@ -1045,6 +1048,7 @@ label.required:after {
 	position:absolute;
 	right:1em;
 	top:6px;
+	
 }
 .menu_user_wrap .menu_user_nav > li,
 .menu_main_wrap .menu_main_nav > li {
@@ -1052,6 +1056,7 @@ label.required:after {
 	float:left;
 	margin-left:4px;
 	z-index:20;
+	
 }
 .menu_main_wrap .menu_main_nav > li+li { z-index:19; }
 .menu_main_wrap .menu_main_nav > li+li+li { z-index:18; }
@@ -1125,6 +1130,7 @@ label.required:after {
 /* Bookmarks */
 .menu_user_wrap .menu_user_nav > li.menu_user_bookmarks {
 	margin-left:2.5em;
+	background-color:gold;
 }
 .menu_user_wrap .menu_user_nav > li.menu_user_bookmarks > a:before {
 	margin-right:0;
@@ -1135,6 +1141,7 @@ label.required:after {
 
 .menu_user_wrap .menu_user_nav > li.menu_user_bookmarks .bookmarks_add {
 	border-bottom:1px solid rgba(255,255,255, 0.5);
+	
 }
 .menu_user_wrap .menu_user_nav > li.menu_user_bookmarks .bookmarks_delete {
 	position:absolute;
@@ -1147,6 +1154,8 @@ label.required:after {
 	line-height:1em;
 	font-size:1.25em;
 }
+
+
 
 /* Logo in the header */
 .menu_main_wrap .logo {

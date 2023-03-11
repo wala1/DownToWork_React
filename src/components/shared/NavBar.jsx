@@ -1,5 +1,23 @@
 import React, { Fragment } from 'react';
+import useStore from '../../store/store';
+import { useNavigate } from 'react-router-dom';
+
 function NavBar() {
+	 //const user = localStorage.getItem('user');
+	// const name = user.name;
+	const userString = localStorage.getItem("user");
+	const user = JSON.parse(userString);
+	const logout = useStore((state) => state.logout);
+	const navigate = useNavigate();
+const handleLogout =async () => {
+  try{await logout();
+	navigate('/signIn');
+
+  }catch(error){
+	console.log(error);
+	  }
+	};
+
     function triggerReflow() {
       }    return ( <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
@@ -19,18 +37,18 @@ function NavBar() {
 										<span className="user_avatar">
 											<img alt="" src="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=16&#038;d=mm&#038;r=g" srcSet="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=32&amp;d=mm&amp;r=g 2x" className="avatar avatar-16 photo" height="16" width="16" />
 										</span>
-										<span className="user_name">John Doe</span></a>
+										<span className="user_name">{user?.name || "taher"}</span></a>
                                     <ul>
                                         <li><a href="#" className="icon icon-doc-inv">New post</a></li>
                                         <li><a href="#" className="icon icon-cog-1">Settings</a></li>
                                     </ul>
                                 </li>
                                 <li className="menu_user_logout">
-									<a href="#" className="icon icon-logout">Logout</a>
+									<button href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</button>
 								</li>
                             </ul>
                         </div>
-                        <div className="menu_user_area menu_user_left menu_user_contact_area">Contact us on 0 800 123-4567 or <a href="#">support@themerex.net</a></div>
+                        <div className="menu_user_area menu_user_left menu_user_contact_area">Contact us on +216 28 597 602 or <a href="#">downtowork@gmail.com</a></div>
                     </div>
                 </div>
 				{/* <!-- /User menu -->
@@ -40,8 +58,9 @@ function NavBar() {
 						{/* <!-- Logo --> */}
                         <div className="logo">
                             <a href="index.html">
-								<img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
-								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/>
+								{/* <img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
+								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/> */}
+								<h3> Down To Work </h3>
 							</a>
                         </div>
 						{/* <!-- Logo -->
