@@ -8,23 +8,8 @@ import Dashboard from './components/Dashboard';
 
 function App() {
   return (
-<<<<<<< HEAD
-    <Fragment>
-      <div className="body_wrap">
-        <div className="page_wrap">
-          <Home />
-          {/* <NavBar></NavBar> */}
-      {/*     <NavBar/> */}
-        </div>
-      </div>
-
-    </Fragment>
-
-
-=======
     // <div className="App">
     //       <Home/>
->>>>>>> taher
 
     // </div>
     <BrowserRouter>
