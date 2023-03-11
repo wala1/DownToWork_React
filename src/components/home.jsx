@@ -20,17 +20,21 @@ function Home() {
                 <div className="page_wrap">
                     <div className="top_panel_fixed_wrap"></div>
                          {/* Navbar */} <NavBar/>
-                       {/* <!-- Revolution slider --> */}<RevolutionSlider/>  {/* {/* <!-- Revolution slider --> */}
+                       {/* <!-- Revolution slider --> */}  <RevolutionSlider/>  {/* {/* <!-- Revolution slider --> */}
+                       {/* <RevolutionSlider/> */}
 		        	{/* <!-- Content --> */} 
                     <div className="page_content_wrap">
                         <div className="content">
                             <article className="post_item post_item_single page">
                                 <section className="post_content">
+                                  {/* <br/><br/><br/><br/><br/><br/><br/><br/><br/> */}
+                                  
                                     {/* <!-- Features section --> */} <FeaturesSections/> {/* <!-- /Features section -->*/}	                
 							        {/* <!-- Courses section -->  */} <CourseSection/>    {/* <!-- /Courses section -->*/}
                                     {/* <!-- Partners section --> */} <PartnersComponent/>    {/* <!-- /Partners section --> */}
                                     {/* <!-- Video training section -->*/} <VideoComponent/> {/* <!-- /Video training section -->	*/}
                                     {/*<!-- Pricing section --> */}  <PricingComponent/> {/* <!-- /Pricing section --> */}        
+                              
                                </section>
                             </article>
                         </div>
