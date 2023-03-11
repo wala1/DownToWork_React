@@ -4,7 +4,7 @@ function RevolutionSlider() {
     return ( 
         <Fragment>
              {/* <!-- Revolution slider --> */}
-             <section className="slider_wrap slider_fullwide slider_engine_revo slider_alias_education_home_slider">
+             <section className="slider_wrap slider_fullwide slider_engine_revo slider_alias_education_home_slider" >
                         <div id="rev_slider_1_1_wrapper" className="rev_slider_wrapper fullwidthbanner-container">
                             <div id="rev_slider_1_1" className="rev_slider fullwidthabanner disp_none height_630 max-height_630">
                                 <ul>
