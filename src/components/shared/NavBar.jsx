@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import useStore from '../../store/store';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function NavBar() {
 	 //const user = localStorage.getItem('user');
@@ -11,12 +11,17 @@ function NavBar() {
 	const navigate = useNavigate();
 const handleLogout =async () => {
   try{await logout();
-	navigate('/signIn');
+	navigate('/');
 
   }catch(error){
 	console.log(error);
 	  }
 	};
+
+	const handleSignIn = () => {
+		navigate('/signIn');
+	};
+
 
     function triggerReflow() {
       }    return ( <Fragment>
@@ -32,19 +37,30 @@ const handleLogout =async () => {
                                         <li><a href="#" className="bookmarks_add icon-star-empty" title="Add the current page into bookmarks">Add bookmark</a></li>
                                     </ul>
                                 </li>
-                                <li className="menu_user_controls">
+                               {user?<li className="menu_user_controls">
                                     <a href="#">
 										<span className="user_avatar">
 											<img alt="" src="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=16&#038;d=mm&#038;r=g" srcSet="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=32&amp;d=mm&amp;r=g 2x" className="avatar avatar-16 photo" height="16" width="16" />
 										</span>
-										<span className="user_name">{user?.name || "taher"}</span></a>
+										<span className="user_name">{user?.name}</span></a>
                                     <ul>
                                         <li><a href="#" className="icon icon-doc-inv">New post</a></li>
                                         <li><a href="#" className="icon icon-cog-1">Settings</a></li>
                                     </ul>
-                                </li>
+                                </li>:<li className="menu_user_controls">
+                                    <a href="#">
+										<span className="user_avatar">
+											<img alt="" src="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=16&#038;d=mm&#038;r=g" srcSet="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=32&amp;d=mm&amp;r=g 2x" className="avatar avatar-16 photo" height="16" width="16" />
+										</span>
+										<span className="user_name">Guest</span></a>
+                                    {/* <ul>
+                                        <li><a href="#" className="icon icon-doc-inv">New post</a></li>
+                                        <li><a href="#" className="icon icon-cog-1">Settings</a></li>
+                                    </ul> */}
+                                </li>}
                                 <li className="menu_user_logout">
-									<button href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</button>
+									{user?<button href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</button> :
+									<button href="#" className="icon icon-logout" onClick={()=>handleSignIn()}>Log-In</button>}
 								</li>
                             </ul>
                         </div>
@@ -103,7 +119,7 @@ const handleLogout =async () => {
 										<li className="menu-item"><a href="not-existing-page-2.html">Page 404 (Style 2)</a></li>
 									</ul>
 								</li>
-								<li className="menu-item menu-item-has-children"><a href="courses-streampage.html">Courses</a>
+								{user&&<li className="menu-item menu-item-has-children"><a href="courses-streampage.html">Courses</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="courses-streampage.html">All courses</a></li>
 										<li className="menu-item"><a href="free-course.html">Free course</a></li>
@@ -116,7 +132,7 @@ const handleLogout =async () => {
 											</ul>
 										</li>
 									</ul>
-								</li>
+								</li>}
 								<li className="menu-item menu-item-has-children"><a href="team-members.html">Teachers</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="team-members.html">Teachers Team</a></li>
