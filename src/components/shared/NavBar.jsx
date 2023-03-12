@@ -1,8 +1,14 @@
 import React, { Fragment } from 'react';
-import LoginButton from "../user/login";
-import LogoutButton from "../user/logout";
 import {useEffect} from 'react';
 import {gapi} from 'gapi-script';
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	Link
+} from 'react-router-dom';
+import Profile from "../profile/profile";
+import Home from "../home";
 
 const clientId = "1075754340245-9uddfgn78s5sult6mmcfuvugr4s4v7fh.apps.googleusercontent.com";
 
@@ -18,8 +24,10 @@ function NavBar() {
 		gapi.load('client:auth2', start);
 	  })
 
-      return ( <Fragment>
+      return ( 
+	  <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
+			
 				{/* <!-- User menu --> */}
                 <div className="menu_user_wrap">
                     <div className="content_wrap clearfix">
@@ -32,11 +40,12 @@ function NavBar() {
                                     </ul>
                                 </li>
                                 <li className="menu_user_controls">
-                                    <a href="#">
+									<a href="#">
 										<span className="user_avatar">
 											<img alt="" src="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=16&#038;d=mm&#038;r=g" srcSet="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=32&amp;d=mm&amp;r=g 2x" className="avatar avatar-16 photo" height="16" width="16" />
 										</span>
-										<span className="user_name">John Doe</span></a>
+										<span className="user_name">John Doe</span>
+									</a>
                                     <ul>
                                         <li><a href="#" className="icon icon-doc-inv">New post</a></li>
                                         <li><a href="#" className="icon icon-cog-1">Settings</a></li>
@@ -44,12 +53,6 @@ function NavBar() {
                                 </li>
                                 <li className="menu_user_logout">
 									<a href="#" className="icon icon-logout">Logout</a>
-								</li>
-                                <li className="menu_user_logout">
-									<LoginButton/>
-								</li>
-                                <li className="menu_user_logout">
-									<LogoutButton/>
 								</li>
                             </ul>
                         </div>
@@ -167,6 +170,7 @@ function NavBar() {
                     </div>
                 </div>
 				{/* <!-- /Main menu --> */}
+				
             </header>
     </Fragment> );
 }
