@@ -4,7 +4,7 @@ const FeaturesSections = () => {
     return ( 
         <Fragment>
             {/* <!-- Features section --> */}
-            <div className="sc_section" data-animation="animated zoomIn normal">
+            <div style={{ marginTop : "150px"}} className="sc_section" data-animation="animated zoomIn normal">
                                         <div className="sc_content content_wrap margin_top_3em_imp margin_bottom_3em_imp sc_features_st1">
                                             <div className="columns_wrap sc_columns columns_fluid sc_columns_count_3">
                                                 <div className="column-1_3 sc_column_item sc_column_item_1 odd first text_center">

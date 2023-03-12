@@ -8,6 +8,8 @@ const CourseSection = () => {
                                             <div className="sc_section_content">
                                                 <div className="sc_content content_wrap margin_top_2_5em_imp margin_bottom_2_5em_imp">
                                                     <h2 className="sc_title sc_title_regular sc_align_center margin_top_0 margin_bottom_085em text_center">Courses Starting Soon</h2>
+                                                    <button type="button" className="btn btn-danger">Danger</button>
+
                                                     <div className="sc_blogger layout_courses_3 template_portfolio sc_blogger_horizontal no_description">
                                                         <div className="isotope_wrap" data-columns="3">
                                                             {/* <!-- Courses item --> */}

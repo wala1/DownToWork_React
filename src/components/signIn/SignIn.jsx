@@ -23,7 +23,7 @@ function SignIn() {
             <h1 className="wlcm my-2">Sign-In</h1>
             <SignForm />
             <div className="d-flex flex-column boutons"> 
-            <a href="">Forgot your password ?</a>
+            <a href="/forget-password">Forgot your password ?</a>
             <Button variant="secondary"  className="bouton my-2" style={{ backgroundColor: "lightGray" ,
              outline:"none" , border:"none",
               color: "#3F6DB1" ,

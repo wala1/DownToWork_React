@@ -59,8 +59,9 @@ const handleLogout =async () => {
                                     </ul> */}
                                 </li>}
                                 <li className="menu_user_logout">
-									{user?<button href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</button> :
-									<button href="#" className="icon icon-logout" onClick={()=>handleSignIn()}>Log-In</button>}
+									{user?<a href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</a> :
+									<a href="#" className="icon icon-logout" onClick={()=>handleSignIn()}>Log-In</a>}
+									{/* <a href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</a> */}
 								</li>
                             </ul>
                         </div>
@@ -74,9 +75,9 @@ const handleLogout =async () => {
 						{/* <!-- Logo --> */}
                         <div className="logo">
                             <a href="index.html">
-								{/* <img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
-								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/> */}
-								<h3> Down To Work </h3>
+								<img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
+								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/>
+								{/* <h3> Down To Work </h3> */}
 							</a>
                         </div>
 						{/* <!-- Logo -->

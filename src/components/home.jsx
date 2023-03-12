@@ -10,6 +10,7 @@ import PartnersComponent from './home/partnersComponent';
 import VideoComponent from './home/videoComponent';
 import PricingComponent from './home/PricingComponent';
 import RevolutionSlider from './home/revolutionSlider';
+import NavBar from './shared/NavBar';
 
 function Home() {
     
@@ -19,19 +20,23 @@ function Home() {
 
             <div className="body_wrap">
                 <div className="page_wrap">
-                    <div className="top_panel_fixed_wrap"></div> */}
-                         {/* Navbar */}      {/*<NavBar/>*/}
-                       {/* <!-- Revolution slider --> */}<RevolutionSlider/>  {/* {/* <!-- Revolution slider --> */}
+                    <div className="top_panel_fixed_wrap"></div>
+                         {/* Navbar */} <NavBar/>
+                       {/* <!-- Revolution slider --> */}  <RevolutionSlider/>  {/* {/* <!-- Revolution slider --> */}
+                       {/* <RevolutionSlider/> */}
 		        	{/* <!-- Content --> */} 
                     <div className="page_content_wrap">
                         <div className="content">
                             <article className="post_item post_item_single page">
                                 <section className="post_content">
+                                  {/* <br/><br/><br/><br/><br/><br/><br/><br/><br/> */}
+                                  
                                     {/* <!-- Features section --> */} <FeaturesSections/> {/* <!-- /Features section -->*/}	                
 							        {/* <!-- Courses section -->  */} <CourseSection/>    {/* <!-- /Courses section -->*/}
                                     {/* <!-- Partners section --> */} <PartnersComponent/>    {/* <!-- /Partners section --> */}
                                     {/* <!-- Video training section -->*/} <VideoComponent/> {/* <!-- /Video training section -->	*/}
                                     {/*<!-- Pricing section --> */}  <PricingComponent/> {/* <!-- /Pricing section --> */}        
+                              
                                </section>
                             </article>
                         </div>
