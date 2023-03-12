@@ -25,9 +25,9 @@ function Main() {
     // const user = useStore((state) => state.user);
     // const navigate = useNavigate();
     // if(!user) navigate('/');
-    useEffect(() => {
-        if(!localStorage.getItem('token')) navigate('/signIn');
-    }, [isLogged]);
+    // useEffect(() => {
+    //     if(!localStorage.getItem('token')) navigate('/signIn');
+    // }, [isLogged]);
 
   return (
      <Fragment  className='home page body_style_fullscreen body_filled article_style_stretch layout_single-standard top_panel_style_dark top_panel_opacity_transparent top_panel_show top_panel_over menu_right user_menu_show sidebar_hide'>
