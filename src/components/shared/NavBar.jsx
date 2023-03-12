@@ -9,6 +9,10 @@ import {
 } from 'react-router-dom';
 import Profile from "../profile/profile";
 import Home from "../home";
+import useStore from '../../store/store';
+import { Link, useNavigate } from 'react-router-dom';
+
+
 
 const clientId = "1075754340245-9uddfgn78s5sult6mmcfuvugr4s4v7fh.apps.googleusercontent.com";
 
@@ -24,8 +28,28 @@ function NavBar() {
 		gapi.load('client:auth2', start);
 	  })
 
-      return ( 
-	  <Fragment>
+	 //const user = localStorage.getItem('user');
+	// const name = user.name;
+	const userString = localStorage.getItem("user");
+	const user = JSON.parse(userString);
+	const logout = useStore((state) => state.logout);
+	const navigate = useNavigate();
+	const handleLogout =async () => {
+	try{await logout();
+		navigate('/');
+
+	}catch(error){
+		console.log(error);
+		}
+		};
+
+		const handleSignIn = () => {
+			navigate('/signIn');
+		};
+
+
+    function triggerReflow() {
+      }    return ( <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
 			
 				{/* <!-- User menu --> */}
@@ -39,20 +63,31 @@ function NavBar() {
                                         <li><a href="#" className="bookmarks_add icon-star-empty" title="Add the current page into bookmarks">Add bookmark</a></li>
                                     </ul>
                                 </li>
-                                <li className="menu_user_controls">
-									<a href="#">
+                               {user?<li className="menu_user_controls">
+                                    <a href="#">
 										<span className="user_avatar">
 											<img alt="" src="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=16&#038;d=mm&#038;r=g" srcSet="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=32&amp;d=mm&amp;r=g 2x" className="avatar avatar-16 photo" height="16" width="16" />
 										</span>
-										<span className="user_name">John Doe</span>
-									</a>
+										<span className="user_name">{user?.name}</span></a>
                                     <ul>
                                         <li><a href="#" className="icon icon-doc-inv">New post</a></li>
                                         <li><a href="#" className="icon icon-cog-1">Settings</a></li>
                                     </ul>
-                                </li>
+                                </li>:<li className="menu_user_controls">
+                                    <a href="#">
+										<span className="user_avatar">
+											<img alt="" src="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=16&#038;d=mm&#038;r=g" srcSet="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=32&amp;d=mm&amp;r=g 2x" className="avatar avatar-16 photo" height="16" width="16" />
+										</span>
+										<span className="user_name">Guest</span></a>
+                                    {/* <ul>
+                                        <li><a href="#" className="icon icon-doc-inv">New post</a></li>
+                                        <li><a href="#" className="icon icon-cog-1">Settings</a></li>
+                                    </ul> */}
+                                </li>}
                                 <li className="menu_user_logout">
-									<a href="#" className="icon icon-logout">Logout</a>
+									{user?<a href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</a> :
+									<a href="#" className="icon icon-logout" onClick={()=>handleSignIn()}>Log-In</a>}
+									{/* <a href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</a> */}
 								</li>
                             </ul>
                         </div>
@@ -66,9 +101,9 @@ function NavBar() {
 						{/* <!-- Logo --> */}
                         <div className="logo">
                             <a href="index.html">
-								{/* <img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
-								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/> */}
-								<h3> Down To Work </h3>
+								<img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
+								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/>
+								{/* <h3> Down To Work </h3> */}
 							</a>
                         </div>
 						{/* <!-- Logo -->
@@ -111,7 +146,7 @@ function NavBar() {
 										<li className="menu-item"><a href="not-existing-page-2.html">Page 404 (Style 2)</a></li>
 									</ul>
 								</li>
-								<li className="menu-item menu-item-has-children"><a href="courses-streampage.html">Courses</a>
+								{user&&<li className="menu-item menu-item-has-children"><a href="courses-streampage.html">Courses</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="courses-streampage.html">All courses</a></li>
 										<li className="menu-item"><a href="free-course.html">Free course</a></li>
@@ -124,7 +159,7 @@ function NavBar() {
 											</ul>
 										</li>
 									</ul>
-								</li>
+								</li>}
 								<li className="menu-item menu-item-has-children"><a href="team-members.html">Teachers</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="team-members.html">Teachers Team</a></li>

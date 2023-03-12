@@ -1,31 +1,44 @@
 import { Fragment } from 'react';
 import './style/App.css';
 import Nav from "../src/components/nav";
-import Login from "../src/components/login";
-import Signup from "../src/components/signup";
-import {Routes, Route} from 'react-router-dom'
+import LoginWithGoogle from "../src/components/login";
+import SignupWithGoogle from "../src/components/signup";
+import './components/signIn/SignIn'
+import './App.css';
+import SignIn from './components/signIn/SignIn';
+import Home from './components/home';
+import Main from './components/Main';
+import {BrowserRouter , Route,Routes } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import ForgetPassword from './components/user/forgetPassword';
+import ResetPassword from './components/user/resetPassword';
+import NewSubmit from './components/user/newSubmit';
+
 
 function App() {
 
   return (
-    <Fragment>
-      <div className="body_wrap">
-        <div className="page_wrap">
-        <Nav/>
-        <Routes>
-          <Route path="/account/login" element={<Login/>}/>
-          <Route path="/account/signup" element={<Signup/>}/>
-        </Routes>
-          {/* <Home /> */}
-          {/* <NavBar></NavBar> */}
-      {/*     <NavBar/> */}
-        </div>
-      </div>
+    // <div className="App">
+    //       <Home/>
 
-    </Fragment>
+    // </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/signIn" element={<SignIn/>}></Route>
+        <Route path="/forget-password" element={<ForgetPassword/>}></Route>
+        <Route path="/reset-password" element={<ResetPassword/>}></Route>
+        <Route path="/new-submit" element={<NewSubmit/>}></Route>
 
-
-
+        <Route path="/account/login" element={<LoginWithGoogle/>}/>
+        <Route path="/account/signup" element={<SignupWithGoogle/>}/>
+        
+        <Route path="/" element={<Main/>}>
+              <Route path="" element={<Home/>}></Route>
+              
+        </Route>  
+        <Route path="/dashboard" element={<Dashboard/>}></Route>    
+      </Routes>
+    </BrowserRouter>
   );
 }
 
