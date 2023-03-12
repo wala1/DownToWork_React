@@ -10,6 +10,7 @@ import PartnersComponent from './home/partnersComponent';
 import VideoComponent from './home/videoComponent';
 import PricingComponent from './home/PricingComponent';
 import RevolutionSlider from './home/revolutionSlider';
+import NavBar from './shared/NavBar';
 
 function Home() {
     
