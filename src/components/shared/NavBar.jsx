@@ -19,7 +19,7 @@ const handleLogout =async () => {
 	};
 
 	const handleSignIn = () => {
-		navigate('/signIn');
+		navigate('/signup2');
 	};
 
 
