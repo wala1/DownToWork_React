@@ -3,8 +3,13 @@ import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 // import '../SignIn.scss';
 import useStore from '../../store/store';
+import { register } from '../../services/userService';
 
 function SignUp2() {
+  const [passwordReg, setpasswordReg] = useState('');
+  const [nameReg, setNameReg] = useState('');
+  const [emailReg, setEmailReg] = useState('');
+  ///////
     const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validated, setValidated] = useState(false);
@@ -33,6 +38,15 @@ function SignUp2() {
     setValidated(true);
   };
 
+
+  const handleRegister=async(e)=>{
+    e.preventDefault();
+
+    console.log(nameReg,emailReg,passwordReg);
+    await register(nameReg,emailReg,passwordReg);
+
+
+  }
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
     // validate email format
@@ -102,19 +116,19 @@ function SignUp2() {
             
            </div>
     </Form>
-         <form action="#" className="sign-up-formhass">
+         <form action="#" className="sign-up-formhass" onSubmit={handleRegister}>
            <h2 className="titlehass">Sign up</h2>
            <div className="input-fieldhass">
              <i className="fas fa-user"></i>
-             <input type="text" placeholder="Username" />
+             <input type="text" placeholder="Username" name="nameReg"onChange={(e)=>setNameReg(e.target.value)} />
            </div>
            <div className="input-fieldhass">
              <i className="fas fa-envelope"></i>
-             <input type="email" placeholder="Email" />
+             <input type="email" placeholder="Email" name="emailReg" onChange={(e)=>setEmailReg(e.target.value)}/>
            </div>
            <div className="input-fieldhass">
              <i className="fas fa-lock"></i>
-             <input type="password" placeholder="Password" />
+             <input type="password" placeholder="Password" name="passwordReg" onChange={(e)=>setpasswordReg(e.target.value)}/>
            </div>
            <input type="submit" className="btnhass" value="Sign up" />
            <p className="social-texthass">Or Sign up with social platforms</p>
