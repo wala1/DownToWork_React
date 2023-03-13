@@ -11,7 +11,7 @@ import NewSubmit from './components/user/newSubmit';
 import signup from './components/signUp/SingUp'
 import { EditAccount } from './components/AccountManagement/EditAccount';
 import SignUp2 from './components/signUp/SignUp2';
-import { Test } from './components/AccountManagement/TestEdit';
+
 
 function App() {
   return (
