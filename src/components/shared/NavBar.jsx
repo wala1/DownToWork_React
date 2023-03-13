@@ -4,8 +4,7 @@ import {gapi} from 'gapi-script';
 import {
 	BrowserRouter as Router,
 	Routes,
-	Route,
-	Link
+	Route
 } from 'react-router-dom';
 import Profile from "../profile/profile";
 import Home from "../home";
