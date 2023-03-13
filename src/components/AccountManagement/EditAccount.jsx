@@ -12,8 +12,10 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import moment from "moment";
 import { Placeholder } from "react-bootstrap";
 import bcrypt from "bcryptjs-react";
-export const EditAccount = () => {
 
+
+
+export const EditAccount = () => {
 
 
   //*********************************** Navigation******************************************** 
@@ -186,38 +188,39 @@ export const EditAccount = () => {
 
 <div>
         {/*   <NavBar/>  */}
-        <section className="text-center">
+        <section className="text-center" >
          
-          <div className="p-5 bg-image" style={{backgroundImage: "url('https://mdbootstrap.com/img/new/textures/full/171.jpg')", height: '300px'}}></div>
-          <div className="card mx-4 mx-md-5 shadow-5-strong"  style={{ marginTop: '-100px', background: 'hsla(0, 0%, 100%, 0.8)',backdropFilter: 'blur(30px)'}}>
+          <div className="p-5 bg-image" style={{backgroundImage: "url('https://mdbootstrap.com/img/new/textures/full/171.jpg')", height: '300px'}}> </div>
+          <div className="card mx-8 mx-md-5 shadow-5-strong"  style={{ marginTop: '30px' , background: 'hsla(0, 0%, 100%, 2.8)',backdropFilter: 'blur(100px)'}}>
             <div className="card-body py-5 px-md-5">
         
               <div className="row d-flex justify-content-center">
-                <div className="col-lg-8">
+                <div className="col-lg-18">
                   <h2 className="fw-bold mb-5">Edit your profile</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
-               
-                    <div className="row">
-                      <div className="col-md-6 mb-4">
+                <br/>
+                    <div className="row mr-4">
+                     
+                      <div className="col-md-12 mb-4" >
                         <div className="form-outline">
-                          <input type="text" id="form3Example1" className="form-control" {...register("fullName" , { defaultValue: currentuserRef.current.name })} autoComplete="fullname" /* defaultValue={currentuserRef.current.name} */ />
-                          <label className="form-label" htmlFor="form3Example1">Full name *</label>
+                          <input type="text" id="form3Example1" className="form-control form-control-lg"  {...register("fullName" , { defaultValue: currentuserRef.current.name })} autoComplete="fullname" /* defaultValue={currentuserRef.current.name} */ />
+                          <label className="form-label" htmlFor="form3Example1"> username *</label>
                           <div className="error-container">
                           {errors.fullName && <span className="error-message">{errors.fullName.message}</span>}
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-6 mb-4">
+                      <div className="col-md-12 mb-4">
                         <div className="form-outline">
-                          <input type="date" id="form3Example2" className="form-control"  {...register("dateOfBirth" , { defaultValue: currentuserRef.current.DateOfBirth })} autoComplete="dateofbirth" />
-                          <label className="form-label" htmlFor="form3Example2"> Date Of Birth </label>
+                          <input type="date" id="form3Example2" className="form-control form-control-lg"  {...register("dateOfBirth" , { defaultValue: currentuserRef.current.DateOfBirth })} autoComplete="dateofbirth" />
+                          <label className="form-label" htmlFor="form3Example2"> Date Of Birth * </label>
                           <div className="error-container">
                           {errors.dateOfBirth && <span className="error-message">{errors.dateOfBirth.message}</span>}
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="form-outline mb-4">
+                    <div className="form-outline mb-12 w-100">
                       <input type="email" id="form3Example3" className="form-control"  name="email" {...register("email" , { defaultValue: currentuserRef.current.email })} autoComplete="email" />
                       <label className="form-label" htmlFor="form3Example3">Email address *</label>
                       <div className="error-container">
@@ -226,9 +229,9 @@ export const EditAccount = () => {
                     </div>
                   
 					<div id="Securite" className="col-xxl-6">
-                    <button  type="button" className=" px-10 py-2 " onClick={handleOpenSecurite}>
-                                Change Password
-                                </button>
+                 {/*   <button  type="button" className=" px-10 py-2 " onClick={disactivateAccount}> desactivate account  </button> */}
+                    <button  type="button" className=" px-10 py-2 " onClick={handleOpenSecurite}> Change Password  </button>
+                       
 						 { isOpen && (  <div className="bg-secondary-soft px-4 py-5 rounded">
 							<div className="row g-3">
 								{/* <h4 class="my-4">Change Password</h4> */}
@@ -268,11 +271,13 @@ export const EditAccount = () => {
 							</div>
 						</div> )}
 					</div>
-                    <div className="form-check d-flex justify-content-center mb-4">
-                    <div className="gap-8 d-md-flex justify-content-md-end text-center">
-					<button type="button" className="btn btn-jaune btn-lg" onClick={redirectToHome}>Back to profile</button> 
-					<button type="submit" className="btn btn-primary btn-lg">Update profile</button>
-          <button type="button" className="btn btn-jaune btn-lg" onClick={disactivateAccount}>desactivate profile</button>
+          <br/><br/>
+                    <div className="form-check d-flex justify-content-center mb-6">
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" ,  gap: "15px" }} >
+					<button type="button" className="px-10 py-2 btn-jaune " onClick={redirectToHome}>Back to profile</button> 
+					<button type="submit" className="px-10 py-2 btn-primary ">Update profile</button>
+          <button type="button" className="px-10 py-2 btn-danger " onClick={disactivateAccount}>desactivate profile</button>
+         {/*  <button type="button" className="btn btn-jaune btn-lg" onClick={disactivateAccount}>desactivate profile</button> */}
           
 				    </div>
             <div className="modal">
@@ -281,13 +286,15 @@ export const EditAccount = () => {
              <button id="reset-password-btn"  >Please try again</button>
            </div>
             </div>
-                    </div>
+            </div>
                    
                 </form>
                 </div>
               </div>
             </div>
+         
           </div>
+         
         </section>
         </div>
       
