@@ -9,7 +9,7 @@ function NavBar() {
 	const user = JSON.parse(userString);
 	const logout = useStore((state) => state.logout);
 	const navigate = useNavigate();
-const handleLogout =async () => {
+    const handleLogout =async () => {
   try{await logout();
 	navigate('/signIn');
 
@@ -17,9 +17,7 @@ const handleLogout =async () => {
 	console.log(error);
 	  }
 	};
-
-    function triggerReflow() {
-      }    return ( <Fragment>
+  return ( <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
 				{/* <!-- User menu --> */}
                 <div className="menu_user_wrap">

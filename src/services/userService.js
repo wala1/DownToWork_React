@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 
-const url = 'http://localhost:3002/users/login';
+const url = 'http://localhost:3001/users/login';
 
 export const login = async (email, password) => {
 //    const navigate = useNavigate();

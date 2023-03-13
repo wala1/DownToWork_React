@@ -6,11 +6,7 @@ function FooterContact() {
             {/* <!-- Contacts Footer -->  */}
             <footer className="contacts_wrap bg_tint_dark contacts_style_dark">
                         <div className="content_wrap">
-                            <div className="logo">
-                                <a href="index.html">
-                                    <img src="http://placehold.it/259x30" alt="" />
-                                </a>
-                            </div>
+                        
                             <div className="contacts_address">
                                 <address className="address_right">
                                     Phone: 1.800.123.4567
@@ -55,14 +51,8 @@ function FooterContact() {
                             </div>
                         </div>
                     </footer>
-                    {/* <!-- /Contacts Footer -->
-			            <!-- Copyright --> */}
-                    <div className="copyright_wrap">
-                        <div className="content_wrap">
-                            <p>© 2015 All Rights Reserved. <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a></p>
-                        </div>
-                    </div>
-                    {/* <!-- /Copyright --> */}
+                   
+			         
         </Fragment>
      );
 }
