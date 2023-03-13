@@ -12,8 +12,10 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import moment from "moment";
 import { Placeholder } from "react-bootstrap";
 import bcrypt from "bcryptjs-react";
-export const EditAccount = () => {
 
+
+
+export const EditAccount = () => {
 
 
   //*********************************** Navigation******************************************** 
