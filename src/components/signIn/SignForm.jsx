@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import './SignIn.scss';
+// import './SignIn.scss';
 import useStore from '../../store/store';
 
 function SignForm() {

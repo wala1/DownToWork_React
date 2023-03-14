@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Col, Row ,Button} from "react-bootstrap";
-import "./SignIn.scss";
+// import "./SignIn.scss";
 import SignForm from "./SignForm";
 
 function SignIn() {

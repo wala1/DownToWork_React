@@ -19,7 +19,7 @@ const handleLogout =async () => {
 	};
 
 	const handleSignIn = () => {
-		navigate('/signIn');
+		navigate('/signup2');
 	};
     return ( <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
