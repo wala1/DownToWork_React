@@ -4,8 +4,14 @@ import { useNavigate } from 'react-router-dom';
 // import '../SignIn.scss';
 import useStore from '../../store/store';
 import { register } from '../../services/userService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function SignUp2() {
+
+  const notify = () => toast("Wow so easy!");
+  
   const [passwordReg, setpasswordReg] = useState('');
   const [nameReg, setNameReg] = useState('');
   const [emailReg, setEmailReg] = useState('');
@@ -37,13 +43,20 @@ function SignUp2() {
     }
     setValidated(true);
   };
-
+const testreg=false;
 
   const handleRegister=async(e)=>{
     e.preventDefault();
 
     console.log(nameReg,emailReg,passwordReg);
     await register(nameReg,emailReg,passwordReg);
+    // testreg=true;
+    // if (testreg) {
+    //   document.getElementById("messageSuccess").style.display = "block";
+    //   testreg=false;
+    // } else {
+    //   document.getElementById("messageSuccess").style.display = "none";
+    // }
 
 
   }
@@ -116,6 +129,8 @@ function SignUp2() {
             
            </div>
     </Form>
+   
+    {/* <ToastContainer id="messageSuccess" style={{top:-200,left:-1}}/> */}
          <form action="#" className="sign-up-formhass" onSubmit={handleRegister}>
            <h2 className="titlehass">Sign up</h2>
            <div className="input-fieldhass">
@@ -130,7 +145,8 @@ function SignUp2() {
              <i className="fas fa-lock"></i>
              <input type="password" placeholder="Password" name="passwordReg" onChange={(e)=>setpasswordReg(e.target.value)}/>
            </div>
-           <input type="submit" className="btnhass" value="Sign up" />
+           <input type="submit" className="btnhass" value="Sign up" onClick={notify} />
+           
            <p className="social-texthass">Or Sign up with social platforms</p>
            <div className="social-mediahass">
              <a href="#" className="social-iconhass">

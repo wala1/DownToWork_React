@@ -39,6 +39,6 @@ export const register = async (name, email, password) => {
            
     }
     catch (err) {
-        alert(err => alert('Something went wrong'));
+        alert('Something went wrong');
     }
 }
