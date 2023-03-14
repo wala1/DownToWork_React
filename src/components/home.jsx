@@ -23,7 +23,7 @@ function Home() {
                 <div className="page_wrap">
                     <div className="top_panel_fixed_wrap"></div>
                          {/* Navbar */} <NavBar/>
-                       {/* <!-- Revolution slider --> */}                                 <SliderBg/>
+                       {/* <!-- Revolution slider --> */}                               
  {/* {/* <!-- Revolution slider --> */}
                        {/* <RevolutionSlider/> */}
 		        	{/* <!-- Content --> */} 
@@ -38,7 +38,7 @@ function Home() {
                                     {/* <!-- Partners section --> */} <PartnersComponent/>    {/* <!-- /Partners section --> */}
                                     {/* <!-- Video training section -->*/} <VideoComponent/> {/* <!-- /Video training section -->	*/}
                                     {/*<!-- Pricing section --> */}  <PricingComponent/> {/* <!-- /Pricing section --> */}        
-                                <SliderBg/>
+                                {/* <SliderBg/> */}
                                </section>
                             </article>
                         </div>

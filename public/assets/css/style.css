@@ -953,9 +953,8 @@ label.required:after {
 /* Top panel */
 .top_panel_wrap {
 	position:relative;
-	background-color:#3F6DB1;
+	background-color:#018763;
 	z-index: 1000;
-	background-image:url(../images/bg/texture_7.png);
 }
 .top_panel_over .top_panel_wrap {
 	position:absolute;
@@ -1205,7 +1204,7 @@ label.required:after {
 	vertical-align:bottom;
 }
 .bg_tint_dark .logo .logo_text {
-	color: transparent;
+	/* color: transparent; */
 }
 .menu_main_wrap .logo_slogan {
 	display:block;
@@ -4054,7 +4053,7 @@ box-shadow: 0 0 0 0px #28a745;
 	padding: 0; /* remove any padding to make the input a perfect square */
  }
  .form-control {
-	background-color:#dee2e6;
+	/* background-color:#000000; */
 	/* border: 1px solid black; */
 	outline: 2;
 	font-size: 20px;

@@ -23,7 +23,7 @@ function NewSubmit() {
 
                     navigate('/change-password');
                 } else {
-                    alert('server err / wrong OTP')
+                    alert('Code is invalid ')
                 }
             }).catch(err => {
                 console.log(err)
