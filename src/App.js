@@ -14,7 +14,7 @@ import signup from './components/signUp/SingUp'
 import { EditAccount } from './components/AccountManagement/EditAccount';
 import SignUp2 from './components/signUp/SignUp2';
 import ChangePassword from './components/user/changePassword';
-
+import DeleteAccount from '../src/components/user/deleteAccount';
 
 
 function App() {
@@ -28,7 +28,6 @@ function App() {
    
    <BrowserRouter>
       <Routes>
-        <Route path="/profile" element={<Profile/>}></Route>
         {/* <Route path="/signIn" element={<SignIn />}></Route> */}
         <Route path="/Edit" element={<EditAccount/>} ></Route>
         <Route path="/signup2" element={<SignUp2 />} ></Route>
@@ -37,13 +36,14 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />}></Route>
         <Route path="/new-submit" element={<NewSubmit />}></Route>
         <Route path="/change-password" element={<ChangePassword />}></Route>
+        <Route path="/delete-account" element={<DeleteAccount/>}></Route>
+        <Route path="/profile" element={<Profile/>}></Route>
         <Route path="/" element={<Main />}>
           <Route path="" element={<Home />}></Route>
         </Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
       </Routes>
-    </BrowserRouter> 
-
+    </BrowserRouter>
 
 
 
