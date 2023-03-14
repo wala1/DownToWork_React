@@ -4,8 +4,68 @@ import { useNavigate } from 'react-router-dom';
 // import '../SignIn.scss';
 import useStore from '../../store/store';
 import { register } from '../../services/userService';
+import { GoogleLogin } from "react-google-login";
+import axios from "axios";
 
 function SignUp2() {
+  const navigate = useNavigate();
+
+  const handleGoogleLoginSuccess = async (response) => {
+
+    const { accessToken, profileObj } = response;
+    // Send user data to the server to be saved in the database
+    const url = "http://localhost:3001/users/signin";
+    try {
+      const response = await axios.post(url, {
+        googleAccessToken: accessToken, 
+        name: profileObj.name,
+        email: profileObj.email,
+        picture: profileObj.imageUrl,
+        // add any other fields you want to save for the user
+      });
+
+      localStorage.setItem('user', JSON.stringify(response.data.result));
+      localStorage.setItem('token', JSON.stringify(response.data.token));
+
+      console.log("googleAccessToken : "+accessToken);
+      console.log(response.data);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  
+  const handleGoogleLoginFailure = (response) => {
+    // handle failure response
+  };
+
+  const handleGoogleSignupSuccess = async (response) => {
+    console.log("Signed up with Google successfully: ", response);
+    const url = "http://localhost:3001/users/signup";
+    try {
+      const { tokenId, profileObj } = response;
+      const data = await axios.post(url,{
+          googleAccessToken: tokenId, 
+          name: profileObj.name,
+          email: profileObj.email,
+          picture: profileObj.imageUrl,
+      });
+  
+      localStorage.setItem('user', JSON.stringify(data.result));
+      localStorage.setItem('token', JSON.stringify(data.token));
+      navigate("/");
+  
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  
+  const handleGoogleSignupFailure = (response) => {
+    // handle failed signup with Google
+  };
+
   const [passwordReg, setpasswordReg] = useState('');
   const [nameReg, setNameReg] = useState('');
   const [emailReg, setEmailReg] = useState('');
@@ -16,7 +76,6 @@ function SignUp2() {
   const [emailError, setEmailError] = useState(''); // state to keep track of email validation error message
   const [passwordError, setPasswordError] = useState(''); // state to keep track of password validation error message
   const { login } = useStore();
-  const navigate = useNavigate();
   const error = useStore((state) => state.err);
 
   const handleSubmit = async (e) => {
@@ -26,7 +85,7 @@ function SignUp2() {
     if (form.checkValidity() === false) {
       e.stopPropagation();
     } else {
-      await login(email, password);
+      await login(email, password); 
       if (useStore.getState().user) {
         if (useStore.getState().user.isAdmin) {
           navigate('/dashboard');
@@ -110,9 +169,13 @@ function SignUp2() {
                <i className="fab fa-facebook-f"></i>
              </a>
             
-             <a href="#" className="social-iconhass">
-               <i className="fab fa-google"></i>
-             </a>
+             <GoogleLogin
+                    clientId="1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com"
+                    onSuccess={handleGoogleLoginSuccess}
+                    onFailure={handleGoogleLoginFailure}
+                    cookiePolicy={"single_host_origin"}
+                    buttonText="Sign in with Google"
+                  />
             
            </div>
     </Form>
@@ -140,11 +203,15 @@ function SignUp2() {
                <i className="fab fa-twitter"></i>
              </a>
              <a href="#" className="social-iconhass">
-               <i className="fab fa-google"></i>
-             </a>
-             <a href="#" className="social-iconhass">
                <i className="fab fa-linkedin-in"></i>
              </a>
+             <GoogleLogin
+                clientId="1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com"
+                buttonText="Sign up with Google"
+                onSuccess={handleGoogleSignupSuccess}
+                onFailure={handleGoogleSignupFailure}
+                cookiePolicy={'single_host_origin'}
+              />
            </div>
          </form>
        </div>

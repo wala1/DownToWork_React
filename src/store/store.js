@@ -1,5 +1,4 @@
 import {create} from 'zustand';
-import axios from 'axios';
 import {login} from '../services/userService';
 // import { useNavigate } from 'react-router-dom';
 const useStore =   create((set) => ({
