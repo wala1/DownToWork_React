@@ -3912,6 +3912,7 @@ box-shadow: 0 0 0 0px #28a745;
 }
 		   
 /* FORGET PASSWORD */
+
 .bodyFroget{
 	/* margin-top:20px; */
     background-color: #f2f3f8;
@@ -4045,6 +4046,28 @@ box-shadow: 0 0 0 0px #28a745;
   .posBlock{
 	padding-top: 270px;
   }
+ .square{
+	width: 70px; /* set the width of the input */
+	height:70px; /* set the height of the input */
+	border: 1px solid black; /* set the border of the input to be 1 pixel thick and black */
+	box-sizing: border-box; /* include the border in the width and height of the input */
+	padding: 0; /* remove any padding to make the input a perfect square */
+ }
+ .form-control {
+	background-color:#dee2e6;
+	/* border: 1px solid black; */
+	outline: 2;
+	font-size: 20px;
+	/* box-shadow: 0 0 0 0px #28a745; */
+	}
+	.form-control1:focus {
+		background-color:#e5e9f2;
+		/* border: 1px solid black; */
+		outline: 2;
+		font-size: 30px;
+		/* box-shadow: 0 0 0 0px #28a745; */
+		}
+	/*  */
 .text-black {
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	

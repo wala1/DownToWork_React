@@ -38,6 +38,7 @@ function ChangePassword(props) {
    
 
     return ( <>    
+    <h1>Hello {num}</h1>
     <div className="posBlock row justify-content-center mt-7">
             <div className="col-lg-5 text-center">
                    
