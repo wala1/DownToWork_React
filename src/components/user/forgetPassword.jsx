@@ -26,7 +26,7 @@ function ForgetPassword() {
 	}
     return ( 
 	<>
-		<div className="row justify-content-center mt-7">
+		<div className="posBlock row justify-content-center mt-7">
             <div className="col-lg-5 text-center">
                    
                 <div className="card mt-5">
