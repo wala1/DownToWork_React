@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import './SignIn.scss';
+// import './SignIn.scss';
 import useStore from '../../store/store';
 import { GoogleLogin } from "react-google-login";
 import axios from "axios";
@@ -11,23 +11,32 @@ function SignForm(){
 
   const handleGoogleLoginSuccess = async (response) => {
     const { accessToken, profileObj } = response;
-
+  
     // Send user data to the server to be saved in the database
     try {
-      navigate('/');
-      const response = await axios.post("/api/user", {
+      const response = await axios.post("http://localhost:3001/users/signin", {
+        googleAccessToken: accessToken,
         name: profileObj.name,
         email: profileObj.email,
-        googleId: profileObj.googleId,
         // add any other fields you want to save for the user
       });
-      console.log(response.data);
+      const user = response.data.result;
+      const token = response.data.token;
+  
+      // Save user data and token to local storage
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", token);
+  
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
   };
+  
+  
   const handleGoogleLoginFailure = (response) => {
     // handle failure response
+    console.log("here the user doesn't saved in the local storage");
   };
 
   const [email, setEmail] = useState('');
@@ -111,7 +120,7 @@ function SignForm(){
       {error && <p style={{ color: 'red' }}>{error}</p>}
       
                   <GoogleLogin
-                    clientId="1075754340245-9uddfgn78s5sult6mmcfuvugr4s4v7fh.apps.googleusercontent.com"
+                    clientId="1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com"
                     onSuccess={handleGoogleLoginSuccess}
                     onFailure={handleGoogleLoginFailure}
                     cookiePolicy={"single_host_origin"}

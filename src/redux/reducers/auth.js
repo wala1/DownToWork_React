@@ -1,18 +1,16 @@
-import * as actionType from '../const/actionsTypes';
+import axios from 'axios';
+import { AUTH } from '../const/actionsTypes';
 
-const authReducer = (state = { authData: null }, action) => {
-  switch (action.type) {
-    case actionType.AUTH:
-      localStorage.setItem('user_info', JSON.stringify({ ...action?.data }));
-      console.log(action.data)
-      return { ...state, authData: action.data };
-    case actionType.LOGOUT:
-      localStorage.clear();
-
-      return { ...state, authData: null };
-    default:
-      return state;
+export const signinGoogle = (accessToken, navigate) => async (dispatch) => {
+  try {
+    const response = await axios.post('http://localhost:3001/users/signin', {
+      access_token: accessToken,
+    });
+    const { token } = response.data;
+    localStorage.setItem('user', token);
+    dispatch({ type: 'AUTH_USER', payload: token });
+    navigate('/dashboard');
+  } catch (error) {
+    console.error(error);
   }
 };
-
-export default authReducer;

@@ -13,23 +13,23 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 
-const clientId = "1075754340245-9uddfgn78s5sult6mmcfuvugr4s4v7fh.apps.googleusercontent.com";
+const clientId = "1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com";
 
 function NavBar() {
 	
-	useEffect(() => {
-		function start(){
-		  gapi.client.init({
-			clientId: clientId,
-			scope: ""
-		  })
-		};
-		gapi.load('client:auth2', start);
-	  })
+	// useEffect(() => {
+	// 	function start(){
+	// 	  gapi.client.init({
+	// 		clientId: clientId,
+	// 		scope: ""
+	// 	  })
+	// 	};
+	// 	gapi.load('client:auth2', start);
+	//   })
 
 	 //const user = localStorage.getItem('user');
 	// const name = user.name;
-	const userString = localStorage.getItem("user");
+	const userString = localStorage.getItem("user"); 
 	const user = JSON.parse(userString);
 	const logout = useStore((state) => state.logout);
 	const navigate = useNavigate();
@@ -42,8 +42,11 @@ function NavBar() {
 		}
 		};
 
+		// const handleSignIn = () => {
+		// 	navigate('/signIn');
+		// };
 		const handleSignIn = () => {
-			navigate('/signIn');
+			navigate('/signup2');
 		};
 
 
@@ -63,11 +66,12 @@ function NavBar() {
                                     </ul>
                                 </li>
                                {user?<li className="menu_user_controls">
-                                    <a href="#">
+                                    <Link to="/profile">
 										<span className="user_avatar">
 											<img alt="" src="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=16&#038;d=mm&#038;r=g" srcSet="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=32&amp;d=mm&amp;r=g 2x" className="avatar avatar-16 photo" height="16" width="16" />
 										</span>
-										<span className="user_name">{user?.name}</span></a>
+										<span className="user_name">{user?.name}</span>
+									</Link>
                                     <ul>
                                         <li><a href="#" className="icon icon-doc-inv">New post</a></li>
                                         <li><a href="#" className="icon icon-cog-1">Settings</a></li>
@@ -206,6 +210,9 @@ function NavBar() {
 				{/* <!-- /Main menu --> */}
 				
             </header>
+		<Routes>
+			<Route path="/profile" element={<Profile/>}></Route>
+		</Routes>
     </Fragment> );
 }
 

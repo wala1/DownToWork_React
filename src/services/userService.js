@@ -2,9 +2,10 @@ import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 
 const url = 'http://localhost:3001/users/login';
+const registerUrl = 'http://localhost:3001/users/register'
 
 export const login = async (email, password) => {
-//    const navigate = useNavigate();
+    //    const navigate = useNavigate();
     try {
         const { data } = await axios.post(url, { email, password });
 
@@ -23,6 +24,20 @@ export const login = async (email, password) => {
     } catch (error) {
         console.log(error.response.data);
         throw error.response.data;
-        
+
     }
-    };
+};
+
+export const register = async (name, email, password) => {
+    try {
+        await axios.post(registerUrl, {
+            name,
+            email,
+            password,
+        })
+           
+    }
+    catch (err) {
+        alert(err => alert('Something went wrong'));
+    }
+}
