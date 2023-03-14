@@ -10,6 +10,8 @@ import ResetPassword from './components/user/resetPassword';
 import NewSubmit from './components/user/newSubmit';
 import signup from './components/signUp/SingUp'
 import SignUp2 from './components/signUp/SignUp2';
+import ChangePassword from './components/user/changePassword';
+
 
 function App() {
   return (
@@ -24,7 +26,10 @@ function App() {
         {/* <Route path="/signIn" element={<SignIn />}></Route> */}
         <Route path="/forget-password" element={<ForgetPassword />}></Route>
         <Route path="/reset-password" element={<ResetPassword />}></Route>
+        
         <Route path="/new-submit" element={<NewSubmit />}></Route>
+        <Route path="/change-password" element={<ChangePassword />}></Route>
+
 
         <Route path="/" element={<Main />}>
           <Route path="" element={<Home />}></Route>

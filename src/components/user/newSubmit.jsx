@@ -1,30 +1,35 @@
 import React, {useState}  from 'react';
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
+import useStore from './../../store/store';
 
 function NewSubmit() {
     const navigate = useNavigate();
     const [otp, setOtp] = useState('');
-    const [password, setPassword] = useState('');
+    const setNum = useStore((state) => state.setNum);
+    const num = useStore((state) => state.num);
     const handleSubmit = () => {
-        console.log(otp, password)
-        axios.post('http://localhost:3001/users/new-password',
+        console.log(otp)
+        setNum(otp);
+        axios.post('http://localhost:3001/users/verification-code',
             {
-                otp: otp,
-                password: password,
+                otp:otp
             })
             .then(res => {
                 console.log(res.data)
                 if (res.data.code === 200) {
-                    navigate('/signIn');
-                    alert('Password Updated.');
+
+                    navigate('/change-password');
                 } else {
                     alert('server err / wrong OTP')
                 }
             }).catch(err => {
                 console.log(err)
             })
-    }
+    };
+    const handleCancel = () => {
+		navigate('/signup2');
+	}
     return (
         <>
     <div className="row justify-content-center mt-7">
@@ -33,10 +38,10 @@ function NewSubmit() {
                 <div className="card mt-5">
                     <div className="card-body py-5 px-lg-5">
                          <div>
-                             <img className="smaller-image" src={require("../../assets/images/icons/lock.png")}/>
+                             <img className="bigger-image" src={require("../../assets/images/icons/blueMail.png")}/>
                         </div>
                         <h3 className=" fw-normal text-dark text-black mt-4">
-                            2-step verification
+                            Email verification
                         </h3>
                         <p className="text-black mt-4 mb-1">
                             We sent a verification code to your email.
@@ -60,14 +65,16 @@ function NewSubmit() {
                             </div>
                         </div>
                         <label className='label1 lead'>OTP</label>
-						<input className="lead input1 form-control form-control-lg" value={otp} onChange={(e) => {setOtp(e.target.value)}} type="text"  placeholder="OTP"/>
-                        
-                        <label className='label1 lead h2'>Password</label>
-						<input className="lead input1 form-control form-control-lg" value={password} onChange={(e) => {setPassword(e.target.value)}} type="text"  placeholder="Enter your new password"/>
-
-                        <a onClick={handleSubmit}className=" btn btn-purple btn-lg w-100 hover-lift-light mt-4">
-                            Verify my account
-                        </a>
+						<input className="lead input1 form-control form-control-lg" value={otp} onChange={(e) => {setOtp(e.target.value)}} type="number"  placeholder="OTP"/>
+                        <div className="buttonSideBySide">
+							<button onClick={handleCancel} className=" btn btn-cancel btn-lg  hover-lift-light mt-4">
+								cancel 
+							</button>	
+							<button onClick={handleSubmit} className=" btn btn-search btn-lg  hover-lift-light mt-4">
+								continue 
+							</button>
+						</div>
+                       
                    </div>
              </div>
 
