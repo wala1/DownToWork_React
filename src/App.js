@@ -32,7 +32,10 @@ function App() {
         {/* <Route path="/signIn" element={<SignIn />}></Route> */}
         <Route path="/Edit" element={<EditAccount/>} ></Route>
         <Route path="/signup2" element={<SignUp2 />} ></Route>
-        <Route path="/signup" Component={signup}></Route>
+
+        {/* <Route path="/signup" Component={signup}></Route> */}
+        <Route path="/signIn" element={<SignIn />}></Route>
+
         <Route path="/forget-password" element={<ForgetPassword />}></Route>
         <Route path="/reset-password" element={<ResetPassword />}></Route>
         <Route path="/new-submit" element={<NewSubmit />}></Route>
