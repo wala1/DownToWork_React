@@ -9,9 +9,12 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { LoginSocialFacebook } from 'reactjs-social-login';
+import { FacebookLoginButton } from 'react-social-login-buttons';
 function SignUp2() {
   const navigate = useNavigate();
 
@@ -202,10 +205,10 @@ function SignUp2() {
       <input type="submit" className="btnhass" value="Sign in" />
       {/* <button type='submit' >hello</button> */}
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <div className="social-mediahass">
-             <a href="#" className="social-iconhass">
-               <i className="fab fa-facebook-f"></i>
-             </a>
+     { <div className="social-mediahass">
+             {/* <a href="#" className="social-iconhass">
+               {<i className="fab fa-facebook-f"></i>}
+             </a> */}
             
              <GoogleLogin
                     clientId="1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com"
@@ -215,7 +218,25 @@ function SignUp2() {
                     buttonText="Sign in with Google"
                   />
             
-           </div>
+          <LoginSocialFacebook 
+          appId='599043218440870'
+          onResolve={(response) => {console.log(response)
+            console.log(response.data.name)
+            
+            localStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem('user', JSON.stringify(response.data.name));
+    
+            navigate('/');
+          }}
+          onReject={(error) => {console.log(error)}}
+          >  
+
+
+            <FacebookLoginButton/>
+          </LoginSocialFacebook>
+
+
+           </div>}
     </Form>
    
     {/* <ToastContainer id="messageSuccess" style={{top:-200,left:-1}}/> */}
@@ -288,7 +309,7 @@ function SignUp2() {
          <img src="./assets/signup/img/register.svg" className="imagehass" alt="" />
        </div>
      </div>
-     
+    
    </div >
   )
 }

@@ -3,6 +3,8 @@ import React from "react";
 import { Container, Col, Row ,Button} from "react-bootstrap";
 // import "./SignIn.scss";
 import SignForm from "./SignForm";
+import { LoginSocialFacebook } from 'reactjs-social-login';
+import { FacebookLoginButton } from 'react-social-login-buttons';
 
 function SignIn() {
   return (
@@ -39,6 +41,7 @@ function SignIn() {
                   </Button>
 
                   </div>
+                 
             </div>
           </Col>
         </Row>

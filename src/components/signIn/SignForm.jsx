@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import useStore from '../../store/store';
 import { GoogleLogin } from "react-google-login";
 import axios from "axios";
+import { LoginSocialFacebook } from 'reactjs-social-login';
+import { FacebookLoginButton } from 'react-social-login-buttons';
 
 function SignForm(){
   const navigate = useNavigate();
