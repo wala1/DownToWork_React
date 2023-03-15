@@ -50,8 +50,8 @@ function NavBar() {
 		};
 
 
-    function triggerReflow() {
-      }    return ( <Fragment>
+
+    return ( <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
 			
 				{/* <!-- User menu --> */}
@@ -104,8 +104,8 @@ function NavBar() {
 						{/* <!-- Logo --> */}
                         <div className="logo">
                             <a href="index.html">
-								<img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
-								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/>
+								{/* <img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
+								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/> */}
 								{/* <h3> Down To Work </h3> */}
 							</a>
                         </div>
