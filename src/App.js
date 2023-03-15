@@ -1,4 +1,4 @@
-import './components/signIn/SignIn'
+import './components/signIn/SignIn';
 import './App.css';
 import SignIn from './components/signIn/SignIn';
 import Home from './components/home';
@@ -8,58 +8,36 @@ import Dashboard from './components/Dashboard';
 import ForgetPassword from './components/user/forgetPassword';
 import ResetPassword from './components/user/resetPassword';
 import NewSubmit from './components/user/newSubmit';
-//import Login from "../src/components/login";
+// import Login from "../src/components/login";
 import Profile from "../src/components/profile/profile";
-//import signup from './components/signUp/SingUp'
+// import signup from './components/signUp/SingUp'
 import { EditAccount } from './components/AccountManagement/EditAccount';
 import SignUp2 from './components/signUp/SignUp2';
 import ChangePassword from './components/user/changePassword';
-<<<<<<< HEAD
 import DesactivateAccount from './components/AccountManagement/DesactivateAccount';
-
-=======
 import DeleteAccount from '../src/components/user/deleteAccount';
->>>>>>> 7aec7d0f92323facfe802ffe0be64219cfc39136
-
 
 function App() {
-  
-
   return (
-    // <div className="App">
-    //       <Home/>
-
-    // </div>
-   
-   <BrowserRouter>
+    <BrowserRouter>
       <Routes>
-<<<<<<< HEAD
         <Route path="/profile" element={<Profile/>}></Route>
         <Route path="/desac" element={<DesactivateAccount/>}></Route>
-=======
->>>>>>> 7aec7d0f92323facfe802ffe0be64219cfc39136
-        {/* <Route path="/signIn" element={<SignIn />}></Route> */}
         <Route path="/Edit" element={<EditAccount/>} ></Route>
         <Route path="/signup2" element={<SignUp2 />} ></Route>
-
-        {/* <Route path="/signup" Component={signup}></Route> */}
         <Route path="/signIn" element={<SignIn />}></Route>
-
+        {/* <Route path="/signup" component={signup}></Route> */}
         <Route path="/forget-password" element={<ForgetPassword />}></Route>
         <Route path="/reset-password" element={<ResetPassword />}></Route>
         <Route path="/new-submit" element={<NewSubmit />}></Route>
         <Route path="/change-password" element={<ChangePassword />}></Route>
         <Route path="/delete-account" element={<DeleteAccount/>}></Route>
-        <Route path="/profile" element={<Profile/>}></Route>
         <Route path="/" element={<Main />}>
           <Route path="" element={<Home />}></Route>
         </Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
       </Routes>
     </BrowserRouter>
-
-
-
   );
 }
 
