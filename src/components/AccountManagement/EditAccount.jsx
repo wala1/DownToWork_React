@@ -276,8 +276,8 @@ export const EditAccount = () => {
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" ,  gap: "5px" }} >
 					<button type="button" className="px-2 py-2 btn-jaune " onClick={redirectToHome}>Back to profile</button> 
 					<button type="submit" className="px-2 py-2 btn-primary ">Confirm update</button>
-          <button type="button" className="px-2 py-2 btn-danger " onClick={disactivateAccount}>desactivate profile</button>
-         {/*  <button type="button" className="btn btn-jaune btn-lg" onClick={disactivateAccount}>desactivate profile</button> */}
+{/*           <button type="button" className="px-2 py-2 btn-danger " onClick={disactivateAccount}>desactivate profile</button>
+ */}         {/*  <button type="button" className="btn btn-jaune btn-lg" onClick={disactivateAccount}>desactivate profile</button> */}
           
 				    </div>
             <div className="modal">
