@@ -1,0 +1,80 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-facebook-login
+
+PATH: 
+  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\oraclexe\app\oracle\product\10.2.0\server\bin;C:\Program Files\Eclipse Foundation\jdk-8.0.302.8-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Java\jdk1.8.0_301\bin;C:\xampp\php;C:\composer;C:\Program Files (x86)\HI-TECH Software\PICC\LITE\9.60\bin;C:\Program Files\Java\jdk1.8.0_301\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-17;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\user\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\user\AppData\Local\Programs\Python\Python311\;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\AppData\Local\GitHubDesktop\bin;C:\Users\user\AppData\Roaming\Composer\vendor\bin;C:\Program Files\JetBrains\PhpStorm 2021.3\bin;;C:\Users\user\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2022.2.3\bin;;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.2.3\bin;;C:\Users\user\AppData\Roaming\npm;C:\Users\user\.dotnet\tools;
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.15.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\user\Desktop\4Twin8\semestre 2\Pi\DownToWork_React\node_modules\node-sass\vendor\win32-x64-93\binding.node'
+
+npm manifest: 
+  {
+    "name": "downtowork",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+      "@react-oauth/google": "^0.2.8",
+      "@hookform/resolvers": "^2.9.11",
+      "@testing-library/jest-dom": "^5.16.5",
+      "@testing-library/react": "^13.4.0",
+      "@testing-library/user-event": "^13.5.0",
+      "axios": "^1.3.4",
+      "bcryptjs-react": "^2.4.6",
+      "bootstrap": "^5.2.3",
+      "gapi-script": "^1.2.0",
+      "node-sass": "^7.0.3",
+      "react": "^18.2.0",
+      "react-bootstrap": "^2.7.2",
+      "react-dom": "^18.2.0",
+      "react-google-login": "^5.2.2",
+      "react-redux": "^8.0.5",
+      "react-router-dom": "^6.9.0",
+      "moment": "^2.29.4",
+      "react-hook-form": "^7.43.5",
+      "react-scripts": "5.0.1",
+      "redux": "^4.2.1",
+      "redux-thunk": "^2.4.2",
+      "web-vitals": "^2.1.4",
+      "yup": "^1.0.2",
+      "zustand": "^4.3.6"
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+      "extends": [
+        "react-app",
+        "react-app/jest"
+      ]
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

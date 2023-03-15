@@ -21,7 +21,7 @@ export const EditAccount = () => {
   //*********************************** Navigation******************************************** 
   
   const navigate = useNavigate();
-  const  redirectToHome = () => { navigate('/main') ; }
+  const  redirectToProfile = () => { navigate('/profile') ; }
 
    //********************************disable account *****************************************
 
@@ -274,7 +274,7 @@ export const EditAccount = () => {
           <br/><br/>
                     <div className="form-check d-flex justify-content-center mb-6">
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" ,  gap: "5px" }} >
-					<button type="button" className="px-2 py-2 btn-jaune " onClick={redirectToHome}>Back to profile</button> 
+					<button type="button" className="px-2 py-2 btn-jaune " onClick={redirectToProfile}>Back to profile</button> 
 					<button type="submit" className="px-2 py-2 btn-primary ">Confirm update</button>
 {/*           <button type="button" className="px-2 py-2 btn-danger " onClick={disactivateAccount}>desactivate profile</button>
  */}         {/*  <button type="button" className="btn btn-jaune btn-lg" onClick={disactivateAccount}>desactivate profile</button> */}
