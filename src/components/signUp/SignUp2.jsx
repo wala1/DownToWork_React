@@ -205,13 +205,13 @@ function SignUp2() {
              <a href="#" className="social-iconhass">
                <i className="fab fa-linkedin-in"></i>
              </a>
-             <GoogleLogin
+             {/* <GoogleLogin
                 clientId="1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com"
                 buttonText="Sign up with Google"
                 onSuccess={handleGoogleSignupSuccess}
                 onFailure={handleGoogleSignupFailure}
                 cookiePolicy={'single_host_origin'}
-              />
+              /> */}
            </div>
          </form>
        </div>

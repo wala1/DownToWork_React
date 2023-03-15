@@ -191,7 +191,7 @@ export const EditAccount = () => {
         <section className="text-center" >
          
           <div className="p-5 bg-image" style={{backgroundImage: "url('https://mdbootstrap.com/img/new/textures/full/171.jpg')", height: '300px'}}> </div>
-          <div className="card mx-8 mx-md-5 shadow-5-strong"  style={{ marginTop: '30px' , background: 'hsla(0, 0%, 100%, 2.8)',backdropFilter: 'blur(100px)'}}>
+          <div className="card mx-8 mx-md-5 shadow-5-strong"  style={{ marginTop: '50px' , background: 'hsla(0, 0%, 100%, 2.8)',backdropFilter: 'blur(100px)'}}>
             <div className="card-body py-5 px-md-5">
         
               <div className="row d-flex justify-content-center">
@@ -220,7 +220,7 @@ export const EditAccount = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="form-outline mb-12 w-100">
+                    <div className="form-outline mb-4 w-50">
                       <input type="email" id="form3Example3" className="form-control"  name="email" {...register("email" , { defaultValue: currentuserRef.current.email })} autoComplete="email" />
                       <label className="form-label" htmlFor="form3Example3">Email address *</label>
                       <div className="error-container">
@@ -273,10 +273,10 @@ export const EditAccount = () => {
 					</div>
           <br/><br/>
                     <div className="form-check d-flex justify-content-center mb-6">
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" ,  gap: "15px" }} >
-					<button type="button" className="px-10 py-2 btn-jaune " onClick={redirectToHome}>Back to profile</button> 
-					<button type="submit" className="px-10 py-2 btn-primary ">Update profile</button>
-          <button type="button" className="px-10 py-2 btn-danger " onClick={disactivateAccount}>desactivate profile</button>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" ,  gap: "5px" }} >
+					<button type="button" className="px-2 py-2 btn-jaune " onClick={redirectToHome}>Back to profile</button> 
+					<button type="submit" className="px-2 py-2 btn-primary ">Confirm update</button>
+          <button type="button" className="px-2 py-2 btn-danger " onClick={disactivateAccount}>desactivate profile</button>
          {/*  <button type="button" className="btn btn-jaune btn-lg" onClick={disactivateAccount}>desactivate profile</button> */}
           
 				    </div>
