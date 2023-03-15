@@ -19,7 +19,7 @@ import DesactivateAccount from './components/AccountManagement/DesactivateAccoun
 import DeleteAccount from '../src/components/user/deleteAccount';
 
 import ActivationPage from './components/signUp/ActivationPage';
-import DeleteAccount from '../src/components/user/deleteAccount';
+
 
 function App() {
   return (

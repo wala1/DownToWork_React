@@ -165,7 +165,7 @@ function SignUp2() {
   return (
     
 <div className="containerhass" >
-<img src="./assets/signup/img/logdwt.png" style={{width:'120px'}}  alt="" />
+{/* <img src="./assets/signup/img/logdwt.png" style={{width:'120px'}}  alt="" /> */}
      <div className="forms-containerhass">
        <div className="signin-signuphass">
        
