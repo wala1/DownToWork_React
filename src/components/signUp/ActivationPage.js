@@ -41,13 +41,13 @@ const[verified,setVerified]=useState(false);
       <body>
 
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"></link>
+        {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"></link>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
        
         <div className='d-flex flex-column justify-content-center align-items-center card-body mb-3'>
           <div className='wrapper text-center'>
             <h4 className='card-title'>Congratulations your account has been activated successfully</h4>
-            <p className='card-description'>Please check the box and click the button here to sign in</p>
+            <p className='card-description'>Please check the box and click the button below to sign in</p>
 
  <form>
   <div >
@@ -63,10 +63,27 @@ const[verified,setVerified]=useState(false);
             </form>
           </div>
         </div>
-       
+        */}
+
+  <div className='card border-success mb-0  d-flex align-items-center  justify-content-center' style={{maxwidth: '10rem',marginTop:'150px'}}>
+  <div className='card-header bg-transparent border-success '><i className='fa fa-check-circle' style={{fontSize:'100px',color:'green'}}></i></div>
+  <div className='card-body text-success'>
+    <h5 className='card-title d-flex align-items-center'>Congratulations your account has been activated successfully!!</h5>
+    <p className='card-text d-flex align-items-center'>Please check the box and click the button below to sign in</p>
+    <ReCAPTCHA
+              sitekey="6Lc9mv8kAAAAAPkNtY2o33Jif3Vuuu3bpZ8GiDuL"
+              onChange={onChange}
+            />
+  </div>
+  <button className='btn btn-outline-success' id='congratsBtn' onClick={handleSubmit} disabled={!verified} style={{width:'200px'}} >Click here!</button>
+</div>
+
+      
       </body>
+      
     </html>
     // 
+    
 
   );
 }
