@@ -18,6 +18,7 @@ import DesactivateAccount from './components/AccountManagement/DesactivateAccoun
 
 import DeleteAccount from '../src/components/user/deleteAccount';
 
+import ActivationPage from './components/signUp/ActivationPage';
 
 function App() {
   
@@ -32,6 +33,9 @@ function App() {
       <Routes>
         <Route path="/profile" element={<Profile/>}></Route>
         <Route path="/desac" element={<DesactivateAccount/>}></Route>
+        <Route path="/signup2" element={<SignUp2 />} ></Route>
+        <Route path="/confirm/:activationCode" element={<ActivationPage/>} ></Route>
+        <Route path="/signup" Component={signup}></Route>
         {/* <Route path="/signIn" element={<SignIn />}></Route> */}
         <Route path="/Edit" element={<EditAccount/>} ></Route>
         <Route path="/signup2" element={<SignUp2 />} ></Route>

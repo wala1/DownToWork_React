@@ -28,16 +28,19 @@ export const login = async (email, password) => {
     }
 };
 
-export const register = async (name, email, password) => {
+export const register = async (name, email,DateOfBirth, password) => {
+   
     try {
         await axios.post(registerUrl, {
             name,
             email,
+            DateOfBirth,
             password,
         })
+        alert("check your Email and confirm your account to sign in")
            
     }
     catch (err) {
-        alert(err => alert('Something went wrong'));
+        console.log(err.message)
     }
 }
