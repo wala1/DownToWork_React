@@ -11,6 +11,7 @@ import VideoComponent from './home/videoComponent';
 import PricingComponent from './home/PricingComponent';
 import RevolutionSlider from './home/revolutionSlider';
 import NavBar from './shared/NavBar';
+import SliderBg from './home/slider';
 
 function Home() {
     
@@ -22,7 +23,8 @@ function Home() {
                 <div className="page_wrap">
                     <div className="top_panel_fixed_wrap"></div>
                          {/* Navbar */} <NavBar/>
-                       {/* <!-- Revolution slider --> */}  <RevolutionSlider/>  {/* {/* <!-- Revolution slider --> */}
+                       {/* <!-- Revolution slider --> */}                               
+ {/* {/* <!-- Revolution slider --> */}
                        {/* <RevolutionSlider/> */}
 		        	{/* <!-- Content --> */} 
                     <div className="page_content_wrap">
@@ -36,7 +38,7 @@ function Home() {
                                     {/* <!-- Partners section --> */} <PartnersComponent/>    {/* <!-- /Partners section --> */}
                                     {/* <!-- Video training section -->*/} <VideoComponent/> {/* <!-- /Video training section -->	*/}
                                     {/*<!-- Pricing section --> */}  <PricingComponent/> {/* <!-- /Pricing section --> */}        
-                              
+                                {/* <SliderBg/> */}
                                </section>
                             </article>
                         </div>

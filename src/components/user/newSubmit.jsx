@@ -8,12 +8,14 @@ function NewSubmit() {
     const [otp, setOtp] = useState('');
     const setNum = useStore((state) => state.setNum);
     const num = useStore((state) => state.num);
+    const [OTPinput, setOTPinput] = useState([0, 0, 0, 0 ]);
+
     const handleSubmit = () => {
         console.log(otp)
-        setNum(otp);
+        setNum(parseInt(OTPinput.join("")));
         axios.post('http://localhost:3001/users/verification-code',
             {
-                otp:otp
+                otp:parseInt(OTPinput.join(""))
             })
             .then(res => {
                 console.log(res.data)
@@ -21,7 +23,7 @@ function NewSubmit() {
 
                     navigate('/change-password');
                 } else {
-                    alert('server err / wrong OTP')
+                    alert('Code is invalid ')
                 }
             }).catch(err => {
                 console.log(err)
@@ -30,6 +32,10 @@ function NewSubmit() {
     const handleCancel = () => {
 		navigate('/signup2');
 	}
+    const handleInput = () => {
+        const code = parseInt(OTPinput.join(""));
+        console.log(code);
+    }
     return (
         <>
     <div className="posBlock row justify-content-center mt-7">
@@ -49,23 +55,63 @@ function NewSubmit() {
                          <p className="text-black ">
                              Please enter the code in the field below.
                         </p>
-                        
+                        {/* <label className='text-black'>CODE</label> */}
+
                         <div className="row mt-4 pt-2">
                             <div className="col">
-                            <input type="text" className="form-control form-control-lg text-center py-4" maxLength="1" autoFocus=""/>
+                                <input type="text" className=" square form-control form-control1 form-control-lg text-center py-4" maxLength="1" autoFocus=""
+                                    onChange={(e) =>
+                                        setOTPinput([
+                                        e.target.value,
+                                        OTPinput[1],
+                                        OTPinput[2],
+                                        OTPinput[3]
+                                       
+                                        ])
+                                    }
+                                />
                             </div>
                             <div className="col">
-                            <input type="text" className="form-control form-control-lg text-center py-4" maxLength="1"/>
+                                <input type="text" className=" square form-control form-control1 form-control-lg text-center py-4" maxLength="1" autoFocus=""
+                                    onChange={(e) =>
+                                        setOTPinput([
+                                        OTPinput[0],
+                                        e.target.value,
+                                        OTPinput[2],
+                                        OTPinput[3]
+                                        ])
+                                    }
+                                />
                             </div>
                             <div className="col">
-                            <input type="text" className="form-control form-control-lg text-center py-4" maxLength="1"/>
+                                <input type="text" className="square form-control form-control1 form-control-lg text-center py-4" maxLength="1" autoFocus=""
+                                    onChange={(e) =>
+                                        setOTPinput([
+                                        OTPinput[0],
+                                        OTPinput[1],
+                                        e.target.value,
+                                        OTPinput[3]
+                                        ])
+                                    }
+                                />
                             </div>
                             <div className="col">
-                            <input type="text" className="form-control form-control-lg text-center py-4" maxLength="1"/>
+                                <input type="text" className="square form-control form-control1 form-control-lg text-center py-4" maxLength="1" autoFocus=""
+                                    onChange={(e) =>
+                                        setOTPinput([
+                                        OTPinput[0],
+                                        OTPinput[1],
+                                        OTPinput[2],
+                                        e.target.value
+                                        ])
+                                    }
+                                />
                             </div>
+                           
+                            
                         </div>
-                        <label className='label1 lead'>OTP</label>
-						<input className="lead input1 form-control form-control-lg" value={otp} onChange={(e) => {setOtp(e.target.value)}} type="number"  placeholder="OTP"/>
+
+						{/* <input className="lead input1 form-control form-control-lg" value={otp} onChange={(e) => {setOtp(e.target.value)}} type="number"  placeholder="OTP"/> */}
                         <div className="buttonSideBySide">
 							<button onClick={handleCancel} className=" btn btn-cancel btn-lg  hover-lift-light mt-4">
 								cancel 
