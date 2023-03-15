@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import {swal} from 'sweetalert';
+import { swal } from 'sweetalert';
 import { useNavigate, useHistory } from 'react-router-dom';
 // import _ from 'underscore';
+import ReCAPTCHA from 'react-google-recaptcha';
 
-import {jQuery,$} from "jquery";
+
 
 
 function ActivationPage() {
@@ -13,35 +14,20 @@ function ActivationPage() {
   const { activationCode } = useParams();
   console.log(activationCode);
   axios.post(`http://localhost:3001/users/verifyUser/${activationCode}`);
+
+const[verified,setVerified]=useState(false);
+  function onChange() {
+    setVerified(true);
+
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    window.location.href = '/signup2';
+  }
   
-  
-   const showSwal = function(type) {
-      'use strict';
-       if (type === 'success-message') {
-        swal({
-          title: 'Congratulations!',
-          text: 'You entered the correct answer',
-          type: 'success',
-          button: {
-            text: "Continue",
-            value: true,
-            visible: true,
-            className: "btn btn-primary"
-          }
-        })
-  
-      }else{
-          swal("Error occured !");
-      } 
-    }
-  
-    function handleSubmit(event) {
-      event.preventDefault();
-  
-      window.location.href = '/signup2';
-    }
-    
- 
+
   return (
 
     //       <div className="text-center" >
@@ -53,18 +39,34 @@ function ActivationPage() {
 
       </head>
       <body>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"></link>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-<div className='card-body'>
-                      <div className='wrapper text-center'>
-                        <h4 className='card-title'>Congratulations your account has been activated successfully</h4>
-                        <p className='card-description'>Click here to sign in</p>
-                        <button className='btn btn-outline-success' id='congratsBtn' onClick={handleSubmit} >Click here!</button>
-                      </div>
-                    </div>
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"></link>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+       
+        <div className='d-flex flex-column justify-content-center align-items-center card-body mb-3'>
+          <div className='wrapper text-center'>
+            <h4 className='card-title'>Congratulations your account has been activated successfully</h4>
+            <p className='card-description'>Please check the box and click the button here to sign in</p>
+
+ <form>
+  <div >
+            <ReCAPTCHA
+              sitekey="6Lc9mv8kAAAAAPkNtY2o33Jif3Vuuu3bpZ8GiDuL"
+              onChange={onChange}
+            />
+</div>
+
+
+
+            <button className='btn btn-outline-success' id='congratsBtn' onClick={handleSubmit} disabled={!verified} >Click here!</button>
+            </form>
+          </div>
+        </div>
+       
       </body>
     </html>
-// 
+    // 
 
   );
 }
