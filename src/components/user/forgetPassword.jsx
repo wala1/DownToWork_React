@@ -4,6 +4,7 @@ import axios from 'axios';
 
 
 function ForgetPassword() {
+	
 	const [email,setEmail] = useState('');
 	const navigate = useNavigate();
 	const handleSubmit = () =>{
@@ -13,9 +14,9 @@ function ForgetPassword() {
 		}).then(res => {
 			console.log(res.data);
 			console.log(res.data.code);
-			if(res.data.code === 200){
+			
 				navigate('/new-submit');
-			}
+			
 		}).catch(err => {
 			console.log(err);
 		})
