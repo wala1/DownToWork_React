@@ -19,6 +19,8 @@ function SignUp2() {
   const [emailReg, setEmailReg] = useState('');
   //const [dateOfBirth, setDateOfBirth] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState(null);
+
+  
   
   ///////
   const [email, setEmail] = useState('');
@@ -48,10 +50,10 @@ function SignUp2() {
     }
     setValidated(true);
   };
-  const testreg = false;
+ 
 
 
-
+  
   
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -63,6 +65,7 @@ function SignUp2() {
     
    try{
     await register(nameReg, emailReg,dateOfBirth, passwordReg);
+   
   }catch(err){console.log(err)}
     // testreg=true;
     // if (testreg) {
@@ -71,6 +74,8 @@ function SignUp2() {
     // } else {
     //   document.getElementById("messageSuccess").style.display = "none";
     // }
+
+    window.location.reload();
 
 
   }
@@ -158,7 +163,7 @@ function SignUp2() {
            <h2  style={{ fontsize: '2.2rem' ,color: '#444', marginBottom: '10px',fontFamily:'fantasy bald' ,fontWeight: 'bold'}}>Sign up</h2>
            <div className="input-fieldhass">
              <i className="fas fa-user"></i>
-             <input type="text" placeholder="Username" name="nameReg"onChange={(e)=>setNameReg(e.target.value)} />
+             <input type="text" placeholder="Username" name="nameReg"  onChange={(e)=>setNameReg(e.target.value)} />
            </div>
            <div className="input-fieldhass">
              <i className="fas fa-envelope"></i>
@@ -167,12 +172,12 @@ function SignUp2() {
            <div className="input-fieldhass d-flex align-items-center" >
              <i className="fas fa-calendar"></i>
              {/* <input type="text" placeholder="date of birth" name="DateOfBirth" onChange={(e)=>setDateOfBirth(e.target.value)}/> */}
-             <DatePicker  placeholderText='date of birth' dateFormat="yyyy-MM-dd" selected={dateOfBirth} onChange={date=>setDateOfBirth(date)} />
+             <DatePicker  placeholderText='date of birth'  dateFormat="yyyy-MM-dd" selected={dateOfBirth} onChange={date=>setDateOfBirth(date)} />
            </div>
            
            <div className="input-fieldhass">
              <i className="fas fa-lock"></i>
-             <input type="password" placeholder="Password" name="passwordReg" onChange={(e)=>setpasswordReg(e.target.value)}/>
+             <input type="password" placeholder="Password"  name="passwordReg" onChange={(e)=>setpasswordReg(e.target.value)}/>
            </div>
            <input type="submit" className="btnhass" value="Sign up" onClick={notify} />
            

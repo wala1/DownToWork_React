@@ -37,7 +37,7 @@ export const register = async (name, email,DateOfBirth, password) => {
             DateOfBirth,
             password,
         })
-        
+        alert("check your Email and confirm your account to sign in")
            
     }
     catch (err) {
