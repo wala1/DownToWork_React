@@ -52,6 +52,7 @@ function NavBar() {
 		
 
 	
+
     return ( <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
 			

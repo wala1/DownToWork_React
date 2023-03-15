@@ -17,6 +17,12 @@ function Profile() {
     navigate("/delete-account");
   }
 
+  const handleSettings= async (response) => {
+    navigate("/Edit");
+  }
+  const handleDesactivate= async (response) => {
+    navigate("/desac");
+  }
 
   return (<>
     {/* Mirrored from demo.themesberg.com/spaces/html/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Mar 2023 21:48:40 GMT */}
@@ -144,6 +150,12 @@ function Profile() {
                     </ul><a class="btn btn-sm btn-success mb-3" href="#"><span class="remove-account" onClick={handleDeleteAccount}>
                           <span>Remove Account</span>
                         </span>
+                        
+                        </a>
+                        <a class="btn btn-sm btn-danger mb-3" href="#" ><span class="remove-account" onClick={handleDesactivate}>
+                          <span>Desactivate Account</span>
+                        </span>
+                        
                         </a>
 
                   <a href="settings.html" class="d-flex list-group-item list-group-item-action active">Overview
@@ -158,18 +170,18 @@ function Profile() {
                         </span> 
                       </a>
 
-                      <a href="security.html" class="d-flex list-group-item list-group-item-action">Settings
+                      <a  class="d-flex list-group-item list-group-item-action"   onClick={handleSettings}>Settings
                         <span class="icon icon-xs ml-auto">
                           <span class="fas fa-chevron-right"></span>
                         </span> 
                       </a>
 
-                      <a href="security.html" class="d-flex list-group-item list-group-item-action">Security
+                      {/* <a  class="d-flex list-group-item list-group-item-action" >
                         <span class="icon icon-xs ml-auto">
                           <span class="fas fa-chevron-right"></span>
                         </span> 
                       </a>
-
+ */}
                       <a href="security.html" class="d-flex list-group-item list-group-item-action">My Items
                         <span class="icon icon-xs ml-auto">
                           <span class="fas fa-chevron-right"></span>

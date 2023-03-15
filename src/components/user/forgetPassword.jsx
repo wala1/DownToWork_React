@@ -8,6 +8,7 @@ import useStore from '../../store/store';
 
 
 function ForgetPassword() {
+	
 	const [email,setEmail] = useState('');
 	const [emailError, setEmailError] = useState(''); // state to keep track of email validation error message
 	const [validated, setValidated] = useState(false);
@@ -22,9 +23,9 @@ function ForgetPassword() {
 		}).then(res => {
 			console.log(res.data);
 			console.log(res.data.code);
-			if(res.data.code === 200){
+			
 				navigate('/new-submit');
-			}
+			
 		}).catch(err => {
 			console.log(err);
 		})
