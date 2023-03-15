@@ -3,14 +3,17 @@ import axios from 'axios'
 import { useNavigate , useLocation } from "react-router-dom"
 import MyContext from '../../MyContext';
 import useStore from './../../store/store';
+import { Form, Button, Alert } from 'react-bootstrap';
+
 
 
 function ChangePassword(props) {
       const [password, setPassword] = useState('');
       const num = useStore((state) => state.num);
-
       const [otp, setOtp] = useState(num);
       const navigate = useNavigate();
+      const [validated, setValidated] = useState(false);
+      const [passwordError, setPasswordError] = useState(''); // state to keep track of password validation error message
       const handleSubmit = () => {
             // setOtp(num);
             console.log("num "+ num + "otp " + otp+"pass " +password);
@@ -25,15 +28,29 @@ function ChangePassword(props) {
 
                           navigate('/signup2');
                       } else {
-                          alert('server err / wrong OTP')
+                          alert('check your code')
                       }
                   }).catch(err => {
                       console.log(err)
               })
+              setValidated(true);
+
     };
     const handleCancel = () => {
 		navigate('/signup2');
 	}
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+        if (e.target.value.length < 6 && e.target.value!=="") {
+          setPasswordError('Password must be at least 6 characters.');
+        }
+        else if (e.target.value==="") {
+          setPasswordError('Password is required.');
+        }
+        else {
+          setPasswordError('');
+        }
+      };
 
    
 
@@ -61,7 +78,23 @@ function ChangePassword(props) {
 						            {/* <input className="lead input1 form-control form-control-lg" value={otp}  disabled={true} type="number"  placeholder="OTP"/>  */}
                         <br></br>
                         {/* <label className='label1 lead h2'>Password</label> */}
-					            	<input className="lead input1 form-control form-control-lg" value={password} onChange={(e) => {setPassword(e.target.value)}} type="password" placeholder="password"/>
+                        <Form  noValidate validated={validated}>
+                            <Form.Control className="lead input1 form-control form-control-lg" value={password} onChange={handlePasswordChange} type="password" placeholder="password" required isInvalid={passwordError !== ''}/>
+                            <Form.Control.Feedback type="invalid">{passwordError||'enter a valid password'}</Form.Control.Feedback>
+                             
+							
+						            </Form>    
+                         <div className="buttonSideBySide">
+                                  <button onClick={handleCancel} className=" btn btn-cancel btn-lg  hover-lift-light mt-4">
+                                    cancel 
+                                  </button>	
+                                  <button onClick={handleSubmit} className=" btn btn-search btn-lg  hover-lift-light mt-4">
+                                    save 
+                                  </button>
+                              </div>   	
+                                    
+                                    
+                                    {/* <input className="lead input1 form-control form-control-lg" value={password} onChange={(e) => {setPassword(e.target.value)}} type="password" placeholder="password"/>
                          <div className="buttonSideBySide">
                           <button onClick={handleCancel} className=" btn btn-cancel btn-lg  hover-lift-light mt-4">
                             cancel 
@@ -69,7 +102,7 @@ function ChangePassword(props) {
                           <button onClick={handleSubmit} className=" btn btn-search btn-lg  hover-lift-light mt-4">
                             continue 
                           </button>
-						            </div>
+						            </div> */}
                        
                    </div>
              </div>

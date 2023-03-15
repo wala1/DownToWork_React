@@ -14,15 +14,24 @@ import Profile from "../src/components/profile/profile";
 import { EditAccount } from './components/AccountManagement/EditAccount';
 import SignUp2 from './components/signUp/SignUp2';
 import ChangePassword from './components/user/changePassword';
-import DesactivateAccount from './components/AccountManagement/DesactivateAccount';
 import DeleteAccount from '../src/components/user/deleteAccount';
+import DesactivateAccount from './components/AccountManagement/DesactivateAccount';
+
+
+import ActivationPage from './components/signUp/ActivationPage';
+
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/profile" element={<Profile/>}></Route>
+        {/* <Route path="/desac" element={<DesactivateAccount/>}></Route> */}
         <Route path="/desac" element={<DesactivateAccount/>}></Route>
+        <Route path="/signup2" element={<SignUp2 />} ></Route>
+        <Route path="/confirm/:activationCode" element={<ActivationPage/>} ></Route>
+        {/* <Route path="/signup" Component={signup}></Route> */}
+        {/* <Route path="/signIn" element={<SignIn />}></Route> */}
         <Route path="/Edit" element={<EditAccount/>} ></Route>
         <Route path="/signup2" element={<SignUp2 />} ></Route>
         <Route path="/signIn" element={<SignIn />}></Route>

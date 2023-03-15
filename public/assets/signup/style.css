@@ -18,6 +18,13 @@ input {
   min-height: 100vh;
   overflow: hidden;
 }
+.containerhass12 {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  min-height: 100vh;
+  /* overflow: hidden; */
+}
 .hass{
   width: fit-content;
 }
@@ -135,7 +142,7 @@ form.sign-in-formhass {
 }
 
 .btnhass {
-  width: 150px;
+  width: 200px;
   background-color: #5995fd;
   border: none;
   outline: none;
@@ -144,6 +151,7 @@ form.sign-in-formhass {
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
+
   margin: 10px 0;
   cursor: pointer;
   transition: 0.5s;
@@ -222,10 +230,10 @@ form.sign-in-formhass {
   margin: 0;
   background: none;
   border: 2px solid #fff;
-  width: 130px;
+  width: 200px;
   height: 41px;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 1.3rem;
 }
 
 .right-panelhass .imagehass,
