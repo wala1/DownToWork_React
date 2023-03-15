@@ -8,12 +8,13 @@ import Dashboard from './components/Dashboard';
 import ForgetPassword from './components/user/forgetPassword';
 import ResetPassword from './components/user/resetPassword';
 import NewSubmit from './components/user/newSubmit';
-import Login from "../src/components/login";
+//import Login from "../src/components/login";
 import Profile from "../src/components/profile/profile";
-import signup from './components/signUp/SingUp'
+//import signup from './components/signUp/SingUp'
 import { EditAccount } from './components/AccountManagement/EditAccount';
 import SignUp2 from './components/signUp/SignUp2';
 import ChangePassword from './components/user/changePassword';
+import DesactivateAccount from './components/AccountManagement/DesactivateAccount';
 
 
 
@@ -29,6 +30,7 @@ function App() {
    <BrowserRouter>
       <Routes>
         <Route path="/profile" element={<Profile/>}></Route>
+        <Route path="/desac" element={<DesactivateAccount/>}></Route>
         {/* <Route path="/signIn" element={<SignIn />}></Route> */}
         <Route path="/Edit" element={<EditAccount/>} ></Route>
         <Route path="/signup2" element={<SignUp2 />} ></Route>

@@ -952,7 +952,7 @@ label.required:after {
 /* Top panel */
 .top_panel_wrap {
 	position:relative;
-	background-color: #018763;
+	background-color: #3F6DB1;
 	/* z-index: 50; */
 }
 .top_panel_over .top_panel_wrap {
