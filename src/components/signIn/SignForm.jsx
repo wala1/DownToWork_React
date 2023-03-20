@@ -3,15 +3,50 @@ import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 // import './SignIn.scss';
 import useStore from '../../store/store';
+import { GoogleLogin } from "react-google-login";
+import axios from "axios";
+import { LoginSocialFacebook } from 'reactjs-social-login';
+import { FacebookLoginButton } from 'react-social-login-buttons';
 
-function SignForm() {
+function SignForm(){
+  const navigate = useNavigate();
+
+  const handleGoogleLoginSuccess = async (response) => {
+    const { accessToken, profileObj } = response;
+  
+    // Send user data to the server to be saved in the database
+    try {
+      const response = await axios.post("http://localhost:3001/users/signin", {
+        googleAccessToken: accessToken,
+        name: profileObj.name,
+        email: profileObj.email,
+        // add any other fields you want to save for the user
+      });
+      const user = response.data.result;
+      const token = response.data.token;
+  
+      // Save user data and token to local storage
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", token);
+  
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  
+  const handleGoogleLoginFailure = (response) => {
+    // handle failure response
+    console.log("here the user doesn't saved in the local storage");
+  };
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validated, setValidated] = useState(false);
   const [emailError, setEmailError] = useState(''); // state to keep track of email validation error message
   const [passwordError, setPasswordError] = useState(''); // state to keep track of password validation error message
   const { login } = useStore();
-  const navigate = useNavigate();
   const error = useStore((state) => state.err);
 
   const handleSubmit = async (e) => {
@@ -55,7 +90,6 @@ function SignForm() {
     }
   };
 
-
   return (
     <Form className="formInputs" noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
@@ -86,6 +120,14 @@ function SignForm() {
         Sign-in
       </Button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      
+                  <GoogleLogin
+                    clientId="1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com"
+                    onSuccess={handleGoogleLoginSuccess}
+                    onFailure={handleGoogleLoginFailure}
+                    cookiePolicy={"single_host_origin"}
+                    buttonText="Sign in with Google"
+                  />
     </Form>
   );
 }

@@ -4,13 +4,75 @@ import { useNavigate } from 'react-router-dom';
 // import '../SignIn.scss';
 import useStore from '../../store/store';
 import { register } from '../../services/userService';
+import { GoogleLogin } from "react-google-login";
+import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { LoginSocialFacebook } from 'reactjs-social-login';
+import { FacebookLoginButton } from 'react-social-login-buttons';
 function SignUp2() {
+  const navigate = useNavigate();
+
+  const handleGoogleLoginSuccess = async (response) => {
+
+    const { accessToken, profileObj } = response;
+    // Send user data to the server to be saved in the database
+    const url = "http://localhost:3001/users/signin";
+    try {
+      const response = await axios.post(url, {
+        googleAccessToken: accessToken, 
+        name: profileObj.name,
+        email: profileObj.email,
+        picture: profileObj.imageUrl,
+        // add any other fields you want to save for the user
+      });
+
+      localStorage.setItem('user', JSON.stringify(response.data.result));
+      localStorage.setItem('token', JSON.stringify(response.data.token));
+
+      console.log("googleAccessToken : "+accessToken);
+      console.log(response.data);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  
+  const handleGoogleLoginFailure = (response) => {
+    // handle failure response
+  };
+
+  const handleGoogleSignupSuccess = async (response) => {
+    console.log("Signed up with Google successfully: ", response);
+    const url = "http://localhost:3001/users/signup";
+    try {
+      const { tokenId, profileObj } = response;
+      const data = await axios.post(url,{
+          googleAccessToken: tokenId, 
+          name: profileObj.name,
+          email: profileObj.email,
+          picture: profileObj.imageUrl,
+      });
+  
+      localStorage.setItem('user', JSON.stringify(data.result));
+      localStorage.setItem('token', JSON.stringify(data.token));
+      navigate("/");
+  
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  
+  const handleGoogleSignupFailure = (response) => {
+    // handle failed signup with Google
+  };
 
   const notify = () => toast("Wow so easy!");
 
@@ -29,7 +91,6 @@ function SignUp2() {
   const [emailError, setEmailError] = useState(''); // state to keep track of email validation error message
   const [passwordError, setPasswordError] = useState(''); // state to keep track of password validation error message
   const { login } = useStore();
-  const navigate = useNavigate();
   const error = useStore((state) => state.err);
 
   const handleSubmit = async (e) => {
@@ -39,7 +100,7 @@ function SignUp2() {
     if (form.checkValidity() === false) {
       e.stopPropagation();
     } else {
-      await login(email, password);
+      await login(email, password); 
       if (useStore.getState().user) {
         if (useStore.getState().user.isAdmin) {
           navigate('/dashboard');
@@ -107,7 +168,7 @@ function SignUp2() {
   return (
     
 <div className="containerhass" >
-<img src="./assets/signup/img/logdwt.png" style={{width:'120px'}}  alt="" />
+{/* <img src="./assets/signup/img/logdwt.png" style={{width:'120px'}}  alt="" /> */}
      <div className="forms-containerhass">
        <div className="signin-signuphass">
        
@@ -144,16 +205,38 @@ function SignUp2() {
       <input type="submit" className="btnhass" value="Sign in" />
       {/* <button type='submit' >hello</button> */}
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <div className="social-mediahass">
-             <a href="#" className="social-iconhass">
-               <i className="fab fa-facebook-f"></i>
-             </a>
+     { <div className="social-mediahass">
+             {/* <a href="#" className="social-iconhass">
+               {<i className="fab fa-facebook-f"></i>}
+             </a> */}
             
-             <a href="#" className="social-iconhass">
-               <i className="fab fa-google"></i>
-             </a>
+             <GoogleLogin
+                    clientId="1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com"
+                    onSuccess={handleGoogleLoginSuccess}
+                    onFailure={handleGoogleLoginFailure}
+                    cookiePolicy={"single_host_origin"}
+                    buttonText="Sign in with Google"
+                  />
             
-           </div>
+          <LoginSocialFacebook 
+          appId='599043218440870'
+          onResolve={(response) => {console.log(response)
+            console.log(response.data.name)
+            
+            localStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem('user', JSON.stringify(response.data.name));
+    
+            navigate('/');
+          }}
+          onReject={(error) => {console.log(error)}}
+          >  
+
+
+            <FacebookLoginButton/>
+          </LoginSocialFacebook>
+
+
+           </div>}
     </Form>
    
     {/* <ToastContainer id="messageSuccess" style={{top:-200,left:-1}}/> */}
@@ -190,11 +273,15 @@ function SignUp2() {
                <i className="fab fa-twitter"></i>
              </a>
              <a href="#" className="social-iconhass">
-               <i className="fab fa-google"></i>
-             </a>
-             <a href="#" className="social-iconhass">
                <i className="fab fa-linkedin-in"></i>
              </a>
+             {/* <GoogleLogin
+                clientId="1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com"
+                buttonText="Sign up with Google"
+                onSuccess={handleGoogleSignupSuccess}
+                onFailure={handleGoogleSignupFailure}
+                cookiePolicy={'single_host_origin'}
+              /> */}
            </div>
          </form>
        </div>
@@ -222,7 +309,7 @@ function SignUp2() {
          <img src="./assets/signup/img/register.svg" className="imagehass" alt="" />
        </div>
      </div>
-     
+    
    </div >
   )
 }

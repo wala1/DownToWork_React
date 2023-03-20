@@ -1,31 +1,61 @@
 import React, { Fragment } from 'react';
+import {useEffect} from 'react';
+import {gapi} from 'gapi-script';
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route
+} from 'react-router-dom';
+import Profile from "../profile/profile";
+import Home from "../home";
 import useStore from '../../store/store';
 import { Link, useNavigate } from 'react-router-dom';
 
+
+
+const clientId = "1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com";
+
 function NavBar() {
+	
+	// useEffect(() => {
+	// 	function start(){
+	// 	  gapi.client.init({
+	// 		clientId: clientId,
+	// 		scope: ""
+	// 	  })
+	// 	};
+	// 	gapi.load('client:auth2', start);
+	//   })
+
 	 //const user = localStorage.getItem('user');
 	// const name = user.name;
-	const userString = localStorage.getItem("user");
+	const userString = localStorage.getItem("user"); 
 	const user = JSON.parse(userString);
 	const logout = useStore((state) => state.logout);
 	const navigate = useNavigate();
-const handleLogout =async () => {
-  try{await logout();
-	navigate('/');
+	const handleLogout =async () => {
+	try{await logout();
+		navigate('/');
 
-  }catch(error){
-	console.log(error);
-	  }
-	};
+	}catch(error){
+		console.log(error);
+		}
+		};
 
-	const handleSignIn = () => {
-		navigate('/signup2');
-	};
+		// const handleSignIn = () => {
+		// 	navigate('/signIn');
+		// };
+		const handleSignIn = () => {
+			navigate('/signup2');
+		};
 
+		
 
-    function triggerReflow() {
-      }    return ( <Fragment>
+	
+
+    return ( <Fragment>
           <header className="top_panel_wrap bg_tint_dark">
+			
 				{/* <!-- User menu --> */}
                 <div className="menu_user_wrap">
                     <div className="content_wrap clearfix">
@@ -38,11 +68,12 @@ const handleLogout =async () => {
                                     </ul>
                                 </li>
                                {user?<li className="menu_user_controls">
-                                    <a href="#">
+                                    <Link to="/profile">
 										<span className="user_avatar">
 											<img alt="" src="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=16&#038;d=mm&#038;r=g" srcSet="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=32&amp;d=mm&amp;r=g 2x" className="avatar avatar-16 photo" height="16" width="16" />
 										</span>
-										<span className="user_name">{user?.name}</span></a>
+										<span className="user_name">{(user?.name) || (userString) } </span>
+									</Link>
                                     <ul>
                                         <li><a href="#" className="icon icon-doc-inv">New post</a></li>
                                         <li><a href="#" className="icon icon-cog-1">Settings</a></li>
@@ -75,8 +106,8 @@ const handleLogout =async () => {
 						{/* <!-- Logo --> */}
                         <div className="logo">
                             <a href="index.html">
-								<img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
-								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/>
+								{/* <img src={require("../../assets/images/educCenter.png")} className="logo_main" alt=""/>
+								<img src={require("../../assets/images/educCenter.png")} className="logo_fixed" alt=""/> */}
 								{/* <h3> Down To Work </h3> */}
 							</a>
                         </div>
@@ -179,7 +210,11 @@ const handleLogout =async () => {
                     </div>
                 </div>
 				{/* <!-- /Main menu --> */}
+				
             </header>
+		<Routes>
+			<Route path="/profile" element={<Profile/>}></Route>
+		</Routes>
     </Fragment> );
 }
 

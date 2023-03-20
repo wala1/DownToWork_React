@@ -1,10 +1,20 @@
 import React , {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Form, Button } from 'react-bootstrap';
+import useStore from '../../store/store';
+
+
 
 
 function ForgetPassword() {
+	
 	const [email,setEmail] = useState('');
+	const [emailError, setEmailError] = useState(''); // state to keep track of email validation error message
+	const [validated, setValidated] = useState(false);
+	const error = useStore((state) => state.err);
+
+
 	const navigate = useNavigate();
 	const handleSubmit = () =>{
 		console.log(email);
@@ -12,50 +22,69 @@ function ForgetPassword() {
 			email : email,
 		}).then(res => {
 			console.log(res.data);
-			if(res.data.code === 200){
+			console.log(res.data.code);
+			
 				navigate('/new-submit');
-			}
+			
 		}).catch(err => {
 			console.log(err);
 		})
+		setValidated(true);
 
 	};
-    return ( <>
-    <div className="full-screen">
-        <div className=" bodyFroget container h-100">
-    		<div className="row h-100">
-				<div className="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
-					<div className="d-table-cell align-middle">
+	const handleCancel = () => {
+		navigate('/signup2');
+	}
+	const handleEmailChange = (e) => {
+		setEmail(e.target.value);
+		// validate email format
+		if (!/^\S+@\S+\.\S+$/.test(e.target.value)) {
+		  setEmailError('Please enter a valid email address.');
+		} else {
+		  setEmailError('');
+		}
+	  };
+    return ( 
+	<>
+		
+		<div className="posBlock row justify-content-center mt-7">
+            <div className="col-lg-5 text-center">
+                   
+                <div className="card mt-5">
+                    <div className="card-body py-5 px-lg-5">
+                         <div>
+                             <img className="smaller-image" src={require("../../assets/images/icons/lockBlue.png")}/>
+                        </div>
+                        <h3 className=" fw-normal text-dark text-black mt-4">
+                            Find your account
+                        </h3>
+                        <p className="text-black mt-4 mb-1">
+						Please enter your email adress to search 
+                        </p>
+						<p className="text-black ">
+						for your account .
+                        </p>
+						<Form  noValidate validated={validated} >
+							<Form.Control className="lead input1 form-control form-control-lg" value={email} onChange={handleEmailChange}  type="email" name="email" placeholder="Email" required  isInvalid={emailError !== ''}/>
+							<Form.Control.Feedback  type="invalid"> {emailError || 'Please enter a valid email address.'} </Form.Control.Feedback>
+								
+								{/* {error && <p style={{ color: 'red' }}>{error}</p>} */}
 
-						<div className="text-center mt-4">
-							<h1 className="h9 ">Forget password ?</h1>
-							<p className="lead">
-								Enter your email to reset your password.
-							</p>
+						</Form>
+						<div className="buttonSideBySide">
+									<button onClick={handleCancel} className=" btn btn-cancel btn-lg  hover-lift-light mt-4">
+										cancel 
+									</button>	
+									<button onClick={handleSubmit} className=" btn btn-search btn-lg  hover-lift-light mt-4">
+										search 
+									</button>
 						</div>
+                   </div>
+             </div>
 
-						<div className="card">
-							<div className="card-body">
-								<div className="m-sm-4">
-									<form className='form1'>
-										<div className="form-group">
-											<label className='label1 lead h2'>Email</label>
-											<input className="lead input1 form-control form-control-lg" value={email} onChange={(e) => {setEmail(e.target.value)}} type="email" name="email" placeholder="Enter your email"/>
-										</div>
-										<div className="text-center mt-3">
-											<a onClick={handleSubmit} className=" lead posButton btn btn-lg btn-primary">Reset password</a>
-											{/* <!-- <button type="submit" className="btn btn-lg btn-primary">Reset password</button> --> */}
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-    </div>
+        </div>
+  </div>
+    
     </> );
 }
 

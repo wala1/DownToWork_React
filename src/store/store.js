@@ -1,5 +1,4 @@
 import {create} from 'zustand';
-import axios from 'axios';
 import {login} from '../services/userService';
 // import { useNavigate } from 'react-router-dom';
 const useStore =   create((set) => ({
@@ -7,6 +6,7 @@ const useStore =   create((set) => ({
   isLoading: false,
   isLogged: false,
   err: null,
+  num : null,
   login: async (email, password) => {
     try {const user =  await login(email, password);
     set({ user , isLoading: false , isLogged: true, err: null});
@@ -20,6 +20,8 @@ const useStore =   create((set) => ({
     set({ user: null , isLogged: false });
 
   },
+  setNum : (number) => set({num : number})
+
 }));
 export default useStore;
     
