@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 // import '../SignIn.scss';
@@ -8,7 +8,7 @@ import { GoogleLogin } from "react-google-login";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import $ from 'jquery';
 
 import DatePicker from "react-datepicker";
 
@@ -16,6 +16,62 @@ import "react-datepicker/dist/react-datepicker.css";
 import { LoginSocialFacebook } from 'reactjs-social-login';
 import { FacebookLoginButton } from 'react-social-login-buttons';
 function SignUp2() {
+ const container =document.querySelector(".containerhass");
+// //const [container,setContainer]=useState(container.classList.add("sign-up-mode"))
+//   // const [sign_in_btn,setSign_in_btn]=useState(document.getElementById("sign-in-btn"))
+//   // const[sign_up_btn,setSign_up_btn]=useState(document.getElementById("sign-up-btn"))
+//   //const container = document.querySelector(".containerhass");
+  const sign_in_btn = document.querySelector("#sign-in-btn");
+  const sign_up_btn = document.querySelector("#sign-up-btn");
+  const[focused,setFocused]=useState("false");
+  const[focused1,setFocused1]=useState("false");
+  const[focused2,setFocused2]=useState("false");
+  const[focused3,setFocused3]=useState("false");
+  const[focused4,setFocused4]=useState("false");
+const clickHandler1 =()=> {
+  console.log("clicked");
+  const container =document.querySelector(".containerhass");
+   container.classList.add("sign-up-mode");
+ 
+}
+const clickHandler2 =()=> {
+  const container =document.querySelector(".containerhass");
+  container.classList.remove("sign-up-mode");
+  console.log("clicked");
+}
+
+const handleFocus=(e)=>{
+setFocused("true");
+};
+
+// Later, when you want to remove the event listener:
+// sign_up_btn.removeEventListener("click", clickHandler1);
+// sign_in_btn.removeEventListener("click", clickHandler2);
+  
+
+// useEffect(()=> {
+//   if(sign_up_btn){
+//   sign_up_btn.addEventListener("click", clickHandler1);
+//   console.log("clicked");
+//   }
+
+//   if(sign_in_btn){
+//     console.log("clicked");
+
+//     sign_in_btn.addEventListener("click", clickHandler2);
+//   }
+//   return()=>{
+//     if(sign_up_btn){sign_up_btn.removeEventListener("click", clickHandler1);
+//     console.log("clicked");}
+//     if(sign_in_btn){ sign_in_btn.removeEventListener("click", clickHandler2);
+//     console.log("clicked");}
+ 
+//   }
+// },[])
+
+
+
+
   const navigate = useNavigate();
 
   const handleGoogleLoginSuccess = async (response) => {
@@ -94,8 +150,10 @@ function SignUp2() {
   const error = useStore((state) => state.err);
 
   const handleSubmit = async (e) => {
-    console.log("clicked");
+   
     e.preventDefault();
+
+    console.log("clicked");
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.stopPropagation();
@@ -128,15 +186,10 @@ function SignUp2() {
     await register(nameReg, emailReg,dateOfBirth, passwordReg);
    
   }catch(err){console.log(err)}
-    // testreg=true;
-    // if (testreg) {
-    //   document.getElementById("messageSuccess").style.display = "block";
-    //   testreg=false;
-    // } else {
-    //   document.getElementById("messageSuccess").style.display = "none";
-    // }
+    
 
     window.location.reload();
+
 
 
   }
@@ -165,9 +218,14 @@ function SignUp2() {
     }
   };
 
+
+
+
   return (
     
+    
 <div className="containerhass" >
+
 {/* <img src="./assets/signup/img/logdwt.png" style={{width:'120px'}}  alt="" /> */}
      <div className="forms-containerhass">
        <div className="signin-signuphass">
@@ -246,23 +304,28 @@ function SignUp2() {
            <h2  style={{ fontsize: '2.2rem' ,color: '#444', marginBottom: '10px',fontFamily:'fantasy bald' ,fontWeight: 'bold'}}>Sign up</h2>
            <div className="input-fieldhass">
              <i className="fas fa-user"></i>
-             <input type="text" placeholder="Username" name="nameReg"  onChange={(e)=>setNameReg(e.target.value)} />
+             <input type="text" placeholder="Username" name="nameReg" required  pattern='^[A-Za-z0-9]{3,16}$' onChange={(e)=>setNameReg(e.target.value)} onBlur={(e)=>setFocused1("true")} focused={focused1} />
+             <span >Enter at least 3 characters!</span>
            </div>
+           
            <div className="input-fieldhass">
              <i className="fas fa-envelope"></i>
-             <input type="email" placeholder="Email" name="emailReg" onChange={(e)=>setEmailReg(e.target.value)}/>
+             <input type="email" placeholder="Email" name="emailReg" required  pattern='^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$' onChange={(e)=>setEmailReg(e.target.value)} onBlur={(e)=>setFocused2("true")} focused={focused2}/>
+             <span >Email adress should be valid! </span>
            </div>
            <div className="input-fieldhass d-flex align-items-center" >
              <i className="fas fa-calendar"></i>
              {/* <input type="text" placeholder="date of birth" name="DateOfBirth" onChange={(e)=>setDateOfBirth(e.target.value)}/> */}
-             <DatePicker  placeholderText='date of birth'  dateFormat="yyyy-MM-dd" selected={dateOfBirth} onChange={date=>setDateOfBirth(date)} />
+             <DatePicker  placeholderText='date of birth'  dateFormat="yyyy-MM-dd" required selected={dateOfBirth} onChange={date=>setDateOfBirth(date)} onBlur={(e)=>setFocused4("true")} focused={focused4} />
+             <span >Enter your date of birth! </span>
            </div>
            
            <div className="input-fieldhass">
              <i className="fas fa-lock"></i>
-             <input type="password" placeholder="Password"  name="passwordReg" onChange={(e)=>setpasswordReg(e.target.value)}/>
+             <input type="password" placeholder="Password"  name="passwordReg" required  pattern='^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$'  onChange={(e)=>setpasswordReg(e.target.value)} onBlur={(e)=>setFocused3("true")} focused={focused3}/>
+             <span >Minimum eight characters at least 1 letter and 1 number!</span>
            </div>
-           <input type="submit" className="btnhass" value="Sign up" onClick={notify} />
+           <input type="submit" className="btnhass" value="Sign up"  />
            
            <p className="social-texthass">Or Sign up with social platforms</p>
            <div className="social-mediahass">
@@ -292,7 +355,7 @@ function SignUp2() {
          <div className="contenthass">
            <h2 style={{fontsize: '1.2rem',fontWeight: 'bold'}}>New here ?</h2>
           
-           <button className="btnhass transparenthass" id="sign-up-btn">
+           <button className="btnhass transparenthass" onClick={clickHandler1} id="sign-up-btn">
              Sign up
            </button>
          </div>
@@ -302,7 +365,7 @@ function SignUp2() {
          <div className="contenthass">
            <h2 style={{fontsize: '1.2rem',fontWeight: 'bold'}}>One of us ?</h2>
           
-           <button className="btnhass transparenthass"  id="sign-in-btn">
+           <button className="btnhass transparenthass" onClick={clickHandler2}  id="sign-in-btn">
              Sign in
            </button>
          </div>
@@ -311,7 +374,9 @@ function SignUp2() {
      </div>
     
    </div >
-  )
+   
+  );
+ 
 }
 
 export default SignUp2

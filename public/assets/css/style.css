@@ -51,7 +51,7 @@ Tags: light, responsive-layout, flexible-header, accessibility-ready, custom-bac
 
 /* 1. Reset tags
 -------------------------------------------------------------- */
-html, body, div, span, applet, object, iframe,
+html, body, div, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, font, ins, kbd, q, s, samp,
@@ -2095,14 +2095,14 @@ blockquote cite {
 .pagination_single a,
 .pagination_slider .pager_cur,
 .pagination_pages > a,
-.pagination_pages > span {
+/* .pagination_pages > span {
 	display:inline-block;
 	margin: 0 4px 4px 0;
 	text-align:center;
 	padding:0.7143em 0.8em;
 	font-size:0.875em;
 	line-height: 0.875em;
-}
+} */
 
 .pagination_slider .pager_pages {
 	display:inline-block;
@@ -2188,7 +2188,7 @@ blockquote cite {
 	padding: 10px 0;
 }
 .viewmore_loader,
-.mfp-preloader span,
+/* .mfp-preloader span, */
 .sc_video_frame.sc_video_active:before {
 	content: ' ';
 	display: block;
@@ -2211,7 +2211,7 @@ blockquote cite {
 	display:block !important;
 }
 .loading > .viewmore_loader,
-.mfp-preloader span,
+/* .mfp-preloader span, */
 .sc_video_frame.sc_video_active:before {
 	-webkit-animation: rotateplane 1.2s infinite ease-in-out;
 			animation: rotateplane 1.2s infinite ease-in-out;
@@ -2737,11 +2737,11 @@ blockquote cite {
 	font-size:0.875em;
 	margin-bottom:0.5em;
 }
-.comments_list_wrap .comment_info > span + span:before {
+/* .comments_list_wrap .comment_info > span + span:before {
 	content: "|";
 	display:inline-block;
 	margin: 0 0.8em;
-}
+} */
 .comments_list_wrap .comment_info .comment_date_label {
 	font-style:italic;
 }
