@@ -209,7 +209,8 @@ function SignUp2() {
              {/* <a href="#" className="social-iconhass">
                {<i className="fab fa-facebook-f"></i>}
              </a> */}
-            
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
              <GoogleLogin
                     clientId="1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com"
                     onSuccess={handleGoogleLoginSuccess}
@@ -230,11 +231,9 @@ function SignUp2() {
           }}
           onReject={(error) => {console.log(error)}}
           >  
-
-
             <FacebookLoginButton/>
           </LoginSocialFacebook>
-
+ </div>
 
            </div>}
     </Form>
