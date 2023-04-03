@@ -61,6 +61,7 @@ form {
 }
 
 form.sign-up-formhass {
+  width: 600px;
   opacity: 0;
   z-index: 1;
 }
@@ -96,10 +97,24 @@ form.sign-in-formhass {
   font-size: 1.1rem;
 }
 
+.input-fieldhass span {
+
+  font-size: 12px ;
+  padding: 3px;
+  color: red;
+  display: none;
+  
+}
+
+input:invalid[focused="true"] ~ span{
+  display: block;
+}
+
 .input-fieldhass input {
-  background: none;
+  width:270px;
+  /* background: #444; */
   outline: none;
-  border: none;
+  border: #4481eb;
   line-height: 1;
   font-weight: 600;
   font-size: 1.1rem;
@@ -407,4 +422,9 @@ form.sign-in-formhass {
     bottom: 28%;
     left: 50%;
   }
+
+  
+
+
+
 }
