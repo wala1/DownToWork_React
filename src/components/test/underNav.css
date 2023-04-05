@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    position: relative;
+    max-width: 100%;
+    top: 11rem;
+  }
+  
+  .post_thumb_hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;background-color: rgba(2,75,94, 0.8);
+    margin-top: 0rem;
+  }
+  .post_categories{
+    font-size: 1.125em;
+    line-height: 1.5em;
+  }
+  .post_title .entry-title{
+    font-size: 3em;
+      font-weight: 300;
+      line-height: 1.3em;
+      margin: 0.5em auto 0;
+      max-width: 60%;
+  }
+  hr {
+    margin: 2em 0 2.5em 0px;
+    border: none;
+    border-top: 3px white;
+    border-style: dashed;
+  }
+  .body_wrap{
+    margin-top: 2rem;
+  }
+
+  .post_descr_buttons_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .post_descr_wrapper {
+    flex: 1;
+  }
+  
+  .post_buttons_wrapper {
+    margin-left: 10px;
+  }
+  
