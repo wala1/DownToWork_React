@@ -24,6 +24,10 @@ function Profile() {
     navigate("/desac");
   }
 
+  const handleNav= async (response) => {
+    navigate("/business");}
+
+
   return (<>
     {/* Mirrored from demo.themesberg.com/spaces/html/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Mar 2023 21:48:40 GMT */}
     {/* Added by HTTrack */}
@@ -164,7 +168,7 @@ function Profile() {
                         </span>
                       </a>
 
-                      <a href="security.html" class="d-flex list-group-item list-group-item-action">Billing
+                      <a  class="d-flex list-group-item list-group-item-action" onClick={()=>handleNav()}>My Sales
                         <span class="icon icon-xs ml-auto">
                           <span class="fas fa-chevron-right"></span>
                         </span> 
