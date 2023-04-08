@@ -19,6 +19,7 @@ import DesactivateAccount from './components/AccountManagement/DesactivateAccoun
 
 
 import ActivationPage from './components/signUp/ActivationPage';
+import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 
 
 function App() {
@@ -43,6 +44,8 @@ function App() {
         <Route path="/delete-account" element={<DeleteAccount/>}></Route>
         <Route path="/" element={<Main />}>
           <Route path="" element={<Home />}></Route>
+          <Route path="/business" element={<SalesDashboard/>}></Route>
+
         </Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
       </Routes>

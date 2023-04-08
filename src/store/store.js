@@ -7,6 +7,7 @@ const useStore =   create((set) => ({
   isLogged: false,
   err: null,
   num : null,
+  sales:[],
   login: async (email, password) => {
     try {const user =  await login(email, password);
     set({ user , isLoading: false , isLogged: true, err: null});
