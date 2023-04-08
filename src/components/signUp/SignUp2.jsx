@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 // import '../SignIn.scss';
 import useStore from '../../store/store';
 import { register } from '../../services/userService';
-import { GoogleLogin } from "react-google-login";
+// import { GoogleLogin } from "react-google-login";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -268,14 +268,14 @@ setFocused("true");
                {<i className="fab fa-facebook-f"></i>}
              </a> */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-
+{/* 
              <GoogleLogin
                     clientId="1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com"
                     onSuccess={handleGoogleLoginSuccess}
                     onFailure={handleGoogleLoginFailure}
                     cookiePolicy={"single_host_origin"}
                     buttonText="Sign in with Google"
-                  />
+                  /> */}
             
           <LoginSocialFacebook 
           appId='599043218440870'

@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 // import './SignIn.scss';
 import useStore from '../../store/store';
-import { GoogleLogin } from "react-google-login";
+// import { GoogleLogin } from "react-google-login";
 import axios from "axios";
 import { LoginSocialFacebook } from 'reactjs-social-login';
 import { FacebookLoginButton } from 'react-social-login-buttons';
@@ -121,13 +121,13 @@ function SignForm(){
       </Button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       
-                  <GoogleLogin
+                  {/* <GoogleLogin
                     clientId="1075754340245-lvt55d4eg0jvi5608u9eg6af8ur1f9fr.apps.googleusercontent.com"
                     onSuccess={handleGoogleLoginSuccess}
                     onFailure={handleGoogleLoginFailure}
                     cookiePolicy={"single_host_origin"}
                     buttonText="Sign in with Google"
-                  />
+                  /> */}
     </Form>
   );
 }
