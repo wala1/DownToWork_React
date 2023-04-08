@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard';
 import ForgetPassword from './components/user/forgetPassword';
 import ResetPassword from './components/user/resetPassword';
 import NewSubmit from './components/user/newSubmit';
+import Cards from './components/games/Cards';
 // import Login from "../src/components/login";
 import Profile from "../src/components/profile/profile";
 // import signup from './components/signUp/SingUp'
@@ -41,8 +42,12 @@ function App() {
         <Route path="/new-submit" element={<NewSubmit />}></Route>
         <Route path="/change-password" element={<ChangePassword />}></Route>
         <Route path="/delete-account" element={<DeleteAccount/>}></Route>
+        <Route path="/game" element={<Cards/>}></Route>
+
         <Route path="/" element={<Main />}>
+          
           <Route path="" element={<Home />}></Route>
+          
         </Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
       </Routes>
