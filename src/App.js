@@ -3,8 +3,8 @@ import './App.css';
 import SignIn from './components/signIn/SignIn';
 import Home from './components/home';
 import Main from './components/Main';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
+import { BrowserRouter, Route, Routes , Navigate } from 'react-router-dom';
+// import Dashboard from './components/Dashboard';
 import ForgetPassword from './components/user/forgetPassword';
 import ResetPassword from './components/user/resetPassword';
 import NewSubmit from './components/user/newSubmit';
@@ -21,7 +21,22 @@ import Diagnostic from '../src/components/test/diagnostic';
 import Specialist from '../src/components/test/specialist';
 import Quizzes from '../src/components/test/quizzes';
 import ActivationPage from './components/signUp/ActivationPage';
+import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
+import Dashboard from './components/Dashboard/MainDash';
 
+// function PrivateRoute({ element: Element, ...rest }) {
+//   const userString = localStorage.getItem("user");
+//   const user = JSON.parse(userString);
+
+//   return (
+//     <Route
+//       {...rest}
+//       element={
+//         user ? <Navigate to="/" /> : <Element />
+//       }
+//     />
+//   );
+// }
 
 function App() {
   return (
@@ -29,9 +44,10 @@ function App() {
       <Routes>
         <Route path="/profile" element={<Profile />}></Route>
         {/* <Route path="/desac" element={<DesactivateAccount/>}></Route> */}
-        <Route path="/desac" element={<DesactivateAccount />}></Route>
+        <Route path="/desac" element={<DesactivateAccount/>}></Route>
         <Route path="/signup2" element={<SignUp2 />} ></Route>
-        <Route path="/confirm/:activationCode" element={<ActivationPage />} ></Route>
+        <Route path="/confirm/:activationCode" element={<ActivationPage/>} ></Route>
+        {/* <Route path="/signup2" element={<SignUp2 />} ></Route> */}
         {/* <Route path="/signup" Component={signup}></Route> */}
         {/* <Route path="/signIn" element={<SignIn />}></Route> */}
         <Route path="/Edit" element={<EditAccount />} ></Route>
@@ -50,8 +66,13 @@ function App() {
           <Route path="/diagnostic/*" element={<Diagnostic />}></Route>
           <Route path="/diagnostic/quizzes/:id" element={<Quizzes />}></Route>
           <Route path="/specialist" element={<Specialist />}></Route>
+
+          <Route path="/business" element={<SalesDashboard/>}></Route>
+
         </Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="/dashboard/orders" element={<SalesDashboard />}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );

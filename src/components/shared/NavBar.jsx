@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import {useEffect} from 'react';
 import {gapi} from 'gapi-script';
 import {
@@ -10,6 +10,14 @@ import Profile from "../profile/profile";
 import Home from "../home";
 import useStore from '../../store/store';
 import { Link, useNavigate } from 'react-router-dom';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 
 
 
@@ -49,6 +57,19 @@ function NavBar() {
 			navigate('/signup2');
 		};
 
+
+		
+			const [open, setOpen] = React.useState(false);
+		  
+			const handleClickOpen = () => {
+			  setOpen(true);
+			};
+		  
+			const handleClose = () => {
+			  setOpen(false);
+			};
+		  
+			
 		
 
 	
@@ -90,7 +111,33 @@ function NavBar() {
                                     </ul> */}
                                 </li>}
                                 <li className="menu_user_logout">
-									{user?<a href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</a> :
+									{user? <div>
+				{/* <Button className="icon icon-logout" onClick={handleClickOpen}>
+				  Open 
+				</Button> */}
+				<a href="#" className="icon icon-logout" style={{paddingLeft:2 , paddingRight:2}} onClick={handleClickOpen}>Logout</a>
+				<Dialog
+				  open={open}
+				  onClose={handleClose}
+				  aria-labelledby="alert-dialog-title"
+				  aria-describedby="alert-dialog-description"
+				>
+				  <DialogTitle id="alert-dialog-title">
+					{"Logout"}
+				  </DialogTitle>
+				  <DialogContent>
+					<DialogContentText id="alert-dialog-description">
+					  Are you sure you want to logout?
+					</DialogContentText>
+				  </DialogContent>
+				  <DialogActions>
+					<Button onClick={handleClose}>Disagree</Button>
+					<Button onClick={()=>handleLogout()} autoFocus>
+					  Agree
+					</Button>
+				  </DialogActions>
+				</Dialog>
+			  </div> :
 									<a href="#" className="icon icon-logout" onClick={()=>handleSignIn()}>Log-In</a>}
 									{/* <a href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</a> */}
 								</li>
@@ -132,7 +179,7 @@ function NavBar() {
                         <a href="#" className="menu_main_responsive_button icon-menu-1"></a>
 						<nav className="menu_main_nav_area">
 							<ul id="menu_main" className="menu_main_nav">
-								<li className="menu-item menu-item-has-children current-menu-ancestor current-menu-parent"><a href="index.html">Homepage</a>
+								<li className="menu-item menu-item-has-children current-menu-ancestor current-menu-parent"><Link to={"/"} >Homepage</Link> 
 									<ul className="sub-menu">
 										<li className="menu-item current-menu-item page_item current_page_item "><a href="index.html">Homepage Wide</a></li>
 										<li className="menu-item"><a href="homepage-2.html">Homepage Boxed</a></li>
