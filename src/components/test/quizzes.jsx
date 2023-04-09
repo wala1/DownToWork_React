@@ -8,8 +8,9 @@ function Quizzes() {
   const { id } = useParams();
   const [quizzes, setQuizzes] = useState([]);
   const [showTest, setShowTest] = useState(false);
-  const [QtsId, setQtsId] = useState(null);
-  const [questions, setQuestions] = useState([]);
+  const [quizId, setQuizId] = useState(null);
+  const [
+    questions, setQuestions] = useState([]);
 
   useEffect(() => {
     async function fetchQuizzes() {
@@ -27,7 +28,7 @@ function Quizzes() {
   useEffect(() => {
     async function fetchQuestions() {
       try {
-        const response = await axios.get(`http://localhost:3001/question/getQuestionsByIdQuiz?id=${QtsId}`);
+        const response = await axios.get(`http://localhost:3001/question/getQuestionsByIdQuiz?id=${quizId}`);
         setQuestions(response.data.questions);
         console.log("questions : " + questions);
       } catch (error) {
@@ -37,6 +38,22 @@ function Quizzes() {
     fetchQuestions();
   }, [id]);
 
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+  const [score, setScore] = useState(0);
+
+  const handleAnswerOptionClick = (response) => {
+    if (response) {
+      setScore(score + 1);
+    }
+
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion);
+    } else {
+      setShowScore(true);
+    }
+  };
   // rest of the component code
 
   return (<>
@@ -78,7 +95,7 @@ function Quizzes() {
             </article>
           </div>
 
-          <div className="row" >
+          <div className="row">
             {quizzes.map((quiz) => (
               <div key={quiz._id} className=" itemCourse cardCourse">
                 <img src={quiz.picture} alt="" className="card-img-course" />
@@ -89,12 +106,33 @@ function Quizzes() {
                   <p className="card-sub-title-course">{quiz.description.slice(0, 143)}...</p>
                   <div style={{ display: "inline-block" }}>
                     <button className="card-btn-color" style={{ display: "inline-block" }}>TUTO</button>
-                    <button onClick={() => { setShowTest(!showTest); setQtsId(quiz._id) }} className="card-btn-color" style={{ display: "inline-block" }}>START</button>
+                    <button onClick={() => { setShowTest(!showTest); setQuizId(quiz._id) }} className="card-btn-color" style={{ display: "inline-block" }}>START</button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          
+          {/* <div>
+            {showTest && (
+              <div>
+                {questions.map((question) => (
+                  <div className="question-container">
+                    <h4 className="question-title">{question.title}</h4>
+                    <div className="choices-container">
+                      {question.choices.map((choice) => (
+                        <button className="choice-button">
+                          <span>{choice.text}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div> */}
+
         </div>
 
         {/* /Content */}
@@ -102,29 +140,36 @@ function Quizzes() {
     </div>
     {/* /Body */}
 
-
-    {/* /Test Body */}
     {showTest && (
-      <div>
-        {questions.map((question) => (
-          <Card>
-            <Card.Header>
-              <div className="d-flex justify-content-between">
-                <h3>{question.title}</h3>
-                <span>Score: {score}</span>
-              </div>
-            </Card.Header>
-            <Card.Body>
-              {question.choices.map((choice, i) => (
-                <Button key={i} className="mb-3">
-                  {choice}
-                </Button>
-              ))}
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
-    )}
+            <div className='app2'>
+              {showScore ? (
+                <div className='score-section'>
+                  You scored {score} out of {questions.length}
+                </div>
+              ) : (
+                <>
+
+                  {questions.map((question) => (
+                    <div className='question-section'>
+                      <div className='question-count'>
+                        <span>Question {currentQuestion + 1}</span>/{questions.length}
+                      </div>
+                      <div className='question-text'>{question.title}</div>
+                    </div>
+                  ))}
+                  {questions.map((question) => (
+                  <div className='answer-section'>
+                    {question.choices.map((choice) => (
+                      <button onClick={() => handleAnswerOptionClick(choice.response)}>{choice.text}</button>
+                    ))}
+                  </div>
+                  ))}
+                </>
+              )}
+            </div>
+
+          )}
+
 
 
     <a href="#" className="scroll_to_top icon-up-2" title="Scroll to top" />
