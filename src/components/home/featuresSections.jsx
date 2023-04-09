@@ -1,4 +1,8 @@
 import { Fragment } from "react";
+import { Routes, Route, Link } from 'react-router-dom';
+import LevelTest from '../test/levelTest';
+import Diagnostic from '../test/diagnostic';
+import Specialist from '../test/specialist';
 
 const FeaturesSections = () => {
     return ( 
@@ -20,8 +24,11 @@ const FeaturesSections = () => {
                                                     <a href="#" className="sc_icon icon-rocket-2 sc_icon_bg_menu menu_dark_color font_5em lh_1em"></a>
                                                     <div className="sc_section font-w_400 margin_top_1em_imp">
                                                         <p>
-                                                            <a className="menu_color" href="#">Build cool projects<br />
-                                                                to showcase your skills</a>
+                                                                <Link className="menu_color" to="/test"> Start with Level Test</Link>
+                                                                <br/>
+                                                                <Link className="menu_color" to="/diagnostic">Diagnostic Test </Link>
+                                                                <br/>
+                                                                <Link className="menu_color" to="/specialist"> Specialist </Link>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -38,6 +45,11 @@ const FeaturesSections = () => {
                                         </div>
                                     </div>
             {/* <!-- /Features section --> */}
+            <Routes>
+                <Route path="/test" element={<LevelTest/>}></Route>
+                <Route path="/diagnostic" element={<Diagnostic/>}></Route>
+                <Route path="/specialist" element={<Specialist/>}></Route>
+            </Routes>
         </Fragment>
      );
 }
