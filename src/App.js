@@ -4,7 +4,7 @@ import SignIn from './components/signIn/SignIn';
 import Home from './components/home';
 import Main from './components/Main';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
+// import Dashboard from './components/Dashboard';
 import ForgetPassword from './components/user/forgetPassword';
 import ResetPassword from './components/user/resetPassword';
 import NewSubmit from './components/user/newSubmit';
@@ -20,6 +20,7 @@ import DesactivateAccount from './components/AccountManagement/DesactivateAccoun
 
 import ActivationPage from './components/signUp/ActivationPage';
 import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
+import Dashboard from './components/Dashboard/MainDash';
 
 
 function App() {
@@ -47,7 +48,9 @@ function App() {
           <Route path="/business" element={<SalesDashboard/>}></Route>
 
         </Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="/dashboard/orders" element={<SalesDashboard />}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
