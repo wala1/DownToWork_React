@@ -16,6 +16,10 @@ function MainListItems() {
   const handleNav = () => {
     navigate('/dashboard/orders');
   }
+  const navToDash = () => {
+    navigate('/dashboard');
+  }
+  
 
   return (
     <React.Fragment>
@@ -23,7 +27,7 @@ function MainListItems() {
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
-        <ListItemText primary="Dashboard" />
+        <ListItemText primary="Dashboard" onClick={()=>navToDash()}/>
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>
