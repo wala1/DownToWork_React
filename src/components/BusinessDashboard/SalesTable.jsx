@@ -24,19 +24,21 @@ function SalesTable() {
     const id = user._id;
 
     useEffect(() => {
-        const getSales = async () => {
-            try {
-                const res = await axios.get("http://localhost:3001/orders/productowner/"+id);
-                console.log(res.data)
-                //setSales(res.data);
-                useStore.setState({sales: res.data})
-            }
-            catch (error) {
-                console.log(error);
-            }
-        };
-        getSales();
-    }, []);
+      const getSales = async () => {
+          try {
+              const res = await axios.get(!user.isAdmin 
+                  ? "http://localhost:3001/orders/productowner/" + id 
+                  : "http://localhost:3001/orders"
+              );
+              console.log(res.data);
+              useStore.setState({ sales: res.data });
+          } catch (error) {
+              console.log(error);
+          }
+      };
+      getSales();
+  }, [id, user.isAdmin]);
+  
 
     const filteredSales = sales.filter(
       (sale) =>
