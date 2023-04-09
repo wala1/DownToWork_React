@@ -20,7 +20,8 @@ function IncomeItem() {
     useEffect(() => {
         const getIncome = async () => {
             try {
-                const res = await axios.get("http://localhost:3001/orders/incomeByOwner/"+id);
+                const res = await axios.get(!user.isAdmin?"http://localhost:3001/orders/incomeByOwner/"+id :
+                 "http://localhost:3001/orders/income");
                 console.log(res.data)
                 setIncome(res.data);
                 if (res.data.length > 1) {

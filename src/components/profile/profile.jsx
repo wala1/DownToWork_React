@@ -180,13 +180,14 @@ function Profile() {
                         </span> 
                       </a>
 
-                      {/* <a  class="d-flex list-group-item list-group-item-action" >
+                      <a  class="d-flex list-group-item list-group-item-action" > My Products
                         <span class="icon icon-xs ml-auto">
                           <span class="fas fa-chevron-right"></span>
                         </span> 
                       </a>
- */}
-                      <a href="security.html" class="d-flex list-group-item list-group-item-action">My Items
+
+                      <a href="security.html" class="d-flex list-group-item list-group-item-action">
+                        Security
                         <span class="icon icon-xs ml-auto">
                           <span class="fas fa-chevron-right"></span>
                         </span> 

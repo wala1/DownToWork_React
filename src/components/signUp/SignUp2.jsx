@@ -71,6 +71,16 @@ setFocused("true");
 
 
 
+  const userString = localStorage.getItem("user");
+  const user = JSON.parse(userString);
+
+  //if user is logged in, redirect to home page
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
+  
 
   const navigate = useNavigate();
 
