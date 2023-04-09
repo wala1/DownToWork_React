@@ -3,7 +3,7 @@ import './App.css';
 import SignIn from './components/signIn/SignIn';
 import Home from './components/home';
 import Main from './components/Main';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes , Navigate } from 'react-router-dom';
 // import Dashboard from './components/Dashboard';
 import ForgetPassword from './components/user/forgetPassword';
 import ResetPassword from './components/user/resetPassword';
@@ -22,6 +22,19 @@ import ActivationPage from './components/signUp/ActivationPage';
 import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 import Dashboard from './components/Dashboard/MainDash';
 
+// function PrivateRoute({ element: Element, ...rest }) {
+//   const userString = localStorage.getItem("user");
+//   const user = JSON.parse(userString);
+
+//   return (
+//     <Route
+//       {...rest}
+//       element={
+//         user ? <Navigate to="/" /> : <Element />
+//       }
+//     />
+//   );
+// }
 
 function App() {
   return (
@@ -30,7 +43,7 @@ function App() {
         <Route path="/profile" element={<Profile/>}></Route>
         {/* <Route path="/desac" element={<DesactivateAccount/>}></Route> */}
         <Route path="/desac" element={<DesactivateAccount/>}></Route>
-        <Route path="/signup2" element={<SignUp2 />} ></Route>
+        {/* <Route path="/signup2" element={<SignUp2 />} ></Route> */}
         <Route path="/confirm/:activationCode" element={<ActivationPage/>} ></Route>
         {/* <Route path="/signup" Component={signup}></Route> */}
         {/* <Route path="/signIn" element={<SignIn />}></Route> */}

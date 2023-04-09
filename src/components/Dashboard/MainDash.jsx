@@ -19,6 +19,16 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { MainListItems, SecondaryListItems } from './ListItems';
 import { Outlet } from 'react-router-dom';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+
+import useStore from '../../store/store';
+import {useNavigate} from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
 
 // import Chart from './Chart';
 // import Deposits from './Deposits';
@@ -86,10 +96,37 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
+
+
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  const navigate = useNavigate();
+
+  // const handleNav = () => {
+  //   navigate('/');
+  // };
+  const logout = useStore((state) => state.logout);
+  const handleLogout =async () => {
+    try{await logout();
+      navigate('/');
+  
+    }catch(error){
+      console.log(error);
+      }
+      };
+
+      const [openM, setOpenM] = React.useState(false);
+
+      const handleClose = () => {
+			  setOpenM(false);
+			};
+
+		  
+			const handleClickOpen = () => {
+			  setOpenM(true);
+			};  
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -122,12 +159,44 @@ function DashboardContent() {
             >
               Dashboard
             </Typography>
-            <IconButton color="inherit">
+            {/* <IconButton style={{paddingRight:5}} color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
+            </IconButton> */}
+            {/* <div style={{marginLeft:10}}>
+            <IconButton style={{paddingRight:5}} color="inherit" onClick={()=>handleNav()}>
+                <HomeIcon />
             </IconButton>
-          </Toolbar>
+            </div> */}
+           
+            <div style={{marginLeft:10}}>
+				{/* <Button className="icon icon-logout" onClick={handleClickOpen}>
+				  Open 
+				</Button> */}
+				<Button style={{backgroundColor:"inherit",paddingLeft:5}}><a href="#"  className="icon icon-logout" style={{paddingLeft:2 , paddingRight:2,color:'white',fontWeight:"bold"}} onClick={handleClickOpen}>Logout</a></Button>
+				<Dialog
+				  open={openM}
+				  onClose={handleClose}
+				  aria-labelledby="alert-dialog-title"
+				  aria-describedby="alert-dialog-description"
+				>
+				  <DialogTitle id="alert-dialog-title">
+					{"Logout"}
+				  </DialogTitle>
+				  <DialogContent>
+					<DialogContentText id="alert-dialog-description">
+					  Are you sure you want to logout?
+					</DialogContentText>
+				  </DialogContent>
+				  <DialogActions>
+					<Button onClick={handleClose}>Disagree</Button>
+					<Button onClick={()=>handleLogout()} autoFocus>
+					  Agree
+					</Button>
+				  </DialogActions>
+				</Dialog>
+			  </div>          </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
           <Toolbar
