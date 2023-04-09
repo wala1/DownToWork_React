@@ -22,6 +22,7 @@ import DesactivateAccount from './components/AccountManagement/DesactivateAccoun
 import ActivationPage from './components/signUp/ActivationPage';
 import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 import Dashboard from './components/Dashboard/MainDash';
+import Courses from './components/Courses/courses';
 
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
@@ -58,13 +59,10 @@ function App() {
         <Route path="/change-password" element={<ChangePassword />}></Route>
         <Route path="/delete-account" element={<DeleteAccount/>}></Route>
         <Route path="/game" element={<Cards/>}></Route>
-
         <Route path="/" element={<Main />}>
-          
           <Route path="" element={<Home />}></Route>
-          
+          <Route path="/courses" element={Courses}></Route>
           <Route path="/business" element={<SalesDashboard/>}></Route>
-
         </Route>
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="/dashboard/orders" element={<SalesDashboard />}></Route>

@@ -186,7 +186,7 @@ function NavBar() {
 										<li className="menu-item"><a href="homepage-3.html">Homepage Photos</a></li>
 									</ul>
 								</li>
-								<li className="menu-item menu-item-has-children"><a href="#">Features</a>
+								<li className="menu-item menu-item-has-children"><a href='/courses'>Courses</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="typography.html">Typography</a></li>
 										<li className="menu-item"><a href="shortcodes.html">Shortcodes</a></li>
