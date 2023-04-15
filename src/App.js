@@ -10,6 +10,7 @@ import ResetPassword from './components/user/resetPassword';
 import NewSubmit from './components/user/newSubmit';
 // import Login from "../src/components/login";
 import Profile from "../src/components/profile/profile";
+ 
 // import signup from './components/signUp/SingUp'
 import { EditAccount } from './components/AccountManagement/EditAccount';
 import SignUp2 from './components/signUp/SignUp2';
@@ -19,12 +20,22 @@ import DesactivateAccount from './components/AccountManagement/DesactivateAccoun
 
 
 import ActivationPage from './components/signUp/ActivationPage';
-
+import Products from './components/Shop/Products';
+import ProductPage from './components/Shop/ProductPage';
+import Cart from './components/Shop/Cart';
+import AddProduct from './components/Shop/AddProduct';
+import {Provider} from "react-redux";
+import store from "./redux/store";
 
 function App() {
   return (
+    <Provider store={store}>
     <BrowserRouter>
       <Routes>
+      <Route path="/addProduct" element={<AddProduct/>}></Route>
+      <Route path="/cart" element={<Cart/>}></Route>
+      <Route path="/productPage" element={<ProductPage/>}></Route>
+      <Route path="/products" element={<Products/>}></Route>
         <Route path="/profile" element={<Profile/>}></Route>
         {/* <Route path="/desac" element={<DesactivateAccount/>}></Route> */}
         <Route path="/desac" element={<DesactivateAccount/>}></Route>
@@ -47,6 +58,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}></Route>
       </Routes>
     </BrowserRouter>
+    </Provider>
   );
 }
 
