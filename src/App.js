@@ -30,6 +30,8 @@ import {Provider} from "react-redux";
 import store from "./redux/store";
 import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 import Dashboard from './components/Dashboard/MainDash';
+import Success from './components/Shop/Success';
+import Fail from './components/Shop/Fail';
 
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
@@ -51,7 +53,6 @@ function App() {
     <BrowserRouter>
       <Routes>
       <Route path="/addProduct" element={<AddProduct/>}></Route>
-      <Route path="/cart" element={<Cart/>}></Route>
       <Route path="/productPage" element={<ProductPage/>}></Route>
       <Route path="/products" element={<Products/>}></Route>
         <Route path="/profile" element={<Profile/>}></Route>
@@ -81,6 +82,10 @@ function App() {
           <Route path="/specialist" element={<Specialist />}></Route>
 
           <Route path="/business" element={<SalesDashboard/>}></Route>
+          <Route path="/success" element={<Success />} />
+          <Route path="/fail" element={<Fail />} />
+          <Route path="/cart" element={<Cart/>}></Route>
+
 
         </Route>
         <Route path="/dashboard" element={<Dashboard />}>
