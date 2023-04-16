@@ -1,10 +1,10 @@
-import React from 'react'
-import useStore from '../store/store';
+// import React from 'react'
+// import useStore from '../store/store';
 
-function Dashboard() {
-  return (
-    <div>Dashboard</div>
-  )
-}
+// function Dashboard() {
+//   return (
+//     <div>Dashboard</div>
+//   )
+// }
 
-export default Dashboard
+// export default Dashboard

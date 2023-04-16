@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
 import { useEffect } from 'react';
 import { gapi } from 'gapi-script';
+import { Fragment } from 'react';
+import {useEffect} from 'react';
+import {gapi} from 'gapi-script';
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -11,6 +14,14 @@ import Home from "../home";
 import useStore from '../../store/store';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 
 
 
@@ -58,6 +69,20 @@ function NavBar() {
 	}
 const quantity =useSelector(state=>state.cart.quantity)
 
+
+		
+			const [open, setOpen] = React.useState(false);
+		  
+			const handleClickOpen = () => {
+			  setOpen(true);
+			};
+		  
+			const handleClose = () => {
+			  setOpen(false);
+			};
+		  
+			
+		
 
 
 
@@ -149,18 +174,44 @@ const quantity =useSelector(state=>state.cart.quantity)
                                         <li><a href="#" className="icon icon-doc-inv">New post</a></li>
                                         <li><a href="#" className="icon icon-cog-1">Settings</a></li>
                                     </ul> */}
-							</li>}
-							<li className="menu_user_logout">
-								{user ? <a href="#" className="icon icon-logout" onClick={() => handleLogout()}>Logout</a> :
-									<a href="#" className="icon icon-logout" onClick={() => handleSignIn()}>Log-In</a>}
-								{/* <a href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</a> */}
-							</li>
-						</ul>
-					</div>
-					<div className="menu_user_area menu_user_left menu_user_contact_area">Contact us on +216 28 597 602 or <a href="#">downtowork@gmail.com</a></div>
-				</div>
-			</div>
-			{/* <!-- /User menu -->
+                                </li>}
+                                <li className="menu_user_logout">
+									{user? <div>
+				{/* <Button className="icon icon-logout" onClick={handleClickOpen}>
+				  Open 
+				</Button> */}
+				<a href="#" className="icon icon-logout" style={{paddingLeft:2 , paddingRight:2}} onClick={handleClickOpen}>Logout</a>
+				<Dialog
+				  open={open}
+				  onClose={handleClose}
+				  aria-labelledby="alert-dialog-title"
+				  aria-describedby="alert-dialog-description"
+				>
+				  <DialogTitle id="alert-dialog-title">
+					{"Logout"}
+				  </DialogTitle>
+				  <DialogContent>
+					<DialogContentText id="alert-dialog-description">
+					  Are you sure you want to logout?
+					</DialogContentText>
+				  </DialogContent>
+				  <DialogActions>
+					<Button onClick={handleClose}>Disagree</Button>
+					<Button onClick={()=>handleLogout()} autoFocus>
+					  Agree
+					</Button>
+				  </DialogActions>
+				</Dialog>
+			  </div> :
+									<a href="#" className="icon icon-logout" onClick={()=>handleSignIn()}>Log-In</a>}
+									{/* <a href="#" className="icon icon-logout" onClick={()=>handleLogout()}>Logout</a> */}
+								</li>
+                            </ul>
+                        </div>
+                        <div className="menu_user_area menu_user_left menu_user_contact_area">Contact us on +216 28 597 602 or <a href="#">downtowork@gmail.com</a></div>
+                    </div>
+                </div>
+				{/* <!-- /User menu -->
 				<!-- Main menu --> */}
 			<div className="menu_main_wrap logo_left">
 				<div className="content_wrap clearfix">
@@ -190,89 +241,89 @@ const quantity =useSelector(state=>state.cart.quantity)
 					</div>
 					{/* <!-- /Search -->
 						<!-- Navigation --> */}
-					<a href="#" className="menu_main_responsive_button icon-menu-1"></a>
-					<nav className="menu_main_nav_area">
-						<ul id="menu_main" className="menu_main_nav">
-							<li className="menu-item menu-item-has-children current-menu-ancestor current-menu-parent"><a href="index.html">Homepage</a>
-								<ul className="sub-menu">
-									<li className="menu-item current-menu-item page_item current_page_item "><a href="index.html">Homepage Wide</a></li>
-									<li className="menu-item"><a href="homepage-2.html">Homepage Boxed</a></li>
-									<li className="menu-item"><a href="homepage-3.html">Homepage Photos</a></li>
-								</ul>
-							</li>
-							<li className="menu-item menu-item-has-children"><a href="#">Features</a>
-								<ul className="sub-menu">
-									<li className="menu-item"><a href="typography.html">Typography</a></li>
-									<li className="menu-item"><a href="shortcodes.html">Shortcodes</a></li>
-									<li className="menu-item"><a href="video-tutorials.html">Video Tutorials</a></li>
-									<li className="menu-item"><a href="events.html">Events Calendar</a></li>
-									<li className="menu-item"><a href="about-us.html">About Us</a></li>
-									<li className="menu-item"><a href="contact-us.html">Contact Us</a></li>
-									<li className="menu-item"><a href="not-existing-page.html">Page 404</a></li>
-									<li className="menu-item"><a href="not-existing-page-2.html">Page 404 (Style 2)</a></li>
-								</ul>
-							</li>
-							{user && <li className="menu-item menu-item-has-children"><a href="courses-streampage.html">Courses</a>
-								<ul className="sub-menu">
-									<li className="menu-item"><a href="courses-streampage.html">All courses</a></li>
-									<li className="menu-item"><a href="free-course.html">Free course</a></li>
-									<li className="menu-item"><a href="paid-course.html">Paid course</a></li>
-									<li className="menu-item menu-item-has-children"><a href="#">Lessons</a>
-										<ul className="sub-menu">
-											<li className="menu-item"><a href="free-lesson.html">Free lesson (started)</a></li>
-											<li className="menu-item"><a href="free-lesson-coming-soon.html">Free lesson (coming soon)</a></li>
-											<li className="menu-item"><a href="lesson-from-paid-course.html">Lesson from paid course</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>}
-							<li className="menu-item menu-item-has-children"><a href="team-members.html">Teachers</a>
-								<ul className="sub-menu">
-									<li className="menu-item"><a href="team-members.html">Teachers Team</a></li>
-									<li className="menu-item"><a href="personal-page.html">Teacher&#8217;s Personal Page</a></li>
-								</ul>
-							</li>
-							<li className="menu-item menu-item-has-children"><a href="blog-streampage.html">Blog</a>
-								<ul className="sub-menu">
-									<li className="menu-item menu-item-has-children"><a href="#">Post Formats</a>
-										<ul className="sub-menu">
-											<li className="menu-item"><a href="post-formats-with-sidebar.html">With Sidebar</a></li>
-											<li className="menu-item"><a href="post-formats.html">Without sidebar</a></li>
-										</ul>
-									</li>
-									<li className="menu-item menu-item-has-children"><a href="#">Masonry tiles</a>
-										<ul className="sub-menu">
-											<li className="menu-item"><a href="masonry-2-columns.html">Masonry (2 columns)</a></li>
-											<li className="menu-item"><a href="masonry-3-columns.html">Masonry (3 columns)</a></li>
-										</ul>
-									</li>
-									<li className="menu-item menu-item-has-children"><a href="#">Portfolio tiles</a>
-										<ul className="sub-menu">
-											<li className="menu-item"><a href="portfolio-2-columns.html">Portfolio (2 columns)</a></li>
-											<li className="menu-item"><a href="portfolio-3-columns.html">Portfolio (3 columns)</a></li>
-											<li className="menu-item menu-item-has-children"><a href="#">Portfolio hovers</a>
-												<ul className="sub-menu">
-													<li className="menu-item"><a href="portfolio-hovers-circle.html">Circle, Part 1</a></li>
-													<li className="menu-item"><a href="portfolio-hovers-circle-part-2.html">Circle, Part 2</a></li>
-													<li className="menu-item"><a href="portfolio-hovers-circle-part-3.html">Circle, Part 3</a></li>
-													<li className="menu-item"><a href="portfolio-hovers-square.html">Square, Part 1</a></li>
-													<li className="menu-item"><a href="portfolio-hovers-square-part-2.html">Square, Part 2</a></li>
-													<li className="menu-item"><a href="portfolio-hovers-square-part-3.html">Square, Part 3</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li className="menu-item"><a onClick={handleclickShop}>Shop</a></li>
-						</ul>
-					</nav>
-					{/* <!-- /Navigation --> */}
-				</div>
-			</div>
-			{/* <!-- /Main menu --> */}
-
-		</header>
+                        <a href="#" className="menu_main_responsive_button icon-menu-1"></a>
+						<nav className="menu_main_nav_area">
+							<ul id="menu_main" className="menu_main_nav">
+								<li className="menu-item menu-item-has-children current-menu-ancestor current-menu-parent"><Link to={"/"} >Homepage</Link> 
+									<ul className="sub-menu">
+										<li className="menu-item current-menu-item page_item current_page_item "><a href="index.html">Homepage Wide</a></li>
+										<li className="menu-item"><a href="homepage-2.html">Homepage Boxed</a></li>
+										<li className="menu-item"><a href="homepage-3.html">Homepage Photos</a></li>
+									</ul>
+								</li>
+								<li className="menu-item menu-item-has-children"><a href="#">Features</a>
+									<ul className="sub-menu">
+										<li className="menu-item"><a href="typography.html">Typography</a></li>
+										<li className="menu-item"><a href="shortcodes.html">Shortcodes</a></li>
+										<li className="menu-item"><a href="video-tutorials.html">Video Tutorials</a></li>
+										<li className="menu-item"><a href="events.html">Events Calendar</a></li>
+										<li className="menu-item"><a href="about-us.html">About Us</a></li>
+										<li className="menu-item"><a href="contact-us.html">Contact Us</a></li>
+										<li className="menu-item"><a href="not-existing-page.html">Page 404</a></li>
+										<li className="menu-item"><a href="not-existing-page-2.html">Page 404 (Style 2)</a></li>
+									</ul>
+								</li>
+								{user&&<li className="menu-item menu-item-has-children"><a href="courses-streampage.html">Courses</a>
+									<ul className="sub-menu">
+										<li className="menu-item"><a href="courses-streampage.html">All courses</a></li>
+										<li className="menu-item"><a href="free-course.html">Free course</a></li>
+										<li className="menu-item"><a href="paid-course.html">Paid course</a></li>
+										<li className="menu-item menu-item-has-children"><a href="#">Lessons</a>
+											<ul className="sub-menu">
+												<li className="menu-item"><a href="free-lesson.html">Free lesson (started)</a></li>
+												<li className="menu-item"><a href="free-lesson-coming-soon.html">Free lesson (coming soon)</a></li>
+												<li className="menu-item"><a href="lesson-from-paid-course.html">Lesson from paid course</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>}
+								<li className="menu-item menu-item-has-children"><a href="team-members.html">Teachers</a>
+									<ul className="sub-menu">
+										<li className="menu-item"><a href="team-members.html">Teachers Team</a></li>
+										<li className="menu-item"><a href="personal-page.html">Teacher&#8217;s Personal Page</a></li>
+									</ul>
+								</li>
+								<li className="menu-item menu-item-has-children"><a href="blog-streampage.html">Blog</a>
+									<ul className="sub-menu">
+										<li className="menu-item menu-item-has-children"><a href="#">Post Formats</a>
+											<ul className="sub-menu">
+												<li className="menu-item"><a href="post-formats-with-sidebar.html">With Sidebar</a></li>
+												<li className="menu-item"><a href="post-formats.html">Without sidebar</a></li>
+											</ul>
+										</li>
+										<li className="menu-item menu-item-has-children"><a href="#">Masonry tiles</a>
+											<ul className="sub-menu">
+												<li className="menu-item"><a href="masonry-2-columns.html">Masonry (2 columns)</a></li>
+												<li className="menu-item"><a href="masonry-3-columns.html">Masonry (3 columns)</a></li>
+											</ul>
+										</li>
+										<li className="menu-item menu-item-has-children"><a href="#">Portfolio tiles</a>
+											<ul className="sub-menu">
+												<li className="menu-item"><a href="portfolio-2-columns.html">Portfolio (2 columns)</a></li>
+												<li className="menu-item"><a href="portfolio-3-columns.html">Portfolio (3 columns)</a></li>
+												<li className="menu-item menu-item-has-children"><a href="#">Portfolio hovers</a>
+													<ul className="sub-menu">
+														<li className="menu-item"><a href="portfolio-hovers-circle.html">Circle, Part 1</a></li>
+														<li className="menu-item"><a href="portfolio-hovers-circle-part-2.html">Circle, Part 2</a></li>
+														<li className="menu-item"><a href="portfolio-hovers-circle-part-3.html">Circle, Part 3</a></li>
+														<li className="menu-item"><a href="portfolio-hovers-square.html">Square, Part 1</a></li>
+														<li className="menu-item"><a href="portfolio-hovers-square-part-2.html">Square, Part 2</a></li>
+														<li className="menu-item"><a href="portfolio-hovers-square-part-3.html">Square, Part 3</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li className="menu-item"><a onClick={handleclickShop}>Shop</a></li>
+							</ul>
+						</nav>
+						{/* <!-- /Navigation --> */}
+                    </div>
+                </div>
+				{/* <!-- /Main menu --> */}
+				
+            </header>
 		<Routes>
 			<Route path="/profile" element={<Profile />}></Route>
 		</Routes>
