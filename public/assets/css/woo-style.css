@@ -94,7 +94,7 @@
 }
 
 .woocommerce ul.products, .woocommerce-page ul.products {
-	margin-right:-50px;
+	margin-right:-700px;
 	margin-bottom:0;
 }
 .woocommerce.columns-1 ul.products li.product, .woocommerce-page.columns-1 ul.products li.product,
@@ -513,7 +513,7 @@
 	border-color: #dfdbdf;
 }
 div.pp_woocommerce .pp_arrow_next, div.pp_woocommerce .pp_arrow_previous {
-	margin-top:4px;
+	margin-top:50px;
 }
 
 
