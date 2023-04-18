@@ -3,7 +3,7 @@ import {React, useState} from 'react';
 const Post = ({text, name, likes, dislikes, date}) => {
   return (
     <div>
-      <div class="card" style={{marginTop: '370px'}}>
+      <div class="card" style={{marginTop: '250px' , marginLeft : '200px'}}>
         <div class="card-body">
           <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
             <div class="g-mb-15">
