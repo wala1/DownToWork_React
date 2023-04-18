@@ -17,6 +17,7 @@ function Products() {
     const handleAddProduct=()=>{
         navigate('/addProduct');
     };
+	const user = JSON.parse(localStorage.getItem('user'));
 	
 	
 	
@@ -83,7 +84,7 @@ function Products() {
 					{/* <!-- Content --> */}
                     <div className="content">
                         <div className="list_products shop_mode_thumbs">
-                        <button className='sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small alignleft sc_buttons_st1' onClick={handleAddProduct}> Add new Product</button>
+                       {user&& <button className='sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small alignleft sc_buttons_st1' onClick={handleAddProduct}> Add new Product</button>}
                             <form className="woocommerce-ordering" method="get">
                                 <select name="orderby" className="orderby">
                                     <option value="menu_order" selected="selected">Default sorting</option>

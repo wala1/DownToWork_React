@@ -4,6 +4,8 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const style = {
   position: 'absolute',
@@ -24,6 +26,30 @@ export default function KeepMountedInfoModal({sale}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [myProds, setMyProds] = useState([]);
+  const userString = localStorage.getItem("user");
+  const user = JSON.parse(userString);
+  const id = user._id;
+
+
+  // useEffect(() => {
+  //   if (user) {
+  //     const getMyProducts = async () => {
+  //       try {
+  //         const res = await axios.get("http://localhost:3001/product/getByOwner/" + id);
+  //         setMyProds(res.data);
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+  //     };
+  //     getMyProducts();
+  //   }
+  // }, [id]);
+
+  // const filteredSales = sale.products.filter(
+  //   (p) =>p._id in myProds
+  // );
+
 
   return (
     <div>
@@ -58,10 +84,15 @@ export default function KeepMountedInfoModal({sale}) {
           </Typography>
           <table style={{display:'flex', flexDirection:'column'}}>
             {sale.products?.map((product) => (
+               
              <td>
                  <tr>
-                <td style={{fontWeight:'bold'}}>Product :</td>
+                <td style={{fontWeight:'bold'}}>Product id :</td>
                 <td>{product.productId}</td>
+            </tr>
+            <tr>
+                <td style={{fontWeight:'bold'}}>prod Name :</td>
+                <td>{product.name}</td>
             </tr>
             <tr>
                 <td style={{fontWeight:'bold'}}>Quantity :</td>
