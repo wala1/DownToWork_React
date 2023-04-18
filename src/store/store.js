@@ -14,12 +14,10 @@ const useStore =   create((set) => ({
       set ({loading: true});
 
       const user =  await login(email, password);
-    set({ user , loading:false, err: null});
-    setTimeout(() => {
-      set({loading:false});}, 1000);
+    set({ user , err: null});
     console.log(user);}
     catch(err){
-      set({err, isLoading: false});}
+      set({err});}
       setTimeout(() => {
         set({loading:false});}, 1000);
   },
