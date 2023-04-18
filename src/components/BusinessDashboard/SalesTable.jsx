@@ -8,6 +8,8 @@ import useStore from '../../store/store'
 import KeepMountedInfoModal from './InfoModal';
 import DialogSelect from './DropDownSt';
 import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 
 
 
@@ -19,6 +21,7 @@ function SalesTable() {
       };
     //const [sales, setSales] = useState([]);
     const sales = useStore(state => state.sales);
+    const isLoaded = useStore(state => state.isLoaded);
     const userString = localStorage.getItem("user");
     const user = JSON.parse(userString);
     const id = user._id;
@@ -32,12 +35,16 @@ function SalesTable() {
               );
               console.log(res.data);
               useStore.setState({ sales: res.data });
+              useStore.setState({ isLoaded: true });
           } catch (error) {
               console.log(error);
           }
       };
       getSales();
   }, [id, user.isAdmin]);
+
+ 
+  
   
 
     const filteredSales = sales.filter(
@@ -53,7 +60,10 @@ function SalesTable() {
     };
 
 
-
+    if (!isLoaded) {
+     return( <Box sx={{ width: '100%' }}>
+      <LinearProgress />
+    </Box>)}
 
   return (
     <div className="widgetLg">
@@ -74,7 +84,7 @@ function SalesTable() {
 </th>
       </tr>
       
-      {sales?filteredSales.map((sale) => ( <tr className="widgetLgTr" key={sale._id}>
+      {sales?filteredSales.map((sale) => (<tr className="widgetLgTr" key={sale._id}>
         <td className="widgetLgUser" >
           <img
             src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
