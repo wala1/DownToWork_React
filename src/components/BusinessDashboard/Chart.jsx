@@ -30,11 +30,14 @@ useEffect(() => {
     getIncome();
 }, []);
 
+const sortedMonthlyIncome = monthlyIncome.slice().sort((a, b) => a._id - b._id);
+
+
   return (
     <div>
-        <LineChart width={600} height={300} data={monthlyIncome}>
+        <LineChart width={600} height={300} data={sortedMonthlyIncome}>
   <CartesianGrid strokeDasharray="3 3" />
-  <XAxis dataKey="_id" />
+  <XAxis  dataKey="_id" />
   <YAxis />
   <Tooltip />
   <Legend />

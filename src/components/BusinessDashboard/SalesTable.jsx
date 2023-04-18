@@ -38,6 +38,9 @@ function SalesTable() {
       };
       getSales();
   }, [id, user.isAdmin]);
+
+ 
+  
   
 
     const filteredSales = sales.filter(
@@ -74,7 +77,7 @@ function SalesTable() {
 </th>
       </tr>
       
-      {sales?filteredSales.map((sale) => ( <tr className="widgetLgTr" key={sale._id}>
+      {sales?filteredSales.map((sale) => (<tr className="widgetLgTr" key={sale._id}>
         <td className="widgetLgUser" >
           <img
             src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"

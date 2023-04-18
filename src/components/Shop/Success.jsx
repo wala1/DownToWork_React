@@ -4,6 +4,7 @@ import axios from 'axios';
 import './success.css';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 function Success() {
@@ -11,6 +12,10 @@ function Success() {
   const data = location.state.data;
   const cart = useSelector((state) => state.cart);
   const [isOrderCreated, setIsOrderCreated] = useState(false);
+  const navigate = useNavigate();
+  const handleNav = () => {
+    navigate('/');
+  };
 
   useEffect(() => {
     const createOrder = async () => {
@@ -20,11 +25,13 @@ function Success() {
           customerName: data.billing_details.name,
           products: cart.products.map((item) => ({
             productId: item._id,
+            name :item.prodName,
             quantity: item._quantity,
           })),
           amount: cart.total,
           address: data.billing_details.address,
         });
+        console.log(cart)
         setIsOrderCreated(true);
       } catch (error) {
         console.log(error);
@@ -35,7 +42,7 @@ function Success() {
     }
     console.log(data);
     console.log(cart);
-  }, [ isOrderCreated, cart]);
+  }, [ isOrderCreated]);
 
   return (
     <div className="succ">
@@ -48,7 +55,7 @@ function Success() {
           {isOrderCreated ? (
             <>
               <p id="message">You paid {cart.total}. Your order is being prepared.</p>
-              <a href="#" id="contBtn">
+              <a onClick={()=>handleNav()} id="contBtn">
                 Continue
               </a>
             </>
