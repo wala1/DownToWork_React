@@ -42,7 +42,7 @@ function Success() {
     }
     console.log(data);
     console.log(cart);
-  }, [ isOrderCreated]);
+  }, []);
 
   return (
     <div className="succ">
