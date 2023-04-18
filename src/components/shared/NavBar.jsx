@@ -186,7 +186,7 @@ function NavBar() {
 										<li className="menu-item"><a href="homepage-3.html">Homepage Photos</a></li>
 									</ul>
 								</li>
-								<li className="menu-item menu-item-has-children"><a href='/courses'>Courses</a>
+								<li className="menu-item menu-item-has-children"><a href='/topics'>Courses</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="typography.html">Typography</a></li>
 										<li className="menu-item"><a href="shortcodes.html">Shortcodes</a></li>
@@ -198,7 +198,7 @@ function NavBar() {
 										<li className="menu-item"><a href="not-existing-page-2.html">Page 404 (Style 2)</a></li>
 									</ul>
 								</li>
-								{user&&<li className="menu-item menu-item-has-children"><a href="courses-streampage.html">Courses</a>
+								{user&&<li className="menu-item menu-item-has-children"><a href="topics">Courses</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="courses-streampage.html">All courses</a></li>
 										<li className="menu-item"><a href="free-course.html">Free course</a></li>

@@ -24,7 +24,8 @@ import Quizzes from '../src/components/test/quizzes';
 import ActivationPage from './components/signUp/ActivationPage';
 import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 import Dashboard from './components/Dashboard/MainDash';
-import Courses from './components/Courses/courses';
+import Topics from './components/Courses/topics';
+import Courses from './components/Courses/Courses';
 
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
@@ -64,15 +65,15 @@ function App() {
         <Route path="/game" element={<Cards/>}></Route>
         <Route path="/delete-account" element={<DeleteAccount />}></Route>
         <Route path="/test" element={<LevelTest />}></Route>
-
         <Route path="/" element={<Main />}>
           <Route path="" element={<Home />}></Route>
-          <Route path="/courses" element={Courses}></Route>
-          
+          <Route path="/topics">
+            <Route index element={<Topics/>}></Route>
+            <Route path="courses/:name" element={<Courses/>}></Route>
+          </Route>
           <Route path="/diagnostic/*" element={<Diagnostic />}></Route>
           <Route path="/diagnostic/quizzes/:id" element={<Quizzes />}></Route>
           <Route path="/specialist" element={<Specialist />}></Route>
-
           <Route path="/business" element={<SalesDashboard/>}></Route>
         </Route>
         <Route path="/dashboard" element={<Dashboard />}>
