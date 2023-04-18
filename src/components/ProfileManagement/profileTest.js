@@ -63,10 +63,10 @@ const UserProfile = () => {
     <div>
       <div class="container ">
         <div class="row justify-content-end">
-          <div class="col-lg-4" style={{marginRight: '1000px'}}>
+          <div class="col-lg-4" style={{marginRight: '1100px'}}>
             <div
               class="card "
-              style={{marginTop: '305px', marginInlineStart: '250px'}}
+              style={{marginTop: '200px', marginInlineStart: '350px'}}
             >
               <div className="card-body">
               
@@ -243,11 +243,11 @@ const UserProfile = () => {
           </div>
 
          {/*************************  La partie des cartes à droite *******************/}
-          <div class="col-lg-6">
-            <div class="card-group">
+          <div class="col-lg-8">
+            <div class="card-group" style={{  marginTop: '80px' ,marginLeft: '1100px'}}>
                 {/*************************  Post area *******************/}
               <form onSubmit={handleSubmit} >
-              <div class="card" style={{marginTop: '150px'}}>
+              <div class="card" style={{marginTop: '5px' , marginLeft : '200px'}}>
                 <div class="card-body post-editor">
                   <textarea
                     value={post} onChange={handlePost}
@@ -288,7 +288,7 @@ const UserProfile = () => {
              })}
             </div>
          </div>
-          
+        
 
         </div>
       </div>
