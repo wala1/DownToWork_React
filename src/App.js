@@ -33,6 +33,8 @@ import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 import Dashboard from './components/Dashboard/MainDash';
 import Success from './components/Shop/Success';
 import Fail from './components/Shop/Fail';
+import Topics from './components/Courses/topics';
+import Courses from './components/Courses/Courses';
 
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
@@ -77,15 +79,15 @@ function App() {
         <Route path="/game" element={<Cards/>}></Route>
         <Route path="/delete-account" element={<DeleteAccount />}></Route>
         <Route path="/test" element={<LevelTest />}></Route>
-
         <Route path="/" element={<Main />}>
-          
           <Route path="" element={<Home />}></Route>
-          
+          <Route path="/topics">
+            <Route index element={<Topics/>}></Route>
+            <Route path="courses/:name" element={<Courses/>}></Route>
+          </Route>
           <Route path="/diagnostic/*" element={<Diagnostic />}></Route>
           <Route path="/diagnostic/quizzes/:id" element={<Quizzes />}></Route>
           <Route path="/specialist" element={<Specialist />}></Route>
-
           <Route path="/business" element={<SalesDashboard/>}></Route>
           <Route path="/success" element={<Success />} />
           <Route path="/fail" element={<Fail />} />
