@@ -33,6 +33,9 @@ import {Provider} from 'react-redux';
 import store from './redux/store';
 import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 import Dashboard from './components/Dashboard/MainDash';
+import ManageTest from "./components/test/admin/manageTest";
+import ArrayTest from "./components/test/admin/arrayTest";
+import UpdateTest from "./components/test/admin/UpdateTest";
 import Joyride from 'react-joyride';
 import { Steps } from "./components/Shop/steps"
 import Success from './components/Shop/Success';
@@ -103,12 +106,15 @@ function App () {
             <Route path="courses/:name" element={<Courses/>}></Route>
           </Route>
 
-          </Route>
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="/dashboard/orders" element={<SalesDashboard />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+        </Route>
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="/dashboard/orders" element={<SalesDashboard />}></Route>
+          <Route path="/dashboard/tests" element={<ManageTest/>}></Route>
+          <Route path="/dashboard/arrayTest" element={<ArrayTest/>}></Route>
+          <Route path="/dashboard/updateTest/:id" element={<UpdateTest/>}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </Provider>
   );
 }
