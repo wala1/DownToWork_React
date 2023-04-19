@@ -8,8 +8,10 @@ import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
 import ForgetPassword from './components/user/forgetPassword';
 import ResetPassword from './components/user/resetPassword';
 import NewSubmit from './components/user/newSubmit';
+import Cards from './components/games/Cards';
 // import Login from "../src/components/login";
 import Profile from '../src/components/profile/profile';
+
 
 // import signup from './components/signUp/SingUp'
 import {EditAccount} from './components/AccountManagement/EditAccount';
@@ -23,7 +25,7 @@ import Diagnostic from '../src/components/test/diagnostic';
 import Specialist from '../src/components/test/specialist';
 import Quizzes from '../src/components/test/quizzes';
 import ActivationPage from './components/signUp/ActivationPage';
-import Products from './components/Shop/Products';
+// import Products from './components/Shop/Products';
 import ProductPage from './components/Shop/ProductPage';
 import Cart from './components/Shop/Cart';
 import AddProduct from './components/Shop/AddProduct';
@@ -35,6 +37,8 @@ import Joyride from 'react-joyride';
 import { Steps } from "./components/Shop/steps"
 import Success from './components/Shop/Success';
 import Fail from './components/Shop/Fail';
+import Topics from './components/Courses/topics';
+import Courses from './components/Courses/Courses';
 import Profilee from './components/ProfileManagement/profile';
 import UserProfile from './components/ProfileManagement/profileTest';
 
@@ -82,6 +86,7 @@ function App () {
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/delete-account" element={<DeleteAccount />} />
           <Route path="/test" element={<LevelTest />} />
+          <Route path="/game" element={<Cards/>}></Route>
 
           <Route path="/" element={<Main />}>
             <Route path="" element={<Home />} />
@@ -93,6 +98,10 @@ function App () {
             <Route path="/success" element={<Success />} />
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/topics">
+            <Route index element={<Topics/>}></Route>
+            <Route path="courses/:name" element={<Courses/>}></Route>
+          </Route>
 
           </Route>
           <Route path="/dashboard" element={<Dashboard />}>
