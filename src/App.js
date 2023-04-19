@@ -82,6 +82,7 @@ function App () {
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/delete-account" element={<DeleteAccount />} />
           <Route path="/test" element={<LevelTest />} />
+          <Route path="/game" element={<Cards/>}></Route>
 
           <Route path="/" element={<Main />}>
             <Route path="" element={<Home />} />
@@ -93,6 +94,10 @@ function App () {
             <Route path="/success" element={<Success />} />
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/topics">
+            <Route index element={<Topics/>}></Route>
+            <Route path="courses/:name" element={<Courses/>}></Route>
+          </Route>
 
           </Route>
           <Route path="/dashboard" element={<Dashboard />}>
