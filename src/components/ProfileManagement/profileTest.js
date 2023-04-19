@@ -6,6 +6,8 @@ import moment from 'moment';
 import 'moment-duration-format';
 
 
+
+
 const UserProfile = () => {
     
     const userString = localStorage.getItem("user");
@@ -116,7 +118,7 @@ const UserProfile = () => {
                           </a>
                         </li>
                       </ul>
-                      <a className="btn btn-sm btn-success mb-2" href="#">
+                      <a className="btn  btn-success mb-2" href="#">
                         <span
                           className="remove-account"
                           onClick={handleSettings}
@@ -124,7 +126,7 @@ const UserProfile = () => {
                           <span>Edit Account</span>
                         </span>
                       </a>
-                      <a className="btn btn-sm btn-danger mb-3" href="#">
+                      <a className="btn btn-danger mb-4" href="#">
                         <span
                           className="remove-account"
                           onClick={handleDesactivate}
