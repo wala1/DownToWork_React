@@ -46,15 +46,20 @@ function NavBar() {
 	const userString = localStorage.getItem("user");
 	const user = JSON.parse(userString);
 	const logout = useStore((state) => state.logout);
+	const loading = useStore((state) => state.loading);
 	const navigate = useNavigate();
 	const handleLogout = async () => {
+		useStore.setState({ loading:true });
 		try {
 			await logout();
 			navigate('/');
+			setTimeout(() => {
+			useStore.setState({ loading:false });}, 1000);
 
 		} catch (error) {
 			console.log(error);
 		}
+		useStore.setState({ isLoaded: true });
 	};
 
 	// const handleSignIn = () => {

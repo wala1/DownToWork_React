@@ -17,13 +17,19 @@ function Products() {
 	const navigate = useNavigate();
 	const [products, setProducts] = useState([]);
 	// const[product,setProduct]=useState({});
-	const [quantity, setQuantity] = useState(0);
+	
 
 	const [rating, setRating] = useState(0);
-	const dispatch = useDispatch();
+	
 	const handleAddProduct = () => {
 		navigate('/addProduct');
 	};
+	const [quantity,setQuantity]=useState(0);
+	const dispatch=useDispatch();
+    
+	const user = JSON.parse(localStorage.getItem('user'));
+	
+	
 	
 
 

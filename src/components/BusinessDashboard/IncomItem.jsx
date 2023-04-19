@@ -6,6 +6,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useStore from '../../store/store'
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
 
 
 
@@ -14,6 +17,7 @@ function IncomeItem() {
     const [income, setIncome] = useState([]);
     const [perc, setPerc] = useState(0);
     const sales = useStore(state => state.sales);
+    const isLoaded = useStore(state => state.isLoaded);
     const userString = localStorage.getItem("user");
     const user = JSON.parse(userString);
     const id = user._id;
@@ -24,16 +28,33 @@ function IncomeItem() {
                  "http://localhost:3001/orders/income");
                 console.log(res.data)
                 setIncome(res.data);
+
                 if (res.data.length > 1) {
+                   if(res.data[0]._id>res.data[1]._id){
+                    setPerc((res.data[0].total * 100) / res.data[1].total - 100);
+                    }
                   setPerc((res.data[1].total * 100) / res.data[0].total - 100);
-                }           }
+                }
+                else {
+                    setPerc(0);
+                }
+            }
             catch (error) {
                 console.log(error);
             }
+            useStore.setState({ isLoaded: true });
+
+
         };
         getIncome();
     }, [sales]);
 
+    if(!isLoaded){
+      return(
+      <Box sx={{ display: 'flex' , justifyContent:'center', margin:20}}>
+      <CircularProgress />
+    </Box>)
+    }
   return (
     <>
     <div className="featuredItem">
@@ -53,7 +74,7 @@ function IncomeItem() {
      <div className="featuredItem">
      <span className="featuredTitle">Income</span>
      <div className="featuredMoneyContainer">
-       <span className="featuredMoney">{income[1]?.total}</span>
+       {income.length>0 ?<span className="featuredMoney">{income[1]?.total}</span>:<span className="featuredMoney">{income[0]?.total}</span>}
        <span className="featuredMoneyRate">
       <MonetizationOnIcon className="featuredIcon" ></MonetizationOnIcon>     </span>
      </div>
