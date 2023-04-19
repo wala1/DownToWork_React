@@ -6,10 +6,12 @@ import StripeCheckout from "react-stripe-checkout";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { removeProduct } from "../../redux/cartSlice";
 
 function Cart() {
   const Key ="pk_test_51MpqyNGRNqPvE5WccXSilt2gBlKOh4eNF3j57KdEyHRMiydKkIkvQzct2p9aJXT5AIWzFH8vxC5CoW4yllPdDvWI00UONeUlXQ";
   const [stripeToken, setStripeToken] = useState(null);
+  const cart = useSelector(state => state.cart)
   const myList = cart.products.map((product) => {
 		function handleRemove() {
 			dispatch(removeProduct({ productId: product._id }));
@@ -64,7 +66,7 @@ function Cart() {
 
 
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
+  
   return (
     <body className="page body_style_wide body_filled article_style_boxed layout_single-standard top_panel_style_dark top_panel_opacity_transparent top_panel_above menu_right sidebar_hide woocommerce-cart woocommerce-page">
       {/* archive body_style_wide body_filled article_style_boxed top_panel_style_light top_panel_opacity_solid top_panel_above menu_right sidebar_show sidebar_right woocommerce woocommerce-page */}

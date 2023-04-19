@@ -23,7 +23,7 @@ import Diagnostic from '../src/components/test/diagnostic';
 import Specialist from '../src/components/test/specialist';
 import Quizzes from '../src/components/test/quizzes';
 import ActivationPage from './components/signUp/ActivationPage';
-// import Products from './components/Shop/Products';
+import Products from './components/Shop/Products';
 import ProductPage from './components/Shop/ProductPage';
 import Cart from './components/Shop/Cart';
 import AddProduct from './components/Shop/AddProduct';
@@ -59,7 +59,7 @@ function App () {
       <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
         <Routes>
           <Route path="/addProduct" element={<AddProduct />} />
-          <Route path="/productPage" element={<ProductPage />} />
+          <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/p" element={<Profilee />} />
