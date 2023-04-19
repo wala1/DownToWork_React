@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, Routes, Route, useParams } from 'react-router-dom';
 import InfoSection from './infoSecion';
-import { Description } from '@mui/icons-material';
 import Course from './Course';
 
 function Courses() {
     const [courses, setCourses]=useState([]);
+    const [showAll,setShowAll]= useState(true);
+    const [showVideo,setShowVideo]= useState(false);
     const {name} = useParams();
     useEffect(() => {
         axios
-          .get(`http://localhost:3001/courses`)
+          .get(`http://localhost:3001/courses/find-topic/${name}`)
           .then((response) => {
             setCourses(response.data);
           })
@@ -18,6 +19,16 @@ function Courses() {
             console.log(error);
           });
       }, []);
+const onVideoClick = () => {
+  setShowAll(false);
+  setShowVideo(true);
+  console.log("All : " + showAll , " video : "+showVideo);
+}
+const onAllCoursesClick = () => {
+  setShowAll(true);
+  setShowVideo(false);
+  console.log("All : " + showAll , " video : "+showVideo);
+}
     return ( <>
     {/* Body */}
     <div className="body_wrap">
@@ -33,11 +44,11 @@ function Courses() {
               <div className="content">
                 <div className="isotope_filters masonry-page-3-columns inited">
         
-                  <a href="#" data-filter=".flt_34" className="isotope_filters_button active">
+                  <a onClick={onAllCoursesClick} data-filter=".flt_34" className="isotope_filters_button active">
                     Courses
                   </a>
                   <a
-                    href="#"
+                    onClick={onVideoClick}
                     data-filter=".flt_32"
                     className="isotope_filters_button "
                   >
@@ -66,6 +77,8 @@ function Courses() {
                   </ul> */}
                 </div>
                 {/* ##################################################### */}
+                { showAll && 
+                
                 <div
                   className="isotope_wrap inited"
                   data-columns={3}
@@ -73,12 +86,13 @@ function Courses() {
                 >
                   <div className="d-flex flex-wrap">
                     {courses.map((course) => (
-                      <Course key={course._id} name={course.nameCourse} description={course.descriptionCourse} />
+                      <Course key={course._id} topicName={name} level={course.Level} pdf={course.type} name={course.nameCourse} description={course.descriptionCourse} imageC={course.imageCourse} />
                       
                     ))}
                   </div>
 
                 </div>
+                 }
 
                 <div id="viewmore" className="pagination_wrap pagination_viewmore">
                   <a

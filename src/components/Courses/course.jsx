@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-function Course({name , description , image}) {
+function Course({name , description , imageC , level ,pdf , topicName}) {
     return ( <>
      <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <article className="post_item post_item_masonry post_item_masonry_3 even">
@@ -15,7 +15,7 @@ function Course({name , description , image}) {
                                 href="post-with-video.html"
                               >
                                 <img
-                                  src={name}
+                                  src={imageC}
                                   alt=""
                                   style={{ height: "300px", width: "370px", objectFit: "cover" }}
                                 />
@@ -29,16 +29,15 @@ function Course({name , description , image}) {
                             </h4>
                             <div className="post_info">
                               <span className="post_info_item post_info_posted">
-                                Participant :
+                                Level : {level}
                                 <a href="#" className="post_info_date">
-                                  {/* {test.nbrParticipant} */}17
+                                  {/* {test.nbrParticipant} */}
                                 </a>
                               </span>
                               <span className="post_info_item post_info_posted_by">
-                                Quiz Number :
-                                <a href="#" className="post_info_author">
-                                  {/* {test.nbrQuiz} */}12
-                                </a>
+                                Topic : {topicName}
+                              
+                               
                               </span>
                             </div>
                             <div className="post_descr_buttons_wrapper">
@@ -50,7 +49,8 @@ function Course({name , description , image}) {
                                 //   to={`/diagnostic/quizzes/${test._id}`}
                                   className="sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small"
                                 >
-                                  SHOW TEST
+                                  {pdf==="pdf" ? <i class="fa fa-file-pdf"></i> : <i class="fa fa-file-pdf"></i>  }
+                                
                                 </Link>
                               </div>
                             </div>

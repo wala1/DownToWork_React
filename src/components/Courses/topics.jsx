@@ -101,7 +101,7 @@ function Topics() {
                   <div className="d-flex flex-wrap">
                   
                   {topics.map((topic) => (
-                    <Topic key={topic._id} name={topic.topicName} image={topic.topicImg} />
+                    <Topic key={topic._id} name={topic.topicName} image={topic.topicImg} description={topic.TopicDesc} />
                   ))}
 
                    
