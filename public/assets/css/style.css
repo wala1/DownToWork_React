@@ -5957,7 +5957,6 @@ box-shadow: 0 0 0 0px #28a745;
 
 .buttonSideBySide {
 	text-align: right;
-	margin-right: 10px;
-	/* to add some space between the buttons */
-	padding-top: 20px;
+  margin-right: 10px; /* to add some space between the buttons */
+  padding-top: 20px;
 }
