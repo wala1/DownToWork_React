@@ -16,11 +16,13 @@ import { useNavigate } from 'react-router-dom';
 // import RevolutionSlider from './home/revolutionSlider';
 import { Outlet } from 'react-router-dom';
 //import useStore from '../store/store';
-
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 function Main() {
   const isLogged = useStore((state) => state.isLogged);
+  const loading = useStore((state) => state.loading);
   const navigate = useNavigate();
   const userString = localStorage.getItem("user");
   const user = JSON.parse(userString);  
@@ -38,7 +40,17 @@ function Main() {
       }}
     }, [user]);
 
+    
+if(loading){
+  return(
+  <Box sx={{ display: 'flex' , justifyContent:'center', margin:40}}>
+  <CircularProgress />
+  </Box>)
+  }
+
+
   return (
+
     <Fragment  className='home page body_style_fullscreen body_filled article_style_stretch layout_single-standard top_panel_style_dark top_panel_opacity_transparent top_panel_show top_panel_over menu_right user_menu_show sidebar_hide'>
           <div className="top_panel_fixed_wrap"></div>
 
