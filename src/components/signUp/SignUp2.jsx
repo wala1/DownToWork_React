@@ -158,11 +158,11 @@ setFocused("true");
   const [passwordError, setPasswordError] = useState(''); // state to keep track of password validation error message
   const { login } = useStore();
   const error = useStore((state) => state.err);
+  const loading = useStore((state) => state.loading);
 
   const handleSubmit = async (e) => {
    
     e.preventDefault();
-
     console.log("clicked");
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
@@ -178,8 +178,10 @@ setFocused("true");
       }
     }
     setValidated(true);
+    
+
   };
- 
+
 
 
   

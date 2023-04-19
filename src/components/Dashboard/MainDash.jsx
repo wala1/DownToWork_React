@@ -30,6 +30,7 @@ import useStore from '../../store/store';
 import {useNavigate} from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 
+
 // import Chart from './Chart';
 // import Deposits from './Deposits';
 // import Orders from './Orders';
@@ -108,13 +109,18 @@ function DashboardContent() {
   //   navigate('/');
   // };
   const logout = useStore((state) => state.logout);
+  const loading = useStore((state) => state.loading);
   const handleLogout =async () => {
+    useStore.setState({loading:true});
     try{await logout();
       navigate('/');
   
     }catch(error){
       console.log(error);
       }
+      setTimeout(() => {
+    useStore.setState({loading:false});
+      }, 1000);
       };
 
       const [openM, setOpenM] = React.useState(false);
