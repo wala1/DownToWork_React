@@ -1,0 +1,16 @@
+.table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 1062px;
+    min-height: 25rem;
+    margin: auto;
+  }
+  
+  .table-head {
+    font-weight: bold;
+  }
+  
+  .test-picture {
+    height: 50px;
+    border-radius: 5px;
+  }

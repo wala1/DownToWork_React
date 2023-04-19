@@ -23,6 +23,9 @@ import Quizzes from '../src/components/test/quizzes';
 import ActivationPage from './components/signUp/ActivationPage';
 import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 import Dashboard from './components/Dashboard/MainDash';
+import ManageTest from "./components/test/admin/manageTest";
+import ArrayTest from "./components/test/admin/arrayTest";
+import UpdateTest from "./components/test/admin/UpdateTest";
 
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
@@ -72,6 +75,9 @@ function App() {
         </Route>
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="/dashboard/orders" element={<SalesDashboard />}></Route>
+          <Route path="/dashboard/tests" element={<ManageTest/>}></Route>
+          <Route path="/dashboard/arrayTest" element={<ArrayTest/>}></Route>
+          <Route path="/dashboard/updateTest/:id" element={<UpdateTest/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
