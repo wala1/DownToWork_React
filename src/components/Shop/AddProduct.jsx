@@ -1,7 +1,7 @@
 
 import Nav from '../shared/NavBar';
 import React, { Fragment, useState } from 'react';
-import { addProduct } from '../../services/shopService';
+import {rate, addProduct } from '../../services/shopService';
 
 function AddProduct() {
     const [prodName, setprodName] = useState('');
@@ -19,6 +19,7 @@ function AddProduct() {
         console.log(prodName, prodDesc, prodImg, prodPrice,prodBrand,prodCategroy,user._id);
         try {
             await addProduct(prodName, prodDesc, prodImg, prodPrice,prodBrand,prodCategroy,user._id);
+           
         } catch (err) { console.log(err) }
         // window.location.reload();
     }
@@ -46,7 +47,7 @@ function AddProduct() {
                                 <form className='d-flex align-items-center' style={{ backgroundColor: "#ECF0F1" }} onSubmit={handleAddProduct}>
                                     <div className='form-group ' style={{ width: "100%", border: "#ba0000", fontSize: "1.5rem" }}>
                                         <label  style={{ fontSize: "0.8rem" }}>Name</label>
-                                        <input type="text" className='form-control'  onChange={(e)=>setprodName(e.target.value)}  placeholder="Product Name" style={{
+                                        <input type="textArea" className='form-control'  onChange={(e)=>setprodName(e.target.value)}  placeholder="Product Name" style={{
                                             border: "2px solid grey",
                                             borderRadius: "4px"
                                         }}></input>
@@ -75,14 +76,14 @@ function AddProduct() {
                                     </div>
                                     <div className='form-group' style={{ width: "100%", border: "#ba0000" }}>
                                         <label >Brand</label>
-                                        <input type="text" className='form-control'  onChange={(e)=>setprodBrand(e.target.value)} placeholder="Brand" style={{
+                                        <input type="textArea" className='form-control'  onChange={(e)=>setprodBrand(e.target.value)} placeholder="Brand" style={{
                                             border: "2px solid grey",
                                             borderRadius: "4px"
                                         }}></input>
                                     </div>
                                     <div className='form-group' style={{ width: "100%", border: "#ba0000" }}>
                                         <label >Category</label>
-                                        <input type="text" className='form-control'  onChange={(e)=>setProdCategory(e.target.value)} placeholder="Category" style={{
+                                        <input type="textArea" className='form-control'  onChange={(e)=>setProdCategory(e.target.value)} placeholder="Category" style={{
                                             border: "2px solid grey",
                                             borderRadius: "4px"
                                         }}></input>

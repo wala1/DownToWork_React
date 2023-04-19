@@ -8,8 +8,10 @@ import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
 import ForgetPassword from './components/user/forgetPassword';
 import ResetPassword from './components/user/resetPassword';
 import NewSubmit from './components/user/newSubmit';
+import Cards from './components/games/Cards';
 // import Login from "../src/components/login";
 import Profile from '../src/components/profile/profile';
+
 
 // import signup from './components/signUp/SingUp'
 import {EditAccount} from './components/AccountManagement/EditAccount';
@@ -23,7 +25,7 @@ import Diagnostic from '../src/components/test/diagnostic';
 import Specialist from '../src/components/test/specialist';
 import Quizzes from '../src/components/test/quizzes';
 import ActivationPage from './components/signUp/ActivationPage';
-import Products from './components/Shop/Products';
+// import Products from './components/Shop/Products';
 import ProductPage from './components/Shop/ProductPage';
 import Cart from './components/Shop/Cart';
 import AddProduct from './components/Shop/AddProduct';
@@ -31,8 +33,15 @@ import {Provider} from 'react-redux';
 import store from './redux/store';
 import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 import Dashboard from './components/Dashboard/MainDash';
+import ManageTest from "./components/test/admin/manageTest";
+import ArrayTest from "./components/test/admin/arrayTest";
+import UpdateTest from "./components/test/admin/UpdateTest";
+import Joyride from 'react-joyride';
+import { Steps } from "./components/Shop/steps"
 import Success from './components/Shop/Success';
 import Fail from './components/Shop/Fail';
+import Topics from './components/Courses/topics';
+import Courses from './components/Courses/Courses';
 import Profilee from './components/ProfileManagement/profile';
 import UserProfile from './components/ProfileManagement/profileTest';
 import Team from './components/ProfileManagement/Team';
@@ -56,9 +65,10 @@ function App () {
   return (
     <Provider store={store}>
       <BrowserRouter>
+      <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
         <Routes>
           <Route path="/addProduct" element={<AddProduct />} />
-          <Route path="/productPage" element={<ProductPage />} />
+          <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/p" element={<Profilee />} />
@@ -83,6 +93,7 @@ function App () {
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/delete-account" element={<DeleteAccount />} />
           <Route path="/test" element={<LevelTest />} />
+          <Route path="/game" element={<Cards/>}></Route>
 
           <Route path="/" element={<Main />}>
             <Route path="" element={<Home />} />
@@ -94,13 +105,20 @@ function App () {
             <Route path="/success" element={<Success />} />
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/topics">
+            <Route index element={<Topics/>}></Route>
+            <Route path="courses/:name" element={<Courses/>}></Route>
+          </Route>
 
-          </Route>
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="/dashboard/orders" element={<SalesDashboard />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+        </Route>
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="/dashboard/orders" element={<SalesDashboard />}></Route>
+          <Route path="/dashboard/tests" element={<ManageTest/>}></Route>
+          <Route path="/dashboard/arrayTest" element={<ArrayTest/>}></Route>
+          <Route path="/dashboard/updateTest/:id" element={<UpdateTest/>}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </Provider>
   );
 }

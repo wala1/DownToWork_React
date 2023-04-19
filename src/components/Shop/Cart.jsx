@@ -6,11 +6,36 @@ import StripeCheckout from "react-stripe-checkout";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { removeProduct } from "../../redux/cartSlice";
 
 function Cart() {
   const Key ="pk_test_51MpqyNGRNqPvE5WccXSilt2gBlKOh4eNF3j57KdEyHRMiydKkIkvQzct2p9aJXT5AIWzFH8vxC5CoW4yllPdDvWI00UONeUlXQ";
   const [stripeToken, setStripeToken] = useState(null);
+  const cart = useSelector(state => state.cart)
+  const myList = cart.products.map((product) => {
+		function handleRemove() {
+			dispatch(removeProduct({ productId: product._id }));
+		}
+		console.log(cart.total)
+		return<tr class="cart_item">
+			<td class="product-remove">
+				<a href="#" class="remove" title="Remove this item" onClick={handleRemove} >&times;</a>
+			</td>
+			<td class="product-thumbnail">
+				<a href="#">
+					<img src={`http://localhost:3001/${product.prodImg.imgUrl}`} alt="" />
+				</a>
+			</td>
+			<td class="product-name">
+				{product.prodName}
+			</td>
+			<td class="product-price">
+				<span class="amount">&pound;{product.prodPrice}</span>
+			</td>
+			
+		</tr>
 
+	})
   const onToken = (token) => {
     setStripeToken(token);
   };
@@ -41,7 +66,7 @@ function Cart() {
 
 
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
+  
   return (
     <body className="page body_style_wide body_filled article_style_boxed layout_single-standard top_panel_style_dark top_panel_opacity_transparent top_panel_above menu_right sidebar_hide woocommerce-cart woocommerce-page">
       {/* archive body_style_wide body_filled article_style_boxed top_panel_style_light top_panel_opacity_solid top_panel_above menu_right sidebar_show sidebar_right woocommerce woocommerce-page */}
@@ -86,41 +111,7 @@ function Cart() {
                             </tr>
                           </thead>
                           <tbody>
-                            {cart.products.map((product) => (
-                              <tr class="cart_item">
-                                <td class="product-remove">
-                                  <a
-                                    href="#"
-                                    class="remove"
-                                    title="Remove this item"
-                                  >
-                                    &times;
-                                  </a>
-                                </td>
-                                <td class="product-thumbnail">
-                                  <a href="#">
-                                    <img
-                                      src={`http://localhost:3001/${product.prodImg.imgUrl}`}
-                                      alt=""
-                                    />
-                                  </a>
-                                </td>
-                                <td class="product-name">{product.prodName}</td>
-                                <td class="product-price">
-                                  <span class="amount">
-                                    &pound;{product.prodPrice}
-                                  </span>
-                                </td>
-                                {/* <td class="product-quantity">
-														<div class="quantity">
-															<input type="number" step="1" min="0" name="cart[1][qty]" value="1" title="Qty" class="input-text qty text" size="4" />
-														</div>
-													</td> */}
-                                {/* <td class="product-subtotal">
-														<span class="amount">&pound;{cart.total}</span> 
-													</td> */}
-                              </tr>
-                            ))}
+                          {myList}
                             {/* <tr class="cart_item">
 													<td class="product-remove">
 														<a href="#" class="remove" title="Remove this item">&times;</a> 

@@ -30,8 +30,15 @@ function IncomeItem() {
                 setIncome(res.data);
 
                 if (res.data.length > 1) {
+                   if(res.data[0]._id>res.data[1]._id){
+                    setPerc((res.data[0].total * 100) / res.data[1].total - 100);
+                    }
                   setPerc((res.data[1].total * 100) / res.data[0].total - 100);
-                }}
+                }
+                else {
+                    setPerc(0);
+                }
+            }
             catch (error) {
                 console.log(error);
             }

@@ -4111,8 +4111,8 @@ box-shadow: 0 0 0 0px #28a745;
 }
 .card-title-course{
 	text-transform: uppercase;
-	font-size: 40px;
-	font-weight: 500;
+	font-size: 10 px;
+	/* font-weight: 100 px; */
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 

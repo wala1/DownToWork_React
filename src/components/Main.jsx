@@ -43,7 +43,7 @@ function Main() {
     
 if(loading){
   return(
-  <Box sx={{ display: 'flex' , justifyContent:'center', margin:20}}>
+  <Box sx={{ display: 'flex' , justifyContent:'center', margin:40}}>
   <CircularProgress />
   </Box>)
   }

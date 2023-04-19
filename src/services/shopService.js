@@ -4,7 +4,7 @@ import axios from 'axios';
 const url = 'http://localhost:3001/product/get';
 const addProdUrl = 'http://localhost:3001/product/add';
 const getProductsUrl ='http://localhost:3001/product/getAll';
-
+const updateRateUrl='http://localhost:3001/product/update/';
 
 
 export const addProduct = async (prodName, prodDesc,prodImg, prodPrice,prodBrand,prodCateg,ownerId) => {
@@ -37,4 +37,19 @@ export const getProducts = async () => {
       catch (err) {
           console.log(err.message)
       }
+  }
+  
+
+  export const rate =async (prodId)=> {
+   
+      
+    try {
+        await axios.put(updateRateUrl+prodId,"5")
+        alert("product updated successfuly !")
+        // console.log(prodRate)
+           
+    }
+    catch (err) {
+        console.log(err.message)
+    }
   }

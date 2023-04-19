@@ -1,7 +1,7 @@
-// import React, { Fragment } from 'react';
-// import { useEffect } from 'react';
-// import { gapi } from 'gapi-script';
-import { Fragment } from 'react';
+import  { Fragment } from 'react';
+
+
+
 import {useEffect} from 'react';
 import {gapi} from 'gapi-script';
 import {
@@ -21,6 +21,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import Joyride from 'react-joyride';
+import { Steps } from '../Shop/steps';
 
 
 
@@ -98,7 +100,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 			<div className="menu_user_wrap">
 				<div className="content_wrap clearfix">
 					<div className="menu_user_area menu_user_right menu_user_nav_area">
-						<ul id="menu_user" className="menu_user_nav">
+						<ul id="menu_user" className="menu_user_nav d-flex column">
 							{/* <li class="menu_user_cart">
 								
                                     <a href="#" className='cart_button' onClick={handleCartClick}><span>Cart</span> <b class="cart_total"><span class="amount">&pound;511.39</span></b></a>
@@ -142,7 +144,8 @@ const quantity =useSelector(state=>state.cart.quantity)
 									</ul>
                                 </li> */}
 
-							<button  type="button" className='cart_button' onClick={handleCartClick}>
+							<button  className='btnCart'  onClick={handleCartClick}>
+							{/* <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} /> */}
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
 									<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
 								</svg>
@@ -151,6 +154,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 									{/* <span class="visually-hidden">unread messages</span> */}
 								</span>
 							</button>
+							
 							<li className="menu_user_bookmarks">
 								<a href="#" className="bookmarks_show icon-star-1" title="Show bookmarks"></a>
 								<ul className="bookmarks_list">
@@ -256,7 +260,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 										<li className="menu-item"><a href="homepage-3.html">Homepage Photos</a></li>
 									</ul>
 								</li>
-								<li className="menu-item menu-item-has-children"><a href="#">Features</a>
+								<li className="menu-item menu-item-has-children"><a href='/topics'>Courses</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="typography.html">Typography</a></li>
 										<li className="menu-item"><a href="shortcodes.html">Shortcodes</a></li>
@@ -268,7 +272,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 										<li className="menu-item"><a href="not-existing-page-2.html">Page 404 (Style 2)</a></li>
 									</ul>
 								</li>
-								{user&&<li className="menu-item menu-item-has-children"><a href="courses-streampage.html">Courses</a>
+								{user&&<li className="menu-item menu-item-has-children"><a href="topics">Courses</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="courses-streampage.html">All courses</a></li>
 										<li className="menu-item"><a href="free-course.html">Free course</a></li>

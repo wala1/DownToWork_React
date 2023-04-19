@@ -1,8 +1,41 @@
 
+import { useLocation, useParams } from 'react-router-dom';
 import Nav from '../shared/NavBar';
-import React, { Fragment } from 'react';
+import React, {  useEffect, useState } from 'react';
+import axios from 'axios';
+import Star from './Star';
+import { addProduct } from "../../redux/cartSlice"
+import { useDispatch } from 'react-redux';
 
 function ProductPage() {
+    const dispatch = useDispatch();
+    const [product,setProduct]=useState({});
+    const [quantity, setQuantity] = useState(0);
+// const location=useLocation();
+// const id = location.pathname.split("/")[2];
+const  {id}  = useParams();
+console.log("this is the id",id)
+useEffect(()=>{ const getProduct = async () => {
+    
+   await axios.get(`http://localhost:3001/product/getById/${id}`)
+        .then(response => {
+            setProduct(response.data);
+
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};
+getProduct();
+
+}
+  
+,[])
+// console.log(product.prodImg.imgUrl)
+const handleAddToCart = () => {
+    dispatch(addProduct({ product, quantity, prodPrice: product.prodPrice }));
+}
+
     return (
        
         <body className="archive body_style_wide body_filled article_style_boxed layout_single-standard top_panel_style_dark top_panel_opacity_transparent  top_panel_above menu_right sidebar_show sidebar_right woocommerce woocommerce-page">
@@ -25,10 +58,10 @@ function ProductPage() {
                         <article class="post_item post_item_single post_item_product">
                             <div class="product has-post-thumbnail">
                                 <div class="images inited">
-                                    <a href="http://placehold.it/2300x1533" class="woocommerce-main-image zoom" title="" data-rel="prettyPhoto[product-gallery]">
-										<img src="http://placehold.it/375x375" alt="" title="" />
-									</a>
-                                    <div class="thumbnails columns-5">
+                                
+										{/* <img src={`http://localhost:3001/${product.prodImg.imgUrl}`} alt=""  /> */}
+									
+                                    {/* <div class="thumbnails columns-5">
                                         <a href="http://placehold.it/2300x1533" class="zoom first" title="" data-rel="prettyPhoto[product-gallery]">
 											<img src="http://placehold.it/50x50" alt="" title="" />
 										</a>
@@ -37,11 +70,11 @@ function ProductPage() {
 										</a>
                                         <a href="http://placehold.it/2300x1533" class="zoom" title="" data-rel="prettyPhoto[product-gallery]">
 											<img src="http://placehold.it/50x50" alt="" title="" /></a>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div class="summary entry-summary">
-                                    <h1 class="product_title entry-title">Principles of Written English, Part 2</h1>
-                                    <div class="woocommerce-product-rating">
+                                    <h1 class="product_title entry-title">{product.prodName}</h1>
+                                    {/* <div class="woocommerce-product-rating">
                                         <div class="star-rating" title="Rated 5.00 out of 5">
                                             <span class="width_100per">
 												<strong class="rating">5.00</strong> out of 
@@ -50,31 +83,32 @@ function ProductPage() {
 											</span>
                                         </div>
                                         <a href="#" class="woocommerce-review-link">(<span class="count">2</span> customer reviews)</a> 
-									</div>
+									</div> */}
+                                    {/* <Star id={product._id} rate={product.prodRate} /> */}
                                     <div>
-                                        <p class="price"><span class="amount">&pound;85.00</span></p>
+                                        <p class="price"><span class="amount">&pound;{product.prodPrice}</span></p>
                                     </div>
                                     <div>
-                                        <p>Donec in justo efficitur, sollicitudin mauris ac, aliquam augue. Curabitur at metus ac sem vulputate lacinia.</p>
+                                        <p>{product.prodDesc}</p>
                                     </div>
                                     <form class="cart" method="post" enctype="multipart/form-data">
-                                        <div class="quantity">
+                                        {/* <div class="quantity">
                                             <input type="number" step="1" min="1" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" />
-                                        </div>
-                                        <button type="submit" class="single_add_to_cart_button button alt">Add to cart</button>
+                                        </div> */}
+                                        <button type="submit" class="single_add_to_cart_button button alt"  onClick={handleAddToCart}>Add to cart</button>
                                     </form>
-                                    <div class="product_meta">
+                                    {/* <div class="product_meta">
                                         <span class="posted_in">Category: <a href="product-category.html">Language</a></span>
                                         <span class="tagged_as">Tags: 
 											<a href="product-tag.html">courses</a>, 
 											<a href="product-tag.html">language</a>
 										</span>
                                         <span class="product_id">Product ID: <span>704</span></span>
-                                    </div>
+                                    </div> */}
                                 </div>
 								<div class="clear"></div>
 								{/* <!-- Tabs --> */}
-								 <div class="sc_tabs sc_tabs_style_1 woocommerce-tabs wc-tabs-wrapper" data-active="0">
+								 {/* <div class="sc_tabs sc_tabs_style_1 woocommerce-tabs wc-tabs-wrapper" data-active="0">
 									<ul class="sc_tabs_titles tabs wc-tabs">
 										<li class="sc_tabs_title first">
 											<a href="#sc_tabs_1_1" class="theme_button active">Description</a>
@@ -177,55 +211,10 @@ function ProductPage() {
                                             <div class="clear"></div>
                                         </div>
 									</div>
-								</div>
+								</div> */}
 								{/* <!-- /Tabs -->
 								<!-- Related products --> */}
-                                <div class="related products">
-                                    <h2>Related Products</h2>
-                                    <ul class="products">
-                                        <li class="first product type-product has-post-thumbnail">
-                                            <a href="#"></a>
-											<div class="post_item_wrap">
-												<div class="post_featured">
-													<div class="post_thumb">
-														<a class="hover_icon hover_icon_link" href="#">
-															<img src="http://placehold.it/300x300" alt="" /> 
-														</a>
-													</div>
-												</div>
-												<div class="post_content">
-													<h3><a href="#">Video Training for Microsoft products and technologies</a></h3>
-													<div class="star-rating" title="Rated 5.00 out of 5">
-														<span class="width_100per">
-															<strong class="rating">5.00</strong> out of 5
-														</span>
-													</div>
-													<span class="price"><span class="amount">&pound;150.00</span></span>
-													<a href="#" class="button add_to_cart_button product_type_simple">Add to cart</a> 
-												</div>
-											</div>
-                                        </li>
-                                        <li class="last product type-product has-post-thumbnail">
-                                            <a href="#"></a>
-											<div class="post_item_wrap">
-												<div class="post_featured">
-													<div class="post_thumb">
-														<a class="hover_icon hover_icon_link" href="#">
-															<img src="http://placehold.it/300x300" alt="masonry_05" /> 
-														</a>
-													</div>
-												</div>
-												<div class="post_content">
-													<h3>
-														<a href="#">Principles of Written English, Part 1</a>
-													</h3>
-													<span class="price"><span class="amount">&pound;85.00</span></span>                                     
-													<a href="#" class="button add_to_cart_button product_type_simple">Add to cart</a> 
-												</div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                
                             </div>
                         </article>
                     </div>					
