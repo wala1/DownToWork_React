@@ -54,6 +54,12 @@ function Cards(){
 
     return (
         <>
+        
+             <h1>Memory Game <a href="/topics"> <i  class="fa fa-arrow-left"></i></a> </h1> 
+            
+           
+       
+           
             
             <div className="container1">
                 { items.map((item, index) => (

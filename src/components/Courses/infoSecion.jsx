@@ -19,14 +19,16 @@ function InfoSection({nameTopic,description,image}) {
                   <h3 className="post_title entry-title">
                     {description}
                   </h3>
-                  {/* <div className="post_button">
+                  
+
+                  <div className="post_button">
                     <a
-                      href="free-lesson.html"
+                      href="/topics"
                       className="sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_medium"
                     >
-                      View Tests
+                      Topics
                     </a>
-                  </div> */}
+                  </div>
                 </div>
               </section>
             </article>
