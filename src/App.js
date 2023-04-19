@@ -30,7 +30,8 @@ import {Provider} from "react-redux";
 import store from "./redux/store";
 import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 import Dashboard from './components/Dashboard/MainDash';
-
+import Joyride from 'react-joyride';
+import { Steps } from "./components/Shop/steps"
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
 //   const user = JSON.parse(userString);
@@ -49,11 +50,15 @@ function App() {
   return (
     <Provider store={store}>
     <BrowserRouter>
+    <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
       <Routes>
       <Route path="/addProduct" element={<AddProduct/>}></Route>
       <Route path="/cart" element={<Cart/>}></Route>
-      <Route path="/productPage" element={<ProductPage/>}></Route>
-      <Route path="/products" element={<Products/>}></Route>
+      <Route path="/productPage/:id" element={<ProductPage/>}></Route>
+      <Route path="/products" element={<Products/>}>
+      
+      </Route>
+      
         <Route path="/profile" element={<Profile/>}></Route>
         {/* <Route path="/profile" element={<Profile />}></Route> */}
         {/* <Route path="/desac" element={<DesactivateAccount/>}></Route> */}
