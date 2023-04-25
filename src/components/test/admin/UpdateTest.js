@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 function UpdateTest() {
 
     const { id } = useParams();
-    const [test , setTest] = useState();
+    const [test , setTest] = useState({});
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
@@ -22,13 +22,13 @@ function UpdateTest() {
         async function fetchTest() {
             try {
                 const response = await axios.get(`http://localhost:3001/test/getTestById/${id}`);
-                console.log(test);
+                
                 setTest(response.data.test);
                 setName(response.data.test.name);
                 setCategory(response.data.test.category);
                 setDescription(response.data.test.description);
                 setPicture(response.data.test.picture);
-                console.log(picture);
+                
             } catch (error) {
                 console.error(error);
             }
@@ -36,7 +36,8 @@ function UpdateTest() {
         fetchTest();
     }, [id]);
     
-
+    console.log(test);
+    console.log(picture);
     const handleNameChange = (event) => {
         setName(event.target.value);
         setValidName(/^[a-zA-Z0-9\s]+$/.test(event.target.value) && /^[^0-9\s]/.test(event.target.value));
@@ -80,7 +81,9 @@ function UpdateTest() {
                     picture: picture,
                     creator: null
                 });
-                const createResponse = await axios.post('http://localhost:3001/test/updateTest', test);
+                    
+                // console.log(test);
+                const createResponse = await axios.put('http://localhost:3001/test/updateTest/'+test._id, test);
 
                 console.log('Test object updated:', createResponse.data);
                 console.log('test', test);

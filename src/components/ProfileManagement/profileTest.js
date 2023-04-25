@@ -57,11 +57,14 @@ const UserProfile = () => {
     const handleDesactivate = async (response) => {
       navigate("/desac");
     };
+    const handleNav=async(response)=>{
+      navigate("/business")
+    }
   
 
   return (
     <div>
-      <div class="container ">
+      <div class="container " style={{paddingTop:100}}>
         <div class="row justify-content-end">
           <div class="col-lg-4" style={{marginRight: '1100px'}}>
             <div
@@ -148,6 +151,16 @@ const UserProfile = () => {
                         class="d-flex list-group-item list-group-item-action"
                       >
                         Billing
+                        <span class="icon icon-xs ml-auto">
+                          <span class="fas fa-chevron-right"></span>
+                        </span>
+                      </a>
+                      <a
+                        
+                        class="d-flex list-group-item list-group-item-action"
+                        onClick={()=>handleNav()}
+                      >
+                        My sales 
                         <span class="icon icon-xs ml-auto">
                           <span class="fas fa-chevron-right"></span>
                         </span>
