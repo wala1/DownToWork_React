@@ -25,7 +25,7 @@ import Diagnostic from '../src/components/test/diagnostic';
 import Specialist from '../src/components/test/specialist';
 import Quizzes from '../src/components/test/quizzes';
 import ActivationPage from './components/signUp/ActivationPage';
-// import Products from './components/Shop/Products';
+ import Products from './components/Shop/Products';
 import ProductPage from './components/Shop/ProductPage';
 import Cart from './components/Shop/Cart';
 import AddProduct from './components/Shop/AddProduct';
@@ -105,9 +105,12 @@ function App () {
             <Route path="/success" element={<Success />} />
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/pp" element={<UserProfile />} />
+
             <Route path="/topics">
             <Route index element={<Topics/>}></Route>
             <Route path="courses/:name" element={<Courses/>}></Route>
+            
           </Route>
 
         </Route>
