@@ -25,7 +25,7 @@ import Diagnostic from '../src/components/test/diagnostic';
 import Specialist from '../src/components/test/specialist';
 import Quizzes from '../src/components/test/quizzes';
 import ActivationPage from './components/signUp/ActivationPage';
-// import Products from './components/Shop/Products';
+ import Products from './components/Shop/Products';
 import ProductPage from './components/Shop/ProductPage';
 import Cart from './components/Shop/Cart';
 import AddProduct from './components/Shop/AddProduct';
@@ -38,7 +38,7 @@ import { Steps } from "./components/Shop/steps"
 import Success from './components/Shop/Success';
 import Fail from './components/Shop/Fail';
 import Topics from './components/Courses/topics';
-import Courses from './components/Courses/Courses';
+import Courses from './components/Courses/courses';
 import Profilee from './components/ProfileManagement/profile';
 import UserProfile from './components/ProfileManagement/profileTest';
 
