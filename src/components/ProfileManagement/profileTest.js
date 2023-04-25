@@ -6,6 +6,8 @@ import moment from 'moment';
 import 'moment-duration-format';
 
 
+
+
 const UserProfile = () => {
     
     const userString = localStorage.getItem("user");
@@ -57,11 +59,14 @@ const UserProfile = () => {
     const handleDesactivate = async (response) => {
       navigate("/desac");
     };
+    const handleNav=async(response)=>{
+      navigate("/business")
+    }
   
 
   return (
     <div>
-      <div class="container ">
+      <div class="container " style={{paddingTop:100}}>
         <div class="row justify-content-end">
           <div class="col-lg-4" style={{marginRight: '1100px'}}>
             <div
@@ -116,7 +121,7 @@ const UserProfile = () => {
                           </a>
                         </li>
                       </ul>
-                      <a className="btn btn-sm btn-success mb-2" href="#">
+                      <a className="btn  btn-success mb-2" href="#">
                         <span
                           className="remove-account"
                           onClick={handleSettings}
@@ -124,7 +129,7 @@ const UserProfile = () => {
                           <span>Edit Account</span>
                         </span>
                       </a>
-                      <a className="btn btn-sm btn-danger mb-3" href="#">
+                      <a className="btn btn-danger mb-4" href="#">
                         <span
                           className="remove-account"
                           onClick={handleDesactivate}
@@ -148,6 +153,16 @@ const UserProfile = () => {
                         class="d-flex list-group-item list-group-item-action"
                       >
                         Billing
+                        <span class="icon icon-xs ml-auto">
+                          <span class="fas fa-chevron-right"></span>
+                        </span>
+                      </a>
+                      <a
+                        
+                        class="d-flex list-group-item list-group-item-action"
+                        onClick={()=>handleNav()}
+                      >
+                        My sales 
                         <span class="icon icon-xs ml-auto">
                           <span class="fas fa-chevron-right"></span>
                         </span>

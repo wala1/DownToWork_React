@@ -6,6 +6,8 @@ import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
+import QuizIcon from '@mui/icons-material/Quiz';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
@@ -19,7 +21,7 @@ function MainListItems() {
   const navToDash = () => {
     navigate('/dashboard');
   }
-  
+
 
   return (
     <React.Fragment>
@@ -27,25 +29,25 @@ function MainListItems() {
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
-        <ListItemText primary="Dashboard" onClick={()=>navToDash()}/>
+        <ListItemText primary="Dashboard" onClick={() => navToDash()} />
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>
           <ShoppingCartIcon />
         </ListItemIcon>
-        <ListItemText primary="Orders" onClick={()=>handleNav()}/>
+        <ListItemText primary="Orders" onClick={() => handleNav()} />
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>
-          <PeopleIcon />
+          <QuizIcon />
         </ListItemIcon>
-        <ListItemText primary="Customers" />
+        <ListItemText primary="Add Tests" onClick={() => navigate('/dashboard/tests')} />
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>
-          <BarChartIcon />
+          <QuizIcon />
         </ListItemIcon>
-        <ListItemText primary="Reports" />
+        <ListItemText primary="Manage Tests" onClick={() => navigate('/dashboard/arrayTest')} />
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>

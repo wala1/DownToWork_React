@@ -64,9 +64,9 @@ if(loading){
 
                     {/* <!-- /Content without sidebar -->*/}
                     {/* Footer parts */}
-                    <FooterWidget/>
-                    <FooterTestimonials/> 
-                    <FooterContact/>
+                    {/* <FooterWidget/>
+                    <FooterTestimonials/>  */}
+                    {/* <FooterContact/> */}
                 </div>
             </div>
         </Fragment>

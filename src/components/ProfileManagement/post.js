@@ -1,6 +1,5 @@
 import {React, useState} from 'react';
 import './post.css';
-import {Form} from 'react-router-dom';
 
 const Post = ({text, name, likes, dislikes, date}) => {
   const [showCommentInput, setShowCommentInput] = useState (false);
@@ -21,7 +20,7 @@ const Post = ({text, name, likes, dislikes, date}) => {
 
   return (
     <div>
-      <div class="card" style={{marginTop: '250px', marginLeft: '200px'}}>
+      <div class="card" style={{marginTop: '280px', marginLeft: '200px'}}>
         <div class="card-body">
           <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
             <div className="d-inline-flex" style={{position: 'relative', left: '400px'}}>
@@ -95,11 +94,11 @@ const Post = ({text, name, likes, dislikes, date}) => {
                       placeholder="Add comment"
                     />
                     <div className="d-inline-flex">
-                      <button className="btn btn-primary ml-2" type="submit">
+                      {/* <button className="btn btn-primary ml-2" type="submit">
                         Comment
-                      </button>
-                      <button className="btn btn-danger ml-2" type="submit">
-                        cancel
+                      </button> */}
+                      <button className="btn btn-sucess ml-2" type="submit">
+                      Comment
                       </button>
                     </div>
                   </div>

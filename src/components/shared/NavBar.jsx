@@ -162,7 +162,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 								</ul>
 							</li>
 							{user ? <li className="menu_user_controls">
-								<Link to="/profile">
+								<Link to="/pp">
 									<span className="user_avatar">
 										<img alt="" src="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=16&#038;d=mm&#038;r=g" srcSet="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=32&amp;d=mm&amp;r=g 2x" className="avatar avatar-16 photo" height="16" width="16" />
 									</span>
@@ -260,7 +260,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 										<li className="menu-item"><a href="homepage-3.html">Homepage Photos</a></li>
 									</ul>
 								</li>
-								<li className="menu-item menu-item-has-children"><a href='/topics'>Courses</a>
+								{/* <li className="menu-item menu-item-has-children"><a href='/topics'>Courses</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="typography.html">Typography</a></li>
 										<li className="menu-item"><a href="shortcodes.html">Shortcodes</a></li>
@@ -271,7 +271,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 										<li className="menu-item"><a href="not-existing-page.html">Page 404</a></li>
 										<li className="menu-item"><a href="not-existing-page-2.html">Page 404 (Style 2)</a></li>
 									</ul>
-								</li>
+								</li> */}
 								{user&&<li className="menu-item menu-item-has-children"><a href="topics">Courses</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="courses-streampage.html">All courses</a></li>

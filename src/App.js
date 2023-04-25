@@ -33,6 +33,9 @@ import {Provider} from 'react-redux';
 import store from './redux/store';
 import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 import Dashboard from './components/Dashboard/MainDash';
+import ManageTest from "./components/test/admin/manageTest";
+import ArrayTest from "./components/test/admin/arrayTest";
+import UpdateTest from "./components/test/admin/UpdateTest";
 import Joyride from 'react-joyride';
 import { Steps } from "./components/Shop/steps"
 import Success from './components/Shop/Success';
@@ -41,6 +44,8 @@ import Topics from './components/Courses/topics';
 import Courses from './components/Courses/courses';
 import Profilee from './components/ProfileManagement/profile';
 import UserProfile from './components/ProfileManagement/profileTest';
+import Team from './components/ProfileManagement/Team';
+import Beam from './components/ProfileManagement/Beam';
 
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
@@ -67,6 +72,8 @@ function App () {
           <Route path="/products" element={<Products />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/p" element={<Profilee />} />
+          <Route path="/t" element={<Team/>} />
+          <Route path="/b" element={<Beam/>} />
           <Route path="/pp" element={<UserProfile />} />
           {/* <Route path="/profile" element={<Profile />}></Route> */}
           {/* <Route path="/desac" element={<DesactivateAccount/>}></Route> */}
@@ -98,17 +105,23 @@ function App () {
             <Route path="/success" element={<Success />} />
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/pp" element={<UserProfile />} />
+
             <Route path="/topics">
             <Route index element={<Topics/>}></Route>
             <Route path="courses/:name" element={<Courses/>}></Route>
+            
           </Route>
 
-          </Route>
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="/dashboard/orders" element={<SalesDashboard />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+        </Route>
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="/dashboard/orders" element={<SalesDashboard />}></Route>
+          <Route path="/dashboard/tests" element={<ManageTest/>}></Route>
+          <Route path="/dashboard/arrayTest" element={<ArrayTest/>}></Route>
+          <Route path="/dashboard/updateTest/:id" element={<UpdateTest/>}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </Provider>
   );
 }
