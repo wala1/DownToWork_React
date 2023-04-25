@@ -44,6 +44,8 @@ import Topics from './components/Courses/topics';
 import Courses from './components/Courses/Courses';
 import Profilee from './components/ProfileManagement/profile';
 import UserProfile from './components/ProfileManagement/profileTest';
+import Team from './components/ProfileManagement/Team';
+import Beam from './components/ProfileManagement/Beam';
 
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
@@ -70,6 +72,9 @@ function App () {
           <Route path="/products" element={<Products />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/p" element={<Profilee />} />
+          <Route path="/t" element={<Team/>} />
+          <Route path="/b" element={<Beam/>} />
+          <Route path="/pp" element={<UserProfile />} />
           {/* <Route path="/profile" element={<Profile />}></Route> */}
           {/* <Route path="/desac" element={<DesactivateAccount/>}></Route> */}
           <Route path="/desac" element={<DesactivateAccount />} />
