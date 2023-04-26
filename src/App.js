@@ -41,11 +41,9 @@ import { Steps } from "./components/Shop/steps"
 import Success from './components/Shop/Success';
 import Fail from './components/Shop/Fail';
 import Topics from './components/Courses/topics';
-import Courses from './components/Courses/Courses';
-import ProfileU from './components/ProfileManagementPrime/userProfile/Profile';
-import UserPage from './components/ProfileManagementPrime/UserPage';
-import Team from './components/ProfileManagementPrime/Team';
+import Profile from './components/ProfileManagementPrime/Profile';
 import Side from './components/ProfileManagementPrime/Side';
+import Courses from './components/Courses/Courses';
 
 
 
@@ -73,9 +71,7 @@ function App () {
           <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/Uuu" element={<ProfileU/>} />
-          <Route path="/userPage" element={<UserPage/>} />
-          <Route path="/Team" element={<Team/>} />
+          <Route path="/Profile" element={<Profile/>} />
           <Route path="/side" element={<Side/>} />
 {/*           <Route path='/pro' element={<Profile/>} />
  */}         {/*  <Route path="/profile" element={<Profile />} /> */}

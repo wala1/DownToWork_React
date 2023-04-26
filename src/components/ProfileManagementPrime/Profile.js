@@ -1,6 +1,7 @@
-import React, {useState , useEffect} from 'react';
+import React, {useState , useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import './Team.css';
+import './Profile.css';
 import UserId from './UserId';
 import AddPost from './AddPost';
 import MyPosts from './MyPosts';
@@ -27,11 +28,6 @@ const Team = () => {
       }, []);
 
 
- /*  const addItem = x => {
-    setPosts ([...posts, x]);
-    console.log (x);
-  };
- */
   function deleteElement (index) {
     const updatedElements = [...posts];
     updatedElements.splice (index, 1);

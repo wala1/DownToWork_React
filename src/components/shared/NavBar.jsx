@@ -158,7 +158,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 								</ul>
 							</li>
 							{user ? <li className="menu_user_controls">
-								<Link to="">
+								<Link to="/Profile">
 									<span className="user_avatar">
 										<img alt="" src="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=16&#038;d=mm&#038;r=g" srcSet="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=32&amp;d=mm&amp;r=g 2x" className="avatar avatar-16 photo" height="16" width="16" />
 									</span>
