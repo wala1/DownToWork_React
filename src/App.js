@@ -112,9 +112,11 @@ function App () {
             <Route path="/success" element={<Success />} />
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
+
             <Route path="/topics">
             <Route index element={<Topics/>}></Route>
             <Route path="courses/:name" element={<Courses/>}></Route>
+            
           </Route>
 
         </Route>
