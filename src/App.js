@@ -10,7 +10,7 @@ import ResetPassword from './components/user/resetPassword';
 import NewSubmit from './components/user/newSubmit';
 import Cards from './components/games/Cards';
 // import Login from "../src/components/login";
-import Profile from '../src/components/profile/profile';
+/* import Profile from '../src/components/profile/profile'; */
 
 
 // import signup from './components/signUp/SingUp'
@@ -44,10 +44,12 @@ import Success from './components/Shop/Success';
 import Fail from './components/Shop/Fail';
 import Topics from './components/Courses/topics';
 import Courses from './components/Courses/Courses';
-import Profilee from './components/ProfileManagement/profile';
-import UserProfile from './components/ProfileManagement/profileTest';
-import Team from './components/ProfileManagement/Team';
-import Beam from './components/ProfileManagement/Beam';
+import ProfileU from './components/ProfileManagementPrime/userProfile/Profile';
+import UserPage from './components/ProfileManagementPrime/UserPage';
+import Team from './components/ProfileManagementPrime/Team';
+import Side from './components/ProfileManagementPrime/Side';
+
+
 
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
@@ -72,11 +74,17 @@ function App () {
           <Route path="/addProduct" element={<AddProduct />} />
           <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/p" element={<Profilee />} />
-          <Route path="/t" element={<Team/>} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/Uuu" element={<ProfileU/>} />
+          <Route path="/userPage" element={<UserPage/>} />
+          <Route path="/Team" element={<Team/>} />
+          <Route path="/side" element={<Side/>} />
+{/*           <Route path='/pro' element={<Profile/>} />
+ */}         {/*  <Route path="/profile" element={<Profile />} /> */}
+         {/*  <Route path="/p" element={<Profilee />} /> */}
+         {/*  <Route path="/t" element={<Team/>} />
           <Route path="/b" element={<Beam/>} />
-          <Route path="/pp" element={<UserProfile />} />
+           */}
           {/* <Route path="/profile" element={<Profile />}></Route> */}
           {/* <Route path="/desac" element={<DesactivateAccount/>}></Route> */}
           <Route path="/desac" element={<DesactivateAccount />} />
@@ -102,12 +110,10 @@ function App () {
             <Route path="/diagnostic/*" element={<Diagnostic />} />
             <Route path="/diagnostic/quizzes/:id" element={<Quizzes />} />
             <Route path="/specialist" element={<Specialist />} />
-
             <Route path="/business" element={<SalesDashboard />} />
             <Route path="/success" element={<Success />} />
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/pp" element={<UserProfile />} />
 
             <Route path="/topics">
             <Route index element={<Topics/>}></Route>
