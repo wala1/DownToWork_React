@@ -3,9 +3,7 @@ import {Provider, UpdownButton} from '@lyket/react';
 import { Button } from '@mui/material';
 
 const MyPosts = ({post, deletePost, username}) => {
-  console.log (post);
-
- 
+   
   return (
     <div className="MyPost">
       {/* <div className="col-md-4">

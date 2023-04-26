@@ -1,6 +1,23 @@
-import React from 'react';
+import React  from 'react';
+import { useNavigate } from "react-router-dom";
 
 const UserId = ({userName, imgURL, email}) => {
+
+
+  
+  const navigate = useNavigate();
+  
+  const handleDeleteAccount = async (response) => {
+    navigate("/delete-account");
+  };
+
+  const handleSettings = async (response) => {
+    navigate("/Edit");
+  };
+  const handleDesactivate = async (response) => {
+    navigate("/desac");
+  };
+
   return (
     <div >
       <div className="prof_img">
@@ -8,13 +25,13 @@ const UserId = ({userName, imgURL, email}) => {
       </div>
       <div className="Buttons">
         <div className="d-grid gap-2 d-md-block">
-          <button className="btn btn-primary be" type="button">
+          <button onClick={handleSettings} className="btn btn-primary be" type="button">
             Edit
           </button>
-          <button className="btn btn-secondary bds" type="button">
+          <button onClick={handleDesactivate} className="btn btn-secondary bds" type="button">
             Desactivate
           </button>
-          <button className="btn btn-danger bdl" type="button">
+          <button onClick={handleDeleteAccount} className="btn btn-danger bdl" type="button">
             Delete
           </button>
         </div>    

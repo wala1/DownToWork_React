@@ -58,7 +58,6 @@ function DesactivateAccount() {
     }
 
     return (<>    
-        <NavBar/>
         <div className="posBlock row justify-content-center mt-10">
                 <div className="col-lg-5 text-center">
                        
