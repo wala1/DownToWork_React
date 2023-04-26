@@ -36,6 +36,8 @@ import Dashboard from './components/Dashboard/MainDash';
 import ManageTest from "./components/test/admin/manageTest";
 import ArrayTest from "./components/test/admin/arrayTest";
 import UpdateTest from "./components/test/admin/UpdateTest";
+import UpdateQuiz from "./components/test/admin/UpdateQuiz";
+import UpdateQuestion from "./components/test/admin/UpdateQuestion";
 import Joyride from 'react-joyride';
 import { Steps } from "./components/Shop/steps"
 import Success from './components/Shop/Success';
@@ -121,6 +123,8 @@ function App () {
           <Route path="/dashboard/tests" element={<ManageTest/>}></Route>
           <Route path="/dashboard/arrayTest" element={<ArrayTest/>}></Route>
           <Route path="/dashboard/updateTest/:id" element={<UpdateTest/>}></Route>
+          <Route path="/dashboard/updateQuiz/:id" element={<UpdateQuiz/>}></Route>
+          <Route path="/dashboard/updateQuestions/:id" element={<UpdateQuestion/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

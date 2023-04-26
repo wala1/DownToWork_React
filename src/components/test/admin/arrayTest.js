@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -42,32 +42,31 @@ function a11yProps(index) {
 }
 
 function ArrayTest() {
-  const [value, setValue] = React.useState(0);
-
+  const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
+
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab style={{width: 'auto'}} label="Manage Test" {...a11yProps(0)} />
-          <Tab style={{width: 'auto'}} label="Manage Quiz" {...a11yProps(1)} />
-          <Tab style={{width: 'auto'}} label="Manage Question" {...a11yProps(2)} />
+          <Tab style={{ width: 'auto' }} label="Manage Test" {...a11yProps(0)} />
+          <Tab style={{ width: 'auto' }} label="Manage Quiz" {...a11yProps(1)} />
+          <Tab style={{ width: 'auto' }} label="Manage Question" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <TestsArray/>
+        <TestsArray />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {/* <QuizzesArray/> */}
-        Hello Two
+        <QuizzesArray />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        {/* <QuestionArray/> */}
-        Hellow Three
+        <QuestionArray />
       </TabPanel>
+
     </Box>
   );
 }
