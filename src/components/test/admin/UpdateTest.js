@@ -24,10 +24,11 @@ function UpdateTest() {
                 const response = await axios.get(`http://localhost:3001/test/getTestById/${id}`);
                 
                 setTest(response.data.test);
+                console.log("Test: "+ test);
                 setName(response.data.test.name);
                 setCategory(response.data.test.category);
                 setDescription(response.data.test.description);
-                setPicture(response.data.test.picture);
+                setPicture(`http://localhost:3001/${response.data.test.picture.imgUrl}`);
                 
             } catch (error) {
                 console.error(error);
@@ -56,14 +57,15 @@ function UpdateTest() {
     const handlePictureChange = (event) => {
         const file = event.target.files[0];
         setIsPictureSelected(!!file);
+        setPicture(file);
 
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                setPicture(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
+        // if (file) {
+        //     const reader = new FileReader();
+        //     reader.onload = () => {
+        //         setPicture(reader.result);
+        //     };
+        //     reader.readAsDataURL(file);
+        // }
     };
 
     const handleSubmit = async (event) => {
@@ -72,22 +74,17 @@ function UpdateTest() {
         if (isValidName && isCategorySelected && isDescriptionValid && isPictureSelected) {
             try {
                 // Create a new test object and save it to the database
-                setTest({
-                    name: name,
-                    category: category,
-                    nbrQuiz: test.nbrQuiz,
-                    nbrParticipant: test.nbrParticipant,
-                    description: description,
-                    picture: picture,
-                    creator: null
-                });
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('category', category);
+                formData.append('nbrQuiz', test.nbrQuiz);
+                formData.append('nbrParticipant', test.nbrParticipant);
+                formData.append('description', description);
+                formData.append('picture', picture);
                     
                 // console.log(test);
-                const createResponse = await axios.put('http://localhost:3001/test/updateTest/'+test._id, test);
+                await axios.put('http://localhost:3001/test/updateTest/'+test._id, formData);
 
-                console.log('Test object updated:', createResponse.data);
-                console.log('test', test);
-                console.log('\n');
                 navigate("/dashboard/arrayTest");
 
                 // ... other code ...
