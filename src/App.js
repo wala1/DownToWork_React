@@ -43,8 +43,8 @@ import { Steps } from "./components/Shop/steps"
 import Success from './components/Shop/Success';
 import Fail from './components/Shop/Fail';
 import Topics from './components/Courses/topics';
-import Profile from './components/ProfileManagementPrime/Profile';
-import Side from './components/ProfileManagementPrime/Side';
+import Profile from './components/ProfileManagement/Profile';
+import Side from './components/ProfileManagement/Side';
 import Courses from './components/Courses/Courses';
 
 
