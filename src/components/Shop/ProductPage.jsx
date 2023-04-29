@@ -11,26 +11,44 @@ function ProductPage() {
     const dispatch = useDispatch();
     const [product,setProduct]=useState({});
     const [quantity, setQuantity] = useState(0);
+    const [owner, setOwner] = useState({});
 // const location=useLocation();
 // const id = location.pathname.split("/")[2];
 const  {id}  = useParams();
 console.log("this is the id",id)
-useEffect(()=>{ const getProduct = async () => {
-    
-   await axios.get(`http://localhost:3001/product/getById/${id}`)
+useEffect(() => {
+    const getProduct = async () => {
+      await axios.get(`http://localhost:3001/product/getById/${id}`)
         .then(response => {
-            setProduct(response.data);
-
+          setProduct(response.data);
         })
         .catch(error => {
-            console.error(error);
+          console.error(error);
         });
-};
-getProduct();
-
-}
+    };
+    getProduct();
+  }, [id]);
   
-,[])
+  useEffect(() => {
+    if (product.ownerId) {
+      const getOwner = async () => {
+        await axios.get(`http://localhost:3001/users/getById/${product.ownerId}`)
+          .then(response => {
+            setOwner(response.data);
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      };
+      getOwner();
+    }
+  }, [product]);
+  
+
+   
+   
+
 // console.log(product.prodImg.imgUrl)
 const handleAddToCart = () => {
     dispatch(addProduct({ product, quantity, prodPrice: product.prodPrice }));
@@ -59,162 +77,33 @@ const handleAddToCart = () => {
                             <div class="product has-post-thumbnail">
                                 <div class="images inited">
                                 
-										{/* <img src={`http://localhost:3001/${product.prodImg.imgUrl}`} alt=""  /> */}
+										 <img src={`http://localhost:3001/${product.prodImg}`} alt=""  />  
 									
-                                    {/* <div class="thumbnails columns-5">
-                                        <a href="http://placehold.it/2300x1533" class="zoom first" title="" data-rel="prettyPhoto[product-gallery]">
-											<img src="http://placehold.it/50x50" alt="" title="" />
-										</a>
-                                        <a href="http://placehold.it/2300x1533" class="zoom" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit" data-rel="prettyPhoto[product-gallery]">
-											<img src="http://placehold.it/50x50" alt="" title="" />
-										</a>
-                                        <a href="http://placehold.it/2300x1533" class="zoom" title="" data-rel="prettyPhoto[product-gallery]">
-											<img src="http://placehold.it/50x50" alt="" title="" /></a>
-                                    </div> */}
+                                   
                                 </div>
                                 <div class="summary entry-summary">
                                     <h1 class="product_title entry-title">{product.prodName}</h1>
-                                    {/* <div class="woocommerce-product-rating">
-                                        <div class="star-rating" title="Rated 5.00 out of 5">
-                                            <span class="width_100per">
-												<strong class="rating">5.00</strong> out of 
-												<span>5</span> based on 
-												<span class="rating">2</span> customer ratings 
-											</span>
-                                        </div>
-                                        <a href="#" class="woocommerce-review-link">(<span class="count">2</span> customer reviews)</a> 
-									</div> */}
-                                    {/* <Star id={product._id} rate={product.prodRate} /> */}
+                                   
                                     <div>
                                         <p class="price"><span class="amount">&pound;{product.prodPrice}</span></p>
                                     </div>
                                     <div>
                                         <p>{product.prodDesc}</p>
                                     </div>
+                                    <div>
+                                       Owner: <p>{owner.email}</p>
+                                    </div>
+
                                     <form class="cart" method="post" enctype="multipart/form-data">
                                         {/* <div class="quantity">
                                             <input type="number" step="1" min="1" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" />
                                         </div> */}
                                         <button type="submit" class="single_add_to_cart_button button alt"  onClick={handleAddToCart}>Add to cart</button>
                                     </form>
-                                    {/* <div class="product_meta">
-                                        <span class="posted_in">Category: <a href="product-category.html">Language</a></span>
-                                        <span class="tagged_as">Tags: 
-											<a href="product-tag.html">courses</a>, 
-											<a href="product-tag.html">language</a>
-										</span>
-                                        <span class="product_id">Product ID: <span>704</span></span>
-                                    </div> */}
+                                  
                                 </div>
 								<div class="clear"></div>
-								{/* <!-- Tabs --> */}
-								 {/* <div class="sc_tabs sc_tabs_style_1 woocommerce-tabs wc-tabs-wrapper" data-active="0">
-									<ul class="sc_tabs_titles tabs wc-tabs">
-										<li class="sc_tabs_title first">
-											<a href="#sc_tabs_1_1" class="theme_button active">Description</a>
-										</li>
-										<li class="sc_tabs_title last">
-											<a href="#sc_tabs_1_2" class="theme_button">Reviews (2)</a>
-										</li>
-									</ul>
-									<div id="sc_tabs_1_1" class="sc_tabs_content odd first panel entry-content wc-tab">
-										<h2>Product Description</h2>
-                                        <p>Sed interdum felis diam, vitae rutrum urna laoreet vehicula. Mauris eget metus ut leo imperdiet mollis et non ipsum. In scelerisque euismod sagittis. Suspendisse et libero dapibus, gravida diam ac, consequat ipsum. Donec in justo efficitur, sollicitudin mauris ac, aliquam augue. Curabitur at metus ac sem vulputate lacinia. Vivamus sed condimentum turpis. Nam lectus justo, convallis porta molestie non, vulputate sit amet neque. Nunc vel urna ornare, rutrum sapien quis, convallis lorem. Nulla elit nulla, ullamcorper semper orci nec, vulputate sollicitudin lectus. Sed lacus nisi, pharetra vitae tempus in, pretium sit amet elit. Aliquam iaculis, libero vel vehicula finibus, dolor sapien imperdiet erat, nec volutpat ex velit varius ante. Sed convallis consectetur pellentesque.</p>
-                                        <p>Sed quis euismod augue. Morbi id sagittis est. Nunc tempus venenatis dui. Aliquam non magna tincidunt, molestie nisl a, pulvinar arcu. Ut leo lacus, faucibus ullamcorper ipsum vel, venenatis pharetra tortor. Morbi facilisis, sapien non maximus vehicula, ligula diam tempus nisi, non ornare mi mi vitae ex. Praesent volutpat consequat tortor, eu commodo arcu ornare eu. Donec dictum velit ut scelerisque commodo. Mauris auctor est id risus venenatis varius. Sed efficitur consequat tempor. </p>
-									</div>
-									<div id="sc_tabs_1_2" class="sc_tabs_content even panel entry-content wc-tab">                                        
-										<div id="reviews">
-                                            <div id="comments">
-                                                <h2>2 reviews for Principles of Written English, Part 2</h2>
-                                                <ol class="commentlist">
-                                                    <li class="comment even thread-even depth-1">
-                                                        <div id="comment-10" class="comment_container">
-                                                            <img alt="" src="http://2.gravatar.com/avatar/8979720d3c48d311027d086f6e15c72b?s=60&#038;d=mm&#038;r=g" srcset="http://2.gravatar.com/avatar/8979720d3c48d311027d086f6e15c72b?s=120&amp;d=mm&amp;r=g 2x" class="avatar avatar-60 photo" height="60" width="60" />
-                                                            <div class="comment-text">
-                                                                <div class="star-rating" title="Rated 5 out of 5">
-                                                                    <span class="width_100per">
-																		<strong>5</strong> out of 5
-																	</span>
-                                                                </div>
-                                                                <p class="meta">
-                                                                    <strong>TRX_admin</strong> &ndash;
-                                                                    <time datetime="2015-02-16T07:39:35+00:00">February 16, 2015</time>:
-                                                                </p>
-                                                                <div class="description">
-                                                                    <p>Mauris non rhoncus mauris, ut porta nunc. Nullam tincidunt tempus ligula, a dapibus massa ullamcorper et. Aliquam facilisis, massa in malesuada vehicula, odio mauris gravida sem, molestie imperdiet metus urna sit amet ex. Praesent egestas, nisi vel finibus finibus, dui nulla aliquam metus, sit amet lacinia diam justo sed mauris.</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="comment odd alt thread-odd thread-alt depth-1">
-                                                        <div id="comment-11" class="comment_container">
-                                                            <img alt="" src="http://0.gravatar.com/avatar/6c09e59577442164452f39fb8cad053e?s=60&#038;d=mm&#038;r=g" srcset="http://0.gravatar.com/avatar/6c09e59577442164452f39fb8cad053e?s=120&amp;d=mm&amp;r=g 2x" class="avatar avatar-60 photo" height="60" width="60" />
-                                                            <div class="comment-text">
-                                                                <div class="star-rating" title="Rated 5 out of 5">
-                                                                    <span class="width_100per"><strong>5</strong> out of 5</span>
-                                                                </div>
-                                                                <p class="meta">
-                                                                    <strong>Sebastian Jones</strong> &ndash;
-                                                                    <time datetime="2015-02-16T07:46:57+00:00">February 16, 2015</time>:
-                                                                </p>
-                                                                <div class="description">
-                                                                    <p>Sed efficitur, eros vitae ultricies bibendum, eros nibh pretium massa, ut consequat nisl felis eu libero. Aenean sit amet convallis nisl. Vestibulum sollicitudin nec sem sit amet aliquam. Integer rutrum vel neque nec porttitor. Integer malesuada at massa at vulputate.</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ol>
-                                            </div>
-                                            <div id="review_form_wrapper">
-                                                <div id="review_form">
-                                                    <div id="respond" class="comment-respond">
-                                                        <form action="#" method="post" id="commentform" class="comment-form">
-                                                            <p class="comment-form-author">
-                                                                <label for="author">Name <span class="required">*</span></label>
-                                                                <input id="author" name="author" type="text" value="" size="30" aria-required="true" />
-                                                            </p>
-                                                            <p class="comment-form-email">
-                                                                <label for="email">Email <span class="required">*</span></label>
-                                                                <input id="email" name="email" type="text" value="" size="30" aria-required="true" />
-                                                            </p>
-                                                            <div class="comment-form-rating">
-                                                                <label for="rating">Your Rating</label>																
-																<p class="stars">
-																	<span>
-																		<a href="#" class="star-1">1</a>
-																		<a href="#" class="star-2">2</a>
-																		<a href="#" class="star-3">3</a>
-																		<a href="#" class="star-4">4</a>
-																		<a href="#" class="star-5">5</a>
-																	</span>
-																</p>				
-                                                                <select name="rating" id="rating" class="disp_none">
-                                                                    <option value="">Rate&hellip;</option>
-                                                                    <option value="5">Perfect</option>
-                                                                    <option value="4">Good</option>
-                                                                    <option value="3">Average</option>
-                                                                    <option value="2">Not that bad</option>
-                                                                    <option value="1">Very Poor</option>
-                                                                </select>
-                                                            </div>
-                                                            <p class="comment-form-comment">
-                                                                <label for="comment">Your Review</label>
-                                                                <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
-                                                            </p>
-                                                            <p class="form-submit">
-                                                                <input name="submit" type="submit" id="submit" class="submit" value="Submit" />
-                                                            </p>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div>
-									</div>
-								</div> */}
-								{/* <!-- /Tabs -->
-								<!-- Related products --> */}
-                                
+								
                             </div>
                         </article>
                     </div>					

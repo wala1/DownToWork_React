@@ -53,6 +53,7 @@ const addItem = (newPost) => {
       setPosts([...posts, response.data]);
       // réinitialiser la zone de texte
       setPost("");
+      console.log(response.data);
     });
   };
   

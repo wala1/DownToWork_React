@@ -4,7 +4,7 @@ import axios from 'axios';
 import { error } from 'jquery';
 import { Link, Route, Routes } from 'react-router-dom';
 import Topic from './topic';
-import Courses from './Courses';
+import Courses from './courses';
 function Topics() {
   const [topics,setTopics] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -1,7 +1,15 @@
 import React from 'react';
 import './Side.css';
+import { useNavigate } from "react-router-dom";
 
 const Side = ({username, email , postNumber}) => {
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("/business");
+  };
+  const goToMyProducts = () => {
+    navigate("/myProducts");
+  };
   return (
     <div>
       <div>
@@ -32,8 +40,8 @@ const Side = ({username, email , postNumber}) => {
               </div>
               <br />
               <div className="actionBtn">
-                <button>Follow</button>
-                <button>Message</button>
+                <button onClick={()=>handleNavigate()}>My Orders</button>
+                <button onClick={()=>goToMyProducts()} >My Products</button>
               </div>
             </div>
           </div>

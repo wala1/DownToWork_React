@@ -1,10 +1,11 @@
 import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 
-const url = 'http://localhost:3001/product/get';
+//const url = 'http://localhost:3001/product/get';
 const addProdUrl = 'http://localhost:3001/product/add';
 const getProductsUrl ='http://localhost:3001/product/getAll';
 const updateRateUrl='http://localhost:3001/product/update/';
+const updateteProductUrl='http://localhost:3001/product/updateProduct/';
 
 
 export const addProduct = async (prodName, prodDesc,prodImg, prodPrice,prodBrand,prodCateg,ownerId) => {
@@ -25,6 +26,19 @@ export const addProduct = async (prodName, prodDesc,prodImg, prodPrice,prodBrand
         console.log(err.message)
     }
 }
+
+export const updateProduct = async (prodId,prodName, prodDesc,prodImg, prodPrice,prodBrand,prodCateg,ownerId) => {
+     
+        try {
+            await axios.put(updateteProductUrl+prodId,{prodName, prodDesc,prodImg, prodPrice,prodBrand,prodCateg,ownerId})
+            alert("product updated successfuly !")
+        }
+        catch (err) {
+            console.log(err.message)
+        }
+    }
+
+
 
 export const getProducts = async () => {
     
