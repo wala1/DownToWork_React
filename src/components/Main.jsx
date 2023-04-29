@@ -58,9 +58,11 @@ if(loading){
                 <div className="page_wrap">
                     <div className="top_panel_fixed_wrap"></div>
                          {/* Navbar */} <NavBar/>
+                         <div style={{"padding-top":90}}>
                                         <Outlet>
                                             {/* <Home path="home" /> */}
                                         </Outlet>
+                                        </div>
 
                     {/* <!-- /Content without sidebar -->*/}
                     {/* Footer parts */}

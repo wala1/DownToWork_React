@@ -45,7 +45,8 @@ import Fail from './components/Shop/Fail';
 import Topics from './components/Courses/topics';
 import Profile from './components/ProfileManagement/Profile';
 import Side from './components/ProfileManagement/Side';
-import Courses from './components/Courses/Courses';
+import Courses from './components/Courses/courses';
+import MyProducts from './components/Shop/MyProducts';
 
 
 
@@ -73,7 +74,6 @@ function App () {
           <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/Profile" element={<Profile/>} />
           <Route path="/side" element={<Side/>} />
 {/*           <Route path='/pro' element={<Profile/>} />
  */}         {/*  <Route path="/profile" element={<Profile />} /> */}
@@ -103,6 +103,8 @@ function App () {
 
           <Route path="/" element={<Main />}>
             <Route path="" element={<Home />} />
+            <Route path="/Profile" element={<Profile/>} />
+
             <Route path="/diagnostic/*" element={<Diagnostic />} />
             <Route path="/diagnostic/quizzes/:id" element={<Quizzes />} />
             <Route path="/specialist" element={<Specialist />} />
@@ -110,6 +112,7 @@ function App () {
             <Route path="/success" element={<Success />} />
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/myProducts" element={<MyProducts />} />
 
             <Route path="/topics">
             <Route index element={<Topics/>}></Route>
