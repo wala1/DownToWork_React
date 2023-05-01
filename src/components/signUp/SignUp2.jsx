@@ -178,8 +178,6 @@ setFocused("true");
       }
     }
     setValidated(true);
-    
-
   };
 
 

@@ -46,6 +46,7 @@ import Topics from './components/Courses/topics';
 import Profile from './components/ProfileManagement/Profile';
 import Side from './components/ProfileManagement/Side';
 import Courses from './components/Courses/Courses';
+import Team from './components/ProfileManagement/Team';
 
 
 
@@ -75,14 +76,7 @@ function App () {
           <Route path="/products" element={<Products />} />
           <Route path="/Profile" element={<Profile/>} />
           <Route path="/side" element={<Side/>} />
-{/*           <Route path='/pro' element={<Profile/>} />
- */}         {/*  <Route path="/profile" element={<Profile />} /> */}
-         {/*  <Route path="/p" element={<Profilee />} /> */}
-         {/*  <Route path="/t" element={<Team/>} />
-          <Route path="/b" element={<Beam/>} />
-           */}
-          {/* <Route path="/profile" element={<Profile />}></Route> */}
-          {/* <Route path="/desac" element={<DesactivateAccount/>}></Route> */}
+          <Route path='/team' element={<Team/>}> </Route>
           <Route path="/desac" element={<DesactivateAccount />} />
           <Route path="/signup2" element={<SignUp2 />} />
           <Route path="/confirm/:activationCode" element={<ActivationPage />} />
