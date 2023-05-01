@@ -45,8 +45,11 @@ import Fail from './components/Shop/Fail';
 import Topics from './components/Courses/topics';
 import Profile from './components/ProfileManagement/Profile';
 import Side from './components/ProfileManagement/Side';
-import Courses from './components/Courses/Courses';
 import Team from './components/ProfileManagement/Team';
+import Courses from './components/Courses/courses';
+import MyProducts from './components/Shop/MyProducts';
+import ChatGPT from './components/chat/ChatGpt';
+
 
 
 
@@ -70,11 +73,11 @@ function App () {
       <BrowserRouter>
       <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
         <Routes>
+        <Route path="/chat" element={<ChatGPT/>} />
           <Route path="/addProduct" element={<AddProduct />} />
           <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/Profile" element={<Profile/>} />
           <Route path="/side" element={<Side/>} />
           <Route path='/team' element={<Team/>}> </Route>
           <Route path="/desac" element={<DesactivateAccount />} />
@@ -97,6 +100,8 @@ function App () {
 
           <Route path="/" element={<Main />}>
             <Route path="" element={<Home />} />
+            <Route path="/Profile" element={<Profile/>} />
+            
             <Route path="/diagnostic/*" element={<Diagnostic />} />
             <Route path="/diagnostic/quizzes/:id" element={<Quizzes />} />
             <Route path="/specialist" element={<Specialist />} />
@@ -104,10 +109,12 @@ function App () {
             <Route path="/success" element={<Success />} />
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/myProducts" element={<MyProducts />} />
 
             <Route path="/topics">
             <Route index element={<Topics/>}></Route>
             <Route path="courses/:name" element={<Courses/>}></Route>
+            
             
           </Route>
 

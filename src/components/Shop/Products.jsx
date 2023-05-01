@@ -46,6 +46,7 @@ function Products() {
 		};
 		getProducts();
 	}, []);
+	const filtredProducts = products.filter((product)=>product.ownerId!==user._id)
 	// console.log(products)
 	
 	const myList = products.map((product) => {
@@ -63,7 +64,7 @@ function Products() {
 				<div className="post_featured">
 					<div className="post_thumb">
 						<a className="hover_icon hover_icon_link" onClick={handleProductPage} >
-							<img src={`http://localhost:3001/${product.prodImg.imgUrl}`} alt=""  />
+							<img src={product.prodImg&&`http://localhost:3001/${product.prodImg.imgUrl}`} alt=""  />
 						</a>
 					</div>
 				</div>

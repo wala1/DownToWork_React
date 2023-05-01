@@ -20,6 +20,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Joyride from 'react-joyride';
 import { Steps } from '../Shop/steps';
+import ChatIcon from '@mui/icons-material/Chat';
 
 
 
@@ -90,7 +91,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 
 
 	return (<Fragment>
-		<header className="top_panel_wrap bg_tint_dark">
+		<header className="top_panel_wrap bg_tint_dark" style={{"padding-top":0}}>
 
 			{/* <!-- User menu --> */}
 			<div className="menu_user_wrap">
@@ -152,7 +153,9 @@ const quantity =useSelector(state=>state.cart.quantity)
 							</button>
 							
 							<li className="menu_user_bookmarks">
-								<a href="#" className="bookmarks_show icon-star-1" title="Show bookmarks"></a>
+								<Link to="/chat">
+								<span><ChatIcon/></span>
+								</Link>
 								<ul className="bookmarks_list">
 									<li><a href="#" className="bookmarks_add icon-star-empty" title="Add the current page into bookmarks">Add bookmark</a></li>
 								</ul>
