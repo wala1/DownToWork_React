@@ -66,12 +66,12 @@ const addItem = (newPost) => {
         </div>
       </header>
       <div className="container">
-        <div className="row con">
+        <div className="row conn">
           <div className="col-md-4 conside">
             <Side username={user.name}  email={user.email} postNumber={posts.length}/>
           </div>
 
-          <div className="col-md-8 con2">
+          <div className="col-md-6 con2">
             <div>
               <AddPost addItem={addItem} username={user.name} />
               <div>
