@@ -47,6 +47,7 @@ import Profile from './components/ProfileManagement/Profile';
 import Side from './components/ProfileManagement/Side';
 import Courses from './components/Courses/courses';
 import MyProducts from './components/Shop/MyProducts';
+import ChatGPT from './components/chat/ChatGpt';
 
 
 
@@ -70,6 +71,7 @@ function App () {
       <BrowserRouter>
       <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
         <Routes>
+        <Route path="/chat" element={<ChatGPT/>} />
           <Route path="/addProduct" element={<AddProduct />} />
           <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
@@ -104,7 +106,7 @@ function App () {
           <Route path="/" element={<Main />}>
             <Route path="" element={<Home />} />
             <Route path="/Profile" element={<Profile/>} />
-
+            
             <Route path="/diagnostic/*" element={<Diagnostic />} />
             <Route path="/diagnostic/quizzes/:id" element={<Quizzes />} />
             <Route path="/specialist" element={<Specialist />} />
@@ -117,6 +119,7 @@ function App () {
             <Route path="/topics">
             <Route index element={<Topics/>}></Route>
             <Route path="courses/:name" element={<Courses/>}></Route>
+            
             
           </Route>
 
