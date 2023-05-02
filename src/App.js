@@ -97,11 +97,9 @@ function App () {
           <Route path="/delete-account" element={<DeleteAccount />} />
           <Route path="/test" element={<LevelTest />} />
           <Route path="/game" element={<Cards/>}></Route>
-
+          <Route path="/Profile" element={<Profile/>} />
           <Route path="/" element={<Main />}>
-            <Route path="" element={<Home />} />
-            <Route path="/Profile" element={<Profile/>} />
-            
+            <Route path="" element={<Home />} /> 
             <Route path="/diagnostic/*" element={<Diagnostic />} />
             <Route path="/diagnostic/quizzes/:id" element={<Quizzes />} />
             <Route path="/specialist" element={<Specialist />} />

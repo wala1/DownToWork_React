@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, Routes, Route, useParams } from 'react-router-dom';
 import InfoSection from './infoSecion';
-import Course from './course';
+import Course from './Course';
 
 function Courses() {
     const [courses, setCourses]=useState([]);
