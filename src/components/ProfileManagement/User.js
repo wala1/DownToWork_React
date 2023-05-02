@@ -1,7 +1,7 @@
 import React from 'react';
 import './Side.css'
 
-const User = () => {
+const User = ({user} ) => {
 
   return (
     <div>
@@ -19,13 +19,13 @@ const User = () => {
       <div className="cardd">
         <div className="lines" />
         <div className="imgBx">
-          <img src={require('./img.jpeg')}  alt="image" />
+          <img src={`http://localhost:3001/${user.picture.imagePath}`}  alt="image" />
         </div>
         <div className="content">
           <div className="details">
             <h2>
-              José Campos <br/>
-              <span>UI Designer / Web Developer</span>{' '}
+              {user.name} <br/>
+              <span>{user.statut}</span>{' '}
             </h2>
             <br/> <tr/>
             <div className="data">

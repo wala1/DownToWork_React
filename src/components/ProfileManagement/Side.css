@@ -52,7 +52,7 @@
     transform: translateX(-50%);
     width: 150px;
     height: 150px;
-    background: #000;
+    background: #26bcf3;
     transition: 0.5s;
     z-index: 10;
     overflow: hidden;
@@ -98,7 +98,6 @@
     z-index: 1;
     width:  calc(100% - 20px);
     height:  calc(100% - 20px);
-    filter: grayscale(1);
 }
 
 .cardd .content{
