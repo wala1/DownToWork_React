@@ -2,7 +2,7 @@ import React, {useState , useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
-const UserId = ({userName, imgURL, email}) => {
+const UserId = ({userName, email}) => {
   const userString = localStorage.getItem ('user');
   const user = JSON.parse (userString);
   const token = localStorage.getItem("token");

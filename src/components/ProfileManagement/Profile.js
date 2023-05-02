@@ -62,13 +62,13 @@ const addItem = (newPost) => {
     <div>
       <header>
         <div className="container-img">
-          <UserId userName={user.name} imgURL={img} email={user.email} />
+          <UserId userName={user.name} email={user.email} />
         </div>
       </header>
       <div className="container">
         <div className="row conn">
           <div className="col-md-4 conside">
-            <Side username={user.name}  email={user.email} postNumber={posts.length}/>
+            <Side username={user.name}  email={user.email} postNumber={posts.length} statut={user.statut}/>
           </div>
 
           <div className="col-md-6 con2">

@@ -2,7 +2,7 @@ import React from 'react';
 import './Side.css';
 import { useNavigate } from "react-router-dom";
 
-const Side = ({username, email , postNumber}) => {
+const Side = ({username, email , postNumber,statut}) => {
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/business");
@@ -17,7 +17,7 @@ const Side = ({username, email , postNumber}) => {
           <div className="lines" />
           <div className="content">
             <div className="details">
-              <h2>{username}<br /><span>UI Designer / Web Developer</span> <span>{email}</span></h2>
+              <h2>{username}<br /><span>{statut}</span> <span>{email}</span></h2>
               <div className="data">
                 <h3>{postNumber}<br /><span>Posts</span></h3>
                 <h3>10<br /><span>Certifs</span></h3>

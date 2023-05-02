@@ -184,3 +184,10 @@
 .cardd .content .details .actionBtn button:hover{
     opacity: 1;
 }
+
+.redirectHome{
+    margin-left: 1450px;
+    width: 20px;
+    height: 20px;
+    color: #ff3c7b
+}
