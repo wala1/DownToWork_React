@@ -38,7 +38,6 @@ const Side = ({username, email , postNumber}) => {
                   <i className="fab fa-facebook" />
                 </a>
               </div>
-
               <div className="actionBtn">
                 <button onClick={()=>handleNavigate()}>My Orders</button>
                 <button onClick={()=>goToMyProducts()} >My Products</button>
