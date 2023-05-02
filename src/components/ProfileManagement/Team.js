@@ -43,6 +43,7 @@ return (
         <div className="container-img">
           <div class="heading" />
         </div>
+        <button className='btn btn-primary beb'> Home </button>
       </header>
       <div className="container">
         <div className="con">
