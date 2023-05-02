@@ -19,7 +19,7 @@ function QuizzesAdmin() {
 
     const handleNameChange = (event) => {
         setName(event.target.value);
-        setValidName(/^[a-zA-Z0-9\s]+$/.quiz(event.target.value) && /^[^0-9\s]/.quiz(event.target.value));
+        setValidName(/^[a-zA-Z0-9\s]+$/.test(event.target.value) && /^[^0-9\s]/.test(event.target.value));
     };
 
     const handleTypeChange = (event) => {
@@ -52,6 +52,8 @@ function QuizzesAdmin() {
                 formData.append('nbrParticipant', 0);
                 formData.append('description', description);
                 formData.append('picture', picture);
+                formData.append('idTest', null);
+
                 await axios.post('http://localhost:3001/quiz/addQuiz', formData);
 
                 navigate("/dashboard/arrayTest");

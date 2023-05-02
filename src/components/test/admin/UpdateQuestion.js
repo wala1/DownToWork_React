@@ -91,7 +91,10 @@ function UpdateQuestion() {
                 formData.append('score', score);
                 formData.append('correctChoices', correctChoices);
                 formData.append('numberOfChoices', numberOfChoices);
-                // formData.append('choices', choices);
+                choices.forEach((choice, index) => {
+                    formData.append(`choices[${index}][text]`, choice.text);
+                    formData.append(`choices[${index}][response]`, choice.response);
+                });
 
                 // const updatedQuestion = {
                 //     title,

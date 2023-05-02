@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextField, Button, FormControl, InputLabel, Select, MenuItem, Grid, Typography } from '@mui/material';
 import "./style.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function TestsAdmin() {
+
+    const userString = localStorage.getItem("user");
+    const user = JSON.parse(userString);
+
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
     const [picture, setPicture] = useState(null);
+    const [creator, setCreator] = useState(user._id);
+
     const [isValidName, setValidName] = useState(true);
     const [isCategorySelected, setIsCategorySelected] = useState(true);
     const [isDescriptionValid, setIsDescriptionValid] = useState(true);
@@ -38,7 +44,7 @@ function TestsAdmin() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
+
         if (isValidName && isCategorySelected && isDescriptionValid && isPictureSelected) {
             try {
                 const formData = new FormData();
@@ -48,19 +54,20 @@ function TestsAdmin() {
                 formData.append('nbrParticipant', 0);
                 formData.append('description', description);
                 formData.append('picture', picture);
-    
+                formData.append('creator', creator);
+
                 // Create a new test object and save it to the database
                 await axios.post('http://localhost:3001/test/addTest', formData);
-    
+
                 navigate("/dashboard/arrayTest");
-    
+
                 // ... other code ...
             } catch (error) {
                 console.error(error);
             }
         }
     };
-    
+
 
 
 
