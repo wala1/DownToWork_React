@@ -1,6 +1,8 @@
 import React, {useEffect , useState} from 'react';
 import User from './User';
 import axios from 'axios';
+import CustumisedNavbar from '../shared/CustumisedNavbar';
+import CusmNav from '../shared/CusmNav';
 
 const Team = () => {
   
@@ -39,6 +41,8 @@ const Team = () => {
 
 return (
     <div>
+      {/* <CustumisedNavbar /> */}
+      <CusmNav/>
       <header>
         <div className="container-img">
           <div class="heading" />

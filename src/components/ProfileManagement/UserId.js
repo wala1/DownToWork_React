@@ -13,6 +13,7 @@ const UserId = ({userName, email}) => {
   };
 
   const urlUpdateImg = 'http://127.0.0.1:3001/users/updateImg/';
+  const urlGetUser = 'http://127.0.0.1:3001/users/getById/';
   const [file, setFile] = useState (null);
   const navigate = useNavigate ();
 
@@ -47,7 +48,7 @@ const UserId = ({userName, email}) => {
     <div>
       <div className="profi">
         <div className="prof_img">
-          <img src={`http://localhost:3001/${user.picture.imagePath}`} alt="user profile" />
+          <img src={`http://localhost:3001/${user.picture.imagePath}`} alt="Profile" />
         </div>
         <input className="upload" type="file" encType="multipart/form-data" onChange={handleFileUpload} />
       </div>

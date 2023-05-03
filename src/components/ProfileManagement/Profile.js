@@ -6,7 +6,8 @@ import UserId from './UserId';
 import AddPost from './AddPost';
 import MyPosts from './MyPosts';
 import Side from './Side';
-
+import NavBar from '../shared/NavBar';
+import CustumisedNavbar from '../shared/CustumisedNavbar';
 
 const Team = () => {
 
@@ -60,6 +61,7 @@ const addItem = (newPost) => {
 
   return (
     <div>
+     <CustumisedNavbar/>
       <header>
         <div className="container-img">
           <UserId userName={user.name} email={user.email} />
