@@ -3,9 +3,11 @@ import User from './User';
 import axios from 'axios';
 import CustumisedNavbar from '../shared/CustumisedNavbar';
 import CusmNav from '../shared/CusmNav';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Team = () => {
   
+  const navigate = useNavigate();
   const userString = localStorage.getItem ('user');
   const user = JSON.parse (userString);
   const token = localStorage.getItem("token");
@@ -42,12 +44,12 @@ const Team = () => {
 return (
     <div>
       {/* <CustumisedNavbar /> */}
-      <CusmNav/>
+     {/*  <CusmNav/> */}
       <header>
         <div className="container-img">
           <div class="heading" />
         </div>
-        <button className='btn btn-primary beb'> Home </button>
+        <button className='btn btn-primary beb' onClick={() => {navigate('/')}}  > Home </button>
       </header>
       <div className="container">
         <div className="con">
