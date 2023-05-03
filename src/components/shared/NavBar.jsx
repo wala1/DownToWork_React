@@ -286,6 +286,14 @@ const quantity =useSelector(state=>state.cart.quantity)
 										</li>
 									</ul>
 								</li>}
+								{user&&<li className="menu-item menu-item-has-children"><a href="/gamesList">Games</a>
+									<ul className="sub-menu">
+										<li className="menu-item"><a href="#">Memory Game</a></li>
+										<li className="menu-item"><a href="#">Sudoku Game</a></li>
+										<li className="menu-item"><a href="#">Tic Tac</a></li>
+										
+									</ul>
+								</li>}
 								<li className="menu-item menu-item-has-children"><a href="team-members.html">Teachers</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="team-members.html">Teachers Team</a></li>

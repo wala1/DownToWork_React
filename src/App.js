@@ -42,11 +42,19 @@ import Success from './components/Shop/Success';
 import Fail from './components/Shop/Fail';
 import Topics from './components/Courses/topics';
 import Courses from './components/Courses/Courses';
+import Jeux from './components/Courses/Courses';
 import Profilee from './components/ProfileManagement/profile';
 import UserProfile from './components/ProfileManagement/profileTest';
 import Team from './components/ProfileManagement/Team';
 import Beam from './components/ProfileManagement/Beam';
-
+import Test from './components/Courses/test';
+import TopicsList from './components/Courses/Admin/TopicsList';
+import Form from './components/Courses/Admin/Form';
+import UpdateForm from './components/Courses/Admin/UpdateForm';
+import CoursesList from './components/Courses/Admin/CoursesList';
+import FormAdd from './components/Courses/Admin/FormAdd';
+import GameList from './components/Courses/GameList';
+import Tic from './components/games/TicTac/Tic';
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
 //   const user = JSON.parse(userString);
@@ -93,10 +101,17 @@ function App () {
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/delete-account" element={<DeleteAccount />} />
           <Route path="/test" element={<LevelTest />} />
-          <Route path="/game" element={<Cards/>}></Route>
+          <Route path="/memoryGame" element={<Cards/>}></Route>
+          <Route path="/ticGame" element={<Tic/>}></Route>
 
+          {/* <Route path="/gamesList" element={<Jeux/>}></Route> */}
+
+          <Route path='/test1' element={<Test/>}/>
           <Route path="/" element={<Main />}>
+
             <Route path="" element={<Home />} />
+            <Route path="/gamesList" element={<GameList/>}/>
+
             <Route path="/diagnostic/*" element={<Diagnostic />} />
             <Route path="/diagnostic/quizzes/:id" element={<Quizzes />} />
             <Route path="/specialist" element={<Specialist />} />
@@ -106,12 +121,12 @@ function App () {
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/pp" element={<UserProfile />} />
-
-            <Route path="/topics">
-            <Route index element={<Topics/>}></Route>
-            <Route path="courses/:name" element={<Courses/>}></Route>
             
-          </Route>
+            <Route path="/topics">
+                <Route index element={<Topics/>}></Route>
+                <Route path="courses/:name" element={<Courses/>}></Route>            
+            </Route>
+          
 
         </Route>
         <Route path="/dashboard" element={<Dashboard />}>
@@ -119,6 +134,13 @@ function App () {
           <Route path="/dashboard/tests" element={<ManageTest/>}></Route>
           <Route path="/dashboard/arrayTest" element={<ArrayTest/>}></Route>
           <Route path="/dashboard/updateTest/:id" element={<UpdateTest/>}></Route>
+          <Route path="/dashboard/topics" element={<TopicsList/>}/>
+          <Route path="/dashboard/topics/add" element={<Form/>}/>
+          <Route path="/dashboard/topics/update/:id" element={<UpdateForm/>}/>
+          <Route path="/dashboard/courses" element={<CoursesList/>}/>
+          <Route path="/dashboard/courses/add" element={<FormAdd/>}/>
+
+
         </Route>
       </Routes>
     </BrowserRouter>
