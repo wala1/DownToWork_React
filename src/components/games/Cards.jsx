@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Card from './Card'
+import { useNavigate } from 'react-router-dom'
 
 function Cards(){
     const [items, setItems] = useState([
@@ -22,7 +23,7 @@ function Cards(){
     ].sort(() => Math.random() - 0.5))
 
     const [prev, setPrev] = useState(-1)
-
+    const navigate = useNavigate();
     function check(current){
         if(items[current].id == items[prev].id){
             items[current].stat = "correct1"
@@ -55,7 +56,7 @@ function Cards(){
     return (
         <>
         
-             <h1>Memory Game <a href="/topics"> <i  class="fa fa-arrow-left"></i></a> </h1> 
+             <h1>Memory Game <a href="/gamesList"> <i  class="fa fa-arrow-left"></i></a> </h1> 
             
            
        
