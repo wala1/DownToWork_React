@@ -1,8 +1,39 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMicrophone } from '@fortawesome/free-solid-svg-icons';
 
 function Score(props) {
     const { trial, quiz } = props;
     const canvasRef = useRef(null);
+
+    const SpeechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
+    const [recordedText, setRecordedText] = useState('');
+    const [isListening, setIsListening] = useState(false);
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+
+    recognition.addEventListener('start', () => {
+        console.log('recording started');
+        setIsListening(true);
+    });
+
+    recognition.addEventListener('result', (event) => {
+        const text = event.results[0][0].transcript;
+        setRecordedText(text);
+    });
+
+    recognition.addEventListener('end', () => {
+        console.log('recording stopped');
+        setIsListening(false);
+    });
+
+    const startRecording = () => {
+        recognition.start();
+    };
+
+    const stopRecording = () => {
+        recognition.stop();
+    };
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -44,21 +75,59 @@ function Score(props) {
         ctx.fillText(`${trial.score}/${trial.answers?.length}`, centerX, centerY);
     }, [trial]);
 
-    return (<>
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '50%' }}>
-                <h1 style={{ fontSize: '2.5rem', fontFamily: 'cursive', color: 'black', fontWeight: 'bold', marginBottom: '26px' }}>
-                    {quiz.name}
-                </h1>
-                <canvas ref={canvasRef} width="250" height="250"></canvas>
-                <button style={{ border: '3px solid #D0E5F9', backgroundColor: 'white', color: '#14599D', marginTop: '20px' }}>Try Again</button>
-            </div>
-            <div style={{ width: '50%',height: '32rem' }}>
-                <textarea style={{width: '100%', height: '100%', backgroundColor: '#1dbb90', color: 'white', fontSize: '1.5rem'}}></textarea>
-            </div>
-        </div>
+    return (
+        <>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    width: '100%',
+                }}
+            >
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        width: '50%',
+                    }}
+                >
+                    <h1
+                        style={{
+                            fontSize: '2.5rem',
+                            fontFamily: 'cursive',
+                            color: 'black',
+                            fontWeight: 'bold',
+                            marginBottom: '26px',
+                        }}
+                    >
+                        {quiz.name}
+                    </h1>
+                    <canvas ref={canvasRef} width="250" height="250"></canvas>
+                    <button
+                        style={{
+                            border: '3px solid #D0E5F9',
+                            backgroundColor: 'white',
+                            color: '#14599D',
+                            marginTop: '20px',
+                        }}
+                        onClick={startRecording}
+                        disabled={isListening}
+                    >
+                        Try Again
+                    </
+                    button>
+                </div>
+                <div style={{ width: '50%', height: '32rem' }}>
+                    <textarea placeholder="Write anything here !" value={recordedText} onChange={(event) => setRecordedText(event.target.value)} style={{border: '2px solid #14599D', width: '100%', height: '100%', backgroundColor: 'white', color: 'black', fontSize: '1.5rem' }}>
+                    </textarea>
+                    <FontAwesomeIcon icon={faMicrophone} onClick={startRecording} size="3x" />
+                </div>
 
-    </>
+            </div>
+
+        </>
     );
 }
 

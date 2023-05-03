@@ -83,7 +83,6 @@ function QuestionForm() {
                     formData.append(`choices[${index}][text]`, choice.text);
                     formData.append(`choices[${index}][response]`, choice.response);
                 });
-                formData.append('idQuiz', null);
                 formData.append('idCourse', null);
 
                 await axios.post('http://localhost:3001/question/addQuestion', formData);
