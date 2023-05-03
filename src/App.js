@@ -49,16 +49,6 @@ import Team from './components/ProfileManagement/Team';
 import Courses from './components/Courses/courses';
 import MyProducts from './components/Shop/MyProducts';
 import ChatGPT from './components/chat/ChatGpt';
-
-
-
-
-import Courses from './components/Courses/Courses';
-import Jeux from './components/Courses/Courses';
-import Profilee from './components/ProfileManagement/profile';
-import UserProfile from './components/ProfileManagement/profileTest';
-import Team from './components/ProfileManagement/Team';
-import Beam from './components/ProfileManagement/Beam';
 import Test from './components/Courses/test';
 import TopicsList from './components/Courses/Admin/TopicsList';
 import Form from './components/Courses/Admin/Form';
@@ -139,9 +129,7 @@ function App () {
             <Route path="courses/:name" element={<Courses/>}></Route>
             
             
-          </Route>
-            <Route path="/pp" element={<UserProfile />} />
-            
+          </Route>            
             <Route path="/topics">
                 <Route index element={<Topics/>}></Route>
                 <Route path="courses/:name" element={<Courses/>}></Route>            
@@ -161,8 +149,7 @@ function App () {
           <Route path="/dashboard/topics/update/:id" element={<UpdateForm/>}/>
           <Route path="/dashboard/courses" element={<CoursesList/>}/>
           <Route path="/dashboard/courses/add" element={<FormAdd/>}/>
-
-
+        </Route>
         </Route>
       </Routes>
     </BrowserRouter>
