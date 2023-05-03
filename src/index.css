@@ -1,6 +1,7 @@
-.bg{
-    background-color: #0D1B48;
+.bg {
+  background-color: #0D1B48;
 }
+
 body {
   background-color: #c9cee0;
 
@@ -13,27 +14,41 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1{
+h1 {
   text-align: center;
   margin-bottom: 1em;
 }
-.container1{
+
+.profi{
+  display: flex;
+  flex-direction: column;
+  gap: 5em; 
+}
+
+.upload {
+  width: 300px;
+  margin-left: 180px;
+}
+
+.container1 {
   /* height: 700px;
   width: 700px; */
-  width: 50%; /* Set the width to whatever value you want */
-  margin: 0 auto; /* Center the element horizontally */
+  width: 50%;
+  /* Set the width to whatever value you want */
+  margin: 0 auto;
+  /* Center the element horizontally */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   gap: 1em;
-  
+
 }
 
 .Buttons a {
- width: 60px;
- height: 30px;
- margin-top: 150px;
- 
+  width: 60px;
+  height: 30px;
+  margin-top: 150px;
+
 }
 
 div.mt-3 {
@@ -41,18 +56,18 @@ div.mt-3 {
 }
 
 div.mt-3 h4 {
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, sans-serif;
   color: #007bff;
 }
 
 div.mt-3 p.text-secondary,
 div.mt-3 p.text-muted {
   font-weight: bold;
-  font-family:Verdana, Geneva, Tahoma, sans-serif
+  font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
 
-.PostButtons{
+.PostButtons {
 
   display: flex;
   flex-direction: row;
@@ -60,14 +75,14 @@ div.mt-3 p.text-muted {
   margin-left: 700px;
 }
 
-.PostButton{
+.PostButton {
   width: 30px;
   height: 30px;
   border-radius: 5px;
   left: -60px;
- }
+}
 
-.be{
+.be {
   padding: 10px 30px;
   border: none;
   outline: none;
@@ -80,7 +95,24 @@ div.mt-3 p.text-muted {
   opacity: 0.8;
 }
 
-.bds{
+.beb {
+  padding: 10px 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: 100;
+  background: #45f3ff;
+  color: #222;
+  cursor: pointer;
+  opacity: 1.8;
+  width: 150px;
+  height: 45px;
+  margin-left: 80px;
+}
+
+
+.bds {
   padding: 10px 30px;
   border: none;
   outline: none;
@@ -93,7 +125,7 @@ div.mt-3 p.text-muted {
   opacity: 0.8;
 }
 
-.bdl{
+.bdl {
   padding: 10px 30px;
   border: none;
   outline: none;
@@ -107,9 +139,9 @@ div.mt-3 p.text-muted {
 }
 
 
-.MyPost{
-  width:90%;
-  margin : auto;
+.MyPost {
+  width: 90%;
+  margin: auto;
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -117,46 +149,47 @@ div.mt-3 p.text-muted {
 
 }
 
-.mt-3{
+.mt-3 {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  width:20%;
-  margin : auto;
+  width: 20%;
+  margin: auto;
   padding: 30px;
   align-items: center;
 
 }
 
-.singlePost{
+.singlePost {
   background-color: #ffffffea;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 10px 15px 15px;
   border-radius: 10px;
 }
 
-.Buttons{
- display: flex;
- justify-content: center;
- gap: 30px;
- margin-right: -550px;
- 
+.Buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-right: -550px;
+
 }
-.Buttons div button{
+
+.Buttons div button {
   width: 150px;
   height: 50px;
   box-shadow: rgba(0, 0, 0, 0.35) 15px 20px 15px;
 
-  
- }
 
- .singleButton {
+}
+
+.singleButton {
   width: 150px;
   height: 50px;
- }
+}
 
- 
-.card1{
+
+.card1 {
   background-color: #3498DB;
   display: flex;
   justify-content: center;
@@ -166,85 +199,140 @@ div.mt-3 p.text-muted {
   animation: 2s hideCard linear;
   transition: transform 0.5s;
 }
-@keyframes hideCard{
-  0%, 70%{
+
+@keyframes hideCard {
+
+  0%,
+  70% {
     transform: rotateY(0);
   }
-  100%{
+
+  100% {
     transform: rotateY(180deg);
   }
 }
-.card1 img{
+
+.card1 img {
   max-width: 80%;
   max-height: 80%;
   transition: transform 0.5s;
   transform: scale(0);
   animation: 2s hideImage linear;
 }
-@keyframes hideImage1{
-  0%, 70%{
+
+@keyframes hideImage1 {
+
+  0%,
+  70% {
     transform: scale(1);
   }
-  100%{
+
+  100% {
     transform: scale(0);
   }
 }
 
-.con1{ 
-display: flex;
-flex-direction: column;
-gap: 30px;
-}
-
-.con2{
+.con1 {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  align-items:start;
 }
 
-.userId-flex{
-display: flex;
-flex-direction: column;
-gap: 60px;
+.con2 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: start;
+  margin-top: -60px;
 }
 
-.button-User-id{
-width: 100px;
+.userId-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 
-.con{
-display: flex;
-flex-direction: column;
-gap: 60px;
+.button-User-id {
+  width: 100px;
 }
 
-.conside{
-margin-top: -60px;
-margin-left: 80px;
-right: 200px;
-} 
+.conn {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-.LeftCard{
-  position : absolute ; 
-  left : 30px; top : 100px ;
+.con {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-left: 0px;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.con>* {
+  margin-bottom: 40px;
+}
+
+.conside {
+  margin-top: -60px;
+  margin-left: 65px;
+  right: 215px;
+}
+
+.LeftCard {
+  position: absolute;
+  left: 30px;
+  top: 100px;
   width: 300px;
   height: 700px;
 }
 
 
-.RightCard{
-  position : absolute ; 
-  right : 30px; top : 100px ;
+.RightCard {
+  position: absolute;
+  right: 30px;
+  top: 100px;
   width: 300px;
   height: 700px;
-  border-radius: 5px; /* arrondit les coins de la bordure */
-  box-shadow: 10 10 5px rgba(0, 0, 0, 0.1); /* ajoute une ombre à la bordure */
+  border-radius: 5px;
+  /* arrondit les coins de la bordure */
+  box-shadow: 10 10 5px rgba(0, 0, 0, 0.1);
+  /* ajoute une ombre à la bordure */
 
 
 }
 
+.heading {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  letter-spacing: 5px;
+  white-space: pre-wrap;
+  line-height: 1.2;
+}
 
+.heading::after {
+  content: "";
+  width: 5px;
+  height: 55px;
+  background-color: white;
+  position: absolute;
+  animation: blinking 1s 3s infinite;
+}
 
 .prof_img {
   width: 200px;
@@ -252,8 +340,8 @@ right: 200px;
   border-radius: 50%;
   margin: 235px;
   overflow: hidden;
-  margin-bottom:-50px;
-  margin-top:50px; 
+  margin-bottom: -50px;
+  margin-top: 50px;
 }
 
 .social {
@@ -269,7 +357,8 @@ right: 200px;
 }
 
 .social a:hover {
-  color: #0077b5; /* Couleur de LinkedIn */
+  color: #0077b5;
+  /* Couleur de LinkedIn */
 }
 
 .prof_img img {
@@ -282,37 +371,42 @@ right: 200px;
   text-align: center;
 }
 
-.btn-lg{
-    margin: 20px 5px;
-    width: 200px;
-    
+.btn-lg {
+  margin: 20px 5px;
+  width: 200px;
+
 }
 
-.addContainer{
- width: 100%;
- display: flex;
- justify-content: center;
- 
+.addContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
 }
 
 .addContainer form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .addContainer form label {
   width: 100%;
 }
 
-.addContainer form textarea  {
+.addContainer form textarea {
   width: 100%;
-  height: 200px; /* ajustez la hauteur selon vos besoins */
-  padding: 10px; /* ajoute un espace autour du texte à l'intérieur du textarea */
-  font-size: 20px; /* taille de la police */
-  border: 2px solid #ccc; /* ajoute une bordure autour du textarea */
-  border-radius: 5px; /* arrondit les coins de la bordure */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* ajoute une ombre à la bordure */
+  height: 200px;
+  /* ajustez la hauteur selon vos besoins */
+  padding: 10px;
+  /* ajoute un espace autour du texte à l'intérieur du textarea */
+  font-size: 20px;
+  /* taille de la police */
+  border: 2px solid #ccc;
+  /* ajoute une bordure autour du textarea */
+  border-radius: 5px;
+  /* arrondit les coins de la bordure */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  /* ajoute une ombre à la bordure */
 }
-

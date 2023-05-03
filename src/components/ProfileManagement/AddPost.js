@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 
 const AddPost = ({addItem , username}) => {
 
-  const [postTitle, setPostTitle] = useState ('');
   const [text, setText] = useState ('');
   const [imgUrl, setImgUrl] = useState ('');
 
@@ -10,10 +9,7 @@ const AddPost = ({addItem , username}) => {
     e.preventDefault ();
     const obj = {text , username};
     addItem (obj);
-  };
-
-  const handlePostTitleChange = e => {
-    setPostTitle (e.target.value);
+    setText('');
   };
 
   const handlePostTextChange = e => {

@@ -51,6 +51,18 @@ function MainListItems() {
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>
+          <QuizIcon />
+        </ListItemIcon>
+        <ListItemText primary="Topics" onClick={() => navigate('/dashboard/topics')} />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <QuizIcon />
+        </ListItemIcon>
+        <ListItemText primary="Courses" onClick={() => navigate('/dashboard/courses')} />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
           <LayersIcon />
         </ListItemIcon>
         <ListItemText primary="Integrations" />

@@ -1,0 +1,65 @@
+import React, {useEffect , useState} from 'react';
+import User from './User';
+import axios from 'axios';
+import CustumisedNavbar from '../shared/CustumisedNavbar';
+import CusmNav from '../shared/CusmNav';
+import { Link, useNavigate } from 'react-router-dom';
+
+const Team = () => {
+  
+  const navigate = useNavigate();
+  const userString = localStorage.getItem ('user');
+  const user = JSON.parse (userString);
+  const token = localStorage.getItem("token");
+  const config = {
+    headers: { 
+      Authorization: `Bearer ${token}`
+    }
+  };
+  const urlGetUsers = 'http://127.0.0.1:3001/users';
+  const [team, setTeam] = useState([]);
+  const heading = 'Please Meet Our Profiles Down To Work';
+  let i = 0;
+
+  function typing () {
+    if (i < heading.length) {
+      document.querySelector ('.heading').innerHTML += heading.charAt (i);
+      i++;
+      setTimeout (typing, 150);
+    }
+  }
+
+  useEffect (() => {
+    typing ();
+
+    axios.get(urlGetUsers , config ).then((response) => {
+      setTeam(response.data);
+    }).catch((err) => { console.log(err);})
+
+          console.log(team);
+
+  }, []);
+
+
+return (
+    <div>
+      {/* <CustumisedNavbar /> */}
+     {/*  <CusmNav/> */}
+      <header>
+        <div className="container-img">
+          <div class="heading" />
+        </div>
+        <button className='btn btn-primary beb' onClick={() => {navigate('/')}}  > Home </button>
+      </header>
+      <div className="container">
+        <div className="con">
+            {team.length > 0 &&  team.map ((u) => (
+                      <User  key={u.id} user={u} />
+                  ))} 
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Team;

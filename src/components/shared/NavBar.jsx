@@ -20,6 +20,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Joyride from 'react-joyride';
 import { Steps } from '../Shop/steps';
+import ChatIcon from '@mui/icons-material/Chat';
 
 
 
@@ -152,13 +153,15 @@ const quantity =useSelector(state=>state.cart.quantity)
 							</button>
 							
 							<li className="menu_user_bookmarks">
-								<a href="#" className="bookmarks_show icon-star-1" title="Show bookmarks"></a>
+								<Link to="/chat">
+								<span><ChatIcon/></span>
+								</Link>
 								<ul className="bookmarks_list">
 									<li><a href="#" className="bookmarks_add icon-star-empty" title="Add the current page into bookmarks">Add bookmark</a></li>
 								</ul>
 							</li>
 							{user ? <li className="menu_user_controls">
-								<Link to="">
+								<Link to="/Profile">
 									<span className="user_avatar">
 										<img alt="" src="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=16&#038;d=mm&#038;r=g" srcSet="http://1.gravatar.com/avatar/45e4d63993e55fa97a27d49164bce80f?s=32&amp;d=mm&amp;r=g 2x" className="avatar avatar-16 photo" height="16" width="16" />
 									</span>
@@ -282,7 +285,15 @@ const quantity =useSelector(state=>state.cart.quantity)
 										</li>
 									</ul>
 								</li>}
-								<li className="menu-item menu-item-has-children"><a href="team-members.html">Teachers</a>
+								{user&&<li className="menu-item menu-item-has-children"><a href="/gamesList">Games</a>
+									<ul className="sub-menu">
+										<li className="menu-item"><a href="#">Memory Game</a></li>
+										<li className="menu-item"><a href="#">Sudoku Game</a></li>
+										<li className="menu-item"><a href="#">Tic Tac</a></li>
+										
+									</ul>
+								</li>}
+								<li className="menu-item menu-item-has-children"><a href=""  onClick={() => {navigate('/team')}}>Teachers</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="team-members.html">Teachers Team</a></li>
 										<li className="menu-item"><a href="personal-page.html">Teacher&#8217;s Personal Page</a></li>

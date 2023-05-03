@@ -45,14 +45,20 @@ import { Steps } from "./components/Shop/steps"
 import Success from './components/Shop/Success';
 import Fail from './components/Shop/Fail';
 import Topics from './components/Courses/topics';
-import Courses from './components/Courses/Courses';
-import ProfileU from './components/ProfileManagementPrime/userProfile/Profile';
-import UserPage from './components/ProfileManagementPrime/UserPage';
-import Team from './components/ProfileManagementPrime/Team';
-import Side from './components/ProfileManagementPrime/Side';
-
-
-
+import Profile from './components/ProfileManagement/Profile';
+import Side from './components/ProfileManagement/Side';
+import Team from './components/ProfileManagement/Team';
+import Courses from './components/Courses/courses';
+import MyProducts from './components/Shop/MyProducts';
+import ChatGPT from './components/chat/ChatGpt';
+import Test from './components/Courses/test';
+import TopicsList from './components/Courses/Admin/TopicsList';
+import Form from './components/Courses/Admin/Form';
+import UpdateForm from './components/Courses/Admin/UpdateForm';
+import CoursesList from './components/Courses/Admin/CoursesList';
+import FormAdd from './components/Courses/Admin/FormAdd';
+import GameList from './components/Courses/GameList';
+import Tic from './components/games/TicTac/Tic';
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
 //   const user = JSON.parse(userString);
@@ -73,22 +79,13 @@ function App () {
       <BrowserRouter>
       <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
         <Routes>
+        <Route path="/chat" element={<ChatGPT/>} />
           <Route path="/addProduct" element={<AddProduct />} />
           <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/Uuu" element={<ProfileU/>} />
-          <Route path="/userPage" element={<UserPage/>} />
-          <Route path="/Team" element={<Team/>} />
           <Route path="/side" element={<Side/>} />
-{/*           <Route path='/pro' element={<Profile/>} />
- */}         {/*  <Route path="/profile" element={<Profile />} /> */}
-         {/*  <Route path="/p" element={<Profilee />} /> */}
-         {/*  <Route path="/t" element={<Team/>} />
-          <Route path="/b" element={<Beam/>} />
-           */}
-          {/* <Route path="/profile" element={<Profile />}></Route> */}
-          {/* <Route path="/desac" element={<DesactivateAccount/>}></Route> */}
+          <Route path='/team' element={<Team/>}> </Route>
           <Route path="/desac" element={<DesactivateAccount />} />
           <Route path="/signup2" element={<SignUp2 />} />
           <Route path="/confirm/:activationCode" element={<ActivationPage />} />
@@ -109,21 +106,39 @@ function App () {
 
           <Route path="/trial" element={<Trial/>}/>
 
+          <Route path="/Profile" element={<Profile/>} />
+          <Route path="/" element={<Main />}>
+            <Route path="" element={<Home />} /> 
+          <Route path="/memoryGame" element={<Cards/>}></Route>
+          <Route path="/ticGame" element={<Tic/>}></Route>
+
+          {/* <Route path="/gamesList" element={<Jeux/>}></Route> */}
+
+          <Route path='/test1' element={<Test/>}/>
+          
           <Route path="/" element={<Main />}>
             <Route path="" element={<Home />} />
             <Route path="/diagnostic" element={<Diagnostic />} />
             <Route path="/diagnostic/quizzes/:id" element={<Quizzes />} />
+            <Route path="/gamesList" element={<GameList/>}/>
             <Route path="/specialist" element={<Specialist />} />
             <Route path="/business" element={<SalesDashboard />} />
             <Route path="/success" element={<Success />} />
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/myProducts" element={<MyProducts />} />
 
             <Route path="/topics">
             <Route index element={<Topics/>}></Route>
             <Route path="courses/:name" element={<Courses/>}></Route>
             
-          </Route>
+            
+          </Route>            
+            <Route path="/topics">
+                <Route index element={<Topics/>}></Route>
+                <Route path="courses/:name" element={<Courses/>}></Route>            
+            </Route>
+          
 
         </Route>
         <Route path="/dashboard" element={<Dashboard />}>
@@ -133,6 +148,12 @@ function App () {
           <Route path="/dashboard/updateTest/:id" element={<UpdateTest/>}></Route>
           <Route path="/dashboard/updateQuiz/:id" element={<UpdateQuiz/>}></Route>
           <Route path="/dashboard/updateQuestions/:id" element={<UpdateQuestion/>}></Route>
+          <Route path="/dashboard/topics" element={<TopicsList/>}/>
+          <Route path="/dashboard/topics/add" element={<Form/>}/>
+          <Route path="/dashboard/topics/update/:id" element={<UpdateForm/>}/>
+          <Route path="/dashboard/courses" element={<CoursesList/>}/>
+          <Route path="/dashboard/courses/add" element={<FormAdd/>}/>
+        </Route>
         </Route>
       </Routes>
     </BrowserRouter>

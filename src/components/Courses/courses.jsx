@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, Routes, Route, useParams } from 'react-router-dom';
 import InfoSection from './infoSecion';
-import Course from './Course';
+import Course from './course';
 
 function Courses() {
     const [courses, setCourses]=useState([]);
@@ -54,9 +54,7 @@ const onAllCoursesClick = () => {
                   >
                     Videos
                   </a>
-                  <a href="/game" data-filter=".flt_33" className="isotope_filters_button">
-                    Games
-                  </a>
+                 
                 </div>
 
                 <div className="pagination">
