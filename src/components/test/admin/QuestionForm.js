@@ -33,7 +33,7 @@ function QuestionForm() {
         setIsFeedbackValid(event.target.value !== '');
     }
 
-   const handlePictureChange = (event) => {
+    const handlePictureChange = (event) => {
         const file = event.target.files[0];
         setIsPictureSelected(!!file);
         setPicture(file);
@@ -79,18 +79,13 @@ function QuestionForm() {
                 formData.append('score', score);
                 formData.append('correctChoices', correctChoices);
                 formData.append('numberOfChoices', numberOfChoices);
-                // const question = {
-                //     title: title,
-                //     type: type,
-                //     feedback: feedback,
-                //     score: score,
-                //     picture: picture,
-                //     correctChoices: correctChoices,
-                //     numberOfChoices: numberOfChoices,
-                //     choices: choices,
-                //     idQuiz: null
-                // };
-                const createResponse = await axios.post('http://localhost:3001/question/addQuestion', formData);
+                choices.forEach((choice, index) => {
+                    formData.append(`choices[${index}][text]`, choice.text);
+                    formData.append(`choices[${index}][response]`, choice.response);
+                });
+                formData.append('idCourse', null);
+
+                await axios.post('http://localhost:3001/question/addQuestion', formData);
 
                 navigate("/dashboard/arrayTest");
 
