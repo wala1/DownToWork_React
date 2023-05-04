@@ -39,7 +39,7 @@ function Diagnostic() {
       <div className="page_wrap">
         <div className="top_panel_fixed_wrap" />
         {/* Content */}
-        <div className="page_content_wrap">
+        <div className="page_content_wrap" style={{marginTop: '-98px'}}>
           {/* Course info section */}
           <div className="content">
             <article className="post_item post_item_single_courses courses">
@@ -134,12 +134,8 @@ function Diagnostic() {
                                 className="hover_icon hover_icon_link"
                                 href="post-with-video.html"
                               >
-                                <img
-                                  src={test.picture}
-                                  alt=""
-                                  style={{ height: "300px", width: "370px", objectFit: "cover" }}
-                                />
-
+                                 <img style={{ height: "300px", width: "370px", objectFit: "cover" }} src={`http://localhost:3001/${test.picture.imgUrl}`} alt="Test" className="test-picture" />
+                               
                               </a>
                             </div>
                           </div>
