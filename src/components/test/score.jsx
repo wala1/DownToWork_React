@@ -2,10 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicrophone } from '@fortawesome/free-solid-svg-icons';
 
+import axios from 'axios';
 function Score(props) {
     const { trial, quiz } = props;
     const canvasRef = useRef(null);
 
+    const userString = localStorage.getItem("user");
+    const user = JSON.parse(userString);
+    const userId = user._id;
     const SpeechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
     const [recordedText, setRecordedText] = useState('');
     const [isListening, setIsListening] = useState(false);
@@ -73,7 +77,22 @@ function Score(props) {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(`${trial.score}/${trial.answers?.length}`, centerX, centerY);
+        if (trial.score > trial.answers?.length / 2) {
+            const level = "Intermediate";
+            axios.put(`http://localhost:3001/users/classification/${userId}/${level}`);
+        } else if (trial.score === trial.answers?.length / 2) {
+            const level = "Beginner";
+            axios.put(`http://localhost:3001/users/classification/${userId}/${level}`);
+        } else if (trial.score === trial.answers?.length) {
+            const level = "Advanced";
+            axios.put(`http://localhost:3001/users/classification/${userId}/${level}`);
+        } else {
+            console.log("this is not the case");
+        }
+
     }, [trial]);
+
+
 
     return (
         <>
@@ -120,7 +139,7 @@ function Score(props) {
                     button>
                 </div>
                 <div style={{ width: '50%', height: '32rem' }}>
-                    <textarea placeholder="Write anything here !" value={recordedText} onChange={(event) => setRecordedText(event.target.value)} style={{border: '2px solid #14599D', width: '100%', height: '100%', backgroundColor: 'white', color: 'black', fontSize: '1.5rem' }}>
+                    <textarea placeholder="Write anything here !" value={recordedText} onChange={(event) => setRecordedText(event.target.value)} style={{ border: '2px solid #14599D', width: '100%', height: '100%', backgroundColor: 'white', color: 'black', fontSize: '1.5rem' }}>
                     </textarea>
                     <FontAwesomeIcon icon={faMicrophone} onClick={startRecording} size="3x" />
                 </div>
