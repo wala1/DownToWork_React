@@ -77,7 +77,7 @@ function App () {
       <BrowserRouter>
       <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
         <Routes>
-        <Route path="/chat" element={<ChatGPT/>} />
+          <Route path="/chat/*" element={<ChatGPT/>} />
           <Route path="/addProduct" element={<AddProduct />} />
           <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />

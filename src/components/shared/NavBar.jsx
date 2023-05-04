@@ -1,6 +1,7 @@
 import  { Fragment } from 'react';
 import {useEffect} from 'react';
 import {gapi} from 'gapi-script';
+import { TextField } from '@mui/material';
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -91,7 +92,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 
 
 	return (<Fragment>
-		<header className="top_panel_wrap bg_tint_dark" style={{"padding-top":0}}>
+		<header className="top_panel_wrap bg_tint_dark" style={{"paddingTop":0}}>
 
 			{/* <!-- User menu --> */}
 			<div className="menu_user_wrap">
@@ -143,23 +144,23 @@ const quantity =useSelector(state=>state.cart.quantity)
 
 							<button  className='btnCart'  onClick={handleCartClick}>
 							{/* <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} /> */}
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart" viewBox="0 0 16 16">
 									<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
 								</svg>
-								<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+								<span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
 									{quantity}
 									{/* <span class="visually-hidden">unread messages</span> */}
 								</span>
 							</button>
 							
-							<li className="menu_user_bookmarks">
+							{user&&<li className="menu_user_bookmarks">
 								<Link to="/chat">
 								<span><ChatIcon/></span>
 								</Link>
-								<ul className="bookmarks_list">
-									<li><a href="#" className="bookmarks_add icon-star-empty" title="Add the current page into bookmarks">Add bookmark</a></li>
-								</ul>
-							</li>
+								{/* <ul className="bookmarks_list">
+									<li><a  className="bookmarks_add icon-star-empty" title="Add the current page into bookmarks">Add bookmark</a></li>
+								</ul> */}
+							</li>}
 							{user ? <li className="menu_user_controls">
 								<Link to="/Profile">
 									<span className="user_avatar">
@@ -233,13 +234,12 @@ const quantity =useSelector(state=>state.cart.quantity)
 					</div>
 					{/* <!-- Logo -->
 						<!-- Search --> */}
-					<div className="search_wrap search_style_regular search_ajax" title="Open/close search form">
+					<div className="search_wrap search_style_regular search_ajax" >
 						<a href="#" className="search_icon icon-search-2"></a>
 						<div className="search_form_wrap">
 							<form method="get" className="search_form" action="#">
 								<button type="submit" className="search_submit icon-zoom-1" title="Start search"></button>
-								<input type="text" className="search_field" placeholder="" value="" name="s" title="" />
-							</form>
+								<TextField id="standard-basic" label="Standard" variant="standard" />							</form>
 						</div>
 						<div className="search_results widget_area bg_tint_light">
 							<a className="search_results_close icon-delete-2"></a>
@@ -247,17 +247,27 @@ const quantity =useSelector(state=>state.cart.quantity)
 							</div>
 						</div>
 					</div>
+					{/* <div style={{
+						position :'relative',
+						top: 50,
+						//height: 50,
+						display: 'flex',
+						flexGrow:0,
+						zIndex:10
+					}}>
+						<TextField id="standard-basic" label="Standard" variant="standard" />
+					</div> */}
 					{/* <!-- /Search -->
 						<!-- Navigation --> */}
                         <a href="#" className="menu_main_responsive_button icon-menu-1"></a>
 						<nav className="menu_main_nav_area">
 							<ul id="menu_main" className="menu_main_nav">
 								<li className="menu-item menu-item-has-children current-menu-ancestor current-menu-parent"><Link to={"/"} >Homepage</Link> 
-									<ul className="sub-menu">
+									{/* <ul className="sub-menu">
 										<li className="menu-item current-menu-item page_item current_page_item "><a href="index.html">Homepage Wide</a></li>
 										<li className="menu-item"><a href="homepage-2.html">Homepage Boxed</a></li>
 										<li className="menu-item"><a href="homepage-3.html">Homepage Photos</a></li>
-									</ul>
+									</ul> */}
 								</li>
 								{/* <li className="menu-item menu-item-has-children"><a href='/topics'>Courses</a>
 									<ul className="sub-menu">
@@ -272,7 +282,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 									</ul>
 								</li> */}
 								{user&&<li className="menu-item menu-item-has-children"><a href="topics">Courses</a>
-									<ul className="sub-menu">
+									{/* <ul className="sub-menu">
 										<li className="menu-item"><a href="courses-streampage.html">All courses</a></li>
 										<li className="menu-item"><a href="free-course.html">Free course</a></li>
 										<li className="menu-item"><a href="paid-course.html">Paid course</a></li>
@@ -283,7 +293,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 												<li className="menu-item"><a href="lesson-from-paid-course.html">Lesson from paid course</a></li>
 											</ul>
 										</li>
-									</ul>
+									</ul> */}
 								</li>}
 								{user&&<li className="menu-item menu-item-has-children"><a href="/gamesList">Games</a>
 									<ul className="sub-menu">
@@ -294,10 +304,10 @@ const quantity =useSelector(state=>state.cart.quantity)
 									</ul>
 								</li>}
 								<li className="menu-item menu-item-has-children"><a href=""  onClick={() => {navigate('/team')}}>Teachers</a>
-									<ul className="sub-menu">
+									{/* <ul className="sub-menu">
 										<li className="menu-item"><a href="team-members.html">Teachers Team</a></li>
 										<li className="menu-item"><a href="personal-page.html">Teacher&#8217;s Personal Page</a></li>
-									</ul>
+									</ul> */}
 								</li>
 								<li className="menu-item menu-item-has-children"><a href="blog-streampage.html">Blog</a>
 									<ul className="sub-menu">
