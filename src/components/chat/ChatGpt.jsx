@@ -177,7 +177,7 @@ export default function ChatGPT() {
                 width="210"
                  height="120"
                 frameBorder="0"
-                class="giphy-embed"
+                className="giphy-embed"
               ></iframe>
             ) : (
               <div><Tooltip title="mic is off"><MicOffIcon style={{color:"red"}}/></Tooltip></div>

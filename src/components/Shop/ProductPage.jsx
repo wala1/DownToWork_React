@@ -70,7 +70,7 @@ const handleAddToCart = () => {
 			{/* <!-- /Page title --> */}
 			{/* <!-- Content with sidebar --> */}
             <div class="page_content_wrap">
-                <div class="content_wrap" style={{marginTop:"200px"}}>
+                <div class="content_wrap" style={{marginTop:"250px"}}>
 					{/* <!-- Content -->					 */}
                     <div class="content">
                         <article class="post_item post_item_single post_item_product">

@@ -362,7 +362,7 @@ setFocused("true");
      <div className="panels-containerhass" >
        <div className="panelhass left-panelhass">
          <div className="contenthass">
-           <h2 style={{fontsize: '1.2rem',fontWeight: 'bold'}}>New here ?</h2>
+           <h2 style={{fontsize: '1.2rem',fontWeight: 'bold',color:'whitesmoke'}}>New here ?</h2>
           
            <button className="btnhass transparenthass" onClick={clickHandler1} id="sign-up-btn">
              Sign up
@@ -372,9 +372,9 @@ setFocused("true");
        </div>
        <div className="panelhass right-panelhass">
          <div className="contenthass">
-           <h2 style={{fontsize: '1.2rem',fontWeight: 'bold'}}>One of us ?</h2>
+           <h2 style={{fontsize: '1.2rem',fontWeight: 'bold',color:'whitesmoke'}}>One of us ?</h2>
           
-           <button className="btnhass transparenthass" onClick={clickHandler2}  id="sign-in-btn">
+           <button className="btnhass transparenthass " onClick={clickHandler2}  id="sign-in-btn">
              Sign in
            </button>
          </div>

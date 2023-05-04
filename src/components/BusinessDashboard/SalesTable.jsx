@@ -96,7 +96,7 @@ function SalesTable() {
         <td className="widgetLgDate">{format(sale.createdAt)}</td>
         <td className="widgetLgAmount">${sale.amount}</td>
         <td className="widgetLgStatus">
-          <Button type={sale.status} />
+          <Button className="status" type={sale.status} />
         </td>
         <td style={{width:60}}>
         <td style={{width:20}}>
@@ -106,7 +106,7 @@ function SalesTable() {
         <KeepMountedInfoModal keepMounted sale={sale} />
         </td>
         <td style={{width:20}}>
-        <DialogSelect keepMounted sale={sale} />
+        <DialogSelect className="drop" keepMounted sale={sale} />
         </td>
         </td>
 
