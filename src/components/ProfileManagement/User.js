@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import './Side.css'
 
 const User = ({user} ) => {
+
+  const navigate = useNavigate ()
+
+  const handleConnect = () => {
+   navigate('/profile')
+  }
 
   return (
     <div>
@@ -32,7 +39,7 @@ const User = ({user} ) => {
              
             </div>
             <div className="actionBtn">
-              <button >Connect with me</button>
+              <button  onClick={handleConnect} >Connect with me</button>
             </div>
           </div>
         </div>

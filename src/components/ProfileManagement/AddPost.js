@@ -21,8 +21,8 @@ const AddPost = ({addItem , username}) => {
   };
 
   return (
-    <div  className='addContainer'>
-      <form onSubmit={handleSubmit} >
+    <div  className='addContainer' >
+      <form onSubmit={handleSubmit} style={{flexShrink: 0, height: '200px', width: '750px' , marginLeft :'-70px'}}>
         
           {/* <h3>New Post</h3> */}
         {/*   <label>Post title </label>
@@ -41,6 +41,7 @@ const AddPost = ({addItem , username}) => {
             placeholder= {`Hey ${username} ! How's it going ?`}
             value={text}
             onChange={handlePostTextChange}
+            
           />
           {/* <div className="form-group">
             <label>img URL</label>
@@ -53,7 +54,7 @@ const AddPost = ({addItem , username}) => {
               onChange={handleImgUrlChange}
             />
           </div> */}
-        <button type="submit" className="btn btn-success btn-lg ">
+        <button type="submit" className="btn btn-success btn-lg bpb ">
           Publish
         </button>
       </form>

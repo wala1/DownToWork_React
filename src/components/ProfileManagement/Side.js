@@ -23,8 +23,8 @@ const Side = ({username, email , postNumber,statut}) => {
                 <h3>10<br /><span>Certifs</span></h3>
                 <h3>150<br /><span>Products</span></h3>
               </div>
-{/*               <br />
- */}              <div className="social">
+              <br />
+            <div className="social">
                 <a href="https://github.com/username">
                   <i className="fab fa-github" />
                 </a>
@@ -39,8 +39,8 @@ const Side = ({username, email , postNumber,statut}) => {
                 </a>
               </div>
               <div className="actionBtn">
-                <button onClick={()=>handleNavigate()}>My Orders</button>
-                <button onClick={()=>goToMyProducts()} >My Products</button>
+                <button onClick={()=>handleNavigate()}>Orders</button>
+                <button onClick={()=>goToMyProducts()} >Products</button>
               </div>
             </div>
           </div>

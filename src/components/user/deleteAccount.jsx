@@ -39,7 +39,7 @@ function DeleteAccount() {
       
       
     const handleCancel = () => {
-        navigate('/signup2');
+        navigate('/profile');
     }
 
     return (<>    
