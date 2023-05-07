@@ -45,7 +45,6 @@ import Fail from './components/Shop/Fail';
 import Topics from './components/Courses/topics';
 import Profile from './components/ProfileManagement/Profile';
 import Side from './components/ProfileManagement/Side';
-import Team from './components/ProfileManagement/Team';
 import Courses from './components/Courses/courses';
 import MyProducts from './components/Shop/MyProducts';
 import ChatGPT from './components/chat/ChatGpt';
@@ -57,6 +56,11 @@ import CoursesList from './components/Courses/Admin/CoursesList';
 import FormAdd from './components/Courses/Admin/FormAdd';
 import GameList from './components/Courses/GameList';
 import Tic from './components/games/TicTac/Tic';
+import Post from './components/ProfileManagement/Post';
+import Members from './components/ProfileManagement/Members';
+import ChangePwd from './components/AccountManagement/ChangePwd';
+import Edit from './components/AccountManagement/Edit';
+
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
 //   const user = JSON.parse(userString);
@@ -83,25 +87,31 @@ function App () {
           <Route path="/products" element={<Products />} />
           <Route path="/products" element={<Products />} />
           <Route path="/side" element={<Side/>} />
-          <Route path='/team' element={<Team/>}> </Route>
           <Route path="/desac" element={<DesactivateAccount />} />
           <Route path="/signup2" element={<SignUp2 />} />
           <Route path="/confirm/:activationCode" element={<ActivationPage />} />
           {/* <Route path="/signup2" element={<SignUp2 />} ></Route> */}
           {/* <Route path="/signup" Component={signup}></Route> */}
           {/* <Route path="/signIn" element={<SignIn />}></Route> */}
-          <Route path="/Edit" element={<EditAccount />} />
           <Route path="/signup2" element={<SignUp2 />} />
           <Route path="/signIn" element={<SignIn />} />
           {/* <Route path="/signup" component={signup}></Route> */}
-          <Route path="/forget-password" element={<ForgetPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/forget-password" element={<ForgetPassword/>} />
+          <Route path="/reset-password" element={<ResetPassword/>} />
           <Route path="/new-submit" element={<NewSubmit />} />
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/delete-account" element={<DeleteAccount />} />
           <Route path="/test" element={<LevelTest />} />
           <Route path="/game" element={<Cards/>}></Route>
           <Route path="/Profile" element={<Profile/>} />
+          <Route path="profile/:id" element={<Profile/>}></Route>
+          <Route path="p" element={<Post/>}></Route>
+          <Route path="team" element={<Members/>}></Route>
+          <Route path="changePwd" element={<ChangePwd/>}></Route>
+          <Route path="edit" element={<Edit/>}></Route>
+
+
+
           <Route path="/" element={<Main />}>
             <Route path="" element={<Home />} /> 
           <Route path="/memoryGame" element={<Cards/>}></Route>

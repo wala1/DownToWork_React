@@ -10,7 +10,7 @@ header {
 	min-height:120px;
 	padding:50px 0;
 	color:#fff;
-	    background: #383838 url(https://www.athenadesignstudio.com/plugins/switch/images/bg.jpg) no-repeat center center;
+	    background: #208163 url(https://www.athenadesignstudio.com/plugins/switch/images/bg.jpg) no-repeat center center;
 	margin-bottom:30px
 }
 
@@ -128,9 +128,15 @@ body {
     color: #777;
 }
 
+.Resverse{
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 30px;
+}
+
 .profile-card-1 .profile-icons .fa {
     margin: 5px;
-    color: #777;
+    color: #777; 
 }
 
 .profile-card-1:hover {
