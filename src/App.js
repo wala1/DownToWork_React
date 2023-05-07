@@ -11,19 +11,26 @@ import NewSubmit from './components/user/newSubmit';
 import Cards from './components/games/Cards';
 // import Login from "../src/components/login";
 /* import Profile from '../src/components/profile/profile'; */
-
-
 // import signup from './components/signUp/SingUp'
 import {EditAccount} from './components/AccountManagement/EditAccount';
 import SignUp2 from './components/signUp/SignUp2';
 import ChangePassword from './components/user/changePassword';
 import DeleteAccount from '../src/components/user/deleteAccount';
-import DesactivateAccount
-  from './components/AccountManagement/DesactivateAccount';
+import DesactivateAccount from './components/AccountManagement/DesactivateAccount';
+
+// here my import 
 import LevelTest from '../src/components/test/levelTest';
 import Diagnostic from '../src/components/test/diagnostic';
 import Specialist from '../src/components/test/specialist';
 import Quizzes from '../src/components/test/quizzes';
+import Trial from "./components/test/Trial"
+import ManageTest from "./components/test/admin/manageTest";
+import ArrayTest from "./components/test/admin/arrayTest";
+import UpdateTest from "./components/test/admin/UpdateTest";
+import UpdateQuiz from "./components/test/admin/UpdateQuiz";
+import UpdateQuestion from "./components/test/admin/UpdateQuestion";
+// here my import 
+
 import ActivationPage from './components/signUp/ActivationPage';
  import Products from './components/Shop/Products';
 import ProductPage from './components/Shop/ProductPage';
@@ -33,11 +40,6 @@ import {Provider} from 'react-redux';
 import store from './redux/store';
 import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
 import Dashboard from './components/Dashboard/MainDash';
-import ManageTest from "./components/test/admin/manageTest";
-import ArrayTest from "./components/test/admin/arrayTest";
-import UpdateTest from "./components/test/admin/UpdateTest";
-import UpdateQuiz from "./components/test/admin/UpdateQuiz";
-import UpdateQuestion from "./components/test/admin/UpdateQuestion";
 import Joyride from 'react-joyride';
 import { Steps } from "./components/Shop/steps"
 import Success from './components/Shop/Success';
@@ -81,7 +83,7 @@ function App () {
       <BrowserRouter>
       <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
         <Routes>
-        <Route path="/chat" element={<ChatGPT/>} />
+          <Route path="/chat/*" element={<ChatGPT/>} />
           <Route path="/addProduct" element={<AddProduct />} />
           <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
@@ -103,6 +105,9 @@ function App () {
           <Route path="/delete-account" element={<DeleteAccount />} />
           <Route path="/test" element={<LevelTest />} />
           <Route path="/game" element={<Cards/>}></Route>
+
+          <Route path="/trial" element={<Trial/>}/>
+
           <Route path="/Profile" element={<Profile/>} />
           <Route path="profile/:id" element={<Profile/>}></Route>
           <Route path="p" element={<Post/>}></Route>
@@ -120,13 +125,12 @@ function App () {
           {/* <Route path="/gamesList" element={<Jeux/>}></Route> */}
 
           <Route path='/test1' element={<Test/>}/>
+          
           <Route path="/" element={<Main />}>
-
             <Route path="" element={<Home />} />
-            <Route path="/gamesList" element={<GameList/>}/>
-
-            <Route path="/diagnostic/*" element={<Diagnostic />} />
+            <Route path="/diagnostic" element={<Diagnostic />} />
             <Route path="/diagnostic/quizzes/:id" element={<Quizzes />} />
+            <Route path="/gamesList" element={<GameList/>}/>
             <Route path="/specialist" element={<Specialist />} />
             <Route path="/business" element={<SalesDashboard />} />
             <Route path="/success" element={<Success />} />

@@ -69,6 +69,7 @@ function UpdateQuiz() {
                 formData.append('nbrQuestion', quiz.nbrQuestion);
                 formData.append('description', description);
                 formData.append('picture', picture);
+                formData.append('idTest', quiz.idTest);
                     
                 await axios.put('http://localhost:3001/quiz/updateQuiz/'+quiz._id, formData);
 

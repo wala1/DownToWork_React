@@ -31,9 +31,9 @@
     border-top: 3px white;
     border-style: dashed;
   }
-  .body_wrap{
-    margin-top: 2rem;
-  }
+  .body_wrap {
+    margin-top: 10rem;
+}
 
   .post_descr_buttons_wrapper {
     display: flex;
@@ -49,3 +49,6 @@
     margin-left: 10px;
   }
   
+.top_panel_wrap {
+  height: 189px;
+}

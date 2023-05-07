@@ -9,8 +9,9 @@ import {
     TableContainer,
     TableHead,
     TableRow,
+    Select, MenuItem, Button,
     Paper,
-    Typography
+    Typography, Modal, Box
 } from '@mui/material';
 import './array.css';
 
@@ -24,6 +25,11 @@ function QuizzesArray() {
     const [showDropdown, setShowDropdown] = useState(false);
     const [emptyQuizzes, setEmptyQuizzes] = useState(0);
     const navigate = useNavigate();
+    const [tests, setTests] = useState([]);
+    const [quizId, setQuizId] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('');
+    const [quiz, setQuiz] = useState({});
 
     const toggleDropdown = (quizId) => {
         setDropdown((prevState) => ({
@@ -33,6 +39,9 @@ function QuizzesArray() {
         setShowDropdown(true);
     };
 
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
 
     useEffect(() => {
         axios
@@ -46,6 +55,20 @@ function QuizzesArray() {
                 console.log(error);
             });
     }, [currentPage, perPage]);
+
+    useEffect(() => {
+        axios
+            .get(`http://localhost:3001/test`)
+            .then((response) => {
+                console.log(response.data.tests);
+                setTests(response.data.tests);
+                console.log(tests);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [showModal]);
+
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -62,6 +85,48 @@ function QuizzesArray() {
         }
     };
 
+    const handleCancel = () => {
+        setSelectedOption('');
+        setShowModal(false);
+        setQuizId('');
+    };
+
+    const handleAssignSubmit = async (test) => {
+        await axios
+            .get(`http://localhost:3001/quiz/getQuizById/${quizId}`)
+            .then((response) => {
+                setQuiz(response.data.quiz);
+                console.log("Quiz Array here :" + quiz.name + " , " + quiz.type + " , " + quiz.nbrQuestion + " , " + quiz.idTest);
+            });
+
+        if (quiz.idTest == null) {
+            axios
+                .put(`http://localhost:3001/quiz/updateQuizParameterId/${quizId}`, { ...quiz, idTest: test._id })
+                .then((response) => {
+                    axios.put(`http://localhost:3001/test/updateTestQuizNumber/${test._id}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        } else {
+            
+            console.log("Quiz Array here :" + quiz.name + " , " + quiz.type + " , " + quiz.nbrQuestion + " , " + quiz.idTest);
+            axios.put(`http://localhost:3001/test/updateTestQuizNumberDecrement/${quiz.idTest}`);
+            axios
+                .put(`http://localhost:3001/quiz/updateQuizParameterId/${quizId}`, { ...quiz, idTest: test._id })
+                .then((response) => {
+                    axios.put(`http://localhost:3001/test/updateTestQuizNumber/${test._id}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
+        setShowModal(false);
+    };
+
+
+
     const handleDelete = (quizId) => {
         axios
             .delete('http://localhost:3001/quiz/deleteQuiz', {
@@ -76,7 +141,7 @@ function QuizzesArray() {
                 console.log(response.data);
                 // Update the quizzes array with the remaining quizzes
                 setQuizzes(quizzes.filter(quiz => quiz._id !== quizId));
-                setEmptyQuizzes(emptyQuizzes-1);
+                setEmptyQuizzes(emptyQuizzes - 1);
             })
             .catch(error => {
                 console.error(error);
@@ -89,10 +154,17 @@ function QuizzesArray() {
         navigate(`/dashboard/updateQuiz/${quizId}`);
     };
 
-    const handleAssign = (quizId) => {
+    const handleAssign = (quizIdParam) => {
         // Code to assign the quiz
-        console.log(`Assign quiz ${quizId}`);
+        console.log(`Assign quiz ${quizIdParam}`);
+        setQuizId(quizIdParam);
+        setShowModal(true);
     };
+
+    useEffect(() => {
+        console.log('quizId:', quizId);
+    }, [quizId]);
+
 
     const handleCopy = (quizId) => {
         // Code to copy the quiz
@@ -179,6 +251,69 @@ function QuizzesArray() {
             )}
 
 
+            {/* MODAL FOR ASSIGN QUIZ */}
+
+            <Modal
+                open={showModal}
+                onClose={() => setShowModal(false)}
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}
+            >
+                <Box
+                    sx={{
+                        p: 3,
+                        backgroundColor: 'white',
+                        width: '90%',
+                        maxWidth: '800px',
+                        maxHeight: '90vh',
+                        overflowY: 'auto',
+                    }}
+                >
+                    <Typography variant="h4" gutterBottom>
+                        Assign Quiz
+                    </Typography>
+                    <Typography>
+                        Are you sure you want to assign this quiz?
+                    </Typography>
+                    <Select
+                        value={selectedOption}
+                        onChange={handleOptionChange}
+                        sx={{ mt: 2 }}
+                        renderValue={(selected) => (
+                            <div>
+                                {selected ? (
+                                    <Typography>{selected.name}</Typography>
+                                ) : (
+                                    <Typography>Select a Test here</Typography>
+                                )}
+                            </div>
+                        )}
+                    >
+                        {tests.map((test) => (
+                            <MenuItem key={test._id} value={test}>
+                                {test.name}
+                            </MenuItem>
+                        ))}
+                    </Select>
+
+
+                    <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
+                        <Button
+                            variant="outlined"
+                            sx={{ mr: 1 }}
+                            onClick={handleCancel}
+                        >
+                            Cancel
+                        </Button>
+                        <Button variant="contained" onClick={() => handleAssignSubmit(selectedOption)}>
+                            Assign
+                        </Button>
+                    </Box>
+                </Box>
+            </Modal>
         </div >
     );
 }
