@@ -165,7 +165,7 @@ const ChangePwd = () => {
                   </div>               {' '}
                 </div>
 
-                <div className="buttonSideBySide">
+                <div className="buttonSideBySide" style={{marginLeft: '20px'}}>
                   <button
                     onClick={handleCancel}
                     className=" btn btn-cancel btn-lg  hover-lift-light mt-4"
