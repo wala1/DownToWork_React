@@ -96,7 +96,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 			{/* <!-- User menu --> */}
 			<div className="menu_user_wrap">
 				<div className="content_wrap clearfix">
-					<div className="menu_user_area menu_user_right menu_user_nav_area" style={{marginTop: '-38px'}}>
+					<div className="menu_user_area menu_user_right menu_user_nav_area" style={{marginTop: '20px'}}>
 						<ul id="menu_user" className="menu_user_nav d-flex column">
 							{/* <li class="menu_user_cart">
 								
