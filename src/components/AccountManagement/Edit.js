@@ -90,7 +90,12 @@ function Edit () {
       axios
         .put (urlupdate + currentuserRef.current._id, userUpdated)
         .then (response => {
+          console.log('this is reponse data');
           console.log (response.data);
+          delete response.data.password;
+          console.log('this is reponse data apres suupp');
+          console.log(response.data);
+          localStorage.setItem('user', JSON.stringify(response.data));
         })
         .catch (error => {
           console.log (error);
