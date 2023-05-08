@@ -53,7 +53,7 @@ const UserId = ({userName, email , imagePath , isCurrent }) => {
     await axios.put(urlUpdateImg + user._id, formData, config).then((response)=>{ setImg(response.data.user.picture.imagePath)
     localStorage.setItem('user', JSON.stringify(response.data.user));
     });
-      alert('Photo uploaded successfully!');
+      //alert('Photo uploaded successfully!');
     } catch (err) {
       console.log(err.message);
     }
