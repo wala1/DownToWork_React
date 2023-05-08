@@ -29,6 +29,7 @@ function Edit () {
   const [isConfirmClicked, setIsConfirmClicked] = useState (false);
   const [currentPassword, setCurrentPassword] = useState ('');
   const [userUpdated, setUserUpdated] = useState ({});
+  const [returned, setreturned] = useState(false);
 
   useEffect (() => {
     const userString = localStorage.getItem ('user');
@@ -60,10 +61,11 @@ function Edit () {
     navigate ('/Profile');
   };
   const handleReturn = () => {
-    navigate ('/Edit');
+    setreturned(true)
   };
 
   const onSubmit = async data => {
+    setreturned(false)
     console.log (data);
     setIsConfirmClicked (true);
 
@@ -145,7 +147,7 @@ function Edit () {
                 {/* Please enter your password  to confirm */}
               </p>
               {/* <label className='label1 lead h2'>Password</label> */}
-              {!isConfirmClicked
+              {(!isConfirmClicked || returned)
                 ? <form onSubmit={handleSubmit (onSubmit)}>
                     <div className="row mr-4">
 
