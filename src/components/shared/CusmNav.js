@@ -89,7 +89,7 @@ function CusmNav() {
 										</li>
 									</ul>
 								</li>}
-								<li className="menu-item menu-item-has-children"><a href='' onClick={() => {navigate('/team')}}>Teachers</a>
+								<li className="menu-item menu-item-has-children"><a href='' onClick={() => {navigate('/team')}}>Team</a>
 									<ul className="sub-menu">
 										<li className="menu-item"><a href="team-members.html">Teachers Team</a></li>
 										<li className="menu-item"><a href="personal-page.html">Teacher&#8217;s Personal Page</a></li>
