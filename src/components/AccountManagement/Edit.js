@@ -267,7 +267,7 @@ function Edit () {
                     />
                     <div
                       className="buttonSideBySide"
-                      style={{marginLeft: '40px'}}
+                      style={{marginLeft: '100px'}}
                     >
                       <button
                         onClick={handleReturn}
