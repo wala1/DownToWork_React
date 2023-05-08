@@ -155,7 +155,7 @@ function Edit () {
                         <div className="form-outline">
                           <input
                             type="text"
-                            id="form3Example1"
+                            id="username"
                             className="form-control form-control-lg"
                             {...register ('fullName', {
                               defaultValue: currentuserRef.current.name,
@@ -163,7 +163,7 @@ function Edit () {
                             defaultValue={username}
                             autoComplete="fullname" /* defaultValue={currentuserRef.current.name} */
                           />
-                          <label className="form-label" htmlFor="form3Example1">
+                          <label className="form-label" htmlFor="username">
                             {' '}
                             username
                             {' '}
