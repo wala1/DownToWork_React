@@ -79,8 +79,9 @@ const Members = () => {
     <div>
 
       <CusmNav />
-      <br /><br /><br /><br /><br /><br /><br />
-      <div className="Search">
+      
+      <br /><br /><br /><br /> <br /><br /><br /><br />
+      <div className="Search" >
         <select
           style={{
             backgroundColor: '#3aaf85',
@@ -103,6 +104,7 @@ const Members = () => {
         </select>
         <input type="text" onChange={handleInput} placeholder="Search .." />
       </div>
+      
       {/* Body */}
       <div className="body_wrap">
 
@@ -113,7 +115,6 @@ const Members = () => {
 
           <div className="page_content_wrap">
             <div className="content">
-
               <article className="post_item post_item_single page type-page">
                 <section className="post_content">
 
