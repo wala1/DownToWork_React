@@ -311,6 +311,7 @@ background-color:  #3aaf85;;
 
 .buttonSideBySide{
   display: flex;
+  margin-left: 110px;
 }
 
 
