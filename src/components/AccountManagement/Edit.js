@@ -214,7 +214,7 @@ function Edit () {
                           })}
                           /* defaultValue={currentuserRef.current.email} */
                           autoComplete="email"
-                          placeholder={email}
+                          defaultValue={email}
                         />
                         <label className="form-label" htmlFor="form3Example3">
                           Email address <span style={{color: 'red'}}> * </span>
