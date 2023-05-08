@@ -55,7 +55,7 @@ const MyPosts = ({post, deletePost, username , imagePath  , isCurrent}) => {
               <h6 className="post_author_title">
                 <span>
                   <a href="#" className="fn">
-                    {user.name}
+                    {username}
                   </a>
                 </span>
               </h6>
