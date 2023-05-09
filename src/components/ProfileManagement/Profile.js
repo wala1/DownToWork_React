@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
+import {useNavigate, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './Profile.css';
 import UserId from './UserId';
@@ -9,9 +9,12 @@ import Side from './Side';
 import NavBar from '../shared/NavBar';
 import CustumisedNavbar from '../shared/CustumisedNavbar';
 import CusmNav from '../shared/CusmNav';
+import Post from './Post';
 
 const Profile = () => {
-  const {id} = useParams ();
+  const location = useLocation();
+  const id = new URLSearchParams(location.search).get('id');
+  //const {id} = useParams ();
 
   const userString = localStorage.getItem ('user');
   const user = JSON.parse (userString);
@@ -138,9 +141,9 @@ const Profile = () => {
                   <AddPost addItem={addItem} username={currentUser.name} />
                 </div>}
               <div>
-                <div className="Resverse">
+                <div className="Resverse" style={{marginRight: '150px'}}>
                   {posts.map ((post, index) => (
-                    <MyPosts
+                    <Post
                       key={index}
                       post={post}
                       deletePost={deleteElement}

@@ -28,6 +28,7 @@ function SignUp2 () {
   const [focused2, setFocused2] = useState ('false');
   const [focused3, setFocused3] = useState ('false');
   const [focused4, setFocused4] = useState ('false');
+  const urlRegisFab = 'http://127.0.0.1:3001/users/signupFb/';
   const clickHandler1 = () => {
     console.log ('clicked');
     const container = document.querySelector ('.containerhass');
@@ -393,7 +394,7 @@ function SignUp2 () {
                 Minimum eight characters at least 1 letter and 1 number!
               </span>
             </div>
-            <input type="submit" className="btnhass" value="Sign up" />
+            <input type="submit" className="btnhass" value="Sign up"/>
 
             <p className="">Or Sign up with Facebook</p>
             <div className="social-mediahass">
@@ -409,22 +410,30 @@ function SignUp2 () {
               <LoginSocialFacebook
                 appId="599043218440870"
                 onResolve={response => {
-                  console.log (response);
-                  console.log (response.data.name);
+                  console.log (response.data);
+                  console.log(response.data.picture.data.url);
+                 /*  axios.post('').then((response)=> {
 
-                  localStorage.setItem ('token', response.data.accessToken);
-                  localStorage.setItem (
-                    'user',
-                    JSON.stringify (response.data.name)
-                  );
+                  }) */
+                 const name = response.data.name ;
+                 const email = response.data.email;
+                 const imagePath= response.data.picture.data.url;
 
-                  navigate ('/');
+                 const user = {name ,email, imagePath}
+                 console.log(user);
+                 
+                axios.post(urlRegisFab, user).then((response)=> {
+                localStorage.setItem('user', JSON.stringify(response.data));
+                localStorage.setItem('token', response.data.token);
+                navigate ('/');
+                 }).catch((err)=>{alert('Email already exists');})
                 }}
+
                 onReject={error => {
                   console.log (error);
                 }}
               >
-                <FacebookLoginButton />
+                <FacebookLoginButton  style={{with:'55px' , height : '50px'}}  />
               </LoginSocialFacebook>
 
               {/* <GoogleLogin

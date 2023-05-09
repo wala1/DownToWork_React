@@ -128,6 +128,7 @@ function CusmNav() {
 									</ul>
 								</li>
 								<li className="menu-item"><a onClick={handleclickShop}>Shop</a></li>
+								<li className="menu-item menu-item-has-children"><a href='' onClick={() => {navigate('/Profile')}}>Profile</a> </li>
 							</ul>
 						</nav>
 						{/* <!-- /Navigation --> */}
