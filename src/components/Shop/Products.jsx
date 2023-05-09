@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getProducts, rate } from '../../services/shopService';
 
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from "../../redux/cartSlice"
 import { FaStar } from "react-icons/fa"
 import Star from "./Star"
@@ -16,24 +16,25 @@ import { Steps } from './steps';
 function Products() {
 	const navigate = useNavigate();
 	const [products, setProducts] = useState([]);
+	const cart = useSelector(state => state.cart)
 	// const[product,setProduct]=useState({});
-	
-
 	const [rating, setRating] = useState(0);
-	
-	const handleAddProduct = () => {
-		navigate('/addProduct');
-	};
-	const [quantity,setQuantity]=useState(0);
-	const dispatch=useDispatch();
-    
+	const [quantity, setQuantity] = useState(0);
+	const [isadded, setIsadded] = useState(false);
+	const dispatch = useDispatch();
 	const user = JSON.parse(localStorage.getItem('user'));
 	
 	
-	
-
-
+  
+	function handleClick(productId) {
+	  dispatch({ type: 'SELECT_PRODUCT', payload: { productId: productId }});
+	  navigate(`/productPage/${productId}`);
+	}
+	const handleAddProduct = () => {
+		navigate('/addProduct');
+	};
 	useEffect(() => {
+
 		const getProducts = async () => {
 			axios.get('http://localhost:3001/product/getAll')
 				.then(response => {
@@ -45,29 +46,145 @@ function Products() {
 				});
 		};
 		getProducts();
+		
+
 	}, []);
-	// console.log(products)
 	
+	const [productList,setProductList]=useState(products);
+	console.log(productList);
+	///filtering////////////////////////////////////////////////////////////////////////
+// 	document.addEventListener('DOMContentLoaded', () => {
+		
+// 		const filterSelect = document.getElementById('filter');
+// 		// const productsList = products;
+// 		// document.getElementById('products');
+// 		filterSelect.addEventListener('change', () => {
+// 			const filterValue = filterSelect.value;
+// 			let sortedProducts;
+
+// 			if (filterValue === 'name-asc') {
+// 				sortedProducts = sortProductsByName(products, 'asc');
+// 			} else if (filterValue === 'name-desc') {
+// 				sortedProducts = sortProductsByName(products, 'desc');
+// 			} else if (filterValue === 'rating-desc') {
+// 				sortedProducts = sortProductsByRating(products, 'desc');
+// 			}
+// 			setProductList(sortedProducts);
+// 			renderProducts(sortedProducts);
+// 		});
+
+// 		function sortProductsByName(products, sortOrder) {
+// 			const sortedProducts = products.sort((a, b) => {
+// 				const nameA = a.prodName.toUpperCase();
+// 				const nameB = b.prodName.toUpperCase();
+
+// 				if (sortOrder === 'asc') {
+// 					if (nameA < nameB) {
+// 						return -1;
+// 					} else if (nameA > nameB) {
+// 						return 1;
+// 					} else {
+// 						return 0;
+// 					}
+// 				} else if (sortOrder === 'desc') {
+// 					if (nameA > nameB) {
+// 						return -1;
+// 					} else if (nameA < nameB) {
+// 						return 1;
+// 					} else {
+// 						return 0;
+// 					}
+// 				}
+// 			});
+
+// 			return sortedProducts;
+// 		}
+
+// 		function sortProductsByRating(products, sortOrder) {
+// 			// Sort products by rating in ascending or descending order
+// 		}
+
+// 		function renderProducts(products) {
+// 			// Render the sorted products to the DOM
+// 		}
+
+// 	});
+// const mylist= productList.map((product)=>{
+// 	const handleAddToCart = () => {
+
+// 		dispatch(addProduct({ product, quantity, prodPrice: product.prodPrice }));
+// 		setIsadded(true);
+// 	}
+// 	const handleProductPage = () => {
+// 		const id = product._id;
+// 		navigate(`/productPage/${id}`);
+// 	}					 
+// 	return <li className="first product has-post-thumbnail" style={{ minHeight: "361px" }}>
+// 		<a href="product-page.html"></a>
+// 		<div className="post_item_wrap">
+// 			<div className="post_featured">
+// 				<div className="post_thumb">
+// 					<a className="hover_icon hover_icon_link" onClick={handleProductPage} >
+// 						{/* <img src={`http://localhost:3001/${product.prodImg.imgUrl}`} alt="" style={{ minHeight: "150px", maxHeight: "150px" }} /> */}
+// 					</a>
+// 				</div>
+// 			</div>
+// 			<div className="post_content">
+// 				<h3><a href="product-page.html"></a>{product.prodName}</h3>
+// 				<h3><a href="product-page.html"></a>{product.prodDesc}</h3>
+// 				<span className="price">
+// 					<span className="amount">&pound;{product.prodPrice}</span>
+// 				</span>
+// 				{/* rating */}
+// 				<div id='rating'>
+// 					<Star id={product._id} rate={product.prodRate} rateNbr={product.prodRateNbr} />
+// 				</div>
+// 				<button href="#" className="button add_to_cart_button my-element " id='add-to-cart' onClick={handleAddToCart} disabled={cart.products.some(p => p.prodName === product.prodName) || product.ownerId === user._id}>Add to cart</button>
+// 				{/* <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} /> */}
+// 			</div>
+// 		</div>
+// 	</li> 
+// 	} );
+// 	console.log(productList);
+	///filtering//////////////////////////////////////////////////////////////////
+
+	// console.log(products)
+
+
 	const myList = products.map((product) => {
 
+
+
 		const handleAddToCart = () => {
+
 			dispatch(addProduct({ product, quantity, prodPrice: product.prodPrice }));
+			setIsadded(true);
 		}
-		const handleProductPage=()=>{
-			const id =product._id;
-			navigate(`/productPage/${id}`);
-		}
-		return <li className="first product has-post-thumbnail">
+		// const handleProductPage = () => {
+		// 	const id = product._id;
+		// 	navigate(`/productPage/${id}`);
+			
+		// }
+
+	return <li className="first product has-post-thumbnail" style={{ minHeight: "361px" }}>
 			<a href="product-page.html"></a>
 			<div className="post_item_wrap">
 				<div className="post_featured">
 					<div className="post_thumb">
-						<a className="hover_icon hover_icon_link" onClick={handleProductPage} >
-							<img src={`http://localhost:3001/${product.prodImg.imgUrl}`} alt=""  />
+						<a className="hover_icon hover_icon_link"  >
+							{/* <Link to={`/productPage/${product._id}`}> */}
+							<img src={`http://localhost:3001/${product.prodImg.imgUrl}`} alt="" style={{ minHeight: "150px", maxHeight: "150px" }} />
+							{/* </Link> */}
 						</a>
 					</div>
 				</div>
 				<div className="post_content">
+				<li key={product._id} onClick={() => handleClick(product._id)}>
+            <Link to={`/productPage/${product._id}`}>{product.prodName}</Link>
+          </li>
+				{/* <div key={product._id}>
+          <button onClick={() => handleClick(product)}>{product.prodName}</button>
+        </div> */}
 					<h3><a href="product-page.html"></a>{product.prodName}</h3>
 					<h3><a href="product-page.html"></a>{product.prodDesc}</h3>
 					<span className="price">
@@ -75,16 +192,74 @@ function Products() {
 					</span>
 					{/* rating */}
 					<div id='rating'>
-					<Star id={product._id} rate={product.prodRate} />
+						<Star id={product._id} rate={product.prodRate} rateNbr={product.prodRateNbr} />
 					</div>
-					<a href="#" className="button add_to_cart_button my-element " id='add-to-cart' onClick={handleAddToCart}>Add to cart</a>
+					<button href="#" className="button add_to_cart_button my-element " id='add-to-cart' onClick={handleAddToCart} disabled={cart.products.some(p => p.prodName === product.prodName) || product.ownerId === user._id}>Add to cart</button>
 					{/* <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} /> */}
 				</div>
 			</div>
-		</li>;
+		</li>
+
 
 	});
+	// const ProductFilter = ({ products }) => {
+	// 	const [filter, setFilter] = useState("");
 
+	// 	const filteredProducts = products.filter((product) =>
+	// 	  product.prodName.toLowerCase().includes(filter.toLowerCase())
+	// 	);
+	// 	const handleAddToCart = () => {
+
+	// 		dispatch(addProduct({ product, quantity, prodPrice: product.prodPrice }));
+	// 		setIsadded(true);
+	// 	}
+	// 	const handleProductPage=()=>{
+	// 		const id =product._id;
+	// 		navigate(`/productPage/${id}`);
+	// 	}
+
+	// 	return (
+	// 	  <div>
+	// 		<input
+	// 		  type="text"
+	// 		  placeholder="Filter products"
+	// 		  value={filter}
+	// 		  onChange={(e) => setFilter(e.target.value)}
+	// 		/>
+
+	// 		  {filteredProducts.map((product) => (
+	// 			<li className="first product has-post-thumbnail" style={{minHeight:"361px"}}>
+	// 			<a href="product-page.html"></a>
+	// 			<div className="post_item_wrap">
+	// 				<div className="post_featured">
+	// 					<div className="post_thumb">
+	// 						<a className="hover_icon hover_icon_link" onClick={handleProductPage} >
+	// 							<img src={`http://localhost:3001/${product.prodImg.imgUrl}`} alt="" style={{minHeight:"150px", maxHeight:"150px"}}  />
+	// 						</a>
+	// 					</div>
+	// 				</div>
+	// 				<div className="post_content">
+	// 					<h3><a href="product-page.html"></a>{product.prodName}</h3>
+	// 					<h3><a href="product-page.html"></a>{product.prodDesc}</h3>
+	// 					<span className="price">
+	// 						<span className="amount">&pound;{product.prodPrice}</span>
+	// 					</span>
+	// 					{/* rating */}
+	// 					<div id='rating'>
+	// 					<Star id={product._id} rate={product.prodRate} rateNbr={product.prodRateNbr} />
+	// 					</div>
+	// 					<button href="#" className="button add_to_cart_button my-element " id='add-to-cart' onClick={handleAddToCart}  disabled={cart.products.some(p => p.prodName === product.prodName)||product.ownerId===user._id}>Add to cart</button>
+	// 					{/* <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} /> */}
+	// 				</div>
+	// 			</div>
+	// 		</li>
+
+	// 		  ))}
+
+
+	// 	  </div>
+	// 	);
+	//   };
 
 
 	return (
@@ -107,7 +282,7 @@ function Products() {
 							{/* <!-- Content --> */}
 							<div className="content">
 								<div className="list_products shop_mode_thumbs">
-								
+
 									<button className='sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small alignleft sc_buttons_st1' id='add-new-product' onClick={handleAddProduct}> Add new Product</button>
 									<Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
 									{/* <form className="woocommerce-ordering" method="get">
@@ -121,9 +296,46 @@ function Products() {
 										</select>
 
 									</form> */}
+
 									<ul className="products d-flex row align-items-around">
+										{/* <label for="filter">Filter by:</label>
+										<select id="filter">
+											<option value="name-asc">Name (A to Z)</option>
+											<option value="name-desc">Name (Z to A)</option>
+											<option value="rating-desc">Rating (best to worst)</option>
+										</select> */}
+										{/* productList.map((product)=>(
+										 
+										<li className="first product has-post-thumbnail" style={{ minHeight: "361px" }}>
+											<a href="product-page.html"></a>
+											<div className="post_item_wrap">
+												<div className="post_featured">
+													<div className="post_thumb">
+														<a className="hover_icon hover_icon_link" onClick={handleProductPage} >
+															<img src={`http://localhost:3001/${product.prodImg.imgUrl}`} alt="" style={{ minHeight: "150px", maxHeight: "150px" }} />
+														</a>
+													</div>
+												</div>
+												<div className="post_content">
+													<h3><a href="product-page.html"></a>{product.prodName}</h3>
+													<h3><a href="product-page.html"></a>{product.prodDesc}</h3>
+													<span className="price">
+														<span className="amount">&pound;{product.prodPrice}</span>
+													</span>
+													
+													<div id='rating'>
+														<Star id={product._id} rate={product.prodRate} rateNbr={product.prodRateNbr} />
+													</div>
+													<button href="#" className="button add_to_cart_button my-element " id='add-to-cart' onClick={handleAddToCart} disabled={cart.products.some(p => p.prodName === product.prodName) || product.ownerId === user._id}>Add to cart</button>
+													
+												</div>
+											</div>
+										</li>)) */}
 										{myList}
-										
+										{/* {filteredProducts} */}
+
+										{/* <ProductFilter product={products}/> */}
+										{/* {ProductFilter} */}
 										{/* <Joyride steps={tourSteps} /> */}
 										{/* <li className="first product has-post-thumbnail">
                                     <a href="product-page.html"></a>

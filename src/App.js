@@ -25,7 +25,7 @@ import Diagnostic from '../src/components/test/diagnostic';
 import Specialist from '../src/components/test/specialist';
 import Quizzes from '../src/components/test/quizzes';
 import ActivationPage from './components/signUp/ActivationPage';
- import Products from './components/Shop/Products';
+import Products from './components/Shop/Products';
 import ProductPage from './components/Shop/ProductPage';
 import Cart from './components/Shop/Cart';
 import AddProduct from './components/Shop/AddProduct';
@@ -46,6 +46,7 @@ import Profilee from './components/ProfileManagement/profile';
 import UserProfile from './components/ProfileManagement/profileTest';
 import Team from './components/ProfileManagement/Team';
 import Beam from './components/ProfileManagement/Beam';
+import ProductList from './components/Shop/ProductList';
 
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
@@ -67,8 +68,10 @@ function App () {
       <BrowserRouter>
       <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
         <Routes>
+        {/* <Route path="/products/:id" element={<ProductPage/>} /> */}
+        <Route path="/productList" element={<ProductList/>} />
           <Route path="/addProduct" element={<AddProduct />} />
-          <Route path="/productPage/:id" element={<ProductPage />} />
+          <Route path="/productPage/:id" Component={ProductPage} />
           <Route path="/products" element={<Products />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/p" element={<Profilee />} />

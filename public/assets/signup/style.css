@@ -197,6 +197,8 @@ input:invalid[focused="true"] ~ span{
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
+  /* 4481eb */
+  /* 04befe */
 }
 
 .imagehass {
