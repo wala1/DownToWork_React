@@ -17,19 +17,19 @@ import Cards from "./components/games/Cards";
 // import ChangePassword from './components/user/changePassword';
 // import DeleteAccount from '../src/components/user/deleteAccount';
 // import DesactivateAccount from './components/AccountManagement/DesactivateAccount';
-import LevelTest from '../src/components/test/levelTest';
-import Diagnostic from '../src/components/test/diagnostic';
-import Specialist from '../src/components/test/specialist';
-import Quizzes from '../src/components/test/quizzes';
-import ActivationPage from './components/signUp/ActivationPage';
-import Products from './components/Shop/Products';
-import ProductPage from './components/Shop/ProductPage';
-import Cart from './components/Shop/Cart';
-import AddProduct from './components/Shop/AddProduct';
-import {Provider} from 'react-redux';
-import store from './redux/store';
-import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
-import Dashboard from './components/Dashboard/MainDash';
+// import LevelTest from '../src/components/test/levelTest';
+// import Diagnostic from '../src/components/test/diagnostic';
+// import Specialist from '../src/components/test/specialist';
+// import Quizzes from '../src/components/test/quizzes';
+// import ActivationPage from './components/signUp/ActivationPage';
+// import Products from './components/Shop/Products';
+// import ProductPage from './components/Shop/ProductPage';
+// import Cart from './components/Shop/Cart';
+// import AddProduct from './components/Shop/AddProduct';
+// import {Provider} from 'react-redux';
+// import store from './redux/store';
+// import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
+// import Dashboard from './components/Dashboard/MainDash';
 import { EditAccount } from "./components/AccountManagement/EditAccount";
 import SignUp2 from "./components/signUp/SignUp2";
 import ChangePassword from "./components/user/changePassword";
@@ -46,15 +46,15 @@ import ManageTest from "./components/test/admin/manageTest";
 import ArrayTest from "./components/test/admin/arrayTest";
 import UpdateTest from "./components/test/admin/UpdateTest";
 import Joyride from 'react-joyride';
-import { Steps } from "./components/Shop/steps"
-import Success from './components/Shop/Success';
-import Fail from './components/Shop/Fail';
-import Topics from './components/Courses/topics';
-import Courses from './components/Courses/courses';
-import Profilee from './components/ProfileManagement/profile';
-import UserProfile from './components/ProfileManagement/profileTest';
-import Team from './components/ProfileManagement/Team';
-import Beam from './components/ProfileManagement/Beam';
+// import { Steps } from "./components/Shop/steps"
+// import Success from './components/Shop/Success';
+// import Fail from './components/Shop/Fail';
+// import Topics from './components/Courses/topics';
+// import Courses from './components/Courses/courses';
+// import Profilee from './components/ProfileManagement/profile';
+// import UserProfile from './components/ProfileManagement/profileTest';
+// import Team from './components/ProfileManagement/';
+// import Beam from './components/ProfileManagement/Beam';
 import ProductList from './components/Shop/ProductList';
 // import { Steps } from "./components/Shop/steps"
 // import Success from './components/Shop/Success';
@@ -117,7 +117,7 @@ import { Steps } from "./components/Shop/steps";
 import Success from "./components/Shop/Success";
 import Fail from "./components/Shop/Fail";
 import Topics from "./components/Courses/topics";
-// import Profile from "./components/ProfileManagement/Profile";
+import Profile from "./components/ProfileManagement/Profile";
 import Side from "./components/ProfileManagement/Side";
 import Courses from "./components/Courses/courses";
 import MyProducts from "./components/Shop/MyProducts";
@@ -193,7 +193,7 @@ function App() {
 
           <Route path="/trial" element={<Trial />} />
 
-          {/* <Route path="/Profile" element={<Profile />} /> */}
+          <Route path="/Profile" element={<Profile />} />
           <Route path="profile/:id" element={<Profile />}></Route>
           <Route path="p" element={<Post />}></Route>
           <Route path="team" element={<Members />}></Route>
