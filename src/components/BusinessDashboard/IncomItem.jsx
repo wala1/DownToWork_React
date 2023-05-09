@@ -30,10 +30,10 @@ function IncomeItem() {
                 setIncome(res.data);
 
                 if (res.data.length > 1) {
-                   if(res.data[0]._id>res.data[1]._id){
-                    setPerc((res.data[0].total * 100) / res.data[1].total - 100);
+                   if(res.data[res.data.length-2]._id>res.data[res.data.length-1]._id){
+                    setPerc((res.data[res.data.length-2].total * 100) / res.data[res.data.length-1].total - 100);
                     }
-                  setPerc((res.data[1].total * 100) / res.data[0].total - 100);
+                  setPerc((res.data[res.data.length-1].total * 100) / res.data[res.data.length-2].total - 100);
                 }
                 else {
                     setPerc(0);
@@ -74,7 +74,7 @@ function IncomeItem() {
      <div className="featuredItem">
      <span className="featuredTitle">Income</span>
      <div className="featuredMoneyContainer">
-       {income.length>0 ?<span className="featuredMoney">{income[1]?.total}</span>:<span className="featuredMoney">{income[0]?.total}</span>}
+       {income.length>1?<span className="featuredMoney">{income[income.length-1]?.total}</span>:<span className="featuredMoney">{income[0]?.total}</span>}
        <span className="featuredMoneyRate">
       <MonetizationOnIcon className="featuredIcon" ></MonetizationOnIcon>     </span>
      </div>
