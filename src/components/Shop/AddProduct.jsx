@@ -46,7 +46,7 @@ function AddProduct() {
                             <div className='content'>
                                 <form className='d-flex align-items-center' style={{ backgroundColor: "#ECF0F1" }} onSubmit={handleAddProduct}>
                                     <div className='form-group ' style={{ width: "100%", border: "#ba0000", fontSize: "1.5rem" }}>
-                                        <label  style={{ fontSize: "0.8rem" }}>Name</label>
+                                        {/* <label  style={{ fontSize: "0.8rem" }}>Name</label> */}
                                         <input type="textArea" className='form-control'  onChange={(e)=>setprodName(e.target.value)}  placeholder="Product Name" style={{
                                             border: "2px solid grey",
                                             borderRadius: "4px"
@@ -54,35 +54,35 @@ function AddProduct() {
 
                                     </div>
                                     <div className='form-group' style={{ width: "100%", border: "#ba0000" }}>
-                                        <label >Description</label>
+                                        {/* <label >Description</label> */}
                                         <input type="textArea" className='form-control'  onChange={(e)=>setprodDesc(e.target.value)} placeholder="Description" style={{
                                             border: "2px solid grey",
                                             borderRadius: "4px"
                                         }}></input>
                                     </div>
                                     <div className='form-group' style={{ width: "100%", border: "#ba0000" }}>
-                                        <label >Uplaod Image</label>
+                                        {/* <label >Uplaod Image</label> */}
                                         <input className='form-control' type='file' encType="multipart/form-data"  onChange={(e)=>setprodImg(e.target.files[0])} style={{
                                             border: "2px solid grey",
                                             borderRadius: "4px"
                                         }}></input>
                                     </div>
                                     <div className='form-group' style={{ width: "100%", border: "#ba0000" }}>
-                                        <label >Price</label>
+                                        {/* <label >Price</label> */}
                                         <input type="number" className='form-control'  onChange={(e)=>setprodPrice(e.target.value)} placeholder="Price" style={{
                                             border: "2px solid grey",
                                             borderRadius: "4px"
                                         }}></input>
                                     </div>
                                     <div className='form-group' style={{ width: "100%", border: "#ba0000" }}>
-                                        <label >Brand</label>
+                                        {/* <label >Brand</label> */}
                                         <input type="textArea" className='form-control'  onChange={(e)=>setprodBrand(e.target.value)} placeholder="Brand" style={{
                                             border: "2px solid grey",
                                             borderRadius: "4px"
                                         }}></input>
                                     </div>
                                     <div className='form-group' style={{ width: "100%", border: "#ba0000" }}>
-                                        <label >Category</label>
+                                        {/* <label >Category</label> */}
                                         <input type="textArea" className='form-control'  onChange={(e)=>setProdCategory(e.target.value)} placeholder="Category" style={{
                                             border: "2px solid grey",
                                             borderRadius: "4px"
@@ -97,7 +97,7 @@ function AddProduct() {
                             {/* <!-- Sidebar --> */}
                             <div className="sidebar widget_area bg_tint_light sidebar_style_light">
                                 {/* <!-- Product category widget --> */}
-                                <aside className="woocommerce">
+                                {/* <aside className="woocommerce">
                                     <h5 className="widget_title">Product Categories</h5>
                                     <ul className="product-categories">
                                         <li><a href="product-category.html">Computer</a>
@@ -124,10 +124,10 @@ function AddProduct() {
                                             <span className="count">(8)</span>
                                         </li>
                                     </ul>
-                                </aside>
+                                </aside> */}
                                 {/* <!-- /Product category widget --> */}
                                 {/* <!-- Recent products widget --> */}
-                                <aside className="woocommerce">
+                                {/* <aside className="woocommerce">
                                     <h5 className="widget_title">Recent Products</h5>
                                     <ul className="product_list_widget">
                                         <li>
@@ -158,7 +158,7 @@ function AddProduct() {
                                             <span className="amount">&pound;74.19</span>
                                         </li>
                                     </ul>
-                                </aside>
+                                </aside> */}
                                 {/* <!-- /Recent products widget --> */}
                                 {/* <!-- Product tags widget --> */}
                                 <aside className="woocommerce widget_product_tag_cloud">

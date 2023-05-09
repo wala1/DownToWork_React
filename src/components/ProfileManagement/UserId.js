@@ -97,7 +97,7 @@ const UserId = ({userName, email , imagePath , isCurrent }) => {
           </button>
           <button
             onClick={handleDeleteAccount}
-            className="btn bdl"
+            className="btn bdl button-24"
             type="button"
           >
             Delete
