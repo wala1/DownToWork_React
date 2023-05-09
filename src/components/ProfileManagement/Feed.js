@@ -44,6 +44,7 @@ const Feed = () => {
       .get (urlPosts)
       .then (response => {
         setposts (response.data);
+        console.log(posts);
       })
       .catch (err => {
         console.log (err);
