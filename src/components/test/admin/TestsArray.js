@@ -151,7 +151,7 @@ function TestsArray() {
                                         <TableCell>{test.nbrParticipant}</TableCell>
                                         <TableCell>{test.description}</TableCell>
                                         <TableCell>
-                                            <img src={test.picture} alt="Test" className="test-picture" />
+                                            <img src={`http://localhost:3001/${test.picture.imgUrl}`} alt="Test" className="test-picture" />
                                         </TableCell>
                                         <TableCell>
                                             <div className="action-dropdown">

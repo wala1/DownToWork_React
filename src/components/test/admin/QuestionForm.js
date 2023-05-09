@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Button, FormControl, InputLabel, Select, MenuItem, Grid, Typography } from '@mui/material';
 import "./style.css";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function QuestionForm() {
     const [title, setTitle] = useState('');
@@ -15,6 +16,7 @@ function QuestionForm() {
     const [isTypeSelected, setIsTypeSelected] = useState(true);
     const [isFeedbackValid, setIsFeedbackValid] = useState(true);
     const [isPictureSelected, setIsPictureSelected] = useState(true);
+    const navigate = useNavigate();
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -34,14 +36,7 @@ function QuestionForm() {
     const handlePictureChange = (event) => {
         const file = event.target.files[0];
         setIsPictureSelected(!!file);
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                setPicture(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
+        setPicture(file);
     };
 
     const handleScoreChange = (event) => setScore(event.target.value);
@@ -49,7 +44,7 @@ function QuestionForm() {
     const [choices, setChoices] = useState([]);
 
     const handleAddChoice = () => {
-        const newChoice = { title: '', isCorrect: false };
+        const newChoice = { text: '', response: false };
         setChoices([...choices, newChoice]);
         setNumberOfChoices(numberOfChoices + 1);
     };
@@ -76,22 +71,23 @@ function QuestionForm() {
         if (isValidTitle && isTypeSelected && isFeedbackValid && isPictureSelected) {
             try {
                 // Create a new test object and save it to the database
-                const question = {
-                    title: title,
-                    type: type,
-                    feedback: feedback,
-                    picture: picture,
-                    score: score,
-                    correctChoices: correctChoices,
-                    numberOfChoices: numberOfChoices,
-                    choices: choices,
-                    idQuiz: null
-                };
-                const createResponse = await axios.post('http://localhost:3001/question/addQuestion', question);
+                const formData = new FormData();
+                formData.append('title', title);
+                formData.append('type', type);
+                formData.append('feedback', feedback);
+                formData.append('picture', picture);
+                formData.append('score', score);
+                formData.append('correctChoices', correctChoices);
+                formData.append('numberOfChoices', numberOfChoices);
+                choices.forEach((choice, index) => {
+                    formData.append(`choices[${index}][text]`, choice.text);
+                    formData.append(`choices[${index}][response]`, choice.response);
+                });
+                formData.append('idCourse', null);
 
-                console.log('Question object created:', createResponse.data);
-                console.log('question', question);
-                console.log('\n');
+                await axios.post('http://localhost:3001/question/addQuestion', formData);
+
+                navigate("/dashboard/arrayTest");
 
             } catch (error) {
                 console.error(error);

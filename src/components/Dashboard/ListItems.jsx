@@ -47,7 +47,19 @@ function MainListItems() {
         <ListItemIcon>
           <QuizIcon />
         </ListItemIcon>
-        <ListItemText primary="Manage Tests" onClick={() => navigate('/dashboard/arrayTest')} />
+        <ListItemText primary="Manage Tests" onClick={() => navigate('/dashboard/arrayTest')}/>
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <QuizIcon />
+        </ListItemIcon>
+        <ListItemText primary="Topics" onClick={() => navigate('/dashboard/topics')} />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <QuizIcon />
+        </ListItemIcon>
+        <ListItemText primary="Courses" onClick={() => navigate('/dashboard/courses')} />
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>

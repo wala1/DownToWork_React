@@ -1,0 +1,40 @@
+.card {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card {
+    width: 100%;
+    height: auto;
+    max-width: 811px;
+    padding: 5px;
+    margin: 0 auto;
+    box-shadow: 0 0 0px rgba(160, 46, 46, 0.1);
+    border-radius: 1.2rem;
+    border: solid #CCE4FF;
+}
+
+.card-header {
+    background-color: white;
+    border: 1px solid #CCE4FF;
+}
+
+.card-body {
+    background-color: #F7FAFD;
+    border: 1px solid #CCE4FF;
+}
+
+.card-footer {
+    background-color: #F7FAFD;
+    border: 1px solid #CCE4FF;
+}
+
+.choices-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.choice {
+    width: 50%;
+}

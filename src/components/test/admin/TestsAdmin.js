@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextField, Button, FormControl, InputLabel, Select, MenuItem, Grid, Typography } from '@mui/material';
 import "./style.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function TestsAdmin() {
+
+    const userString = localStorage.getItem("user");
+    const user = JSON.parse(userString);
+
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
     const [picture, setPicture] = useState(null);
+    const [creator, setCreator] = useState(user._id);
+
     const [isValidName, setValidName] = useState(true);
     const [isCategorySelected, setIsCategorySelected] = useState(true);
     const [isDescriptionValid, setIsDescriptionValid] = useState(true);
     const [isPictureSelected, setIsPictureSelected] = useState(true);
     const navigate = useNavigate();
-    
+
     const handleNameChange = (event) => {
         setName(event.target.value);
         setValidName(/^[a-zA-Z0-9\s]+$/.test(event.target.value) && /^[^0-9\s]/.test(event.target.value));
@@ -33,14 +39,7 @@ function TestsAdmin() {
     const handlePictureChange = (event) => {
         const file = event.target.files[0];
         setIsPictureSelected(!!file);
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                setPicture(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
+        setPicture(file);
     };
 
     const handleSubmit = async (event) => {
@@ -48,21 +47,18 @@ function TestsAdmin() {
 
         if (isValidName && isCategorySelected && isDescriptionValid && isPictureSelected) {
             try {
-                // Create a new test object and save it to the database
-                const test = {
-                    name: name,
-                    category: category,
-                    nbrQuiz: 0,
-                    nbrParticipant: 0,
-                    description: description,
-                    picture: picture,
-                    creator: null
-                };
-                const createResponse = await axios.post('http://localhost:3001/test/addTest', test);
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('category', category);
+                formData.append('nbrQuiz', 0);
+                formData.append('nbrParticipant', 0);
+                formData.append('description', description);
+                formData.append('picture', picture);
+                formData.append('creator', creator);
 
-                console.log('Test object created:', createResponse.data);
-                console.log('test', test);
-                console.log('\n');
+                // Create a new test object and save it to the database
+                await axios.post('http://localhost:3001/test/addTest', formData);
+
                 navigate("/dashboard/arrayTest");
 
                 // ... other code ...
@@ -71,6 +67,7 @@ function TestsAdmin() {
             }
         }
     };
+
 
 
 
@@ -95,7 +92,7 @@ function TestsAdmin() {
                         <InputLabel>Test Category</InputLabel>
                         <Select value={category} onChange={handleCategoryChange}>
                             <MenuItem value="">Select a category</MenuItem>
-                            <MenuItem value="level">Level Test</MenuItem>
+                            <MenuItem value="level test">Level Test</MenuItem>
                             <MenuItem value="diagnostic">Diagnostic Test</MenuItem>
                         </Select>
                         {!isCategorySelected && <Typography color="error" variant="caption">Please select a category</Typography>}
@@ -105,7 +102,7 @@ function TestsAdmin() {
                     <TextField label="Test Description" fullWidth value={description} onChange={handleDescriptionChange} multiline error={!isDescriptionValid} helperText={!isDescriptionValid && 'Description cannot be empty'} />
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField type="file" fullWidth onChange={handlePictureChange} error={!isPictureSelected} helperText={!isPictureSelected && 'Please select an picture file'} />
+                    <TextField className='form-control' encType="multipart/form-data" type="file" fullWidth onChange={handlePictureChange} error={!isPictureSelected} helperText={!isPictureSelected && 'Please select an picture file'} />
                 </Grid>
                 <Grid item xs={12}>
                     <Button type="submit" variant="outlined" style={{ width: 'auto', 'background-color': '#0069D9', color: 'white' }}>Create Test</Button>

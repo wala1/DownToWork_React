@@ -35,14 +35,7 @@ function QuizzesAdmin() {
     const handlePictureChange = (event) => {
         const file = event.target.files[0];
         setIsPictureSelected(!!file);
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                setPicture(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
+        setPicture(file);
     };
 
     const handleSubmit  = async (event) => {
@@ -50,20 +43,20 @@ function QuizzesAdmin() {
 
         if (isValidName && setIsTypeSelected && isDescriptionValid && isPictureSelected) {
             try{
-                // Create a new test object and save it to the database
-                const quiz = {
-                    name: name,
-                    type: type,
-                    nbrQuestion: 0,
-                    description: description,
-                    picture: picture,
-                    idTest: null
-                };
-                const createResponse = await axios.post('http://localhost:3001/quiz/addQuiz', quiz);
+                // Create a new quiz object and save it to the database
+               
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('type', type);
+                formData.append('nbrQuestion', 0);
+                formData.append('nbrParticipant', 0);
+                formData.append('description', description);
+                formData.append('picture', picture);
+                formData.append('idTest', null);
 
-                console.log('Quiz object created:', createResponse.data);
-                console.log('quiz', quiz);
-                console.log('\n');
+                await axios.post('http://localhost:3001/quiz/addQuiz', formData);
+
+                navigate("/dashboard/arrayTest");
 
             } catch (error) {
                 console.error(error);
@@ -103,7 +96,7 @@ function QuizzesAdmin() {
                     <TextField label="Quiz Description" fullWidth value={description} onChange={handleDescriptionChange} multiline error={!isDescriptionValid} helperText={!isDescriptionValid && 'Description cannot be empty'} />
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField type="file" fullWidth onChange={handlePictureChange} error={!isPictureSelected} helperText={!isPictureSelected && 'Please select an picture file'} />
+                    <TextField className='form-control' encType="multipart/form-data" type="file" fullWidth onChange={handlePictureChange} error={!isPictureSelected} helperText={!isPictureSelected && 'Please select an picture file'} />
                 </Grid>
                 <Grid item xs={12}>
                     <Typography variant="subtitle1">Number of Questions is a zero you can navigate to add questions <Link to="/dashboard/questionForm" >here</Link>.</Typography>

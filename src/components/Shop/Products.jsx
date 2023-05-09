@@ -46,6 +46,7 @@ function Products() {
 		};
 		getProducts();
 	}, []);
+	//const filtredProducts = products.filter((product)=>product.ownerId!==user._id)
 	// console.log(products)
 	
 	const myList = products.map((product) => {
@@ -63,7 +64,7 @@ function Products() {
 				<div className="post_featured">
 					<div className="post_thumb">
 						<a className="hover_icon hover_icon_link" onClick={handleProductPage} >
-							<img src={`http://localhost:3001/${product.prodImg.imgUrl}`} alt=""  />
+							<img src={product.prodImg&&`http://localhost:3001/${product.prodImg.imgUrl}`} alt=""  />
 						</a>
 					</div>
 				</div>
@@ -103,12 +104,12 @@ function Products() {
 					{/* <!-- /Page title --> */}
 					{/* <!-- Content with sidebar --> */}
 					<div className="page_content_wrap">
-						<div className="content_wrap" style={{ marginTop: "200px" }}>
+						<div className="content_wrap" style={{ marginTop: "250px" }}>
 							{/* <!-- Content --> */}
 							<div className="content">
 								<div className="list_products shop_mode_thumbs">
 								
-									<button className='sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small alignleft sc_buttons_st1' id='add-new-product' onClick={handleAddProduct}> Add new Product</button>
+									{user&&<button className='sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small alignleft sc_buttons_st1' id='add-new-product' onClick={handleAddProduct}> Add new Product</button>}
 									<Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
 									{/* <form className="woocommerce-ordering" method="get">
 										<select name="orderby" className="orderby">
