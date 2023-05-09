@@ -30,6 +30,40 @@ import UpdateTest from "./components/test/admin/UpdateTest";
 import UpdateQuiz from "./components/test/admin/UpdateQuiz";
 import UpdateQuestion from "./components/test/admin/UpdateQuestion";
 // here my import
+// here my import 
+
+// import ActivationPage from './components/signUp/ActivationPage';
+//  import Products from './components/Shop/Products';
+// import ProductPage from './components/Shop/ProductPage';
+// import Cart from './components/Shop/Cart';
+// import AddProduct from './components/Shop/AddProduct';
+// import {Provider} from 'react-redux';
+// import store from './redux/store';
+// import SalesDashboard from './components/BusinessDashboard/SalesDashboard';
+// import Dashboard from './components/Dashboard/MainDash';
+// import Joyride from 'react-joyride';
+// import { Steps } from "./components/Shop/steps"
+// import Success from './components/Shop/Success';
+// import Fail from './components/Shop/Fail';
+// import Topics from './components/Courses/topics';
+// import Profile from './components/ProfileManagement/Profile';
+// import Side from './components/ProfileManagement/Side';
+// import Courses from './components/Courses/courses';
+// import MyProducts from './components/Shop/MyProducts';
+// import ChatGPT from './components/chat/ChatGpt';
+// import Test from './components/Courses/test';
+// import TopicsList from './components/Courses/Admin/TopicsList';
+// import Form from './components/Courses/Admin/Form';
+// import UpdateForm from './components/Courses/Admin/UpdateForm';
+// import CoursesList from './components/Courses/Admin/CoursesList';
+// import FormAdd from './components/Courses/Admin/FormAdd';
+// import GameList from './components/Courses/GameList';
+// import Tic from './components/games/TicTac/Tic';
+// import Post from './components/ProfileManagement/Post';
+// import Members from './components/ProfileManagement/Members';
+// import ChangePwd from './components/AccountManagement/ChangePwd';
+// import Edit from './components/AccountManagement/Edit';
+// import Feed from './components/ProfileManagement/Feed';
 
 import ActivationPage from "./components/signUp/ActivationPage";
 import Products from "./components/Shop/Products";
@@ -62,6 +96,8 @@ import Post from "./components/ProfileManagement/Post";
 import Members from "./components/ProfileManagement/Members";
 import ChangePwd from "./components/AccountManagement/ChangePwd";
 import Edit from "./components/AccountManagement/Edit";
+import Feed from './components/ProfileManagement/Feed';
+
 
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
@@ -113,6 +149,7 @@ function App() {
           <Route path="/test" element={<LevelTest />} />
           <Route path="/game" element={<Cards />}></Route>
           <Route path="/p" element={<Post />}></Route>
+          <Route path="/feed" element={<Feed/>}></Route>
 
           <Route path="/trial" element={<Trial />} />
 

@@ -1,11 +1,50 @@
-import React from 'react';
+import React, { useEffect , useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
 import {Button} from 'react-bootstrap';
 import './Side.css';
 
-const Post = ({post, deletePost, username, imagePath, isCurrent}) => {
+const Post = ({post, deletePost, isCurrent}) => {
   const userString = localStorage.getItem ('user');
   const user = JSON.parse (userString);
+
+  const navigate = useNavigate()
+
+  const [pathUser, setpathUser] = useState({});
+
+  const urlGetImagePath = 'http://127.0.0.1:3001/users/getImagePath/';
+  const urlUserById = 'http://localhost:3001/users/getById/';
+  const [imagePath, setimagePath] = useState('');
+
+ useEffect(() => {
+    console.log(post.user);
+    axios
+    .get (urlGetImagePath + post.user)
+    .then (response => {
+      setimagePath (response.data);
+    })
+    .catch (err => {
+      console.log (err);
+    });
+
+    axios
+    .get (urlUserById + post.user)
+    .then (response => {
+      setpathUser (response.data);
+    })
+    .catch (err => {
+      console.log (err);
+    });
+
+ }, []);
+
+ useEffect (
+    () => {
+    console.log ('imagePath:', imagePath);
+    },
+    [imagePath , pathUser]
+  );
+
 
   return (
     <div class="">
@@ -31,20 +70,23 @@ const Post = ({post, deletePost, username, imagePath, isCurrent}) => {
           />
           <div>
             <h6 className="sc_team_item_infos">
-              <a href="personal-page.html">{username}</a>
+              <a href="" onClick={() => {navigate (`/profile?id=${pathUser._id}`)}}>{post.name}</a>
             </h6>
-            <div className="sc_team_item_position">Marketing Coordinator</div>
+            <div className="sc_team_item_position">{pathUser.statut}</div>
           </div>
           <div className="BtnPost">
-            <Button
+           {/*  <Button
               variant="link"
               className="mr-3"
               onClick={() => deletePost (post._id)}
             >
               Delete post
-            </Button>
-            <Button variant="link">Edit post</Button>
-          </div>
+            </Button> */}
+            <a> &#128525;</a>
+            <a> &#128527;</a>
+            <a> &#128514;</a>
+{/*             <Button variant="link">Edit post</Button>
+ */}          </div>
         </div>
       </div>
     </div>

@@ -308,7 +308,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 										<li className="menu-item"><a href="personal-page.html">Teacher&#8217;s Personal Page</a></li>
 									</ul> */}
 								</li>
-								<li className="menu-item menu-item-has-children"><a href="blog-streampage.html">Blog</a>
+								<li className="menu-item menu-item-has-children"><a href="" onClick={() => {navigate('/feed')}}>Blog</a>
 									<ul className="sub-menu">
 										<li className="menu-item menu-item-has-children"><a href="#">Post Formats</a>
 											<ul className="sub-menu">
