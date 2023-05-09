@@ -140,6 +140,7 @@ const Profile = () => {
                 <div style={{marginRight: '50px'}}>
                   <AddPost addItem={addItem} username={currentUser.name} />
                 </div>}
+                <br/>
               <div>
                 <div className="Resverse" style={{marginRight: '150px'}}>
                   {posts.map ((post, index) => (
