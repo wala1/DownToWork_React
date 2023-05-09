@@ -3,11 +3,16 @@ import axios from 'axios';
 import { Link, Routes, Route, useParams } from 'react-router-dom';
 import InfoSection from './infoSecion';
 import Course from './Course';
+import ReactPlayer from 'react-player';
 
 function Courses() {
     const [courses, setCourses]=useState([]);
+    const [level, setLevel]=useState('');
     const [showAll,setShowAll]= useState(true);
     const [showVideo,setShowVideo]= useState(false);
+    const [showBeginner,setShowBeginner]= useState(false);
+    const [showMedium,setShowMedium]= useState(false);
+    const [showAdvanced,setShowAdvanced]= useState(false);
     const {name} = useParams();
     useEffect(() => {
         axios
@@ -19,15 +24,72 @@ function Courses() {
             console.log(error);
           });
       }, []);
-const onVideoClick = () => {
+
+const onBeginner = () => {
+  setLevel("beginner");
+  setShowBeginner(true);
   setShowAll(false);
-  setShowVideo(true);
-  console.log("All : " + showAll , " video : "+showVideo);
+  setShowMedium(false);
+  setShowAdvanced(false);
+  axios
+          .get(`http://localhost:3001/courses/find-topic-level/${name}/beginner`)
+          .then((response) => {
+            setCourses(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+  console.log("Level : "+ level +  " / beginner  : "+showBeginner);
+}
+const onMedium = () => {
+  setLevel("medium");
+  setShowMedium(true);
+  setShowAll(false);
+  setShowAdvanced(false);
+  setShowBeginner(false);
+  axios
+          .get(`http://localhost:3001/courses/find-topic-level/${name}/medium`)
+          .then((response) => {
+            setCourses(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+  console.log("Level : "+ level +  " / medium  : "+showMedium);
+}
+const onAdvanced = () => {
+  setLevel("advanced");
+  setShowAdvanced(true);
+  setShowAll(false);
+  setShowMedium(false);
+  setShowBeginner(false);
+  axios
+          .get(`http://localhost:3001/courses/find-topic-level/${name}/advanced`)
+          .then((response) => {
+            setCourses(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+  console.log("Level : "+ level +  " / advanced  : "+showAdvanced);
 }
 const onAllCoursesClick = () => {
   setShowAll(true);
-  setShowVideo(false);
-  console.log("All : " + showAll , " video : "+showVideo);
+  setShowMedium(false);
+  setShowAdvanced(false);
+  setShowBeginner(false);
+  axios
+  .get(`http://localhost:3001/courses/find-topic/${name}`)
+  .then((response) => {
+    setCourses(response.data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+  console.log("All : " + showAll );
 }
     return ( <>
     {/* Body */}
@@ -45,14 +107,28 @@ const onAllCoursesClick = () => {
                 <div className="isotope_filters masonry-page-3-columns inited">
         
                   <a onClick={onAllCoursesClick} data-filter=".flt_34" className="isotope_filters_button active">
-                    Courses
+                    All
                   </a>
                   <a
-                    onClick={onVideoClick}
+                    onClick={onBeginner}
                     data-filter=".flt_32"
                     className="isotope_filters_button "
                   >
-                    Videos
+                    Beginner
+                  </a>
+                  <a
+                    onClick={onMedium}
+                    data-filter=".flt_32"
+                    className="isotope_filters_button "
+                  >
+                    Medium
+                  </a>
+                  <a
+                    onClick={onAdvanced}
+                    data-filter=".flt_32"
+                    className="isotope_filters_button "
+                  >
+                    Advanced
                   </a>
                  
                 </div>
@@ -75,7 +151,7 @@ const onAllCoursesClick = () => {
                   </ul> */}
                 </div>
                 {/* ##################################################### */}
-                { showAll && 
+                { (showAll || showMedium || showAdvanced || showBeginner) &&
                 
                 <div
                   className="isotope_wrap inited"
@@ -84,7 +160,7 @@ const onAllCoursesClick = () => {
                 >
                   <div className="d-flex flex-wrap">
                     {courses.map((course) => (
-                      <Course key={course._id} topicName={name} level={course.Level} pdf={course.type} name={course.nameCourse} description={course.descriptionCourse} imageC={course.imageCourse} />
+                      <Course key={course._id} idC={course._id} topicName={name} level={course.Level} pdf={course.type} name={course.nameCourse} description={course.descriptionCourse} imageC={course.imageCourse} />
                       
                     ))}
                   </div>
@@ -124,6 +200,7 @@ const onAllCoursesClick = () => {
       <Route path="/diagnostic/quizzes/id" element={<Quizzes />}></Route>
     </Routes> */}
     </> );
+    
 }
 
 export default Courses;

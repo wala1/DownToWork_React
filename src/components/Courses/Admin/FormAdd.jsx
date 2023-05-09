@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextField, Button, FormControl, InputLabel, Select, MenuItem, Grid, Typography } from '@mui/material';
 import "../../test/admin/style.css";
 import axios from 'axios';
@@ -9,13 +9,44 @@ function Form(){
     const [imageCourse , setImageCourse] = useState(null);
     const [type , setType] = useState('');
     const [Level , setLevel] = useState('');
-    const [topic , setTopic] = useState('');
+    const [topic, setTopic] = useState('');
+    const [topics, setTopics] = useState([]);
+    const [pdf, setPdf] = useState(null);
     const [isValidNameCourse, setIsValidNameCourse] = useState(true);
     const [isValidDescriptionCourse, setIsValidDescriptionCourse] = useState(true);
     const [isImageCourseSelected, setIsImageCourseSelected] = useState(true);
     const [isTypeSelected, setIsTypeSelected] = useState(true);
+    const [isPdfSelected, setIsPdfSelected] = useState(true);
     const [isLevelSelected, setIsLevelSelected] = useState(true);
+    const [isTopicSelected, setIsTopicSelected] = useState(true);
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        axios
+        .get(`http://localhost:3001/topics`)
+        .then((response) => {
+            setTopics(response.data);
+            console.log(response.data);
+        })
+        .catch((error)=> {
+            console.log(error)
+        });
+    
+
+    },[]);
+    useEffect(()=>{
+        console.log(type);
+    },[type]);
+    useEffect(()=>{
+        console.log("type : "+type);
+    },[type]);
+    useEffect(()=>{
+        console.log("level : " + Level);
+    },[Level]);
+    useEffect(()=>{
+        console.log("topic : " + topic);
+    },[topic]);
+
     const handleNameChange = (event) => {
         setNameCourse(event.target.value);
         setIsValidNameCourse(/^[a-zA-Z0-9\s]+&/);
@@ -32,6 +63,14 @@ function Form(){
         setLevel(event.target.value);
         setIsLevelSelected(true);
     };
+    const handleTopicChange = (event) => {
+        setTopic(event.target.value);
+        setIsTopicSelected(true);
+    };
+    const handlePdfChange = (event) => {
+        setPdf(event.target.files[0]);
+        setIsPdfSelected(true);
+      };
     const handlePictureChange = (event) => {
         const file = event.target.files[0];
         setIsImageCourseSelected(!!file);
@@ -56,9 +95,9 @@ function Form(){
                     imageCourse: imageCourse,
                     type : type,
                     Level : Level,
-                    topic : null
+                    topic : topic
                 };
-                const createResponse = await axios.post('http://localhost:3001/courses/add', course);
+                const createResponse = await axios.post('http://localhost:3001/courses/add-pdf', course);
 
                 console.log('course object created:', createResponse.data);
                 console.log('course : ', course);
@@ -75,6 +114,7 @@ function Form(){
         setNameCourse('');
         setDescriptionCourse('');
         setImageCourse(null);
+        setTopic([]);
     }
     return(
 
@@ -114,7 +154,25 @@ function Form(){
                     </FormControl>
             </Grid>
             <Grid item xs={12}>
+                    <FormControl fullWidth error={!isTopicSelected}>
+                        <InputLabel>Topic</InputLabel>
+                        <Select id="topic" value={topic} onChange={handleTopicChange}>
+                             <MenuItem value="">Select a topic</MenuItem>
+                              {topics.map((topic) => (
+                                    <MenuItem key={topic._id} value={topic.topicName}>{topic.topicName}</MenuItem>
+                              ))}
+                        </Select>
+                        {!isTopicSelected && <Typography color="error" variant="caption">Please select a Topic</Typography>}
+                    </FormControl>
+            </Grid>
+            <Grid item xs={12}>
+                <InputLabel>Picture</InputLabel>
+
                 <TextField type="file" fullWidth onChange={handlePictureChange} error={!isImageCourseSelected} helperText={!isImageCourseSelected && 'Please select an picture file'} />
+            </Grid>
+            <Grid item xs={12}>
+                <InputLabel>PDF</InputLabel>
+                <TextField type="file" fullWidth onChange={handlePdfChange} error={!isPdfSelected} helperText={!isPdfSelected && 'Please select an picture file'} />
             </Grid>
             <Grid item xs={12}>
                 <Button type="submit" variant="outlined" style={{ width: 'auto', 'background-color': '#0069D9', color: 'white' }}>Save</Button>

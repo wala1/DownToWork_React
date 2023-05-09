@@ -1,3 +1,5 @@
+import React from 'react';
+
 import './components/signIn/SignIn';
 import './App.css';
 import SignIn from './components/signIn/SignIn';
@@ -42,7 +44,6 @@ import Success from './components/Shop/Success';
 import Fail from './components/Shop/Fail';
 import Topics from './components/Courses/topics';
 import Courses from './components/Courses/Courses';
-import Jeux from './components/Courses/Courses';
 import Profilee from './components/ProfileManagement/profile';
 import UserProfile from './components/ProfileManagement/profileTest';
 import Team from './components/ProfileManagement/Team';
@@ -55,6 +56,10 @@ import CoursesList from './components/Courses/Admin/CoursesList';
 import FormAdd from './components/Courses/Admin/FormAdd';
 import GameList from './components/Courses/GameList';
 import Tic from './components/games/TicTac/Tic';
+import FileUpload from './components/FileUpload';
+import Videos from './components/Courses/videos';
+import VideoList from './components/Courses/Admin/videoList';
+import VideoAdd from './components/Courses/Admin/videoAdd';
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
 //   const user = JSON.parse(userString);
@@ -69,12 +74,55 @@ import Tic from './components/games/TicTac/Tic';
 //   );
 // }
 
+import JoinRoom from './onboard/joinroom';
+import { ColorContext } from './context/colorcontext';
+import Onboard from './onboard/onboard';
+import JoinGame from './onboard/joingame';
+import ChessGame from './components/games/chess/ui/chessgame';
+
 function App () {
+   const [didRedirect, setDidRedirect] = React.useState(false)
+
+  const playerDidRedirect = React.useCallback(() => {
+    setDidRedirect(true)
+  }, [])
+
+  const playerDidNotRedirect = React.useCallback(() => {
+    setDidRedirect(false)
+  }, [])
+
+  const [userName, setUserName] = React.useState('')
   return (
+    <ColorContext.Provider value = {{didRedirect: didRedirect, playerDidRedirect: playerDidRedirect, playerDidNotRedirect: playerDidNotRedirect}}>
     <Provider store={store}>
       <BrowserRouter>
       <Joyride continuou hideCloseButton scrollToFirstStep showProgress showSkipButton steps={Steps} />
         <Routes>
+          {/* chess */}
+          
+                <Route path="/join-game" element={<Onboard setUserName = {setUserName} />} />
+              <Route path = "/game/:gameid" element={didRedirect ? 
+               <React.Fragment>
+                     <JoinGame userName = {userName} isCreator = {true} />
+                     <ChessGame myUserName = {userName} />
+               </React.Fragment> 
+               :
+               <JoinRoom />}/>
+         {/* <Route path = "/join-game" >
+            <Onboard setUserName = {setUserName}/>
+          </Route>
+          <Route path = "/game/:gameid" exact>
+             {didRedirect ? 
+               <React.Fragment>
+                     <JoinGame userName = {userName} isCreator = {true} />
+                     <ChessGame myUserName = {userName} />
+               </React.Fragment> 
+               :
+               <JoinRoom />}
+           </Route>
+           <Navigate to = "/" /> */}
+          {/* /*chess */ }
+          <Route path="/upload" element={<FileUpload/>}></Route>
           <Route path="/addProduct" element={<AddProduct />} />
           <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
@@ -108,6 +156,7 @@ function App () {
 
           <Route path='/test1' element={<Test/>}/>
           <Route path="/" element={<Main />}>
+          <Route path="/videos/:name" element={<Videos/>}></Route>            
 
             <Route path="" element={<Home />} />
             <Route path="/gamesList" element={<GameList/>}/>
@@ -139,12 +188,13 @@ function App () {
           <Route path="/dashboard/topics/update/:id" element={<UpdateForm/>}/>
           <Route path="/dashboard/courses" element={<CoursesList/>}/>
           <Route path="/dashboard/courses/add" element={<FormAdd/>}/>
-
-
+          <Route path="/dashboard/videos" element={<VideoList/>}/>
+          <Route path="/dashboard/videos/add" element={<VideoAdd/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
     </Provider>
+    </ColorContext.Provider>
   );
 }
 
