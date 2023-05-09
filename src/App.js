@@ -63,6 +63,7 @@ import Members from './components/ProfileManagement/Members';
 import ChangePwd from './components/AccountManagement/ChangePwd';
 import Edit from './components/AccountManagement/Edit';
 
+
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
 //   const user = JSON.parse(userString);
@@ -105,6 +106,8 @@ function App () {
           <Route path="/delete-account" element={<DeleteAccount />} />
           <Route path="/test" element={<LevelTest />} />
           <Route path="/game" element={<Cards/>}></Route>
+          <Route path="/p" element={<Post/>}></Route>
+
 
           <Route path="/trial" element={<Trial/>}/>
 

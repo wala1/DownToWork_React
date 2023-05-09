@@ -120,6 +120,10 @@ background-color:  #3aaf85;;
 }
 
 
+.cred{
+  display: flex;
+  flex-direction: row;
+}
 .bds {
   padding: 10px 30px;
   border: none;

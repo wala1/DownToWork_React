@@ -29,7 +29,7 @@ const Member = ({user}) => {
         </div>
         <div className="sc_team_item_info">
           <h6 className="sc_team_item_title">
-            <a onClick={() => {navigate(`/profile/${user._id}`)}}>{user.name}</a>
+            <a onClick={() => {navigate (`/profile?id=${user._id}`)}}>{user.name}</a>
           </h6>
           <div className="sc_team_item_position">
             {user.statut}

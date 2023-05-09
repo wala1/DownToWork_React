@@ -54,7 +54,7 @@ const AddPost = ({addItem , username}) => {
               onChange={handleImgUrlChange}
             />
           </div> */}
-        <button type="submit" className="btn btn-success btn-lg bpb ">
+        <button type="submit" className="btn btn-lg bpb ">
           Publish
         </button>
       </form>
