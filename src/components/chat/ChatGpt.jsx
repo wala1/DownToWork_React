@@ -87,7 +87,7 @@ export default function ChatGPT() {
   return (
     <div
       style={{
-        backgroundColor: "rgb(36, 59, 36)",
+        backgroundColor: "rgb(13, 37, 76)",
         height: "100%",
         width: "100%",
         position: "absolute",
@@ -198,7 +198,7 @@ export default function ChatGPT() {
             onMouseUp={stopListening}
             style={{
               borderRadius: "50%",
-              backgroundColor: "rgb(36, 59, 36)",
+              backgroundColor:  "rgb(13, 37, 76)",
               color: "white",
               border: "none",
               height: "40px",
@@ -217,7 +217,7 @@ export default function ChatGPT() {
           <button
             style={{
               borderRadius: "50%",
-              backgroundColor: "rgb(36, 59, 36)",
+              backgroundColor: "rgb(13, 37, 76)",
               color: "white",
               border: "none",
               height: "40px",
@@ -238,7 +238,7 @@ export default function ChatGPT() {
           <button
             style={{
               borderRadius: "50%",
-              backgroundColor: "rgb(36, 59, 36)",
+              backgroundColor: "rgb(13, 37, 76)",
               color: "white",
               border: "none",
               height: "40px",
