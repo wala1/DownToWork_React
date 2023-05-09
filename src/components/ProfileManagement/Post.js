@@ -8,6 +8,8 @@ const Post = ({post, deletePost, isCurrent}) => {
   const userString = localStorage.getItem ('user');
   const user = JSON.parse (userString);
 
+  const navigate = useNavigate()
+
   const [pathUser, setpathUser] = useState({});
 
   const urlGetImagePath = 'http://127.0.0.1:3001/users/getImagePath/';
@@ -68,7 +70,7 @@ const Post = ({post, deletePost, isCurrent}) => {
           />
           <div>
             <h6 className="sc_team_item_infos">
-              <a href="personal-page.html">{post.name}</a>
+              <a href="" onClick={() => {navigate (`/profile?id=${pathUser._id}`)}}>{post.name}</a>
             </h6>
             <div className="sc_team_item_position">{pathUser.statut}</div>
           </div>
