@@ -11,6 +11,8 @@ function Quizzes() {
   const [showTest, setShowTest] = useState(false);
   const [quizId, setQuizId] = useState('');
   const [questions, setQuestions] = useState([]);
+  const [name, setName] = useState("");
+
   useEffect(() => {
     async function fetchQuizzes() {
       try {
@@ -28,32 +30,48 @@ function Quizzes() {
     async function fetchQuestions() {
       try {
         const response = await axios.get(`http://localhost:3001/question/getQuestionsByIdQuiz?id=${quizId}`)
-        .then((response) => {
-          if(response){
-            const fetchedQuestions = response.data.questions;
-            setQuestions(fetchedQuestions);
-            console.log("questions : " + fetchedQuestions);
-            console.log("length question :" + fetchedQuestions.length);
-            setShowTest(true);
-          }
-        })
-       
+          .then((response) => {
+            if (response) {
+              const fetchedQuestions = response.data.questions;
+              setQuestions(fetchedQuestions);
+              console.log("questions : " + fetchedQuestions);
+              console.log("length question :" + fetchedQuestions.length);
+
+            }
+          })
+
       } catch (error) {
         console.error(error);
       }
     }
-  
+
     if (quizId) {
       fetchQuestions();
     }
   }, [quizId]);
-  
-  
+
+
   const handleStart = (quizId) => {
     setQuizId(quizId);
     console.log("quiz id :" + quizId);
     console.log("length question :" + questions.length);
+    axios.get('http://localhost:5000/name')
+      .then(response => {
+        console.log('response: ', response);
+        console.log('name: ', response.data.name);
+        setName(response.data.name);
+        console.log("name: " + name);
+      })
+      .catch(error => {
+        console.log('Error fetching data: ', error);
+      });
+    if (name == 'down-syndrom') {
+      setShowTest(true);
+    }else{
+      alert("Sorry you can't pass the test");
+    }
   }
+
 
   return (<>
 
@@ -67,7 +85,7 @@ function Quizzes() {
           <div className="page_wrap">
             <div className="top_panel_fixed_wrap" />
             {/* Content */}
-            <div className="page_content_wrap">
+            <div className="page_content_wrap" style={{ marginTop: '-173px' }}>
               {/* Course info section */}
               <div className="content">
                 <article className="post_item post_item_single_courses courses">

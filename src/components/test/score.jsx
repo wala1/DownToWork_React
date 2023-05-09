@@ -77,18 +77,19 @@ function Score(props) {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(`${trial.score}/${trial.answers?.length}`, centerX, centerY);
-        if (trial.score > trial.answers?.length / 2) {
+        if (trial.answers && trial.score > trial.answers.length / 2) {
             const level = "Intermediate";
             axios.put(`http://localhost:3001/users/classification/${userId}/${level}`);
-        } else if (trial.score === trial.answers?.length / 2) {
+        } else if (trial.answers && trial.score === trial.answers.length / 2) {
             const level = "Beginner";
             axios.put(`http://localhost:3001/users/classification/${userId}/${level}`);
-        } else if (trial.score === trial.answers?.length) {
+        } else if (trial.answers && trial.score === trial.answers.length) {
             const level = "Advanced";
             axios.put(`http://localhost:3001/users/classification/${userId}/${level}`);
         } else {
             console.log("this is not the case");
         }
+
 
     }, [trial]);
 

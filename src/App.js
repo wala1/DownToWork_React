@@ -103,18 +103,10 @@ function App () {
           <Route path="/delete-account" element={<DeleteAccount />} />
           <Route path="/test" element={<LevelTest />} />
           <Route path="/game" element={<Cards/>}></Route>
-
           <Route path="/trial" element={<Trial/>}/>
-
           <Route path="/Profile" element={<Profile/>} />
-          <Route path="/" element={<Main />}>
-            <Route path="" element={<Home />} /> 
-          <Route path="/memoryGame" element={<Cards/>}></Route>
-          <Route path="/ticGame" element={<Tic/>}></Route>
 
-          {/* <Route path="/gamesList" element={<Jeux/>}></Route> */}
-
-          <Route path='/test1' element={<Test/>}/>
+           
           
           <Route path="/" element={<Main />}>
             <Route path="" element={<Home />} />
@@ -127,20 +119,24 @@ function App () {
             <Route path="/fail" element={<Fail />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/myProducts" element={<MyProducts />} />
+            <Route path="/memoryGame" element={<Cards/>}></Route>
+            <Route path="/ticGame" element={<Tic/>}></Route>
 
+            {/* <Route path="/gamesList" element={<Jeux/>}></Route> */}
+
+            <Route path='/test1' element={<Test/>}/>
             <Route path="/topics">
             <Route index element={<Topics/>}></Route>
             <Route path="courses/:name" element={<Courses/>}></Route>
             
-            
-          </Route>            
             <Route path="/topics">
                 <Route index element={<Topics/>}></Route>
                 <Route path="courses/:name" element={<Courses/>}></Route>            
             </Route>
-          
-
+            </Route>
         </Route>
+
+
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="/dashboard/orders" element={<SalesDashboard />}></Route>
           <Route path="/dashboard/tests" element={<ManageTest/>}></Route>
@@ -153,7 +149,6 @@ function App () {
           <Route path="/dashboard/topics/update/:id" element={<UpdateForm/>}/>
           <Route path="/dashboard/courses" element={<CoursesList/>}/>
           <Route path="/dashboard/courses/add" element={<FormAdd/>}/>
-        </Route>
         </Route>
       </Routes>
     </BrowserRouter>

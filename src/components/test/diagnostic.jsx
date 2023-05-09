@@ -11,6 +11,8 @@ function Diagnostic() {
   const [perPage, setPerPage] = useState(6);
   let totalTests = tests.length;
 
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     axios
       .get(`http://localhost:3001/test/getTestPagination?page=${currentPage}&perPage=${perPage}`)
@@ -32,6 +34,11 @@ function Diagnostic() {
     setCurrentPage(1);
   };
 
+  const filteredTests = tests.filter(
+    (test) =>
+      test.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (<>
 
     {/* Body */}
@@ -39,7 +46,7 @@ function Diagnostic() {
       <div className="page_wrap">
         <div className="top_panel_fixed_wrap" />
         {/* Content */}
-        <div className="page_content_wrap" style={{marginTop: '-98px'}}>
+        <div className="page_content_wrap" style={{ marginTop: '-173px' }}>
           {/* Course info section */}
           <div className="content">
             <article className="post_item post_item_single_courses courses">
@@ -71,30 +78,22 @@ function Diagnostic() {
               </section>
             </article>
           </div>
+
+
           {/* /Course info section */}
           <div className="page_content_wrap">
             <div className="content_wrap">
               <div className="content">
-                <div className="isotope_filters masonry-page-3-columns inited">
-                  <a href="#" data-filter="*" className="isotope_filters_button">
-                    All
-                  </a>
-                  <a href="#" data-filter=".flt_34" className="isotope_filters_button">
-                    medical
-                  </a>
-                  <a
-                    href="#"
-                    data-filter=".flt_32"
-                    className="isotope_filters_button active"
-                  >
-                    masonry
-                  </a>
-                  <a href="#" data-filter=".flt_33" className="isotope_filters_button">
-                    english
-                  </a>
-                  <a href="#" data-filter=".flt_35" className="isotope_filters_button">
-                    computer
-                  </a>
+                <div className="isotope_filters masonry-page-3-columns inited" >
+                  {/* <TextField style={{ height: 30 }} label="Search" variant="outlined"
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                    }}
+                  /> */}
+                  <div class="input-group mb-3" style={{border:' 1px solid black',marginTop: '2rem',width: '42rem',marginLeft: '38rem'}}>
+                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="button-addon2" onChange={(e) => { setSearch(e.target.value) }} />
+                  </div>
+
                 </div>
 
                 <div className="pagination">
@@ -121,7 +120,7 @@ function Diagnostic() {
                   style={{ position: "relative", height: "1795.9px" }}
                 >
                   <div className="d-flex flex-wrap">
-                    {tests.map((test) => (
+                    {tests ? filteredTests.map((test) => (
                       <div key={test._id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <article className="post_item post_item_masonry post_item_masonry_3 even">
                           <div className="post_featured">
@@ -134,8 +133,8 @@ function Diagnostic() {
                                 className="hover_icon hover_icon_link"
                                 href="post-with-video.html"
                               >
-                                 <img style={{ height: "300px", width: "370px", objectFit: "cover" }} src={`http://localhost:3001/${test.picture.imgUrl}`} alt="Test" className="test-picture" />
-                               
+                                <img style={{ height: "300px", width: "370px", objectFit: "cover" }} src={`http://localhost:3001/${test.picture.imgUrl}`} alt="Test" className="test-picture" />
+
                               </a>
                             </div>
                           </div>
@@ -174,7 +173,8 @@ function Diagnostic() {
                           </div>
                         </article>
                       </div>
-                    ))}
+                    )) : <h6>No tests yet</h6>
+                    }
                   </div>
 
                 </div>
