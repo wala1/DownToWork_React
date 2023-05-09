@@ -1993,8 +1993,9 @@ label.required:after {
 /* Top panel */
 .top_panel_wrap {
 	position: relative;
-	background-color: #018763;
+	background-color: #4481eb;
 	z-index: 1000;
+	/* #018763 */
 }
 
 .top_panel_over .top_panel_wrap {

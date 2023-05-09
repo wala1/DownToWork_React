@@ -481,7 +481,9 @@ input[type="checkbox"]:checked + label:before {
 }
 */
 .top_panel_fixed.top_panel_over.top_panel_opacity_transparent .top_panel_wrap {
-	background-color: #018763;  /*rgba(1,135,99, 0.8);*/
+	background-color: #4481eb;  /*rgba(1,135,99, 0.8);*/
+	
+	/* #018763 */
 }
 
 .menu_main_wrap .menu_main_nav > li {
