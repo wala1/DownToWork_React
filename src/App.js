@@ -28,15 +28,15 @@ import ManageTest from "./components/test/admin/manageTest";
 import ArrayTest from "./components/test/admin/arrayTest";
 import UpdateTest from "./components/test/admin/UpdateTest";
 import Joyride from 'react-joyride';
-import { Steps } from "./components/Shop/steps"
-import Success from './components/Shop/Success';
-import Fail from './components/Shop/Fail';
-import Topics from './components/Courses/topics';
-import Courses from './components/Courses/courses';
+// import { Steps } from "./components/Shop/steps"
+// import Success from './components/Shop/Success';
+// import Fail from './components/Shop/Fail';
+// import Topics from './components/Courses/topics';
+// import Courses from './components/Courses/courses';
 // import Profilee from './components/ProfileManagement/profile';
-import UserProfile from './components/ProfileManagement/profileTest';
-import Team from './components/ProfileManagement/Team';
-import Beam from './components/ProfileManagement/Beam';
+// import UserProfile from './components/ProfileManagement/profileTest';
+// import Team from './components/ProfileManagement/Team';
+// import Beam from './components/ProfileManagement/Beam';
 import UpdateQuiz from "./components/test/admin/UpdateQuiz";
 import UpdateQuestion from "./components/test/admin/UpdateQuestion";
 // here my import
@@ -84,7 +84,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import SalesDashboard from "./components/BusinessDashboard/SalesDashboard";
 import Dashboard from "./components/Dashboard/MainDash";
-import Joyride from "react-joyride";
+// import Joyride from "react-joyride";
 import { Steps } from "./components/Shop/steps";
 import Success from "./components/Shop/Success";
 import Fail from "./components/Shop/Fail";
