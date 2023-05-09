@@ -158,7 +158,7 @@ function Cart() {
 													<td class="product-subtotal">
 														<span class="amount">&pound;41.39</span> </td>
 												</tr> */}
-                            <tr>
+                            {/* <tr>
                               <td colspan="6" class="actions">
                                 <div class="coupon">
                                   <label for="coupon_code">Coupon:</label>
@@ -184,7 +184,7 @@ function Cart() {
                                   value="Update Cart"
                                 />
                               </td>
-                            </tr>
+                            </tr> */}
                           </tbody>
                         </table>
                       </form>

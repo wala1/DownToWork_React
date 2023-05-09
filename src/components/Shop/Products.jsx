@@ -1560,7 +1560,7 @@ function Products() {
 								</aside>
 								{/* <!-- /Product category widget --> */}
 								{/* <!-- Recent products widget --> */}
-								<aside className="woocommerce">
+								{/* <aside className="woocommerce">
 									<h5 className="widget_title">Recent Products</h5>
 									<ul className="product_list_widget">
 										<li>
@@ -1591,7 +1591,7 @@ function Products() {
 											<span className="amount">&pound;74.19</span>
 										</li>
 									</ul>
-								</aside>
+								</aside> */}
 								{/* <!-- /Recent products widget --> */}
 								{/* <!-- Product tags widget --> */}
 								<aside className="woocommerce widget_product_tag_cloud">
