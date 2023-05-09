@@ -75,15 +75,18 @@ const Post = ({post, deletePost, isCurrent}) => {
             <div className="sc_team_item_position">{pathUser.statut}</div>
           </div>
           <div className="BtnPost">
-            <Button
+           {/*  <Button
               variant="link"
               className="mr-3"
               onClick={() => deletePost (post._id)}
             >
               Delete post
-            </Button>
-            <Button variant="link">Edit post</Button>
-          </div>
+            </Button> */}
+            <a> &#128525;</a>
+            <a> &#128527;</a>
+            <a> &#128514;</a>
+{/*             <Button variant="link">Edit post</Button>
+ */}          </div>
         </div>
       </div>
     </div>
