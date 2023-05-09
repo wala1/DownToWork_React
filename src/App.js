@@ -4,6 +4,14 @@ import SignIn from "./components/signIn/SignIn";
 import Home from "./components/home";
 import Main from "./components/Main";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import React from 'react';
+
+import './components/signIn/SignIn';
+import './App.css';
+import SignIn from './components/signIn/SignIn';
+import Home from './components/home';
+import Main from './components/Main';
+import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
 // import Dashboard from './components/Dashboard';
 import ForgetPassword from "./components/user/forgetPassword";
 import ResetPassword from "./components/user/resetPassword";
@@ -29,6 +37,11 @@ import ArrayTest from "./components/test/admin/arrayTest";
 import UpdateTest from "./components/test/admin/UpdateTest";
 import UpdateQuiz from "./components/test/admin/UpdateQuiz";
 import UpdateQuestion from "./components/test/admin/UpdateQuestion";
+import JoinRoom from './onboard/joinroom';
+import { ColorContext } from './context/colorcontext';
+import Onboard from './onboard/onboard';
+import JoinGame from './onboard/joingame';
+import ChessGame from './components/games/chess/ui/chessgame';
 // here my import
 // here my import 
 
@@ -99,6 +112,27 @@ import Edit from "./components/AccountManagement/Edit";
 import Feed from './components/ProfileManagement/Feed';
 
 
+import Joyride from 'react-joyride';
+import { Steps } from "./components/Shop/steps"
+import Success from './components/Shop/Success';
+import Fail from './components/Shop/Fail';
+import Topics from './components/Courses/topics';
+import Courses from './components/Courses/courses';
+import UserProfile from './components/ProfileManagement/profileTest';
+import Team from './components/ProfileManagement/Team';
+import Beam from './components/ProfileManagement/Beam';
+import Test from './components/Courses/test';
+import TopicsList from './components/Courses/Admin/TopicsList';
+import Form from './components/Courses/Admin/Form';
+import UpdateForm from './components/Courses/Admin/UpdateForm';
+import CoursesList from './components/Courses/Admin/CoursesList';
+import FormAdd from './components/Courses/Admin/FormAdd';
+import GameList from './components/Courses/GameList';
+import Tic from './components/games/TicTac/Tic';
+import FileUpload from './components/FileUpload';
+import Videos from './components/Courses/videos';
+import VideoList from './components/Courses/Admin/videoList';
+import VideoAdd from './components/Courses/Admin/videoAdd';
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
 //   const user = JSON.parse(userString);
@@ -114,7 +148,22 @@ import Feed from './components/ProfileManagement/Feed';
 // }
 
 function App() {
+
+
+function App () {
+   const [didRedirect, setDidRedirect] = React.useState(false)
+
+  const playerDidRedirect = React.useCallback(() => {
+    setDidRedirect(true)
+  }, [])
+
+  const playerDidNotRedirect = React.useCallback(() => {
+    setDidRedirect(false)
+  }, [])
+
+  const [userName, setUserName] = React.useState('')
   return (
+    <ColorContext.Provider value = {{didRedirect: didRedirect, playerDidRedirect: playerDidRedirect, playerDidNotRedirect: playerDidNotRedirect}}>
     <Provider store={store}>
       <BrowserRouter>
         <Joyride
@@ -127,6 +176,31 @@ function App() {
         />
         <Routes>
           <Route path="/chat/*" element={<ChatGPT />} />
+          {/* chess */}
+          
+                <Route path="/join-game" element={<Onboard setUserName = {setUserName} />} />
+              <Route path = "/game/:gameid" element={didRedirect ? 
+               <React.Fragment>
+                     <JoinGame userName = {userName} isCreator = {true} />
+                     <ChessGame myUserName = {userName} />
+               </React.Fragment> 
+               :
+               <JoinRoom />}/>
+         {/* <Route path = "/join-game" >
+            <Onboard setUserName = {setUserName}/>
+          </Route>
+          <Route path = "/game/:gameid" exact>
+             {didRedirect ? 
+               <React.Fragment>
+                     <JoinGame userName = {userName} isCreator = {true} />
+                     <ChessGame myUserName = {userName} />
+               </React.Fragment> 
+               :
+               <JoinRoom />}
+           </Route>
+           <Navigate to = "/" /> */}
+          {/* /*chess */ }
+          <Route path="/upload" element={<FileUpload/>}></Route>
           <Route path="/addProduct" element={<AddProduct />} />
           <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/products" element={<Products />} />
@@ -161,6 +235,8 @@ function App() {
           <Route path="edit" element={<Edit />}></Route>
 
           <Route path="/" element={<Main />}>
+          <Route path="/videos/:name" element={<Videos/>}></Route>            
+
             <Route path="" element={<Home />} />
             <Route path="/memoryGame" element={<Cards />}></Route>
             <Route path="/ticGame" element={<Tic />}></Route>
@@ -224,10 +300,26 @@ function App() {
               <Route path="/dashboard/courses/add" element={<FormAdd />} />
             </Route>
          
-        </Routes>
-      </BrowserRouter>
+        
+      
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="/dashboard/orders" element={<SalesDashboard />}></Route>
+          <Route path="/dashboard/tests" element={<ManageTest/>}></Route>
+          <Route path="/dashboard/arrayTest" element={<ArrayTest/>}></Route>
+          <Route path="/dashboard/updateTest/:id" element={<UpdateTest/>}></Route>
+          <Route path="/dashboard/topics" element={<TopicsList/>}/>
+          <Route path="/dashboard/topics/add" element={<Form/>}/>
+          <Route path="/dashboard/topics/update/:id" element={<UpdateForm/>}/>
+          <Route path="/dashboard/courses" element={<CoursesList/>}/>
+          <Route path="/dashboard/courses/add" element={<FormAdd/>}/>
+          <Route path="/dashboard/videos" element={<VideoList/>}/>
+          <Route path="/dashboard/videos/add" element={<VideoAdd/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </Provider>
+    </ColorContext.Provider>
   );
 }
-
-export default App;
+}
+export default App 

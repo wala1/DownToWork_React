@@ -2,15 +2,17 @@ import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FileDownload from 'js-file-download'
-function Course({name , description , imageC , level ,pdf , topicName}) {
+import ReactPlayer from 'react-player';
+
+function Course({name , description ,idC, imageC , level ,pdf , topicName}) {
   const handleDownload = () => {
     console.log("clicked");
     axios({
-      url :"http://localhost:3001/courses/download-course",
+      url :`http://localhost:3001/courses/download/${idC}`,
       method : "GET",
       responseType : "blob"
     })
-    .then((res)=> {FileDownload(res.data,"downloaded.png")})
+    .then((res)=> {FileDownload(res.data,name+".pdf")})
     .catch((err) => {
       console.log(err);
     });
@@ -73,6 +75,7 @@ function Course({name , description , imageC , level ,pdf , topicName}) {
 
                           </div>
                         </article>
+
                       </div>
     
 
