@@ -151,6 +151,7 @@ const Profile = () => {
                       username={currentUser.name}
                       imagePath={currentImgPath}
                       isCurrent={isCurrent}
+                      isProfile={true}
                     />
                   ))}
                 </div>

@@ -1995,6 +1995,7 @@ label.required:after {
 	position: relative;
 	background-color: #018763;
 	z-index: 1000;
+	/* #018763 */
 }
 
 .top_panel_over .top_panel_wrap {

@@ -470,7 +470,7 @@ function SignUp2 () {
               Sign up
             </button>
           </div>
-          <img src="./assets/signup/img/log.svg" className="imagehass" alt="" />
+          <img src="./assets/signup/img/log2.png" className="imagehass" alt="" />
         </div>
         <div className="panelhass right-panelhass">
           <div className="contenthass">
@@ -493,7 +493,7 @@ function SignUp2 () {
             </button>
           </div>
           <img
-            src="./assets/signup/img/register.svg"
+            src="./assets/signup/img/register2.png"
             className="imagehass"
             alt=""
           />
