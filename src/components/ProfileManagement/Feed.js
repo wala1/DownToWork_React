@@ -57,30 +57,23 @@ const Feed = () => {
       
       <br /><br /><br /><br /> <br /><br /><br /><br />
       <div className="Search" >
-        <select
+        <h1
           style={{
             backgroundColor: '#3aaf85',
-            width: '200px',
-            height: '35px',
+            fontSize: '24px', fontWeight: 'bold',
             borderRadius: '5px',
             color: 'white',
             outline: 'none', // ajout de cette ligne pour désactiver l'effet de soulignement
           }}
-          aria-label="Search Filter"
-          value={critere}
-          onChange={handelSearch}
-        >
-          <optgroup>
-            <option value="" disabled selected>Choose a Filter</option>
-          </optgroup>
-          <option value="name">name</option>
-          <option value="statut">statut</option>
 
-        </select>
-        <input type="text"  placeholder="Search .." />
+        >
+Recent Articles
+        </h1>
+     
       </div>
       
       {/* Body */}
+     
       <div className="body_wrap" >
 
         <div className="page_wrap">

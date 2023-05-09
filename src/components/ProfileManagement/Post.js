@@ -1,4 +1,4 @@
-import React, { useEffect , useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import {Button} from 'react-bootstrap';
@@ -8,43 +8,56 @@ const Post = ({post, deletePost, isCurrent}) => {
   const userString = localStorage.getItem ('user');
   const user = JSON.parse (userString);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate ();
 
-  const [pathUser, setpathUser] = useState({});
+  const [pathUser, setpathUser] = useState ({});
 
   const urlGetImagePath = 'http://127.0.0.1:3001/users/getImagePath/';
   const urlUserById = 'http://localhost:3001/users/getById/';
-  const [imagePath, setimagePath] = useState('');
+  const urlLike = 'http://localhost:3001/post/liker/';
 
- useEffect(() => {
-    console.log(post.user);
+
+  const [imagePath, setimagePath] = useState ('');
+  const [likes, setlikes] = useState();
+  const [dislikes, setdislikes] = useState();
+  const [haha, sethaha] = useState();
+
+
+  const handelLikes = () => {
+     axios.post(urlLike + post._id + '/' + user._id).then(()=>{setlikes(likes+1)})  }
+
+  useEffect (() => {
+
+    setlikes(post.likes.length)
+    setdislikes(post.dislikes.length)
+    sethaha(post.hahaImoji.length)
+
+    console.log (post.user);
     axios
-    .get (urlGetImagePath + post.user)
-    .then (response => {
-      setimagePath (response.data);
-    })
-    .catch (err => {
-      console.log (err);
-    });
+      .get (urlGetImagePath + post.user)
+      .then (response => {
+        setimagePath (response.data);
+      })
+      .catch (err => {
+        console.log (err);
+      });
 
     axios
-    .get (urlUserById + post.user)
-    .then (response => {
-      setpathUser (response.data);
-    })
-    .catch (err => {
-      console.log (err);
-    });
+      .get (urlUserById + post.user)
+      .then (response => {
+        setpathUser (response.data);
+      })
+      .catch (err => {
+        console.log (err);
+      });
+  }, []);
 
- }, []);
-
- useEffect (
+  useEffect (
     () => {
-    console.log ('imagePath:', imagePath);
+      console.log ('imagePath:', imagePath);
     },
-    [imagePath , pathUser]
+    [imagePath, pathUser]
   );
-
 
   return (
     <div class="">
@@ -70,23 +83,38 @@ const Post = ({post, deletePost, isCurrent}) => {
           />
           <div>
             <h6 className="sc_team_item_infos">
-              <a href="" onClick={() => {navigate (`/profile?id=${pathUser._id}`)}}>{post.name}</a>
+              <a
+                href=""
+                onClick={() => {
+                  navigate (`/profile?id=${pathUser._id}`);
+                }}
+              >
+                {post.name}
+              </a>
             </h6>
             <div className="sc_team_item_position">{pathUser.statut}</div>
           </div>
           <div className="BtnPost">
-           {/*  <Button
+            {/*  <Button
               variant="link"
               className="mr-3"
               onClick={() => deletePost (post._id)}
             >
               Delete post
             </Button> */}
-            <a> &#128525;</a>
-            <a> &#128527;</a>
-            <a> &#128514;</a>
-{/*             <Button variant="link">Edit post</Button>
- */}          </div>
+            <a style={{fontSize: '28px'}}  onClick={handelLikes}> 
+            &#128525; <span style={{fontSize: '10px'}}> {likes}</span>
+            </a>
+            <a style={{fontSize: '28px'}}>
+          &#128527; <span style={{fontSize: '10px'}}> {dislikes}</span>
+            </a>
+            <a style={{fontSize: '28px'}}>
+              &#128514; <span style={{fontSize: '10px'}}> {haha}</span>
+            </a>
+            {/*             <Button variant="link">Edit post</Button>
+ */}
+ 
+          </div>
         </div>
       </div>
     </div>
