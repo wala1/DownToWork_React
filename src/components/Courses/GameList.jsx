@@ -3,7 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function GameList(){
-    console.log("test")
+    console.log("test");
+    const handleButtonClick = () => {
+      window.location.href = 'http://localhost:3002/';
+    };
 return(<>
 <div
                   className="isotope_wrap inited"
@@ -42,7 +45,7 @@ return(<>
                             </h4>
                             <div className="post_descr_buttons_wrapper">
                               <div className="post_descr_wrapper">
-                                <p>Memory Game Description</p>     
+                                <p>Memory game : a card matching game where players flip over cards to find pairs.</p>     
                                                         </div>
                               <div className="post_buttons_wrapper">
                               <Link
@@ -73,7 +76,7 @@ return(<>
                                 href="post-with-video.html"
                               >
                                 <img
-                                  src={require('../../assets/images/games/sudoku.png')}
+                                  src={require('../../assets/images/games/chess.png')}
                                   alt=""
                                   style={{ height: "300px", width: "370px", objectFit: "cover" }}
                                 />
@@ -83,15 +86,16 @@ return(<>
                           </div>
                           <div className="post_content isotope_item_content">
                             <h4 className="post_title">
-                              <a href="post-with-video.html">Sudoku Game</a>
+                              <a href="post-with-video.html">Chess Game</a>
                             </h4>
                             <div className="post_descr_buttons_wrapper">
                               <div className="post_descr_wrapper">
-                                <p>Sudoku Game Description</p>     
+                                <p>a strategic board game played by two players with the objective of checkmating the opponent's king.</p>     
                                                         </div>
                               <div className="post_buttons_wrapper">
-                              <Link
-                                  to='/memoryGame'
+                              <Link target="_blank"
+                              onClick={handleButtonClick}
+                                 
                                   className="sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small"
                                 >
                                   Play 
@@ -131,7 +135,7 @@ return(<>
                             </h4>
                             <div className="post_descr_buttons_wrapper">
                               <div className="post_descr_wrapper">
-                                <p>Tic-Tac-Toe Description</p>     
+                                <p>Tic Tac Toe is a simple two-player game played on a 3x3 grid, where players take turns placing X's or O's in an attempt to get three in a row horizontally, vertically, or diagonally.</p>     
                                                         </div>
                               <div className="post_buttons_wrapper">
                                 <Link
@@ -142,6 +146,7 @@ return(<>
                                 
                                 </Link>
                               </div>
+                              
                             </div>
 
                           </div>
