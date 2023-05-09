@@ -81,7 +81,7 @@ const Feed = () => {
       </div>
       
       {/* Body */}
-      <div className="body_wrap">
+      <div className="body_wrap" >
 
         <div className="page_wrap">
           <div className="" />
@@ -109,11 +109,11 @@ const Feed = () => {
                         className="sc_team sc_team_style_1"
                         data-animation="animated fadeInUp normal"
                       >
-                        <div className="sc_columns columns_wrap"  >
+                        <div className="sc_columns columns_wrap">
                           {posts.length > 0 &&
                             posts.map (
                               (p /*  <User  key={u.id} user={u} /> */) => (
-                                <div className="column-1_3">
+                                <div className="column-1_2">
                                   <Post key={p.id} post={p}  />
                                 </div>
                               )

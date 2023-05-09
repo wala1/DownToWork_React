@@ -8,7 +8,10 @@ const Post = ({post, deletePost, isCurrent}) => {
   const userString = localStorage.getItem ('user');
   const user = JSON.parse (userString);
 
+  const [pathUser, setpathUser] = useState({});
+
   const urlGetImagePath = 'http://127.0.0.1:3001/users/getImagePath/';
+  const urlUserById = 'http://localhost:3001/users/getById/';
   const [imagePath, setimagePath] = useState('');
 
  useEffect(() => {
@@ -22,13 +25,22 @@ const Post = ({post, deletePost, isCurrent}) => {
       console.log (err);
     });
 
+    axios
+    .get (urlUserById + post.user)
+    .then (response => {
+      setpathUser (response.data);
+    })
+    .catch (err => {
+      console.log (err);
+    });
+
  }, []);
 
  useEffect (
     () => {
     console.log ('imagePath:', imagePath);
     },
-    [imagePath]
+    [imagePath , pathUser]
   );
 
 
@@ -58,7 +70,7 @@ const Post = ({post, deletePost, isCurrent}) => {
             <h6 className="sc_team_item_infos">
               <a href="personal-page.html">{post.name}</a>
             </h6>
-            <div className="sc_team_item_position">Marketing Coordinator</div>
+            <div className="sc_team_item_position">{pathUser.statut}</div>
           </div>
           <div className="BtnPost">
             <Button
