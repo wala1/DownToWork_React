@@ -72,6 +72,7 @@ div {
 }
 
 .choice-button {
+  display: inline-block;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
@@ -82,6 +83,7 @@ div {
   background-color: #fff;
   transition: all 0.3s ease-in-out;
 }
+
 
 .choice-button:hover,
 .choice-button:focus {
@@ -94,7 +96,7 @@ div {
 }
 
 .app2 {
-  background-color: #252d4a;
+  background-color: #b7b7b7;
   width: 76rem;
   margin-bottom: 19rem;
   margin-top: 12rem;
@@ -103,7 +105,7 @@ div {
   height: min-content;
   border-radius: 15px;
   padding: 20px;
-  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 42px 0px rgba(211, 211, 211, 0.75);
   display: flex;
   justify-content: space-evenly;
 }
@@ -114,11 +116,11 @@ div {
   align-items: center;
 }
 
-/* QUESTION/TIMER/LEFT SECTION */
 .question-section {
   width: 100%;
   color: white;
   position: relative;
+  display: inline-block; /* add this */
 }
 
 .question-count {
@@ -143,25 +145,34 @@ div {
   text-align: center;
 }
 
-/* ANSWERS/RIGHT SECTION */
 .answer-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: inline-block; /* add this */
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 20px; /* add this */
+  vertical-align: top; /* add this */
+}
+
+.answer-section button {
+  margin: 10px;
+}
+
+.button-container {
+  display: inline-block; /* add this */
+  margin-left: 20px; /* add this */
+  vertical-align: top; /* add this */
 }
 
 button {
-  width: 100%;
+  width: auto;
   font-size: 16px;
   color: #ffffff;
-  background-color: #252d4a;
-  border-radius: 15px;
+  background-color: #1b379c;
+  border-radius: 5px;
   display: flex;
   padding: 5px;
   justify-content: center;
   align-items: center;
-  border: 5px solid #234668;
   cursor: pointer;
 }
 .btnCart{
@@ -195,4 +206,10 @@ button:focus {
 
 button svg {
   margin-right: 5px;
+}
+.top_panel_wrap {
+  height: 189px;
+}
+.content_wrap{
+  margin-top: -12px;
 }

@@ -7,6 +7,9 @@
 //     const [prodRate1,setProdRate1]=useState(props.rate);
 //     const [product, setProduct] = useState({});
 //     const[rateNbr,setRateNbr]=useState(props.rateNbr);
+//     const [prodRate,setProdRate]=useState(props.rate);
+//     const [product, setProduct] = useState({});
+    
 //     useEffect(()=>{ const getProducts = async () => {
 //         axios.get(`http://localhost:3001/product/getById/${props.id}`)
 //             .then(response => {
@@ -28,6 +31,10 @@
 //         const prodRateNbr=rateNbr;
 //         try {
 //            await axios.put(`http://localhost:3001/product/update/${props.id}`,{prodRate1})
+//     const  handleRate = async (prodRate) => {
+
+//         try {
+//            await axios.put(`http://localhost:3001/product/update/${props.id}`,{prodRate})
            
 //             console.log(prodRate)
 //         } catch (err) { console.log(err) }
@@ -44,6 +51,8 @@
 //             return (<label>
 //                 <input type='radio' name='rating' value={ratingValue}  onClick={()=>{handleRate(ratingValue);setProdRate1(ratingValue)}}></input>
 //                 <FaStar className="star" color={ratingValue <= prodRate1 ? "#ffc107" : "#e4e5e9"} size={20}></FaStar>
+//                 <input type='radio' name='rating' value={ratingValue}  onClick={()=>{handleRate(prodRate);setProdRate(ratingValue)}}></input>
+//                 <FaStar className="star" color={ratingValue <= prodRate ? "#ffc107" : "#e4e5e9"} size={20}></FaStar>
 //             </label>)
 //         })
 //         }

@@ -1,6 +1,22 @@
+import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FileDownload from 'js-file-download'
 function Course({name , description , imageC , level ,pdf , topicName}) {
+  const handleDownload = () => {
+    console.log("clicked");
+    axios({
+      url :"http://localhost:3001/courses/download-course",
+      method : "GET",
+      responseType : "blob"
+    })
+    .then((res)=> {FileDownload(res.data,"downloaded.png")})
+    .catch((err) => {
+      console.log(err);
+    });
+
+
+  };
     return ( <>
      <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <article className="post_item post_item_masonry post_item_masonry_3 even">
@@ -49,7 +65,7 @@ function Course({name , description , imageC , level ,pdf , topicName}) {
                                 //   to={`/diagnostic/quizzes/${test._id}`}
                                   className="sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small"
                                 >
-                                  {pdf==="pdf" ? <i class="fa fa-file-pdf"></i> : <i class="fa fa-file-pdf"></i>  }
+                                  {pdf==="pdf" ? <a onClick={handleDownload}> <i class="fa fa-file-pdf"></i> </a> : <i class="fa fa-file-pdf"></i>  }
                                 
                                 </Link>
                               </div>

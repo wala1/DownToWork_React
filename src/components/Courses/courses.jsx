@@ -54,9 +54,7 @@ const onAllCoursesClick = () => {
                   >
                     Videos
                   </a>
-                  <a href="/game" data-filter=".flt_33" className="isotope_filters_button">
-                    Games
-                  </a>
+                 
                 </div>
 
                 <div className="pagination">
