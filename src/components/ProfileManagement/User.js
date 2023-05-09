@@ -28,7 +28,7 @@ const User = ({user} ) => {
         <div className="imgBx">
           <img src={`http://localhost:3001/${user.picture.imagePath}`}  alt="image" />
         </div>
-        <div className="content">
+        <div className="content" style={{backgroundColor:"#4481eb"}}>
           <div className="details">
             <h2>
               {user.name} <br/>

@@ -87,7 +87,7 @@ export default function ChatGPT() {
   return (
     <div
       style={{
-        backgroundColor: "rgb(13, 37, 76)",
+        backgroundColor: "#fff",
         height: "100%",
         width: "100%",
         position: "absolute",
