@@ -62,6 +62,7 @@ import Post from './components/ProfileManagement/Post';
 import Members from './components/ProfileManagement/Members';
 import ChangePwd from './components/AccountManagement/ChangePwd';
 import Edit from './components/AccountManagement/Edit';
+import Feed from './components/ProfileManagement/Feed';
 
 
 // function PrivateRoute({ element: Element, ...rest }) {
@@ -107,6 +108,7 @@ function App () {
           <Route path="/test" element={<LevelTest />} />
           <Route path="/game" element={<Cards/>}></Route>
           <Route path="/p" element={<Post/>}></Route>
+          <Route path="/feed" element={<Feed/>}></Route>
 
 
           <Route path="/trial" element={<Trial/>}/>

@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { useEffect , useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
 import {Button} from 'react-bootstrap';
 import './Side.css';
 
-const Post = ({post, deletePost, username, imagePath, isCurrent}) => {
+const Post = ({post, deletePost, isCurrent}) => {
   const userString = localStorage.getItem ('user');
   const user = JSON.parse (userString);
+
+  const urlGetImagePath = 'http://127.0.0.1:3001/users/getImagePath/';
+  const [imagePath, setimagePath] = useState('');
+
+ useEffect(() => {
+    console.log(post.user);
+    axios
+    .get (urlGetImagePath + post.user)
+    .then (response => {
+      setimagePath (response.data);
+    })
+    .catch (err => {
+      console.log (err);
+    });
+
+ }, []);
+
+ useEffect (
+    () => {
+    console.log ('imagePath:', imagePath);
+    },
+    [imagePath]
+  );
+
 
   return (
     <div class="">
@@ -31,7 +56,7 @@ const Post = ({post, deletePost, username, imagePath, isCurrent}) => {
           />
           <div>
             <h6 className="sc_team_item_infos">
-              <a href="personal-page.html">{username}</a>
+              <a href="personal-page.html">{post.name}</a>
             </h6>
             <div className="sc_team_item_position">Marketing Coordinator</div>
           </div>
