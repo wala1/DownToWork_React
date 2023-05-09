@@ -4,7 +4,7 @@ import axios from 'axios';
 import {Button} from 'react-bootstrap';
 import './Side.css';
 
-const Post = ({post, deletePost, isCurrent}) => {
+const Post = ({post, deletePost, isCurrent , isProfile}) => {
   const userString = localStorage.getItem ('user');
   const user = JSON.parse (userString);
 
@@ -24,7 +24,7 @@ const Post = ({post, deletePost, isCurrent}) => {
 
 
   const handelLikes = () => {
-     axios.post(urlLike + post._id + '/' + user._id).then(()=>{setlikes(likes+1)})  }
+     axios.post(urlLike + post._id + '/' + user._id).then((response)=>{setlikes(parseInt(response.data))}).catch((error)=>{console.log(error);})}
 
   useEffect (() => {
 
@@ -94,25 +94,15 @@ const Post = ({post, deletePost, isCurrent}) => {
             </h6>
             <div className="sc_team_item_position">{pathUser.statut}</div>
           </div>
-          <div className="BtnPost">
-            {/*  <Button
-              variant="link"
-              className="mr-3"
-              onClick={() => deletePost (post._id)}
-            >
-              Delete post
-            </Button> */}
-            <a style={{fontSize: '28px'}}  onClick={handelLikes}> 
-            &#128525; <span style={{fontSize: '10px'}}> {likes}</span>
-            </a>
-            <a style={{fontSize: '28px'}}>
-          &#128527; <span style={{fontSize: '10px'}}> {dislikes}</span>
-            </a>
-            <a style={{fontSize: '28px'}}>
-              &#128514; <span style={{fontSize: '10px'}}> {haha}</span>
-            </a>
-            {/*             <Button variant="link">Edit post</Button>
- */}
+          
+          <div style={{ display:'flex' , gap:'15px'}}>
+         
+    
+{isProfile && <button class="button-24" role="button"   onClick={() => deletePost (post._id)} >Delete</button>}
+
+<button class="button-1" role="button"  onClick={handelLikes}>Like</button> <span style={{fontSize: '10px'}}> {likes}</span>
+
+           
  
           </div>
         </div>
