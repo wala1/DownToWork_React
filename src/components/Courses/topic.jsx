@@ -13,7 +13,13 @@ function Topic({name,image,description}) {
                     to={`/topics/courses/${name}`}
                     className="sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small"
                 >
-                JOIN
+                Courses
+                </Link>
+                <Link
+                    to={`/videos/${name}`}
+                    className="sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_small"
+                >
+                Videos
                 </Link>
             </div>
         </div>                                  

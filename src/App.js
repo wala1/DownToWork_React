@@ -135,7 +135,10 @@ import Members from "./components/ProfileManagement/Members";
 import ChangePwd from "./components/AccountManagement/ChangePwd";
 import Edit from "./components/AccountManagement/Edit";
 import Feed from './components/ProfileManagement/Feed';
-
+import FileUpload from './components/FileUpload';
+import Videos from './components/Courses/videos';
+import VideoList from './components/Courses/Admin/videoList';
+import VideoAdd from './components/Courses/Admin/videoAdd';
 
 // function PrivateRoute({ element: Element, ...rest }) {
 //   const userString = localStorage.getItem("user");
@@ -164,6 +167,8 @@ function App() {
           steps={Steps}
         />
         <Routes>
+        
+            
         {/* <Route path="/products/:id" element={<ProductPage/>} /> */}
         <Route path="/productList" element={<ProductList/>} />
           <Route path="/chat/*" element={<ChatGPT />} />
@@ -187,7 +192,8 @@ function App() {
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/delete-account" element={<DeleteAccount />} />
           <Route path="/test" element={<LevelTest />} />
-          <Route path="/game" element={<Cards />}></Route>
+          <Route path="/memoryGame" element={<Cards />}></Route>
+          <Route path="/ticGame" element={<Tic />}></Route>
           <Route path="/p" element={<Post />}></Route>
           <Route path="/feed" element={<Feed/>}></Route>
 
@@ -199,11 +205,10 @@ function App() {
           <Route path="team" element={<Members />}></Route>
           <Route path="changePwd" element={<ChangePwd />}></Route>
           <Route path="edit" element={<Edit />}></Route>
-
+         
           <Route path="/" element={<Main />}>
             <Route path="" element={<Home />} />
-            <Route path="/memoryGame" element={<Cards />}></Route>
-            <Route path="/ticGame" element={<Tic />}></Route>
+           
             </Route>
 
             {/* <Route path="/gamesList" element={<Jeux/>}></Route> */}
@@ -212,6 +217,7 @@ function App() {
 
             <Route path="/" element={<Main />}>
               <Route path="" element={<Home />} />
+              <Route path="/gamesList" element={<GameList/>}/>
               <Route path="/diagnostic" element={<Diagnostic />} />
               <Route path="/diagnostic/quizzes/:id" element={<Quizzes />} />
               <Route path="/gamesList" element={<GameList />} />
@@ -226,10 +232,7 @@ function App() {
                 <Route index element={<Topics />}></Route>
                 <Route path="courses/:name" element={<Courses />}></Route>
               </Route>
-              <Route path="/topics">
-                <Route index element={<Topics />}></Route>
-                <Route path="courses/:name" element={<Courses />}></Route>
-              </Route>
+            
             </Route>
 
             <Route path="/dashboard" element={<Dashboard />}>
@@ -262,6 +265,8 @@ function App() {
               />
               <Route path="/dashboard/courses" element={<CoursesList />} />
               <Route path="/dashboard/courses/add" element={<FormAdd />} />
+              <Route path="/dashboard/videos" element={<VideoList/>}/>
+              <Route path="/dashboard/videos/add" element={<VideoAdd/>}/>
             </Route>
          
         </Routes>
