@@ -2,7 +2,7 @@ import React, {useState , useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
-const UserId = ({userName, email}) => {
+const UserId = ({userName, email , imagePath , isCurrent }) => {
   const userString = localStorage.getItem ('user');
   const user = JSON.parse (userString);
   const token = localStorage.getItem("token");
@@ -11,6 +11,17 @@ const UserId = ({userName, email}) => {
       Authorization: `Bearer ${token}`
     }
   };
+
+  const [img, setImg] = useState('');
+
+  useEffect(() => {
+    if (imagePath)  {setImg(imagePath)}
+    console.log('this is img apres set img with imagePath');
+   /*  console.log(img);
+    console.log(`http://localhost:3001/${img}`); // imagePath devrait être défini ici */
+
+  }, []);
+
 
   const urlUpdateImg = 'http://127.0.0.1:3001/users/updateImg/';
   const urlGetUser = 'http://127.0.0.1:3001/users/getById/';
@@ -29,6 +40,8 @@ const UserId = ({userName, email}) => {
     navigate ('/desac');
   };
 
+  const handlePassword=  async () => {navigate ('/changePwd');}
+
   const handleFileUpload = async event => {
     const fileToUpload = event.target.files[0];
     setFile(fileToUpload);
@@ -37,8 +50,10 @@ const UserId = ({userName, email}) => {
     formData.append('picture', fileToUpload);
 
     try {
-      await axios.put(urlUpdateImg + user._id, formData, config);
-      alert('Photo uploaded successfully!');
+    await axios.put(urlUpdateImg + user._id, formData, config).then((response)=>{ setImg(response.data.user.picture.imagePath)
+    localStorage.setItem('user', JSON.stringify(response.data.user));
+    });
+      //alert('Photo uploaded successfully!');
     } catch (err) {
       console.log(err.message);
     }
@@ -48,10 +63,15 @@ const UserId = ({userName, email}) => {
     <div>
       <div className="profi">
         <div className="prof_img">
-          <img src={`http://localhost:3001/${user.picture.imagePath}`} alt="Profile" />
-        </div>
+{   imagePath && <img src={`http://localhost:3001/${imagePath}`} alt="Profile" />
+}       
+
+{   !imagePath && <img src={`http://localhost:3001/${img}`} alt="Profile" />
+} 
+ </div>
         <input className="upload" type="file" encType="multipart/form-data" onChange={handleFileUpload} />
       </div>
+      { isCurrent &&
       <div className="Buttons">
         <div className="d-grid gap-2 d-md-block">
           <button
@@ -69,14 +89,22 @@ const UserId = ({userName, email}) => {
             Desactivate
           </button>
           <button
+            onClick={handlePassword}
+            className="btn bdp"
+            type="button"
+          >
+            Password
+          </button>
+          <button
             onClick={handleDeleteAccount}
-            className="btn btn-danger bdl"
+            className="btn bdl"
             type="button"
           >
             Delete
           </button>
+          
         </div>
-      </div>
+      </div> }
     </div>
   );
 };
