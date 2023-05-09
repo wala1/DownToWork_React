@@ -1,12 +1,29 @@
 import React, {useState} from 'react';
+import badWords from 'bad-words';
+
+
+const customBadWords = new badWords({ 
+  regex: /\*|\.|$/gi, // définit l'expression régulière de remplacement des mots inappropriés
+  replace: '*', // définit le caractère de remplacement
+  exclude: ['foo', 'bar'], // définit une liste de mots exclus (qui ne seront pas considérés comme des mots inappropriés)
+  extra: ['baz'], // ajoute des mots supplémentaires à la liste de mots inappropriés
+});
+
 
 const AddPost = ({addItem , username}) => {
 
   const [text, setText] = useState ('');
   const [imgUrl, setImgUrl] = useState ('');
+  const filter = customBadWords;
+
 
   const handleSubmit = e => {
-    e.preventDefault ();
+    e.preventDefault();
+    if (filter.isProfane(text)) {
+      alert('Votre article contient des mots inappropriés. Veuillez les retirer avant de publier.');
+      return;
+    }
+
     const obj = {text , username};
     addItem (obj);
     setText('');
