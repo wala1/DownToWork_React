@@ -92,7 +92,7 @@ const quantity =useSelector(state=>state.cart.quantity)
 
 
 	return (<Fragment>
-		<header className="top_panel_wrap bg_tint_dark" style={{"paddingTop": '50px' }}>
+		<header className="top_panel_wrap bg_tint_dark" style={{"paddingTop": '0px' }}>
 			{/* <!-- User menu --> */}
 			<div className="menu_user_wrap">
 				<div className="content_wrap clearfix">

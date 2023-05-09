@@ -90,7 +90,7 @@ function StartQuiz(props) {
         </div>
       ) : (
         <>
-          <div className="card text-center">
+          <div className="card text-center" style={{marginTop: '3rem'}}>
             <div key={question._id}>
               <div className="card-header">
                 <span style={{ marginRight: '71rem', fontSize: '17px', color: 'black', fontWeight: 'bold', display: 'inline-block', marginRight: '61rem' }}>
@@ -104,7 +104,7 @@ function StartQuiz(props) {
                 </span>
               </div>
               <div className="card-body">
-                <h5 className="card-title"><span style={{ fontFamily: 'serif', fontSize: '2.5rem' }}>{question.title}</span></h5>
+                <h5 className="card-title">{question.title && <span style={{ fontFamily: 'serif', fontSize: '2.5rem' }}>{question.title}</span>}</h5>
                 <p className="card-text">{question.response}</p>
 
                 <div className="row">
