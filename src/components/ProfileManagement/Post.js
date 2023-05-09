@@ -82,9 +82,9 @@ const Post = ({post, deletePost, isCurrent}) => {
             >
               Delete post
             </Button> */}
-            <a> &#128525;</a>
-            <a> &#128527;</a>
-            <a> &#128514;</a>
+           <a style={{fontSize: '28px'}}> &#128525;</a>
+      <a style={{fontSize: '28px'}}> &#128527;</a>
+      <a style={{fontSize: '28px'}}> &#128514;</a>
 {/*             <Button variant="link">Edit post</Button>
  */}          </div>
         </div>
