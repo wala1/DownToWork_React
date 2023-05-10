@@ -119,7 +119,7 @@ import Fail from "./components/Shop/Fail";
 import Topics from "./components/Courses/topics";
 import Profile from "./components/ProfileManagement/Profile";
 import Side from "./components/ProfileManagement/Side";
-import Courses from "./components/Courses/courses";
+import Courses from "./components/Courses/Courses";
 import MyProducts from "./components/Shop/MyProducts";
 import ChatGPT from "./components/chat/ChatGpt";
 import Test from "./components/Courses/test";
