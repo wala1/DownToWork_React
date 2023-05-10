@@ -131,6 +131,7 @@ const Profile = () => {
               email={currentUser.email}
               postNumber={posts.length}
               statut={currentUser.statut}
+              isCurrent={isCurrent}
             />
           </div>
 

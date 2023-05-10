@@ -2,7 +2,7 @@ import React from 'react';
 import './Side.css';
 import { useNavigate } from "react-router-dom";
 
-const Side = ({username, email , postNumber,statut}) => {
+const Side = ({username, email , postNumber,statut,isCurrent}) => {
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/business");
@@ -39,8 +39,9 @@ const Side = ({username, email , postNumber,statut}) => {
                 </a>
               </div>
               <div className="actionBtn">
-                <button onClick={()=>handleNavigate()}>Orders</button>
+               {isCurrent && <><button onClick={()=>handleNavigate()}>Orders</button>
                 <button onClick={()=>goToMyProducts()} >Products</button>
+               </>}
               </div>
             </div>
           </div>

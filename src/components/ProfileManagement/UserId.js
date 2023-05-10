@@ -69,7 +69,8 @@ const UserId = ({userName, email , imagePath , isCurrent }) => {
 {   !imagePath && <img src={`http://localhost:3001/${img}`} alt="Profile" />
 } 
  </div>
-        <input className="upload" type="file" encType="multipart/form-data" onChange={handleFileUpload} />
+        {isCurrent && 
+          <input className="upload" type="file" encType="multipart/form-data" onChange={handleFileUpload} />}
       </div>
       { isCurrent &&
       <div className="Buttons">
