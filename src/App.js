@@ -217,6 +217,8 @@ function App() {
 
             <Route path="/" element={<Main />}>
               <Route path="" element={<Home />} />
+              <Route path="/videos/:name" element={<Videos/>}></Route>            
+
               <Route path="/gamesList" element={<GameList/>}/>
               <Route path="/diagnostic" element={<Diagnostic />} />
               <Route path="/diagnostic/quizzes/:id" element={<Quizzes />} />

@@ -1,3 +1,5 @@
+import './game.css'
+
 function Card({item, id, handleClick}){
     const itemClass = item.stat ? " active1 " + item.stat : ""
 

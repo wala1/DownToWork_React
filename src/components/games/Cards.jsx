@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Card from './Card'
 import { useNavigate } from 'react-router-dom'
+import './game.css'
 
 function Cards(){
     const [items, setItems] = useState([
@@ -56,7 +57,7 @@ function Cards(){
     return (
         <>
         
-             <h1>Memory Game <a href="/gamesList"> <i  class="fa fa-arrow-left"></i></a> </h1> 
+             <h1>Memory Game <a href="/gamesList"> <i  className="fa fa-arrow-left"></i></a> </h1> 
             
            
        
