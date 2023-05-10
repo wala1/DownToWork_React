@@ -1,3 +1,7 @@
+body{
+  background-color: #018763;
+
+}
 /* @import "bootstrap/dist/css/bootstrap.min.css"; */
 
 
@@ -41,7 +45,3 @@
     transform: rotate(360deg);
   }
 } */
-body{
-  background-color: #018763;
-
-}
