@@ -408,7 +408,7 @@ function SignUp2 () {
                <i className="fab fa-linkedin-in"></i>
              </a> */}
               <LoginSocialFacebook
-                appId="599043218440870"
+                appId="745216890722660"
                 onResolve={response => {
                   console.log (response.data);
                   console.log(response.data.picture.data.url);
